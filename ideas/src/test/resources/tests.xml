@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd" >
+
+
+
+<suite name="All Tests">
+
+	<test name="unit">
+
+<!--   TEST ONE OR MORE CLASSES  -->		
+<!-- 		<classes> -->
+<!-- 			<class name="unit.FirstTestNGTest" /> -->
+<!-- 		</classes> -->	
+		<packages>
+			<package name="unit.*" />
+		</packages>
+	
+	</test>
+	
+	<test name="ui">
+		<packages>
+			<package name="ui.*" />
+		</packages>	
+	</test>
+	
+	<test name="api">
+		<packages>
+			<package name="api.*" />
+		</packages>
+	</test>
+
+</suite>

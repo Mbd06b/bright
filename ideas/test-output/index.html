@@ -1,0 +1,576 @@
+<!DOCTYPE html>
+
+<html>
+  <head>
+  <meta charset='utf-8'>
+  <title>TestNG reports</title>
+
+    <link type="text/css" href="testng-reports.css" rel="stylesheet" />
+    <script type="text/javascript" src="jquery-1.7.1.min.js"></script>
+    <script type="text/javascript" src="testng-reports.js"></script>
+    <script type="text/javascript" src="https://www.google.com/jsapi"></script>
+    <script type='text/javascript'>
+      google.load('visualization', '1', {packages:['table']});
+      google.setOnLoadCallback(drawTable);
+      var suiteTableInitFunctions = new Array();
+      var suiteTableData = new Array();
+    </script>
+    <!--
+      <script type="text/javascript" src="jquery-ui/js/jquery-ui-1.8.16.custom.min.js"></script>
+     -->
+  </head>
+
+  <body>
+    <div class="top-banner-root">
+      <span class="top-banner-title-font">Test results</span>
+      <br/>
+      <span class="top-banner-font-1">1 suite</span>
+    </div> <!-- top-banner-root -->
+    <div class="navigator-root">
+      <div class="navigator-suite-header">
+        <span>All suites</span>
+        <a href="#" class="collapse-all-link" title="Collapse/expand all the suites">
+          <img class="collapse-all-icon" src="collapseall.gif">
+          </img> <!-- collapse-all-icon -->
+        </a> <!-- collapse-all-link -->
+      </div> <!-- navigator-suite-header -->
+      <div class="suite">
+        <div class="rounded-window">
+          <div class="suite-header light-rounded-window-top">
+            <a href="#" class="navigator-link" panel-name="suite-Default_suite">
+              <span class="suite-name border-passed">Default suite</span>
+            </a> <!-- navigator-link -->
+          </div> <!-- suite-header light-rounded-window-top -->
+          <div class="navigator-suite-content">
+            <div class="suite-section-title">
+              <span>Info</span>
+            </div> <!-- suite-section-title -->
+            <div class="suite-section-content">
+              <ul>
+                <li>
+                  <a href="#" class="navigator-link " panel-name="test-xml-Default_suite">
+                    <span>C:\Users\Matthew.b.dowell\AppData\Local\Temp\testng-eclipse-100679439\testng-customsuite.xml</span>
+                  </a> <!-- navigator-link  -->
+                </li>
+                <li>
+                  <a href="#" class="navigator-link " panel-name="testlist-Default_suite">
+                    <span class="test-stats">1 test</span>
+                  </a> <!-- navigator-link  -->
+                </li>
+                <li>
+                  <a href="#" class="navigator-link " panel-name="group-Default_suite">
+                    <span>0 groups</span>
+                  </a> <!-- navigator-link  -->
+                </li>
+                <li>
+                  <a href="#" class="navigator-link " panel-name="times-Default_suite">
+                    <span>Times</span>
+                  </a> <!-- navigator-link  -->
+                </li>
+                <li>
+                  <a href="#" class="navigator-link " panel-name="reporter-Default_suite">
+                    <span>Reporter output</span>
+                  </a> <!-- navigator-link  -->
+                </li>
+                <li>
+                  <a href="#" class="navigator-link " panel-name="ignored-methods-Default_suite">
+                    <span>Ignored methods</span>
+                  </a> <!-- navigator-link  -->
+                </li>
+                <li>
+                  <a href="#" class="navigator-link " panel-name="chronological-Default_suite">
+                    <span>Chronological view</span>
+                  </a> <!-- navigator-link  -->
+                </li>
+              </ul>
+            </div> <!-- suite-section-content -->
+            <div class="result-section">
+              <div class="suite-section-title">
+                <span>Results</span>
+              </div> <!-- suite-section-title -->
+              <div class="suite-section-content">
+                <ul>
+                  <li>
+                    <span class="method-stats">15 methods,   15 passed</span>
+                  </li>
+                  <li>
+                    <span class="method-list-title passed">Passed methods</span>
+                    <span class="show-or-hide-methods passed">
+                      <a href="#" panel-name="suite-Default_suite" class="hide-methods passed suite-Default_suite"> (hide)</a> <!-- hide-methods passed suite-Default_suite -->
+                      <a href="#" panel-name="suite-Default_suite" class="show-methods passed suite-Default_suite"> (show)</a> <!-- show-methods passed suite-Default_suite -->
+                    </span>
+                    <div class="method-list-content passed suite-Default_suite">
+                      <span>
+                        <img width="3%" src="passed.png"/>
+                        <a href="#" class="method navigator-link" panel-name="suite-Default_suite" title="com.boot.brightideas.service.UserServiceImplTest" hash-for-method="shouldDeleteUser">shouldDeleteUser</a> <!-- method navigator-link -->
+                      </span>
+                      <br/>
+                      <span>
+                        <img width="3%" src="passed.png"/>
+                        <a href="#" class="method navigator-link" panel-name="suite-Default_suite" title="com.boot.brightideas.service.UserServiceImplTest" hash-for-method="shouldDeleteUserById">shouldDeleteUserById</a> <!-- method navigator-link -->
+                      </span>
+                      <br/>
+                      <span>
+                        <img width="3%" src="passed.png"/>
+                        <a href="#" class="method navigator-link" panel-name="suite-Default_suite" title="com.boot.brightideas.service.UserServiceImplTest" hash-for-method="shouldExistByEmail">shouldExistByEmail</a> <!-- method navigator-link -->
+                      </span>
+                      <br/>
+                      <span>
+                        <img width="3%" src="passed.png"/>
+                        <a href="#" class="method navigator-link" panel-name="suite-Default_suite" title="com.boot.brightideas.service.UserServiceImplTest" hash-for-method="shouldExistById">shouldExistById</a> <!-- method navigator-link -->
+                      </span>
+                      <br/>
+                      <span>
+                        <img width="3%" src="passed.png"/>
+                        <a href="#" class="method navigator-link" panel-name="suite-Default_suite" title="com.boot.brightideas.service.UserServiceImplTest" hash-for-method="shouldGetNullUserByEmail">shouldGetNullUserByEmail</a> <!-- method navigator-link -->
+                      </span>
+                      <br/>
+                      <span>
+                        <img width="3%" src="passed.png"/>
+                        <a href="#" class="method navigator-link" panel-name="suite-Default_suite" title="com.boot.brightideas.service.UserServiceImplTest" hash-for-method="shouldGetNullUserById">shouldGetNullUserById</a> <!-- method navigator-link -->
+                      </span>
+                      <br/>
+                      <span>
+                        <img width="3%" src="passed.png"/>
+                        <a href="#" class="method navigator-link" panel-name="suite-Default_suite" title="com.boot.brightideas.service.UserServiceImplTest" hash-for-method="shouldGetUserByEmail">shouldGetUserByEmail</a> <!-- method navigator-link -->
+                      </span>
+                      <br/>
+                      <span>
+                        <img width="3%" src="passed.png"/>
+                        <a href="#" class="method navigator-link" panel-name="suite-Default_suite" title="com.boot.brightideas.service.UserServiceImplTest" hash-for-method="shouldGetUserById">shouldGetUserById</a> <!-- method navigator-link -->
+                      </span>
+                      <br/>
+                      <span>
+                        <img width="3%" src="passed.png"/>
+                        <a href="#" class="method navigator-link" panel-name="suite-Default_suite" title="com.boot.brightideas.service.UserServiceImplTest" hash-for-method="shouldGetUsers">shouldGetUsers</a> <!-- method navigator-link -->
+                      </span>
+                      <br/>
+                      <span>
+                        <img width="3%" src="passed.png"/>
+                        <a href="#" class="method navigator-link" panel-name="suite-Default_suite" title="com.boot.brightideas.service.UserServiceImplTest" hash-for-method="shouldNotDeleteUser">shouldNotDeleteUser</a> <!-- method navigator-link -->
+                      </span>
+                      <br/>
+                      <span>
+                        <img width="3%" src="passed.png"/>
+                        <a href="#" class="method navigator-link" panel-name="suite-Default_suite" title="com.boot.brightideas.service.UserServiceImplTest" hash-for-method="shouldNotDeleteUserByInvalidId">shouldNotDeleteUserByInvalidId</a> <!-- method navigator-link -->
+                      </span>
+                      <br/>
+                      <span>
+                        <img width="3%" src="passed.png"/>
+                        <a href="#" class="method navigator-link" panel-name="suite-Default_suite" title="com.boot.brightideas.service.UserServiceImplTest" hash-for-method="shouldNotExistByEmail">shouldNotExistByEmail</a> <!-- method navigator-link -->
+                      </span>
+                      <br/>
+                      <span>
+                        <img width="3%" src="passed.png"/>
+                        <a href="#" class="method navigator-link" panel-name="suite-Default_suite" title="com.boot.brightideas.service.UserServiceImplTest" hash-for-method="shouldNotExistById">shouldNotExistById</a> <!-- method navigator-link -->
+                      </span>
+                      <br/>
+                      <span>
+                        <img width="3%" src="passed.png"/>
+                        <a href="#" class="method navigator-link" panel-name="suite-Default_suite" title="com.boot.brightideas.service.UserServiceImplTest" hash-for-method="shouldSaveUser">shouldSaveUser</a> <!-- method navigator-link -->
+                      </span>
+                      <br/>
+                      <span>
+                        <img width="3%" src="passed.png"/>
+                        <a href="#" class="method navigator-link" panel-name="suite-Default_suite" title="com.boot.brightideas.service.UserServiceImplTest" hash-for-method="shouldUpdateUser">shouldUpdateUser</a> <!-- method navigator-link -->
+                      </span>
+                      <br/>
+                    </div> <!-- method-list-content passed suite-Default_suite -->
+                  </li>
+                </ul>
+              </div> <!-- suite-section-content -->
+            </div> <!-- result-section -->
+          </div> <!-- navigator-suite-content -->
+        </div> <!-- rounded-window -->
+      </div> <!-- suite -->
+    </div> <!-- navigator-root -->
+    <div class="wrapper">
+      <div class="main-panel-root">
+        <div panel-name="suite-Default_suite" class="panel Default_suite">
+          <div class="suite-Default_suite-class-passed">
+            <div class="main-panel-header rounded-window-top">
+              <img src="passed.png"/>
+              <span class="class-name">com.boot.brightideas.service.UserServiceImplTest</span>
+            </div> <!-- main-panel-header rounded-window-top -->
+            <div class="main-panel-content rounded-window-bottom">
+              <div class="method">
+                <div class="method-content">
+                  <a name="shouldDeleteUser">
+                  </a> <!-- shouldDeleteUser -->
+                  <span class="method-name">shouldDeleteUser</span>
+                </div> <!-- method-content -->
+              </div> <!-- method -->
+              <div class="method">
+                <div class="method-content">
+                  <a name="shouldDeleteUserById">
+                  </a> <!-- shouldDeleteUserById -->
+                  <span class="method-name">shouldDeleteUserById</span>
+                </div> <!-- method-content -->
+              </div> <!-- method -->
+              <div class="method">
+                <div class="method-content">
+                  <a name="shouldExistByEmail">
+                  </a> <!-- shouldExistByEmail -->
+                  <span class="method-name">shouldExistByEmail</span>
+                </div> <!-- method-content -->
+              </div> <!-- method -->
+              <div class="method">
+                <div class="method-content">
+                  <a name="shouldExistById">
+                  </a> <!-- shouldExistById -->
+                  <span class="method-name">shouldExistById</span>
+                </div> <!-- method-content -->
+              </div> <!-- method -->
+              <div class="method">
+                <div class="method-content">
+                  <a name="shouldGetNullUserByEmail">
+                  </a> <!-- shouldGetNullUserByEmail -->
+                  <span class="method-name">shouldGetNullUserByEmail</span>
+                </div> <!-- method-content -->
+              </div> <!-- method -->
+              <div class="method">
+                <div class="method-content">
+                  <a name="shouldGetNullUserById">
+                  </a> <!-- shouldGetNullUserById -->
+                  <span class="method-name">shouldGetNullUserById</span>
+                </div> <!-- method-content -->
+              </div> <!-- method -->
+              <div class="method">
+                <div class="method-content">
+                  <a name="shouldGetUserByEmail">
+                  </a> <!-- shouldGetUserByEmail -->
+                  <span class="method-name">shouldGetUserByEmail</span>
+                </div> <!-- method-content -->
+              </div> <!-- method -->
+              <div class="method">
+                <div class="method-content">
+                  <a name="shouldGetUserById">
+                  </a> <!-- shouldGetUserById -->
+                  <span class="method-name">shouldGetUserById</span>
+                </div> <!-- method-content -->
+              </div> <!-- method -->
+              <div class="method">
+                <div class="method-content">
+                  <a name="shouldGetUsers">
+                  </a> <!-- shouldGetUsers -->
+                  <span class="method-name">shouldGetUsers</span>
+                </div> <!-- method-content -->
+              </div> <!-- method -->
+              <div class="method">
+                <div class="method-content">
+                  <a name="shouldNotDeleteUser">
+                  </a> <!-- shouldNotDeleteUser -->
+                  <span class="method-name">shouldNotDeleteUser</span>
+                </div> <!-- method-content -->
+              </div> <!-- method -->
+              <div class="method">
+                <div class="method-content">
+                  <a name="shouldNotDeleteUserByInvalidId">
+                  </a> <!-- shouldNotDeleteUserByInvalidId -->
+                  <span class="method-name">shouldNotDeleteUserByInvalidId</span>
+                </div> <!-- method-content -->
+              </div> <!-- method -->
+              <div class="method">
+                <div class="method-content">
+                  <a name="shouldNotExistByEmail">
+                  </a> <!-- shouldNotExistByEmail -->
+                  <span class="method-name">shouldNotExistByEmail</span>
+                </div> <!-- method-content -->
+              </div> <!-- method -->
+              <div class="method">
+                <div class="method-content">
+                  <a name="shouldNotExistById">
+                  </a> <!-- shouldNotExistById -->
+                  <span class="method-name">shouldNotExistById</span>
+                </div> <!-- method-content -->
+              </div> <!-- method -->
+              <div class="method">
+                <div class="method-content">
+                  <a name="shouldSaveUser">
+                  </a> <!-- shouldSaveUser -->
+                  <span class="method-name">shouldSaveUser</span>
+                </div> <!-- method-content -->
+              </div> <!-- method -->
+              <div class="method">
+                <div class="method-content">
+                  <a name="shouldUpdateUser">
+                  </a> <!-- shouldUpdateUser -->
+                  <span class="method-name">shouldUpdateUser</span>
+                </div> <!-- method-content -->
+              </div> <!-- method -->
+            </div> <!-- main-panel-content rounded-window-bottom -->
+          </div> <!-- suite-Default_suite-class-passed -->
+        </div> <!-- panel Default_suite -->
+        <div panel-name="test-xml-Default_suite" class="panel">
+          <div class="main-panel-header rounded-window-top">
+            <span class="header-content">C:\Users\Matthew.b.dowell\AppData\Local\Temp\testng-eclipse-100679439\testng-customsuite.xml</span>
+          </div> <!-- main-panel-header rounded-window-top -->
+          <div class="main-panel-content rounded-window-bottom">
+            <pre>
+&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;?&gt;
+&lt;!DOCTYPE suite SYSTEM &quot;http://testng.org/testng-1.0.dtd&quot;&gt;
+&lt;suite guice-stage=&quot;DEVELOPMENT&quot; name=&quot;Default suite&quot;&gt;
+  &lt;test thread-count=&quot;5&quot; verbose=&quot;2&quot; name=&quot;Default test&quot;&gt;
+    &lt;classes&gt;
+      &lt;class name=&quot;com.boot.brightideas.service.UserServiceImplTest&quot;/&gt;
+    &lt;/classes&gt;
+  &lt;/test&gt; &lt;!-- Default test --&gt;
+&lt;/suite&gt; &lt;!-- Default suite --&gt;
+            </pre>
+          </div> <!-- main-panel-content rounded-window-bottom -->
+        </div> <!-- panel -->
+        <div panel-name="testlist-Default_suite" class="panel">
+          <div class="main-panel-header rounded-window-top">
+            <span class="header-content">Tests for Default suite</span>
+          </div> <!-- main-panel-header rounded-window-top -->
+          <div class="main-panel-content rounded-window-bottom">
+            <ul>
+              <li>
+                <span class="test-name">Default test (1 class)</span>
+              </li>
+            </ul>
+          </div> <!-- main-panel-content rounded-window-bottom -->
+        </div> <!-- panel -->
+        <div panel-name="group-Default_suite" class="panel">
+          <div class="main-panel-header rounded-window-top">
+            <span class="header-content">Groups for Default suite</span>
+          </div> <!-- main-panel-header rounded-window-top -->
+          <div class="main-panel-content rounded-window-bottom">
+          </div> <!-- main-panel-content rounded-window-bottom -->
+        </div> <!-- panel -->
+        <div panel-name="times-Default_suite" class="panel">
+          <div class="main-panel-header rounded-window-top">
+            <span class="header-content">Times for Default suite</span>
+          </div> <!-- main-panel-header rounded-window-top -->
+          <div class="main-panel-content rounded-window-bottom">
+            <div class="times-div">
+              <script type="text/javascript">
+suiteTableInitFunctions.push('tableData_Default_suite');
+function tableData_Default_suite() {
+var data = new google.visualization.DataTable();
+data.addColumn('number', 'Number');
+data.addColumn('string', 'Method');
+data.addColumn('string', 'Class');
+data.addColumn('number', 'Time (ms)');
+data.addRows(15);
+data.setCell(0, 0, 0)
+data.setCell(0, 1, 'shouldGetUsers')
+data.setCell(0, 2, 'com.boot.brightideas.service.UserServiceImplTest')
+data.setCell(0, 3, 66);
+data.setCell(1, 0, 1)
+data.setCell(1, 1, 'shouldExistById')
+data.setCell(1, 2, 'com.boot.brightideas.service.UserServiceImplTest')
+data.setCell(1, 3, 13);
+data.setCell(2, 0, 2)
+data.setCell(2, 1, 'shouldGetUserById')
+data.setCell(2, 2, 'com.boot.brightideas.service.UserServiceImplTest')
+data.setCell(2, 3, 11);
+data.setCell(3, 0, 3)
+data.setCell(3, 1, 'shouldDeleteUserById')
+data.setCell(3, 2, 'com.boot.brightideas.service.UserServiceImplTest')
+data.setCell(3, 3, 5);
+data.setCell(4, 0, 4)
+data.setCell(4, 1, 'shouldExistByEmail')
+data.setCell(4, 2, 'com.boot.brightideas.service.UserServiceImplTest')
+data.setCell(4, 3, 4);
+data.setCell(5, 0, 5)
+data.setCell(5, 1, 'shouldDeleteUser')
+data.setCell(5, 2, 'com.boot.brightideas.service.UserServiceImplTest')
+data.setCell(5, 3, 4);
+data.setCell(6, 0, 6)
+data.setCell(6, 1, 'shouldNotDeleteUser')
+data.setCell(6, 2, 'com.boot.brightideas.service.UserServiceImplTest')
+data.setCell(6, 3, 4);
+data.setCell(7, 0, 7)
+data.setCell(7, 1, 'shouldSaveUser')
+data.setCell(7, 2, 'com.boot.brightideas.service.UserServiceImplTest')
+data.setCell(7, 3, 3);
+data.setCell(8, 0, 8)
+data.setCell(8, 1, 'shouldNotExistByEmail')
+data.setCell(8, 2, 'com.boot.brightideas.service.UserServiceImplTest')
+data.setCell(8, 3, 2);
+data.setCell(9, 0, 9)
+data.setCell(9, 1, 'shouldGetUserByEmail')
+data.setCell(9, 2, 'com.boot.brightideas.service.UserServiceImplTest')
+data.setCell(9, 3, 2);
+data.setCell(10, 0, 10)
+data.setCell(10, 1, 'shouldGetNullUserById')
+data.setCell(10, 2, 'com.boot.brightideas.service.UserServiceImplTest')
+data.setCell(10, 3, 2);
+data.setCell(11, 0, 11)
+data.setCell(11, 1, 'shouldGetNullUserByEmail')
+data.setCell(11, 2, 'com.boot.brightideas.service.UserServiceImplTest')
+data.setCell(11, 3, 2);
+data.setCell(12, 0, 12)
+data.setCell(12, 1, 'shouldNotExistById')
+data.setCell(12, 2, 'com.boot.brightideas.service.UserServiceImplTest')
+data.setCell(12, 3, 2);
+data.setCell(13, 0, 13)
+data.setCell(13, 1, 'shouldUpdateUser')
+data.setCell(13, 2, 'com.boot.brightideas.service.UserServiceImplTest')
+data.setCell(13, 3, 2);
+data.setCell(14, 0, 14)
+data.setCell(14, 1, 'shouldNotDeleteUserByInvalidId')
+data.setCell(14, 2, 'com.boot.brightideas.service.UserServiceImplTest')
+data.setCell(14, 3, 1);
+window.suiteTableData['Default_suite']= { tableData: data, tableDiv: 'times-div-Default_suite'}
+return data;
+}
+              </script>
+              <span class="suite-total-time">Total running time: 123 ms</span>
+              <div id="times-div-Default_suite">
+              </div> <!-- times-div-Default_suite -->
+            </div> <!-- times-div -->
+          </div> <!-- main-panel-content rounded-window-bottom -->
+        </div> <!-- panel -->
+        <div panel-name="reporter-Default_suite" class="panel">
+          <div class="main-panel-header rounded-window-top">
+            <span class="header-content">Reporter output for Default suite</span>
+          </div> <!-- main-panel-header rounded-window-top -->
+          <div class="main-panel-content rounded-window-bottom">
+          </div> <!-- main-panel-content rounded-window-bottom -->
+        </div> <!-- panel -->
+        <div panel-name="ignored-methods-Default_suite" class="panel">
+          <div class="main-panel-header rounded-window-top">
+            <span class="header-content">0 ignored methods</span>
+          </div> <!-- main-panel-header rounded-window-top -->
+          <div class="main-panel-content rounded-window-bottom">
+          </div> <!-- main-panel-content rounded-window-bottom -->
+        </div> <!-- panel -->
+        <div panel-name="chronological-Default_suite" class="panel">
+          <div class="main-panel-header rounded-window-top">
+            <span class="header-content">Methods in chronological order</span>
+          </div> <!-- main-panel-header rounded-window-top -->
+          <div class="main-panel-content rounded-window-bottom">
+            <div class="chronological-class">
+              <div class="chronological-class-name">com.boot.brightideas.service.UserServiceImplTest</div> <!-- chronological-class-name -->
+              <div class="configuration-suite before">
+                <span class="method-name">initMocks</span>
+                <span class="method-start">0 ms</span>
+              </div> <!-- configuration-suite before -->
+              <div class="configuration-method before">
+                <span class="method-name">initMockData</span>
+                <span class="method-start">1964 ms</span>
+              </div> <!-- configuration-method before -->
+              <div class="test-method">
+                <span class="method-name">shouldGetUsers</span>
+                <span class="method-start">3308 ms</span>
+              </div> <!-- test-method -->
+              <div class="configuration-method before">
+                <span class="method-name">initMockData</span>
+                <span class="method-start">3380 ms</span>
+              </div> <!-- configuration-method before -->
+              <div class="test-method">
+                <span class="method-name">shouldExistById</span>
+                <span class="method-start">3394 ms</span>
+              </div> <!-- test-method -->
+              <div class="configuration-method before">
+                <span class="method-name">initMockData</span>
+                <span class="method-start">3414 ms</span>
+              </div> <!-- configuration-method before -->
+              <div class="test-method">
+                <span class="method-name">shouldNotExistById</span>
+                <span class="method-start">3430 ms</span>
+              </div> <!-- test-method -->
+              <div class="configuration-method before">
+                <span class="method-name">initMockData</span>
+                <span class="method-start">3434 ms</span>
+              </div> <!-- configuration-method before -->
+              <div class="test-method">
+                <span class="method-name">shouldExistByEmail</span>
+                <span class="method-start">3444 ms</span>
+              </div> <!-- test-method -->
+              <div class="configuration-method before">
+                <span class="method-name">initMockData</span>
+                <span class="method-start">3451 ms</span>
+              </div> <!-- configuration-method before -->
+              <div class="test-method">
+                <span class="method-name">shouldNotExistByEmail</span>
+                <span class="method-start">3452 ms</span>
+              </div> <!-- test-method -->
+              <div class="configuration-method before">
+                <span class="method-name">initMockData</span>
+                <span class="method-start">3457 ms</span>
+              </div> <!-- configuration-method before -->
+              <div class="test-method">
+                <span class="method-name">shouldGetUserById</span>
+                <span class="method-start">3457 ms</span>
+              </div> <!-- test-method -->
+              <div class="configuration-method before">
+                <span class="method-name">initMockData</span>
+                <span class="method-start">3468 ms</span>
+              </div> <!-- configuration-method before -->
+              <div class="test-method">
+                <span class="method-name">shouldGetNullUserById</span>
+                <span class="method-start">3473 ms</span>
+              </div> <!-- test-method -->
+              <div class="configuration-method before">
+                <span class="method-name">initMockData</span>
+                <span class="method-start">3478 ms</span>
+              </div> <!-- configuration-method before -->
+              <div class="test-method">
+                <span class="method-name">shouldGetUserByEmail</span>
+                <span class="method-start">3480 ms</span>
+              </div> <!-- test-method -->
+              <div class="configuration-method before">
+                <span class="method-name">initMockData</span>
+                <span class="method-start">3483 ms</span>
+              </div> <!-- configuration-method before -->
+              <div class="test-method">
+                <span class="method-name">shouldGetNullUserByEmail</span>
+                <span class="method-start">3486 ms</span>
+              </div> <!-- test-method -->
+              <div class="configuration-method before">
+                <span class="method-name">initMockData</span>
+                <span class="method-start">3489 ms</span>
+              </div> <!-- configuration-method before -->
+              <div class="test-method">
+                <span class="method-name">shouldSaveUser</span>
+                <span class="method-start">3495 ms</span>
+              </div> <!-- test-method -->
+              <div class="configuration-method before">
+                <span class="method-name">initMockData</span>
+                <span class="method-start">3501 ms</span>
+              </div> <!-- configuration-method before -->
+              <div class="test-method">
+                <span class="method-name">shouldUpdateUser</span>
+                <span class="method-start">3503 ms</span>
+              </div> <!-- test-method -->
+              <div class="configuration-method before">
+                <span class="method-name">initMockData</span>
+                <span class="method-start">3506 ms</span>
+              </div> <!-- configuration-method before -->
+              <div class="test-method">
+                <span class="method-name">shouldDeleteUserById</span>
+                <span class="method-start">3509 ms</span>
+              </div> <!-- test-method -->
+              <div class="configuration-method before">
+                <span class="method-name">initMockData</span>
+                <span class="method-start">3516 ms</span>
+              </div> <!-- configuration-method before -->
+              <div class="test-method">
+                <span class="method-name">shouldNotDeleteUserByInvalidId</span>
+                <span class="method-start">3517 ms</span>
+              </div> <!-- test-method -->
+              <div class="configuration-method before">
+                <span class="method-name">initMockData</span>
+                <span class="method-start">3518 ms</span>
+              </div> <!-- configuration-method before -->
+              <div class="test-method">
+                <span class="method-name">shouldDeleteUser</span>
+                <span class="method-start">3526 ms</span>
+              </div> <!-- test-method -->
+              <div class="configuration-method before">
+                <span class="method-name">initMockData</span>
+                <span class="method-start">3531 ms</span>
+              </div> <!-- configuration-method before -->
+              <div class="test-method">
+                <span class="method-name">shouldNotDeleteUser</span>
+                <span class="method-start">3533 ms</span>
+              </div> <!-- test-method -->
+          </div> <!-- main-panel-content rounded-window-bottom -->
+        </div> <!-- panel -->
+      </div> <!-- main-panel-root -->
+    </div> <!-- wrapper -->
+  </body>
+</html>

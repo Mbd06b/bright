@@ -1,0 +1,137 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testng-results skipped="0" failed="0" ignored="0" total="15" passed="15">
+  <reporter-output>
+  </reporter-output>
+  <suite name="Default suite" duration-ms="1929" started-at="2019-03-18T18:22:21Z" finished-at="2019-03-18T18:22:23Z">
+    <groups>
+    </groups>
+    <test name="Default test" duration-ms="1929" started-at="2019-03-18T18:22:21Z" finished-at="2019-03-18T18:22:23Z">
+      <class name="com.boot.brightideas.service.UserServiceImplTest">
+        <test-method status="PASS" signature="initMocks()[pri:0, instance:com.boot.brightideas.service.UserServiceImplTest@306f6f1d]" name="initMocks" is-config="true" duration-ms="1606" started-at="2019-03-18T18:22:19Z" finished-at="2019-03-18T18:22:21Z">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- initMocks -->
+        <test-method status="PASS" signature="initMockData()[pri:0, instance:com.boot.brightideas.service.UserServiceImplTest@306f6f1d]" name="initMockData" is-config="true" duration-ms="1344" started-at="2019-03-18T18:22:21Z" finished-at="2019-03-18T18:22:23Z">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- initMockData -->
+        <test-method status="PASS" signature="shouldGetUsers()[pri:1, instance:com.boot.brightideas.service.UserServiceImplTest@306f6f1d]" name="shouldGetUsers" duration-ms="66" started-at="2019-03-18T18:22:23Z" finished-at="2019-03-18T18:22:23Z">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- shouldGetUsers -->
+        <test-method status="PASS" signature="initMockData()[pri:0, instance:com.boot.brightideas.service.UserServiceImplTest@306f6f1d]" name="initMockData" is-config="true" duration-ms="14" started-at="2019-03-18T18:22:23Z" finished-at="2019-03-18T18:22:23Z">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- initMockData -->
+        <test-method status="PASS" signature="shouldExistById()[pri:2, instance:com.boot.brightideas.service.UserServiceImplTest@306f6f1d]" name="shouldExistById" duration-ms="13" started-at="2019-03-18T18:22:23Z" finished-at="2019-03-18T18:22:23Z">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- shouldExistById -->
+        <test-method status="PASS" signature="initMockData()[pri:0, instance:com.boot.brightideas.service.UserServiceImplTest@306f6f1d]" name="initMockData" is-config="true" duration-ms="16" started-at="2019-03-18T18:22:23Z" finished-at="2019-03-18T18:22:23Z">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- initMockData -->
+        <test-method status="PASS" signature="shouldNotExistById()[pri:3, instance:com.boot.brightideas.service.UserServiceImplTest@306f6f1d]" name="shouldNotExistById" duration-ms="2" started-at="2019-03-18T18:22:23Z" finished-at="2019-03-18T18:22:23Z">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- shouldNotExistById -->
+        <test-method status="PASS" signature="initMockData()[pri:0, instance:com.boot.brightideas.service.UserServiceImplTest@306f6f1d]" name="initMockData" is-config="true" duration-ms="10" started-at="2019-03-18T18:22:23Z" finished-at="2019-03-18T18:22:23Z">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- initMockData -->
+        <test-method status="PASS" signature="shouldExistByEmail()[pri:4, instance:com.boot.brightideas.service.UserServiceImplTest@306f6f1d]" name="shouldExistByEmail" duration-ms="4" started-at="2019-03-18T18:22:23Z" finished-at="2019-03-18T18:22:23Z">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- shouldExistByEmail -->
+        <test-method status="PASS" signature="initMockData()[pri:0, instance:com.boot.brightideas.service.UserServiceImplTest@306f6f1d]" name="initMockData" is-config="true" duration-ms="1" started-at="2019-03-18T18:22:23Z" finished-at="2019-03-18T18:22:23Z">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- initMockData -->
+        <test-method status="PASS" signature="shouldNotExistByEmail()[pri:5, instance:com.boot.brightideas.service.UserServiceImplTest@306f6f1d]" name="shouldNotExistByEmail" duration-ms="2" started-at="2019-03-18T18:22:23Z" finished-at="2019-03-18T18:22:23Z">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- shouldNotExistByEmail -->
+        <test-method status="PASS" signature="shouldGetUserById()[pri:6, instance:com.boot.brightideas.service.UserServiceImplTest@306f6f1d]" name="shouldGetUserById" duration-ms="11" started-at="2019-03-18T18:22:23Z" finished-at="2019-03-18T18:22:23Z">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- shouldGetUserById -->
+        <test-method status="PASS" signature="initMockData()[pri:0, instance:com.boot.brightideas.service.UserServiceImplTest@306f6f1d]" name="initMockData" is-config="true" duration-ms="0" started-at="2019-03-18T18:22:23Z" finished-at="2019-03-18T18:22:23Z">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- initMockData -->
+        <test-method status="PASS" signature="initMockData()[pri:0, instance:com.boot.brightideas.service.UserServiceImplTest@306f6f1d]" name="initMockData" is-config="true" duration-ms="5" started-at="2019-03-18T18:22:23Z" finished-at="2019-03-18T18:22:23Z">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- initMockData -->
+        <test-method status="PASS" signature="shouldGetNullUserById()[pri:7, instance:com.boot.brightideas.service.UserServiceImplTest@306f6f1d]" name="shouldGetNullUserById" duration-ms="2" started-at="2019-03-18T18:22:23Z" finished-at="2019-03-18T18:22:23Z">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- shouldGetNullUserById -->
+        <test-method status="PASS" signature="initMockData()[pri:0, instance:com.boot.brightideas.service.UserServiceImplTest@306f6f1d]" name="initMockData" is-config="true" duration-ms="2" started-at="2019-03-18T18:22:23Z" finished-at="2019-03-18T18:22:23Z">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- initMockData -->
+        <test-method status="PASS" signature="shouldGetUserByEmail()[pri:8, instance:com.boot.brightideas.service.UserServiceImplTest@306f6f1d]" name="shouldGetUserByEmail" duration-ms="2" started-at="2019-03-18T18:22:23Z" finished-at="2019-03-18T18:22:23Z">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- shouldGetUserByEmail -->
+        <test-method status="PASS" signature="initMockData()[pri:0, instance:com.boot.brightideas.service.UserServiceImplTest@306f6f1d]" name="initMockData" is-config="true" duration-ms="3" started-at="2019-03-18T18:22:23Z" finished-at="2019-03-18T18:22:23Z">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- initMockData -->
+        <test-method status="PASS" signature="shouldGetNullUserByEmail()[pri:9, instance:com.boot.brightideas.service.UserServiceImplTest@306f6f1d]" name="shouldGetNullUserByEmail" duration-ms="2" started-at="2019-03-18T18:22:23Z" finished-at="2019-03-18T18:22:23Z">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- shouldGetNullUserByEmail -->
+        <test-method status="PASS" signature="initMockData()[pri:0, instance:com.boot.brightideas.service.UserServiceImplTest@306f6f1d]" name="initMockData" is-config="true" duration-ms="6" started-at="2019-03-18T18:22:23Z" finished-at="2019-03-18T18:22:23Z">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- initMockData -->
+        <test-method status="PASS" signature="shouldSaveUser()[pri:10, instance:com.boot.brightideas.service.UserServiceImplTest@306f6f1d]" name="shouldSaveUser" duration-ms="3" started-at="2019-03-18T18:22:23Z" finished-at="2019-03-18T18:22:23Z">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- shouldSaveUser -->
+        <test-method status="PASS" signature="initMockData()[pri:0, instance:com.boot.brightideas.service.UserServiceImplTest@306f6f1d]" name="initMockData" is-config="true" duration-ms="2" started-at="2019-03-18T18:22:23Z" finished-at="2019-03-18T18:22:23Z">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- initMockData -->
+        <test-method status="PASS" signature="shouldUpdateUser()[pri:11, instance:com.boot.brightideas.service.UserServiceImplTest@306f6f1d]" name="shouldUpdateUser" duration-ms="2" started-at="2019-03-18T18:22:23Z" finished-at="2019-03-18T18:22:23Z">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- shouldUpdateUser -->
+        <test-method status="PASS" signature="initMockData()[pri:0, instance:com.boot.brightideas.service.UserServiceImplTest@306f6f1d]" name="initMockData" is-config="true" duration-ms="3" started-at="2019-03-18T18:22:23Z" finished-at="2019-03-18T18:22:23Z">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- initMockData -->
+        <test-method status="PASS" signature="shouldDeleteUserById()[pri:12, instance:com.boot.brightideas.service.UserServiceImplTest@306f6f1d]" name="shouldDeleteUserById" duration-ms="5" started-at="2019-03-18T18:22:23Z" finished-at="2019-03-18T18:22:23Z">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- shouldDeleteUserById -->
+        <test-method status="PASS" signature="initMockData()[pri:0, instance:com.boot.brightideas.service.UserServiceImplTest@306f6f1d]" name="initMockData" is-config="true" duration-ms="1" started-at="2019-03-18T18:22:23Z" finished-at="2019-03-18T18:22:23Z">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- initMockData -->
+        <test-method status="PASS" signature="shouldNotDeleteUserByInvalidId()[pri:13, instance:com.boot.brightideas.service.UserServiceImplTest@306f6f1d]" name="shouldNotDeleteUserByInvalidId" duration-ms="1" started-at="2019-03-18T18:22:23Z" finished-at="2019-03-18T18:22:23Z">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- shouldNotDeleteUserByInvalidId -->
+        <test-method status="PASS" signature="initMockData()[pri:0, instance:com.boot.brightideas.service.UserServiceImplTest@306f6f1d]" name="initMockData" is-config="true" duration-ms="8" started-at="2019-03-18T18:22:23Z" finished-at="2019-03-18T18:22:23Z">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- initMockData -->
+        <test-method status="PASS" signature="shouldDeleteUser()[pri:14, instance:com.boot.brightideas.service.UserServiceImplTest@306f6f1d]" name="shouldDeleteUser" duration-ms="4" started-at="2019-03-18T18:22:23Z" finished-at="2019-03-18T18:22:23Z">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- shouldDeleteUser -->
+        <test-method status="PASS" signature="initMockData()[pri:0, instance:com.boot.brightideas.service.UserServiceImplTest@306f6f1d]" name="initMockData" is-config="true" duration-ms="2" started-at="2019-03-18T18:22:23Z" finished-at="2019-03-18T18:22:23Z">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- initMockData -->
+        <test-method status="PASS" signature="shouldNotDeleteUser()[pri:15, instance:com.boot.brightideas.service.UserServiceImplTest@306f6f1d]" name="shouldNotDeleteUser" duration-ms="4" started-at="2019-03-18T18:22:23Z" finished-at="2019-03-18T18:22:23Z">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- shouldNotDeleteUser -->
+      </class> <!-- com.boot.brightideas.service.UserServiceImplTest -->
+    </test> <!-- Default test -->
+  </suite> <!-- Default suite -->
+</testng-results>

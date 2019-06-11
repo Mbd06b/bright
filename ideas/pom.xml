@@ -1,0 +1,168 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+	<modelVersion>4.0.0</modelVersion>
+	<parent>
+		<groupId>org.springframework.boot</groupId>
+		<artifactId>spring-boot-starter-parent</artifactId>
+		<version>2.1.2.RELEASE</version>
+		<relativePath/> <!-- lookup parent from repository -->
+	</parent>
+	<groupId>com.boot.brightideas</groupId>
+	<artifactId>api</artifactId>
+	<version>0.0.1-SNAPSHOT</version>
+	<name>api</name>
+	<description>Demo project for Spring Boot</description>
+
+	<properties>
+		<java.version>1.8</java.version>
+		<springfox.version>2.9.2</springfox.version>
+		<maven.compiler.target>${java.version}</maven.compiler.target>
+		<maven.compiler.source>${java.version}</maven.compiler.source>
+		<encoding>UTF-8</encoding>
+	</properties>
+	
+	<!--  jcenter repository for mockneat -->
+	<repositories>
+	    <repository>
+	        <id>jcenter</id>
+	        <url>https://jcenter.bintray.com/</url>
+	    </repository>
+	</repositories>
+
+	<dependencies>
+		<dependency>
+			<groupId>org.springframework.boot</groupId>
+			<artifactId>spring-boot-starter-data-jpa</artifactId>
+		</dependency>
+		<dependency>
+			<groupId>org.springframework.boot</groupId>
+			<artifactId>spring-boot-starter-data-rest</artifactId>
+		</dependency>
+		<dependency>
+			<groupId>org.springframework.boot</groupId>
+			<artifactId>spring-boot-starter-web</artifactId>
+			<exclusions>
+	            <exclusion>
+	                <groupId>org.springframework.boot</groupId>
+	                <artifactId>spring-boot-starter-logging</artifactId>
+	            </exclusion>
+	        </exclusions>
+		</dependency>
+		<dependency>
+	        <groupId>org.springframework.boot</groupId>
+	        <artifactId>spring-boot-starter-log4j2</artifactId>
+	    </dependency>
+		<dependency>
+			<groupId>org.springframework.boot</groupId>
+			<artifactId>spring-boot-starter-test</artifactId>
+			<scope>test</scope>
+		</dependency>
+		<dependency>
+			<groupId>org.springframework.restdocs</groupId>
+			<artifactId>spring-restdocs-mockmvc</artifactId>
+			<scope>test</scope>
+		</dependency>
+		<dependency>
+			<groupId>org.springframework.boot</groupId>
+			<artifactId>spring-boot-devtools</artifactId>
+		</dependency>
+		
+		<!-- password encryption -->
+		<dependency>
+		    <groupId>org.mindrot</groupId>
+		    <artifactId>jbcrypt</artifactId>
+		    <version>0.4</version>
+		</dependency>
+		
+		<!-- Swagger API Doc  -->
+		<dependency>
+		    <groupId>io.springfox</groupId>
+		    <artifactId>springfox-swagger-ui</artifactId>
+		    <version>${springfox.version}</version>
+		</dependency>
+		
+		<!-- https://mvnrepository.com/artifact/io.springfox/springfox-swagger2 -->
+		<dependency>
+		    <groupId>io.springfox</groupId>
+		    <artifactId>springfox-swagger2</artifactId>
+		    <version>${springfox.version}</version>
+		</dependency>
+		
+		<dependency>
+		    <groupId>mysql</groupId>
+		    <artifactId>mysql-connector-java</artifactId>
+		</dependency>
+		
+		<!-- https://mvnrepository.com/artifact/io.jsonwebtoken/jjwt -->
+		<dependency>
+		    <groupId>io.jsonwebtoken</groupId>
+		    <artifactId>jjwt</artifactId>
+		    <version>0.9.1</version>
+		</dependency>
+		
+		<!-- https://mvnrepository.com/artifact/com.google.code.gson/gson -->
+		<dependency>
+		    <groupId>com.google.code.gson</groupId>
+		    <artifactId>gson</artifactId>
+		</dependency>
+		
+		<!-- https://mvnrepository.com/artifact/org.modelmapper/modelmapper -->
+		<dependency>
+		    <groupId>org.modelmapper</groupId>
+		    <artifactId>modelmapper</artifactId>
+		    <version>2.3.2</version>
+		</dependency>
+		
+		
+		<!-- https://mvnrepository.com/artifact/org.testng/testng -->
+		<dependency>
+		    <groupId>org.testng</groupId>
+		    <artifactId>testng</artifactId>
+		    <version>6.14.3</version>
+		    <scope>test</scope>
+		</dependency>
+		
+		<!-- https://mvnrepository.com/artifact/org.mockito/mockito-core -->
+		<dependency>
+			<groupId>org.mockito</groupId>
+			<artifactId>mockito-core</artifactId>
+			<version>2.25.0</version>
+			<scope>test</scope>
+		</dependency>
+		
+		
+		<!-- https://mvnrepository.com/artifact/net.andreinc.mockneat/mockneat -->
+		<dependency>
+			<groupId>net.andreinc.mockneat</groupId>
+			<artifactId>mockneat</artifactId>
+			<version>0.3.4</version>
+		</dependency>
+		
+		<!-- https://mvnrepository.com/artifact/org.seleniumhq.selenium/selenium-java -->
+		<dependency>
+		    <groupId>org.seleniumhq.selenium</groupId>
+		    <artifactId>selenium-java</artifactId>
+		</dependency>
+		
+		<!-- https://mvnrepository.com/artifact/com.google.guava/guava -->
+		<dependency>
+		    <groupId>com.google.guava</groupId>
+		    <artifactId>guava</artifactId>
+		    <version>23.0</version>
+		</dependency>
+		
+						
+		
+	</dependencies>
+
+	<build>
+		<plugins>
+			<plugin>
+				<groupId>org.springframework.boot</groupId>
+				<artifactId>spring-boot-maven-plugin</artifactId>
+			</plugin>
+		</plugins>
+	</build>
+
+</project>
