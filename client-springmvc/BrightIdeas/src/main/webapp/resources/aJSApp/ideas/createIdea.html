@@ -1,0 +1,32 @@
+<div data-ng-controller="IdeasAdminCtrl as vm">
+				
+					<form name="createIdeaForm">
+						<h6>Add Idea</h6>
+				    	<table>
+				    		<tr>
+				    			<td><label>Title</label></td>
+				    			<td><input type="text" data-ng-model="vm.newIdea.title" data-ng-required="true" /></td>
+				    		</tr>
+				    		<tr>
+				    			<td><label>Subtitle</label></td>
+				    			<td><input type="text" data-ng-model="vm.newIdea.subtitle" data-ng-required="true" /></td>
+				    		</tr>
+				    		<tr>
+				    			<td><label>Story</label></td>
+				    			<td><input type="text" data-ng-model="vm.newIdea.story" data-ng-required="true" /></td>
+				    		</tr>
+				    	</table>
+				    	<button class="btn btn-primary" type="button" data-ng-click="createIdeaForm.$valid && vm.submitCreateIdea()">Submit</button>
+  					    <button class="btn btn-warning" type="button" data-ng-click="vm.clearForm()">Cancel</button>
+					</form>
+					
+					
+					<ul>
+						<li data-ng-repeat="idea in vm.ideas track by $index">
+							<div>{{idea.title}}</div><br />
+							<div>{{idea.subtitle}}</div><br />
+							<div>{{idea.story}}</div><br /> 
+						</li>
+				    </ul>
+				    	
+				</div>

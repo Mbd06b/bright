@@ -1,0 +1,78 @@
+
+
+<section data-ng-controller="UserAdminCtrl as vm">
+	<h2>{{vm.title}}</h2>
+	  <table class="table table-hover">
+		<thead>
+			<th scope="col">id</th>
+			<th scope="col">email</th>
+			<th scope="col">Name</th>
+			<th socpe="col"></th>
+		</thead>
+		<tbody> 
+			<tr data-ng-repeat="user in vm.users track by $index">
+				<th scope="row">{{user.id}}</th>
+				<td>{{user.email}}</td>
+				<td>{{user.firstName}} {{user.lastName}}</td>
+				<td>
+				<button type="button" class="btn btn-primary btn-sm" data-ng-click="vm.openUpdateUserDialog('sm', user)">edit</button> 
+				<button type="button" class="btn btn-danger btn-sm" data-ng-click="vm.deleteUser(user)">delete</button>
+				</td>
+			</tr>
+			<tr>
+				 <th>Add User</th>
+				 <td></td>
+				 <td></td>
+			 	 <td><button type="button" class="btn btn-default btn-md" data-ng-click="vm.openAddUserDialog('sm')">+</button></td>
+			</tr>
+		</tbody>
+	  </table>
+
+	  <h4>Inspect user data:</h4>
+	  <form>
+	  	<label>Enter Id:<input type="text" data-ng-model="vm.id"></label>
+	  	<button type="submit" class="btn btn-default btn-md" data-ng-click="vm.getUserById(vm.id)" formnovalidate>Submit</button>
+	  </form>
+	    <pre>{{vm.userObject}}</pre>
+</section>
+
+<section data-ng-controller="IdeasAdminCtrl as vm">
+		<h2>{{vm.title}}</h2>
+	  <table class="table table-hover">
+		<thead>
+			<th scope="col">id</th>
+			<th scope="col">Title</th>
+			<th scope="col">Subtitle</th>
+			<th scope="col">Contributors</th>
+			<th socpe="col"></th>
+		</thead>
+		<tbody> 
+			<tr data-ng-repeat="idea in vm.ideas track by $index">
+				<th scope="row">{{idea.id}}</th>
+				<td>{{idea.title}}</td>
+				<td>{{idea.subtitle}}</td>
+				<td>***TODO***</td>
+				<td>
+				<button type="button" class="btn btn-primary btn-sm" data-ng-click="vm.openUpdateIdeaDialog('sm',idea)">edit</button> 
+				<button type="button" class="btn btn-danger btn-sm" data-ng-click="vm.deleteIdea(idea)">delete</button>
+				</td>
+			</tr>
+			<tr>
+				 <th>Add Idea</th>
+				 <td></td>
+				 <td></td>
+			 	 <td><button type="button" class="btn btn-default btn-md" data-ng-click="vm.openAddUserDialog('sm')">+</button></td>
+			</tr>
+		</tbody>
+	  </table>
+
+	  <h4>Inspect idea data:</h4>
+	  <form>
+	  	<label>Enter Id:<input type="text" data-ng-model="vm.id"></label>
+	  	<button type="submit" class="btn btn-default btn-md" data-ng-click="vm.getIdeaById(vm.id)" formnovalidate>Submit</button>
+	  </form>
+	    <pre>{{vm.ideaObject}}</pre>
+
+</section>
+
+
