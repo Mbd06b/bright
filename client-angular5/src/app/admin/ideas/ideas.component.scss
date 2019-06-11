@@ -1,0 +1,60 @@
+.example-container {
+  display: flex;
+  flex-direction: column;
+  min-width: 300px;
+}
+
+.mat-row{
+  position: relative;
+}
+
+.mat-row-link{
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  left: 0;
+  top: 0;
+}
+
+.row-link:hover {
+  background-color: rgba(0, 0, 0, .05);
+  cursor: pointer;
+}
+
+.example-header {
+  min-height: 64px;
+  padding: 8px 24px 0;
+}
+
+.mat-form-field {
+  font-size: 14px;
+  width: 100%;
+}
+
+.mat-table {
+  overflow: auto;
+  max-height: 500px;
+}
+
+.mat-column-id {
+  flex: 0 0 5%;
+}
+
+.mat-column-name{
+  flex: 0 0 20%;
+}
+.mat-column-edit{
+  flex: 0 0 5%;
+}
+
+.mat-column-more-menu{
+  flex: 0 0 20%;
+}
+
+
+.create-button{
+  position: absolute;
+  right: 30px;
+  top: 85%;
+}
+

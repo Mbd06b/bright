@@ -1,0 +1,29 @@
+<h1 mat-dialog-title>Update User</h1>
+<div mat-dialog-content>
+  <label for="firstName">First Name
+      <mat-form-field>
+        <input matInput type="text" id="firstName" [(ngModel)]="user.firstName" value="user.firstName">
+      </mat-form-field>
+    </label>
+   <label for="lastName">Last Name
+     <mat-form-field>
+       <input matInput type="text" id= "lastName" [(ngModel)]="user.lastName" value="user.lastName">
+      </mat-form-field>
+   </label>
+   <label for="email">Email
+     <mat-form-field>
+      <input matInput type="text" id="email" [(ngModel)]="user.email" value="user.email">
+     </mat-form-field>
+   </label>
+    <mat-form-field>
+      <mat-select placeholder="Role" [(value)]="user.role">
+        <mat-option *ngFor="let role of rolesArray" [(ngModel)]="user.role" [value]="role">
+          {{role}}
+        </mat-option>
+      </mat-select>
+    </mat-form-field>
+</div>
+<div mat-dialog-actions>
+  <button mat-button (click)="onNoClick()">Cancel</button>
+  <button mat-button (click)="submitForm(user)" cdkFocusInitial>Ok</button>
+</div>
