@@ -1,0 +1,31 @@
+<div class="modal fade" tabindex="-1" role="dialog" aria-hidden="true">
+  <div class="modal-dialog modal-lg">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span><span class="sr-only">Close</span>
+        </button>
+        <h4 class="modal-title">Edit User</h4>
+      </div>
+      <div class="modal-body">
+        <div class="form-group">
+       	   <h5>Test Data:{{vm.testData}}</h5>
+	       <label>Email:</label>
+	       <input data-ng-model="vm.user.email" value="vm.user.email" required="required" class="form-control">
+	    		
+	  		<label>First Name:</label>
+	  		<input data-ng-model="vm.user.firstName"  required="required" class="form-control">
+	  		
+	  		
+	  		<label>Last Name:</label>
+	  		<input data-ng-model="vm.user.lastName"  required="required" class="form-control">
+		    		
+        </div>
+      </div>
+      <div class="modal-footer">
+      	<button type="button" class="btn btn-primary" data-ng-click="vm.submitUpdate()">Update</button>
+        <button type="button" class="btn btn-default" data-dismiss="modal">Cancel</button>
+      </div>
+    </div>
+  </div>
+</div>

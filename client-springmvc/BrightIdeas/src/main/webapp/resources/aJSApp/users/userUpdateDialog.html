@@ -1,0 +1,24 @@
+
+
+<div class="modal-header">
+    <h3 class="modal-title" id="modal-title">Edit {{vm.firstName}}</h3>
+</div>
+<div class="modal-body" id="modal-body">
+    <ul>
+       <div class="form-group">
+	       <label>Email:</label>
+	       <input class="form-control" data-ng-model="vm.user.email" value="vm.user.email">
+	    		
+	  		<label>First Name:</label>
+	  		<input  class="form-control" data-ng-model="vm.user.firstName" value="vm.user.firstName">
+	  		
+	  		
+	  		<label>Last Name:</label>
+	  		<input class="form-control" data-ng-model="vm.user.lastName" value="vm.user.lastName">
+        </div>
+    </ul>
+</div>
+<div class="modal-footer">
+    <button class="btn btn-primary" type="button" data-ng-click="vm.submitUpdate()">OK</button>
+    <button class="btn btn-warning" type="button" data-ng-click="vm.cancel()"  data-dismiss="modal">Cancel</button>
+</div>

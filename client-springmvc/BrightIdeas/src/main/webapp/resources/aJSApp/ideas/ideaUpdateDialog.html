@@ -1,0 +1,22 @@
+<div class="modal-header">
+    <h3 class="modal-title" id="modal-title">Edit {{vm.title}}</h3>
+</div>
+<div class="modal-body" id="modal-body">
+    <ul>
+       <div class="form-group">
+	       <label>Title</label>
+	       <input class="form-control" data-ng-model="vm.idea.title" value="vm.idea.title">
+	    		
+	  		<label>Subtitle</label>
+	  		<input  class="form-control" data-ng-model="vm.idea.subtitle" value="vm.idea.subtitle">
+	  		
+	  		
+	  		<label>Story</label>
+	  		<input class="form-control" data-ng-model="vm.idea.story" value="vm.idea.story">
+        </div>
+    </ul>
+</div>
+<div class="modal-footer">
+    <button class="btn btn-primary" type="button" data-ng-click="vm.submitUpdate()">OK</button>
+    <button class="btn btn-warning" type="button" data-ng-click="vm.cancel()"  data-dismiss="modal">Cancel</button>
+</div>
