@@ -10,4 +10,4 @@ They are powered by 2 Spring Boot/Tomcat services and 1 Python/Django service.
 # Learning
 The objective is to build an app with RESTful microservices to support an agile-like development/learning style. 
 The app architechture will be able feed any form of client app (Web and Mobile) and should be scalable with container infrastructure.
-To focus concerns on microserivces, should enable a focus to explore different technologies and DevOps challenges while avoiding tech debt.
+A focus on microserivces, should enable an exploration of different technologies and DevOps challenges while avoiding tech debt.
