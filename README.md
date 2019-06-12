@@ -5,7 +5,7 @@ The Bright App, an app for sourcing the brightest of ideas.
 The app currently contains:
 1 Angular5/Node.js client,
 1 SpringMVC client, which both consume RESTful APIs.
-They are powered by 2 Spring Boot/Tomcat services and 1 Python/Django service. 
+They are powered by 2 Spring Boot/Tomcat services and 1 Python/Django service which is a RESTful Api wrapper for the codelucas/Newspaper library https://github.com/codelucas/newspaper. 
 
 # Learning
 The objective is to build an app with RESTful microservices to support an agile-like development/learning style. 
