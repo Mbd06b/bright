@@ -10,7 +10,7 @@ import javax.persistence.OneToMany;
 import com.worscipe.bright.elections.model.AbstractElection;
 
 @Entity
-public class UpDownElection extends AbstractElection<UpDownBallot> {
+public class UpDownVoteElection extends AbstractElection<UpDownVoteBallot> {
 	
 	@Id
 	private Long id;
@@ -22,7 +22,7 @@ public class UpDownElection extends AbstractElection<UpDownBallot> {
 	private Long downVoteCount;
 	
 	@OneToMany
-	private List<UpDownBallot> ballots;
+	private List<UpDownVoteBallot> ballots;
 	
 
 	public Long getId() {
@@ -49,11 +49,11 @@ public class UpDownElection extends AbstractElection<UpDownBallot> {
 		this.downVoteCount = downVoteCount;
 	}
 
-	public List<UpDownBallot> getBallots() {
+	public List<UpDownVoteBallot> getBallots() {
 		return ballots;
 	}
 
-	public void setBallots(List<UpDownBallot> ballots) {
+	public void setBallots(List<UpDownVoteBallot> ballots) {
 		this.ballots = ballots;
 	}
 

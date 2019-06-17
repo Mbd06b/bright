@@ -142,7 +142,7 @@ public class RCVElectionServiceImpl implements RCVElectionService{
 				if(topCandidate != null) {
 					if(maxVotes >= votesNeededToWin){
 						logger.info("***************  Winner Found! ***************");
-						logger.info("*************** " + topCandidate.getCandidateLink() + "***************");
+						logger.info("*************** " + topCandidate.getCandidateResourceLink() + "***************");
 						winner = true; 
 						sortedList.add(topCandidate);
 						topCandidate.setElectionVoteCount(maxVotes);

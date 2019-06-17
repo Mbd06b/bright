@@ -1,7 +1,6 @@
 package com.worscipe.bright.elections.model;
 
 import java.util.Date;
-import java.util.List;
 import java.util.Set;
 
 public interface Election {
@@ -28,9 +27,4 @@ public interface Election {
 	public ElectionPhase getElectionPhase();
 	public void setElectionPhase(ElectionPhase electionPhase);
 	
-	public Set<CandidateImpl> getCandidates();
-	public void setCandidates(Set<CandidateImpl> candidates); 
-	
-	public void addCandidate(CandidateImpl candidate);
-
 }

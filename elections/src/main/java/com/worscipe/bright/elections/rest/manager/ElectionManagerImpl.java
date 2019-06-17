@@ -8,18 +8,24 @@ import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.web.client.RestTemplate;
 
 import com.worscipe.bright.elections.model.CandidateImpl;
 import com.worscipe.bright.elections.model.Election;
 import com.worscipe.bright.elections.model.ElectionType;
 import com.worscipe.bright.elections.model.rcv.RCVElectionImpl;
+import com.worscipe.bright.elections.rest.view.CandidateResourceEntity;
 import com.worscipe.bright.elections.rest.view.ElectionView;
+import com.worscipe.bright.elections.service.ElectionService;
 import com.worscipe.bright.elections.service.RCVElectionService;
 
 @Service
 public class ElectionManagerImpl implements ElectionManager {
 	
 	private static final Logger logger = LogManager.getLogger(ElectionManagerImpl.class);
+	
+	@Autowired
+	private ElectionService electionService;
 	
 	@Autowired
 	private RCVElectionService rcvElectionService;
@@ -32,12 +38,12 @@ public class ElectionManagerImpl implements ElectionManager {
 	}
 
 	@Override
-	public ElectionView createElection(ElectionType electionType, String ... entityIds) {
+	public ElectionView createElection(ElectionType electionType, List<CandidateResourceEntity> entities) {
 		
 		Set<CandidateImpl> candidates = new HashSet<>();
 		   
-		   for(String s : entityIds) {
-			  candidates.add(new CandidateImpl(s));
+		   for(CandidateResourceEntity e : entities) {
+			  candidates.add(new CandidateImpl(e));
 		   }
 		   
 			
@@ -55,7 +61,7 @@ public class ElectionManagerImpl implements ElectionManager {
 					ElectionView electionView = copyToView(electionImpl);
 					return electionView;
 			default: 
-				logger.error("ElectionType did not match any cases");
+				logger.error("ElectionType: [" + electionType + "] did not match any cases");
 				break;
 		}
 		

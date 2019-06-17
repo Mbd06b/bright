@@ -46,6 +46,9 @@ public abstract class AbstractElection<B extends AbstractBallot> {
     
 	@Enumerated(EnumType.STRING)
     private ElectionPhase electionPhase;   
+	
+	@Enumerated(EnumType.STRING)
+	private ElectionType electionType;
     
     public AbstractElection() { super(); }
     
@@ -101,6 +104,15 @@ public abstract class AbstractElection<B extends AbstractBallot> {
 	public void setElectionPhase(ElectionPhase electionPhase) {
 		this.electionPhase = electionPhase;
 	}
+	
+	public ElectionType getElectionType() {
+		return electionType;
+	}
+	
+	public void setElectionType(ElectionType electionType) {
+		this.electionType = electionType;
+	}
+	
 	
 	public Set<CandidateImpl> getCandidates(){
 		return candidates;
