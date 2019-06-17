@@ -4,11 +4,10 @@ package com.worscipe.bright.elections.model;
 // with added properties and methods to facilitate an election service
 
 public interface Candidate{
-
 	
-	public String getCandidateLink();
+	public void setCandidateResourceLink(String candidateResourceLink);
 	
-	public void setCandidateLink(String candidateLink);
+	public String getCandidateResourceLink();
 	
 	public void setElectionVoteCount(Long num);
 	

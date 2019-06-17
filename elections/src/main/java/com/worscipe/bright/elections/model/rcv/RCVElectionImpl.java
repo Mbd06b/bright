@@ -10,6 +10,7 @@ import javax.persistence.OneToMany;
 
 import com.worscipe.bright.elections.model.AbstractElection;
 import com.worscipe.bright.elections.model.CandidateImpl;
+import com.worscipe.bright.elections.model.ElectionType;
 
 /**
  * 
@@ -25,11 +26,15 @@ public class RCVElectionImpl extends AbstractElection<RCVBallot> implements RCVE
     @Column
 	private Integer stackRankRounds;
 	
-	public RCVElectionImpl() { super(); }
+	public RCVElectionImpl() { 
+		super();
+		this.setElectionType(ElectionType.SINGLE_TRANSFERABLE_VOTE);
+	}
 	
 	public RCVElectionImpl(Set<CandidateImpl> candidates) {
 		super(candidates);
 		this.rankedCandidates = new ArrayList<>(candidates);
+		this.setElectionType(ElectionType.SINGLE_TRANSFERABLE_VOTE);
 	}
 	
 	

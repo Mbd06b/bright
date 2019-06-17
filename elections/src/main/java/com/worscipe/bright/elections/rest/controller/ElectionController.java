@@ -19,6 +19,7 @@ import org.springframework.web.bind.annotation.RestController;
 
 import com.worscipe.bright.elections.model.ElectionType;
 import com.worscipe.bright.elections.rest.manager.ElectionManager;
+import com.worscipe.bright.elections.rest.view.CandidateResourceEntity;
 import com.worscipe.bright.elections.rest.view.ElectionView;
 
 @RestController
@@ -46,20 +47,20 @@ public class ElectionController {
 	
 	
 	@PostMapping(value = "/")
-	public ResponseEntity<ElectionView> createElection(String electionType, String ... entityLinks){
+	public ResponseEntity<ElectionView> createElection(String electionType, List<CandidateResourceEntity> entities){
 		
 		//Validate request
-		if(entityLinks.length < 1) {
+		if(entities.size() < 1) {
 		   logger.debug("No candidate ids provided");
-		   return new ResponseEntity<>(null, HttpStatus.OK); 
+		   return new ResponseEntity<>(null, HttpStatus.INTERNAL_SERVER_ERROR); 
 		}
 		
 		if(!ElectionType.isValid(electionType)) {
 		   logger.debug("electionType was not handled by controller: electionType is["+electionType+"]");
-		   return new ResponseEntity<>(null, HttpStatus.OK);
+		   return new ResponseEntity<>(null, HttpStatus.INTERNAL_SERVER_ERROR);
 		}
 		
-		ElectionView election = electionManager.createElection(ElectionType.valueOf(electionType), entityLinks); 
+		ElectionView election = electionManager.createElection(ElectionType.valueOf(electionType), entities); 
 		
 		return new ResponseEntity<>(election, HttpStatus.OK);
 	  
