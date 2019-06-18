@@ -3,7 +3,9 @@ package com.worscipe.bright.elections.rest.manager;
 import java.util.List;
 
 import com.worscipe.bright.elections.model.ElectionType;
-import com.worscipe.bright.elections.rest.view.CandidateResourceEntity;
+import com.worscipe.bright.elections.rest.view.RestResourceEntity;
+import com.worscipe.bright.elections.rest.view.ResultPage;
+import com.worscipe.bright.elections.rest.view.BallotView;
 import com.worscipe.bright.elections.rest.view.ElectionView;
 
 public interface ElectionManager {
@@ -16,7 +18,17 @@ public interface ElectionManager {
 	    
 	    public Boolean deleteElection(Long id);
 
-		ElectionView createElection(ElectionType electionType, List<CandidateResourceEntity> entities);	    
+		public ElectionView createElection(ElectionType electionType, List<RestResourceEntity> entities);
+
+		public ResultPage<ElectionView> getElectionsPagedByType(String electionType, Integer pageNumber, Integer limit);
+
+		public ElectionView disableElection(Long id);
+
+		public ElectionView startElection(Long id);
+
+		public ElectionView endElection(Long id);
+
+			    
 	    
 			
 }

@@ -14,7 +14,8 @@ import com.worscipe.bright.elections.model.CandidateImpl;
 import com.worscipe.bright.elections.model.Election;
 import com.worscipe.bright.elections.model.ElectionType;
 import com.worscipe.bright.elections.model.rcv.RCVElectionImpl;
-import com.worscipe.bright.elections.rest.view.CandidateResourceEntity;
+import com.worscipe.bright.elections.rest.view.RestResourceEntity;
+import com.worscipe.bright.elections.rest.view.ResultPage;
 import com.worscipe.bright.elections.rest.view.ElectionView;
 import com.worscipe.bright.elections.service.ElectionService;
 import com.worscipe.bright.elections.service.RCVElectionService;
@@ -38,11 +39,11 @@ public class ElectionManagerImpl implements ElectionManager {
 	}
 
 	@Override
-	public ElectionView createElection(ElectionType electionType, List<CandidateResourceEntity> entities) {
+	public ElectionView createElection(ElectionType electionType, List<RestResourceEntity> entities) {
 		
 		Set<CandidateImpl> candidates = new HashSet<>();
 		   
-		   for(CandidateResourceEntity e : entities) {
+		   for(RestResourceEntity e : entities) {
 			  candidates.add(new CandidateImpl(e));
 		   }
 		   
@@ -90,6 +91,30 @@ public class ElectionManagerImpl implements ElectionManager {
 
 	@Override
 	public Boolean deleteElection(Long id) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public ResultPage<ElectionView> getElectionsPagedByType(String electionType, Integer pageNumber, Integer limit) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public ElectionView disableElection(Long id) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public ElectionView startElection(Long id) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public ElectionView endElection(Long id) {
 		// TODO Auto-generated method stub
 		return null;
 	}

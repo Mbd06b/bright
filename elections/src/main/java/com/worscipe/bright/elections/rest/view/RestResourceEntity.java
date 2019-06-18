@@ -1,6 +1,6 @@
 package com.worscipe.bright.elections.rest.view;
 
-public class CandidateResourceEntity {
+public class RestResourceEntity {
 	
 	private String candidateResourceUrl;
 	private Long candidateResourceId;

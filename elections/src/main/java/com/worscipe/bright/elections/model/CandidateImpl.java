@@ -4,7 +4,7 @@ import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Id;
 
-import com.worscipe.bright.elections.rest.view.CandidateResourceEntity;
+import com.worscipe.bright.elections.rest.view.RestResourceEntity;
 
 @Entity
 public class CandidateImpl implements Candidate {
@@ -45,7 +45,7 @@ public class CandidateImpl implements Candidate {
 	
 	public CandidateImpl(){}
 	
-	public CandidateImpl(CandidateResourceEntity entity){
+	public CandidateImpl(RestResourceEntity entity){
 		this.candidateResourceUrl = entity.getCandidateResourceUrl();
 		this.candidateResourceId = entity.getCandidateResourceId();
 		this.candidateResourceLink = this.candidateResourceLink + entity.getCandidateResourceId();
