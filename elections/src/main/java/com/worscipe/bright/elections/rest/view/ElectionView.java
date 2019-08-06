@@ -24,6 +24,7 @@ public class ElectionView implements Election {
 	private Set<String> candidates;
 	private ElectionPhase electionPhase;
 	private ElectionType electionType;
+	private String electionLink; 
 	
 	
 
@@ -112,6 +113,16 @@ public class ElectionView implements Election {
 
 	public void setElectionType(ElectionType electionType) {
 		this.electionType = electionType;
+	}
+
+	@Override
+	public String getElectionLink() {
+		return electionLink;
+	}
+
+	@Override
+	public void setElectionLink(String electionLink) {
+		this.electionLink = electionLink;
 	}
 
 }

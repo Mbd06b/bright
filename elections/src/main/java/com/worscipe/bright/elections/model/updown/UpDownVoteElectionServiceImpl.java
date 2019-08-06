@@ -1,12 +1,10 @@
-package com.worscipe.bright.elections.service;
+package com.worscipe.bright.elections.model.updown;
 
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import com.worscipe.bright.elections.model.updown.UpDownVoteBallot;
-import com.worscipe.bright.elections.model.updown.UpDownVoteElection;
 import com.worscipe.bright.elections.repository.updown.UpDownVoteBallotRepository;
 import com.worscipe.bright.elections.repository.updown.UpDownVoteElectionRepository;
 
