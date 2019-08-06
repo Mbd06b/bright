@@ -18,7 +18,7 @@ import javax.persistence.Transient;
  */
 
 @MappedSuperclass
-public abstract class AbstractElection<B extends AbstractBallot> {
+public abstract class AbstractElection<B extends AbstractBallot<?>> {
 	
 	@Id
     private Long id; 

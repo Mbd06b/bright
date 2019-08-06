@@ -1,8 +1,10 @@
 package com.worscipe.bright.elections.rest.manager;
 
+import java.util.Arrays;
 import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
+import java.util.stream.Collectors;
 
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
@@ -37,7 +39,7 @@ public class ElectionManagerImpl implements ElectionManager {
 		// TODO convert;
 		return view;
 	}
-
+	
 	@Override
 	public ElectionView createElection(ElectionType electionType, List<RestResourceEntity> entities) {
 		
