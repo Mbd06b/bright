@@ -35,7 +35,6 @@ public class BallotController {
 		@Autowired
 		private BallotManager ballotManager; 	
 	
-	// CRUD
 	
 		@GetMapping(value ="/")
 		public ResponseEntity<List<BallotView>> getAllBallots(@RequestParam("electionId") final Long electionId){

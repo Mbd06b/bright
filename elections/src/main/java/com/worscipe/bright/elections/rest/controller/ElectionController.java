@@ -38,19 +38,6 @@ public class ElectionController {
 	private ElectionManager electionManager;
 	
 	
-	private Boolean electionTypeParamIsValid(String electionStr){	
-		if(!ElectionType.isValid(electionStr)) {
-		   logger.debug("invalid electionTypeParam=" + electionStr + " was not handled by controller, invalid enum String");
-		   return false;
-		}else {
-			return true;
-		}
-	}
-	
-	
-	
-	// CRUD
-	
 	@GetMapping(value ="/")
 	public ResponseEntity<List<ElectionView>> getAllElections(){
 		return new ResponseEntity<List<ElectionView>>(electionManager.getAllElections(), HttpStatus.OK);
@@ -69,7 +56,7 @@ public class ElectionController {
 			@RequestParam(value="electionType", defaultValue="") String electionType // Empty string == all elections)
 	){
 		
-		if(!electionTypeParamIsValid(electionType)) {
+		if(electionManager.isValidType(electionType)) {
 			return new ResponseEntity<>(null, HttpStatus.INTERNAL_SERVER_ERROR);
 		}
 		
@@ -90,11 +77,11 @@ public class ElectionController {
 		   return new ResponseEntity<>(null, HttpStatus.INTERNAL_SERVER_ERROR); 
 		}
 		
-		if(electionTypeParamIsValid(electionType)) {
+		if(electionManager.isValidType(electionType)) {
 		   return new ResponseEntity<>(null, HttpStatus.INTERNAL_SERVER_ERROR);
 		}
 		
-		ElectionView election = electionManager.createElection(ElectionType.valueOf(electionType), entities); 
+		ElectionView election = electionManager.createElection(electionType, entities); 
 		
 		return new ResponseEntity<>(election, HttpStatus.OK);
 	  
