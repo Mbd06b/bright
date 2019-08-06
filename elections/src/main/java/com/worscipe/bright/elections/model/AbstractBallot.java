@@ -1,16 +1,12 @@
 package com.worscipe.bright.elections.model;
 
-import java.lang.annotation.Target;
 import java.util.Date;
 import java.util.List;
 
 import javax.persistence.Column;
 import javax.persistence.Id;
-import javax.persistence.JoinColumn;
-import javax.persistence.ManyToOne;
 import javax.persistence.MappedSuperclass;
 import javax.persistence.OneToMany;
-import javax.persistence.OneToOne;
 import javax.persistence.Transient;
 
 /**
@@ -20,7 +16,7 @@ import javax.persistence.Transient;
  */
 
 @MappedSuperclass
-public abstract class AbstractBallot<E extends AbstractElection>{
+public abstract class AbstractBallot<E extends AbstractElection<?>>{
 	
 	   @Id
 	   private Long id;

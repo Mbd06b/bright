@@ -18,5 +18,7 @@ public class ElectionServiceImpl implements ElectionService{
 	public List<Election> getAllElections() {
 		return electionRepository.findAll();
 	}
+	
+
 
 }
