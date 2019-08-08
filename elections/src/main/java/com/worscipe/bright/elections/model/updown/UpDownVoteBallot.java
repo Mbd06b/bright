@@ -7,7 +7,7 @@ import javax.persistence.Enumerated;
 import com.worscipe.bright.elections.model.AbstractBallot;
 
 @Entity
-public class UpDownVoteBallot extends AbstractBallot<UpDownVoteElection> {
+public class UpDownVoteBallot extends AbstractBallot<UpDownVoteElectionImpl> {
 	
 	public enum BallotSelection {NULL_VOTE, UP_VOTE, DOWN_VOTE};
 	

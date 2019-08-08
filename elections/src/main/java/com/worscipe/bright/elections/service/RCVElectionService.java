@@ -4,7 +4,7 @@ import java.util.Optional;
 
 import com.worscipe.bright.elections.model.rcv.RCVElectionImpl;
 
-public interface RCVElectionService {
+public interface RCVElectionService extends ElectionService{
 
 	
 

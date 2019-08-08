@@ -12,10 +12,10 @@ import org.springframework.stereotype.Service;
 import com.worscipe.bright.elections.model.CandidateImpl;
 import com.worscipe.bright.elections.model.Election;
 import com.worscipe.bright.elections.model.rcv.RCVElectionImpl;
+import com.worscipe.bright.elections.model.updown.UpDownVoteElectionService;
 import com.worscipe.bright.elections.rest.view.ElectionView;
 import com.worscipe.bright.elections.rest.view.RestResourceEntity;
 import com.worscipe.bright.elections.rest.view.ResultPage;
-import com.worscipe.bright.elections.service.ElectionService;
 import com.worscipe.bright.elections.service.RCVElectionService;
 
 @Service
@@ -24,7 +24,7 @@ public class ElectionManagerImpl implements ElectionManager {
 	private static final Logger logger = LogManager.getLogger(ElectionManagerImpl.class);
 	
 	@Autowired
-	private ElectionService electionService;
+	private UpDownVoteElectionService upDownVoteElectionService; 
 	
 	@Autowired
 	private RCVElectionService rcvElectionService;

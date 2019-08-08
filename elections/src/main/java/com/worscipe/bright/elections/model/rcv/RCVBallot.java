@@ -5,11 +5,9 @@ import java.util.List;
 import java.util.Set;
 
 import javax.persistence.Entity;
-import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 
 import com.worscipe.bright.elections.model.AbstractBallot;
-import com.worscipe.bright.elections.model.AbstractElection;
 import com.worscipe.bright.elections.model.Ballot;
 import com.worscipe.bright.elections.model.CandidateImpl;
 
