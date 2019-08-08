@@ -184,4 +184,23 @@ public class RCVElectionServiceImpl implements RCVElectionService{
 	}
 
 
+	@Override
+	public List<RCVElectionImpl> getAllElections() {
+		return rcvElectionRepository.findAll(); 
+	}
+
+
+	@Override
+	public Optional<RCVElectionImpl> getElection(Long id) {
+		return rcvElectionRepository.findById(id);
+	}
+
+
+	@Override
+	public Boolean deleteById(Long id) {
+		rcvElectionRepository.deleteById(id);
+		return null;
+	}
+
+
 }

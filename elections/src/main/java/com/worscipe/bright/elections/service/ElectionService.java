@@ -3,11 +3,14 @@ package com.worscipe.bright.elections.service;
 import java.util.List;
 import java.util.Optional;
 
-import com.worscipe.bright.elections.model.Election;
 
-public interface ElectionService<E extends Election> {
+public interface ElectionService {
 	
-	List<E> getAllElections();
+	List<?> getAllElections();
 	
-	Optional<E> getElection(Long id); 
+	Optional<?> getElection(Long id); 
+
+	Boolean deleteById(Long id); 
+	
+	
 }
