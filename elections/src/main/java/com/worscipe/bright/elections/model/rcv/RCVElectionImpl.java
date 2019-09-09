@@ -10,7 +10,6 @@ import javax.persistence.OneToMany;
 
 import com.worscipe.bright.elections.model.AbstractElection;
 import com.worscipe.bright.elections.model.CandidateImpl;
-import com.worscipe.bright.elections.model.ElectionType;
 
 /**
  * 
@@ -27,14 +26,12 @@ public class RCVElectionImpl extends AbstractElection<RCVBallot> implements RCVE
 	private Integer stackRankRounds;
 	
 	public RCVElectionImpl() { 
-		super();
-		this.setElectionType(ElectionType.SINGLE_TRANSFERABLE_VOTE);
+		super();	
 	}
 	
 	public RCVElectionImpl(Set<CandidateImpl> candidates) {
 		super(candidates);
 		this.rankedCandidates = new ArrayList<>(candidates);
-		this.setElectionType(ElectionType.SINGLE_TRANSFERABLE_VOTE);
 	}
 	
 	
@@ -62,6 +59,18 @@ public class RCVElectionImpl extends AbstractElection<RCVBallot> implements RCVE
 
 	public void setRankedCandidates(List<CandidateImpl> rankedCandidates) {
 		this.rankedCandidates = rankedCandidates;
+	}
+
+	@Override
+	public String getElectionLink() {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public void setElectionLink(String string) {
+		// TODO Auto-generated method stub
+		
 	}
 
 

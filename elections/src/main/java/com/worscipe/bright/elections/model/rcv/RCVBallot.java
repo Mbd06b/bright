@@ -2,13 +2,12 @@ package com.worscipe.bright.elections.model.rcv;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Set;
 
 import javax.persistence.Entity;
-import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 
 import com.worscipe.bright.elections.model.AbstractBallot;
-import com.worscipe.bright.elections.model.AbstractElection;
 import com.worscipe.bright.elections.model.Ballot;
 import com.worscipe.bright.elections.model.CandidateImpl;
 
@@ -33,9 +32,7 @@ public class RCVBallot extends AbstractBallot<RCVElectionImpl> implements Ballot
 	@OneToMany
 	private List<CandidateImpl> rankedCandidates = new ArrayList<>();
 
-	@ManyToOne
-	private RCVElectionImpl rcvElection; 
-		
+	
 
 	public CandidateImpl getCandidateVotedFor() {
 		for(CandidateImpl canididate: this.getCandidates()) {
@@ -54,16 +51,31 @@ public class RCVBallot extends AbstractBallot<RCVElectionImpl> implements Ballot
     public void setRankedIdeas(List<CandidateImpl> rankedCandidates) {
     	this.rankedCandidates = rankedCandidates;
     }
+    
+
+	@Override
+	public String getBallotLink() {
+		// TODO Auto-generated method stub
+		return null;
+	}
 
 
 	@Override
-	public RCVElectionImpl getElection() {
-		return rcvElection;
+	public void setBallotLink(String ballotLink) {
+		// TODO Auto-generated method stub
+		
 	}
 
 	@Override
-	public void setElection(RCVElectionImpl rcvElection) {
-		this.rcvElection = rcvElection;
+	public void setCandidates(Set<CandidateImpl> candidates) {
+		// TODO Auto-generated method stub
+		
+	}
+	
+	@Override
+	public Set<CandidateImpl> getCandidates(){
+		// TODO Auto-generated method stub
+		return null;
 	}
 	
 }

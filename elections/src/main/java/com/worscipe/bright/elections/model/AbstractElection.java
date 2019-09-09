@@ -8,6 +8,7 @@ import javax.persistence.Column;
 import javax.persistence.EnumType;
 import javax.persistence.Enumerated;
 import javax.persistence.Id;
+import javax.persistence.ManyToOne;
 import javax.persistence.MappedSuperclass;
 import javax.persistence.OneToMany;
 import javax.persistence.Transient;
@@ -18,7 +19,7 @@ import javax.persistence.Transient;
  */
 
 @MappedSuperclass
-public abstract class AbstractElection<B extends AbstractBallot> {
+public abstract class AbstractElection<B extends AbstractBallot<?>> {
 	
 	@Id
     private Long id; 
@@ -47,7 +48,7 @@ public abstract class AbstractElection<B extends AbstractBallot> {
 	@Enumerated(EnumType.STRING)
     private ElectionPhase electionPhase;   
 	
-	@Enumerated(EnumType.STRING)
+	@ManyToOne
 	private ElectionType electionType;
     
     public AbstractElection() { super(); }
