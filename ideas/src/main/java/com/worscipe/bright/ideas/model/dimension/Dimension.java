@@ -69,11 +69,11 @@ public class Dimension {
 	private OpportunityCost opportunityCost = OpportunityCost.UNKNOWN;
 	
 	
-	// problem flags are either triggered manually or automatically for moderator Integerervention
+	// problem flags are either triggered manually or automatically for moderator intervention
 	/** TODO consider ways to analyze/predict levels of 
-	* "Integerent"... ignorance, passively motivated, and malicious Integerent
+	* "intent"... ignorance, passively motivated, and malicious intent
 	*  
-	*  This Integereracts with the Political/Vaulues Hazard Awareness policies.
+	*  This Interacts with the Political/Vaulues Hazard Awareness policies.
 	*/
 
 	private Set<ProblemFlag> problemFlags;
