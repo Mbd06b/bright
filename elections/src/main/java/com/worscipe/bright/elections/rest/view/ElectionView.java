@@ -3,7 +3,6 @@ package com.worscipe.bright.elections.rest.view;
 import java.util.Date;
 import java.util.Set;
 
-import com.worscipe.bright.elections.model.Candidate;
 import com.worscipe.bright.elections.model.Election;
 import com.worscipe.bright.elections.model.ElectionPhase;
 import com.worscipe.bright.elections.model.ElectionType;
