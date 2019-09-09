@@ -8,16 +8,14 @@ import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-import org.springframework.web.client.RestTemplate;
 
 import com.worscipe.bright.elections.model.CandidateImpl;
 import com.worscipe.bright.elections.model.Election;
-import com.worscipe.bright.elections.model.ElectionType;
 import com.worscipe.bright.elections.model.rcv.RCVElectionImpl;
+import com.worscipe.bright.elections.model.updown.UpDownVoteElectionService;
+import com.worscipe.bright.elections.rest.view.ElectionView;
 import com.worscipe.bright.elections.rest.view.RestResourceEntity;
 import com.worscipe.bright.elections.rest.view.ResultPage;
-import com.worscipe.bright.elections.rest.view.ElectionView;
-import com.worscipe.bright.elections.service.ElectionService;
 import com.worscipe.bright.elections.service.RCVElectionService;
 
 @Service
@@ -26,7 +24,7 @@ public class ElectionManagerImpl implements ElectionManager {
 	private static final Logger logger = LogManager.getLogger(ElectionManagerImpl.class);
 	
 	@Autowired
-	private ElectionService electionService;
+	private UpDownVoteElectionService upDownVoteElectionService; 
 	
 	@Autowired
 	private RCVElectionService rcvElectionService;
@@ -37,9 +35,9 @@ public class ElectionManagerImpl implements ElectionManager {
 		// TODO convert;
 		return view;
 	}
-
+	
 	@Override
-	public ElectionView createElection(ElectionType electionType, List<RestResourceEntity> entities) {
+	public ElectionView createElection(String electionType, List<RestResourceEntity> entities) {
 		
 		Set<CandidateImpl> candidates = new HashSet<>();
 		   
@@ -49,13 +47,13 @@ public class ElectionManagerImpl implements ElectionManager {
 		   
 			
 		switch (electionType) {
-			case UP_VOTE:
+			case "UP_VOTE":
 					return null;
-			case REACTION_VOTE:
+			case "REACTION_VOTE":
 					return null;
-			case UP_DOWN_VOTE:
+			case "UP_DOWN_VOTE":
 					return null;
-			case SINGLE_TRANSFERABLE_VOTE:
+			case "SINGLE_TRANSFERABLE_VOTE":
 					RCVElectionImpl election = new RCVElectionImpl();
 				 	election.setCandidates(candidates);
 					RCVElectionImpl electionImpl = rcvElectionService.createElection(election);
@@ -117,6 +115,12 @@ public class ElectionManagerImpl implements ElectionManager {
 	public ElectionView endElection(Long id) {
 		// TODO Auto-generated method stub
 		return null;
+	}
+
+	@Override
+	public boolean isValidType(String electionType) {
+		// TODO Auto-generated method stub
+		return false;
 	}
 
 

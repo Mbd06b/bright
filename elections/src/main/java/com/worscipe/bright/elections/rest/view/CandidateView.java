@@ -10,8 +10,7 @@ public class CandidateView implements Candidate {
 
 	@Override
 	public void setCandidateResourceLink(String candidateResourceLink) {
-		this.candidateResourceLink = candidateResourceLink;
-		
+		this.candidateResourceLink = candidateResourceLink;	
 	}
 
 	@Override

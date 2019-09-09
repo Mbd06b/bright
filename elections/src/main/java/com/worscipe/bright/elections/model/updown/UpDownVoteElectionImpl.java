@@ -10,7 +10,7 @@ import javax.persistence.OneToMany;
 import com.worscipe.bright.elections.model.AbstractElection;
 
 @Entity
-public class UpDownVoteElection extends AbstractElection<UpDownVoteBallot> {
+public class UpDownVoteElectionImpl extends AbstractElection<UpDownVoteBallot> {
 	
 	@Id
 	private Long id;

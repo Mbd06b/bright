@@ -1,17 +1,13 @@
 package com.worscipe.bright.elections.model;
 
-import java.lang.annotation.Target;
 import java.util.Date;
-import java.util.List;
+import java.util.Set;
 
 import javax.persistence.Column;
 import javax.persistence.Id;
-import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.MappedSuperclass;
 import javax.persistence.OneToMany;
-import javax.persistence.OneToOne;
-import javax.persistence.Transient;
 
 /**
  * 
@@ -20,7 +16,7 @@ import javax.persistence.Transient;
  */
 
 @MappedSuperclass
-public abstract class AbstractBallot<E extends AbstractElection>{
+public abstract class AbstractBallot<E extends AbstractElection<?>>{
 	
 	   @Id
 	   private Long id;
@@ -28,11 +24,11 @@ public abstract class AbstractBallot<E extends AbstractElection>{
 	   @Column
 	   private String voterLink;
 	   
-	   @Transient
+	   @ManyToOne
 	   private E election; 
 	   
 	   @OneToMany
-	   private List<CandidateImpl> candidates;
+	   private Set<CandidateImpl> candidates;
 	   
 	   @Column
 	   private Date dateSubmittedOn;
@@ -61,11 +57,11 @@ public abstract class AbstractBallot<E extends AbstractElection>{
 			this.voterLink = voterLink;
 		}
 
-		public List<CandidateImpl> getCandidates() {
+		public Set<CandidateImpl> getCandidates() {
 			return candidates;
 		}
 
-		public void setCandidates(List<CandidateImpl> candidates) {
+		public void setCandidates(Set<CandidateImpl> candidates) {
 			this.candidates = candidates;
 		}
 
