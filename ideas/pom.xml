@@ -9,7 +9,7 @@
 		<relativePath/>
 	</parent>
 	<artifactId>ideas</artifactId>
-	<packaging>war</packaging>
+	<packaging>jar</packaging>
 	<name>ideas</name>
 	<description>Ideas and User Service API</description>
 

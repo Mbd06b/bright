@@ -7,6 +7,8 @@
     <artifactId>parent</artifactId>
     <version>0.0.1-SNAPSHOT</version>
     <packaging>pom</packaging>
+    <name>Bright</name>
+    <description>An app for sourcing the brightest ideas</description>
     
     <!--  https://dzone.com/articles/building-a-web-app-using-spring-boot-angular-6-and -->
 	<parent>
