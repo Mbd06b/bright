@@ -4,7 +4,6 @@ import java.util.List;
 
 import com.worscipe.bright.ideas.model.idea.IdeaImpl;
 import com.worscipe.bright.ideas.model.user.User;
-import com.worscipe.bright.ideas.modelview.idea.IdeaPageView;
 import com.worscipe.bright.ideas.modelview.idea.IdeaView;
 import com.worscipe.bright.ideas.modelview.other.ResultPage;
 

@@ -20,7 +20,6 @@ import org.springframework.web.bind.annotation.RestController;
 import com.google.gson.Gson;
 import com.worscipe.bright.ideas.manager.idea.IdeaManager;
 import com.worscipe.bright.ideas.model.idea.IdeaImpl;
-import com.worscipe.bright.ideas.modelview.idea.IdeaPageView;
 import com.worscipe.bright.ideas.modelview.idea.IdeaView;
 import com.worscipe.bright.ideas.modelview.other.ResultPage;
 import com.worscipe.bright.ideas.service.UserService;

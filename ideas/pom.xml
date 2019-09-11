@@ -164,7 +164,7 @@
 			                <goal>copy-resources</goal>
 			            </goals>
 			            <configuration>
-			                <outputDirectory>${project.build.directory}/classes/resources/</outputDirectory>
+			                <outputDirectory>${project.parent.basedir}/ideas/classes/resources/</outputDirectory>
 			                <resources>
 			                    <resource>
 			                        <directory>${project.parent.basedir}/client-angular5/src/app/</directory>
