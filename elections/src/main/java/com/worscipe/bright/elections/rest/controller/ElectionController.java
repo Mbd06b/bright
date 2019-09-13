@@ -18,7 +18,6 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.worscipe.bright.elections.model.ElectionType;
 import com.worscipe.bright.elections.rest.manager.ElectionManager;
 import com.worscipe.bright.elections.rest.view.ElectionView;
 import com.worscipe.bright.elections.rest.view.RestResourceEntity;

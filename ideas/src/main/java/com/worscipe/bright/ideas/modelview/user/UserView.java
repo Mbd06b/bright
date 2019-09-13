@@ -4,7 +4,6 @@ import java.io.Serializable;
 import java.util.List;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
-import com.worscipe.bright.ideas.model.idea.IdeaImpl;
 import com.worscipe.bright.ideas.model.user.Role;
 import com.worscipe.bright.ideas.model.user.User;
 import com.worscipe.bright.ideas.modelview.idea.IdeaLinkView;

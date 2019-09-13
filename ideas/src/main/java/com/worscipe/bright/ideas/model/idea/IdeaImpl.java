@@ -7,6 +7,7 @@ import java.util.List;
 import java.util.Set;
 
 import javax.persistence.CascadeType;
+import javax.persistence.CollectionTable;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -112,8 +113,8 @@ public class IdeaImpl{
 	
 	
 	// elections handles up/dn votes, reactions, brackets, and user preferences. 
-	@ManyToOne
-	private Set<String> elections;
+	@CollectionTable
+	private Set<Long> elections;
 	
 	
 	
