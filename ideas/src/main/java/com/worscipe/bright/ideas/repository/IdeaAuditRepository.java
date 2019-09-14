@@ -8,4 +8,5 @@ import com.worscipe.bright.ideas.model.idea.IdeaAudit;
 @Repository
 public interface IdeaAuditRepository extends JpaRepository<IdeaAudit, Long>{
 	
+	
 }

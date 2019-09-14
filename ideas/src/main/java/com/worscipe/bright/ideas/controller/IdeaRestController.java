@@ -29,7 +29,7 @@ import com.worscipe.bright.ideas.service.UserService;
 //https://stackoverflow.com/questions/50688285/inheritance-and-rest-api-controllers-dealing-with-subclasses
 
 @RestController
-@RequestMapping("/api/idea")
+@RequestMapping("/idea")
 @CrossOrigin
 public class IdeaRestController {
 	
@@ -110,7 +110,8 @@ public class IdeaRestController {
 	 */
 	@RequestMapping(value = "/", method = RequestMethod.POST, produces = MediaType.APPLICATION_JSON_UTF8_VALUE)
 	public ResponseEntity<IdeaView> createIdea(@RequestBody IdeaView idea) {
-		System.out.println("Creating IdeaImpl: " + idea.getTitle());
+
+		logger.info("Creating IdeaImpl: " + idea.getTitle());
 		
 		ideaManager.saveIdea(idea);
 

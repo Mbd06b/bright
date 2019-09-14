@@ -3,7 +3,6 @@ package com.worscipe.bright.ideas.manager.idea;
 import java.lang.reflect.Type;
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Set;
 
 import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -11,9 +10,9 @@ import org.springframework.stereotype.Service;
 
 import com.google.common.reflect.TypeToken;
 import com.worscipe.bright.ideas.model.idea.IdeaImpl;
-import com.worscipe.bright.ideas.model.user.User;
 import com.worscipe.bright.ideas.modelview.idea.IdeaView;
 import com.worscipe.bright.ideas.modelview.other.ResultPage;
+import com.worscipe.bright.ideas.modelview.user.UserView;
 import com.worscipe.bright.ideas.service.UserService;
 import com.worscipe.bright.ideas.service.idea.IdeaRecordService;
 import com.worscipe.bright.ideas.service.idea.IdeaService;
@@ -31,6 +30,7 @@ public class IdeaManagerImpl implements IdeaManager {
 	@Autowired
 	private UserService userService;
 	
+	// utilities
 	private ModelMapper modelMapper = new ModelMapper(); 
 	private Type ideaListType = new TypeToken<List<IdeaImpl>>() {}.getType();
 	private Type ideaDtoListType = new TypeToken<List<IdeaView>>() {}.getType();
@@ -87,24 +87,9 @@ public class IdeaManagerImpl implements IdeaManager {
 	}
 
 	@Override
-	public List<User> findIdeaContributors(IdeaImpl ideaImpl){
-		
-		IdeaImpl theIdea = ideaService.findById(ideaImpl.getIdeaId());
-		
-		if(theIdea != null) {
-
-			Set<User> userSet = theIdea.getUsers(); 		
-		
-			List<User> userList = new ArrayList<User>();
-			
-			userList.addAll(userSet);
-			
-			return userList;
-		
-		} else {
-			
-			return null; 
-		}
+	public List<UserView> findIdeaContributors(IdeaImpl ideaImpl){
+		//TODO implement contributors
+	return null; 
 	}
 	
 	/**
@@ -114,20 +99,16 @@ public class IdeaManagerImpl implements IdeaManager {
 	@Override
 	public IdeaView saveIdea(IdeaView ideaView) {
 		
-		User actingUser = userService.findById(ideaView.getActingUserId());
-		IdeaImpl ideaToPersist = convertToModel(ideaView); 
-		
-		ideaToPersist.addUser(actingUser);	
+		IdeaImpl ideaToPersist = convertToImpl(ideaView); 
 		IdeaImpl persistedIdea = ideaService.save(ideaToPersist);
-		ideaRecordService.logAction(userService.findById(ideaView.getActingUserId()) , persistedIdea, ideaView.getAction()); 
+		
+		ideaRecordService.logAction(ideaView.getActingEntityId(), ideaView.getActingEntityType(), persistedIdea, ideaView.getAction()); 
 		
 		IdeaView ideaDtoToReturn = convertToView(persistedIdea); 
 		
 		return  ideaDtoToReturn; 
 	
 	}
-	
-
 
 	@Override
 	public Boolean deleteById(Long id) {
@@ -140,34 +121,29 @@ public class IdeaManagerImpl implements IdeaManager {
 		return null;
 	}	
 	
-	
-	
 	@Override
-	public IdeaImpl convertToModel(IdeaView ideaView) {
+	public IdeaImpl convertToImpl(IdeaView ideaView) {
 		return modelMapper.map(ideaView, IdeaImpl.class);
 	}
 	
 	@Override
 	public List<IdeaImpl> convertToModels(List<IdeaView> ideaViews) {
 		
-		return modelMapper.map(ideaViews, ideaListType);
+		List<IdeaImpl> ideas = new ArrayList<>();
+		for( IdeaView view : ideaViews) {
+		  ideas.add(modelMapper.map(view, IdeaImpl.class));
+		}	
+		return ideas; 
 	}
-	
 	
 	@Override
 	public IdeaView convertToView(IdeaImpl ideaImpl){
 		return modelMapper.map(ideaImpl, IdeaView.class);
 	}
 	
-	
 	@Override
 	public List<IdeaView> convertToViews(List<IdeaImpl> ideaImpls){
 		return modelMapper.map(ideaImpls, ideaDtoListType);
 	}
 	
-	
-	
-	
-	
-
 }

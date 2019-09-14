@@ -21,7 +21,8 @@ public class IdeaView implements Serializable{
 
 	private String thumbnailImgUrl;
 	
-	private Long actingUserId; 
+	private Long actingEntityId;
+	private String actingEntityType;
 	
 	private IdeaAction action;
 
@@ -38,15 +39,21 @@ public class IdeaView implements Serializable{
 		this.action = action;
 	}
 
-	public Long getActingUserId() {
-		return actingUserId;
+	public Long getActingEntityId() {
+		return actingEntityId;
 	}
 
-	public void setActingUserId(Long actingUserId) {
-		this.actingUserId = actingUserId;
+	public void setActingEntityId(Long actingEntityId) {
+		this.actingEntityId = actingEntityId;
 	}
-
-
+	
+	public String getActingEntityType() {
+		return this.actingEntityType; 
+	}
+	
+	public void setEntityType(String actingEntityType) {
+		 this.actingEntityType = actingEntityType;
+	}
 
 	
 //----- CONSTRUCTORS ----------------

@@ -5,7 +5,6 @@ import java.util.Set;
 
 import com.worscipe.bright.ideas.model.idea.IdeaAction;
 import com.worscipe.bright.ideas.model.idea.IdeaImpl;
-import com.worscipe.bright.ideas.model.user.User;
 
 public interface IdeaService {
 
@@ -13,8 +12,8 @@ public interface IdeaService {
 
 	List<IdeaImpl> findAllIdeas();
 	
-	Set<User> findIdeaContributors(IdeaImpl id);
-	Set<User> findIdeaContributors(Long id);
+	Set<Long> findIdeaContributors(IdeaImpl id);
+	Set<Long> findIdeaContributors(Long id);
 	
 	IdeaImpl save(IdeaImpl ideaImpl);
 

@@ -23,11 +23,11 @@ import com.worscipe.bright.ideas.modelview.user.UserView;
 //matching my use-case, with slight changes to the RequestMapping and method calls. 
 
 @RestController
-@RequestMapping("/api/user")
+@RequestMapping("/user")
 @CrossOrigin
 public class UserRestController {
 	
-	 private static final Logger log = LogManager.getLogger(UserRestController.class);
+	 private static final Logger logger = LogManager.getLogger(UserRestController.class);
 
 
 	@Autowired
@@ -42,7 +42,7 @@ public class UserRestController {
 			return new ResponseEntity<List<UserView>>(HttpStatus.OK);
 		}
 		for(UserView user : users) {
-			log.debug(user);
+			logger.debug(user);
 		}
 		return new ResponseEntity<List<UserView>>(users, HttpStatus.OK);
 	}
@@ -51,15 +51,15 @@ public class UserRestController {
 
 	@RequestMapping(value = "/{id}", method = RequestMethod.GET, produces = MediaType.APPLICATION_JSON_UTF8_VALUE)
 	public ResponseEntity<UserView> getUser(@PathVariable("id") Long id) {
-		System.out.println("Fetching User with id" + id);
+		logger.info("Fetching User with id" + id);
 		UserView user = userManager.findById(id);
 
 		if (user == null) {
-			log.info("Requested user with id: " + id + " not found ");
+			logger.info("Requested user with id: " + id + " not found ");
 			return new ResponseEntity<UserView>(HttpStatus.NO_CONTENT);
 		}
 		
-			log.debug(user);
+			logger.debug(user);
 		return new ResponseEntity<UserView>(user, HttpStatus.OK);
 
 	}
@@ -67,14 +67,14 @@ public class UserRestController {
 	// -------------Find User By Email ----------------
 	@RequestMapping(value = "/email/{email}", method = RequestMethod.GET, produces = MediaType.APPLICATION_JSON_UTF8_VALUE)
 	public ResponseEntity<UserView> getUserByEmail(@PathVariable("email") String email) {
-		System.out.println("Looking for user with email: " + email);
+		logger.info("Looking for user with email: " + email);
 		UserView user = userManager.findByEmail(email);
 
 		if (user == null) {
-			System.out.println("User with email: " + email + " not found ");
+			logger.debug("User with email: " + email + " not found ");
 			return new ResponseEntity<UserView>(HttpStatus.NOT_FOUND);
 		} else {
-			System.out.println("User: " + user + " found! ");
+			logger.debug("User: " + user + " found! ");
 			return new ResponseEntity<UserView>(user, HttpStatus.OK);
 		}
 
@@ -109,10 +109,10 @@ public class UserRestController {
 
 	@RequestMapping(value = "/", method = RequestMethod.POST, produces = MediaType.APPLICATION_JSON_UTF8_VALUE)
 	public ResponseEntity<UserView> createUser(@RequestBody UserView user) {
-		System.out.println("Creating User: " + user.getEmail());
+		logger.info("Creating User: " + user.getEmail());
 
 		if (userManager.existsByEmail(user.getEmail())) {
-			System.out.println("A User with email " + user.getEmail() + " already exists!");
+			logger.info("A User with email " + user.getEmail() + " already exists!");
 			return new ResponseEntity<UserView>(HttpStatus.CONFLICT);
 		}
 
@@ -133,7 +133,7 @@ public class UserRestController {
 			return new ResponseEntity<UserView>(user, HttpStatus.OK);
 		}
 
-		System.out.println("User with id " + updatedUser.getId() + " not found");
+		logger.info("User with id " + updatedUser.getId() + " not found");
 		return new ResponseEntity<UserView>(HttpStatus.BAD_REQUEST);
 
 	}
@@ -142,15 +142,13 @@ public class UserRestController {
 
 	@RequestMapping(value = "/{id}", method = RequestMethod.DELETE, produces = MediaType.APPLICATION_JSON_UTF8_VALUE)
 	public ResponseEntity<UserView> deleteUser(@PathVariable("id") Long id) {
-		System.out.println("Fetching and Deleting User with id: " + id);
 
+		logger.info("Fetching and Deleting User with id: " + id);
 		if (userManager.deleteUserById(id)) {
 			return new ResponseEntity<UserView>(HttpStatus.OK);
 		}
-		System.out.println("Unable to delete. User with id " + id);
+		logger.info("Unable to delete. User with id " + id);
 		return new ResponseEntity<UserView>(HttpStatus.BAD_REQUEST);
 	}
-
-	//
 
 }

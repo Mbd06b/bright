@@ -11,7 +11,6 @@ import org.springframework.stereotype.Service;
 
 import com.worscipe.bright.ideas.model.idea.IdeaAction;
 import com.worscipe.bright.ideas.model.idea.IdeaImpl;
-import com.worscipe.bright.ideas.model.user.User;
 import com.worscipe.bright.ideas.repository.IdeaRepository;
 
 @Service("ideaService")
@@ -57,33 +56,15 @@ public class IdeaServiceImpl implements IdeaService {
 
 	
 	@Override
-	public Set<User> findIdeaContributors(Long id){
-		
-		IdeaImpl theIdea = findById(id);
-		
-		if(theIdea != null) {
-
-			return theIdea.getUsers(); 				
-		} else {
-			
-			return null; 
-		}
+	public Set<Long> findIdeaContributors(Long id){
+		// TODO implement findIdeaContributors()
+		return null;
 	}
 	
 	@Override
-	public Set<User> findIdeaContributors(IdeaImpl ideaImpl){
-		   
-		if(existsById(ideaImpl.getIdeaId())) {
-			
-		    	IdeaImpl theIdea = ideaRepository.getOne(ideaImpl.getIdeaId());
-		    	
-		    	return theIdea.getUsers(); 
-		    	
-		    } else {
-		    	
-		    	return null;
-		    }
-		
+	public Set<Long> findIdeaContributors(IdeaImpl ideaImpl){
+		// TODO implement findIdeaContributors()
+		return null;
 	}
 	
 	
