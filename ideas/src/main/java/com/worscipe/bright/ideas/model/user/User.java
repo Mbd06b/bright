@@ -1,8 +1,6 @@
 package com.worscipe.bright.ideas.model.user;
 
-import java.util.ArrayList;
 import java.util.Date;
-import java.util.List;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -11,14 +9,9 @@ import javax.persistence.Enumerated;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.ManyToMany;
 import javax.persistence.Table;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
-import javax.persistence.Transient;
-
-import com.worscipe.bright.ideas.model.idea.IdeaImpl;
-import com.worscipe.bright.ideas.modelview.user.UserView;
 
 //Hibernate Annotation Table_Per_Class Strategy Reference
 //https://thoughts-on-java.org/complete-guide-inheritance-strategies-jpa-hibernate/
@@ -86,54 +79,6 @@ public class User {
 	@Temporal(TemporalType.TIMESTAMP)
 	private Date createdOn = new Date();
 	
-	// -------COMPOSITION RELATIONSHIPS----------------
-	
-	public IdeaImpl getIdeaImpl() {
-		return idea;
-	}
-
-	public void setIdeaImpl(IdeaImpl idea) {
-		this.idea = idea;
-	}
-	//See IdeaImpl.java for details on the User-IdeaImpl relationship. 
-	// Transient means that this field is not intended to be persisted or serialized as part of
-	// the user object
-	@Transient
-	public IdeaImpl idea;
-
-	// https://www.baeldung.com/hibernate-many-to-many
-
-	//Users have a set of ideas that they have contributed to.
-	@ManyToMany
-	private List<IdeaImpl> ideas = new ArrayList<>(); 
-	
-	public List<IdeaImpl> getIdeaImpls(){
-		return ideas;
-	}
-	
-	public void setIdeaImpls(List<IdeaImpl> ideas) {
-		this.ideas = ideas; 
-	}
-	
-	
-//-----Constructors--------
-
-	public User() {
-	}
-	
-	
-	public User(UserView userView) {
-		this.id = userView.getId();
-		this.password = userView.getPassword();
-		this.email = userView.getEmail(); 
-		this.username = userView.getUsername();
-		this.password = userView.getPassword();
-		this.firstName = userView.getFirstName();
-		this.lastName = userView.getLastName(); 
-		this.role = userView.getRole();
-	}
-
-
 //----Methods--------------		
 
 	public String getUsername() {
@@ -142,22 +87,6 @@ public class User {
 
 	public void setUsername(String username) {
 		this.username = username;
-	}
-
-	public IdeaImpl getIdea() {
-		return idea;
-	}
-
-	public void setIdea(IdeaImpl idea) {
-		this.idea = idea;
-	}
-
-	public List<IdeaImpl> getIdeas() {
-		return ideas;
-	}
-
-	public void setIdeas(List<IdeaImpl> ideas) {
-		this.ideas = ideas;
 	}
 	
 	public Long getId() {
@@ -236,37 +165,6 @@ public class User {
 	@Override
 	public String toString() {
 		return "[User:" + id + " Info] email: " + email + " firstName: " + firstName + " lastName: " + lastName + " role: " + role;
-	}
-
-	@Override
-	public int hashCode() {
-		final int prime = 31;
-		int result = 1;
-		result = prime * result + ((email == null) ? 0 : email.hashCode());
-		result = prime * result + ((id == null) ? 0 : id.hashCode());
-		return result;
-	}
-
-	@Override
-	public boolean equals(Object obj) {
-		if (this == obj)
-			return true;
-		if (obj == null)
-			return false;
-		if (getClass() != obj.getClass())
-			return false;
-		User other = (User) obj;
-		if (email == null) {
-			if (other.email != null)
-				return false;
-		} else if (!email.equals(other.email))
-			return false;
-		if (id == null) {
-			if (other.id != null)
-				return false;
-		} else if (!id.equals(other.id))
-			return false;
-		return true;
 	}
 
 }

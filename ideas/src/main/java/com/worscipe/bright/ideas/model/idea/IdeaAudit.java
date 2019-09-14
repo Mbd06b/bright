@@ -14,8 +14,10 @@ import javax.persistence.ManyToOne;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
 
+import org.springframework.data.domain.Auditable;
+
 @Entity(name="IDEA_AUDIT_TABLE")
-public class IdeaAudit {
+public class IdeaAudit{
 	
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)

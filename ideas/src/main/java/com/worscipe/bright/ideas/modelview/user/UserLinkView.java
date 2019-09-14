@@ -29,7 +29,7 @@ public class UserLinkView implements Serializable {
 		this.email = user.getEmail();
 		this.firstName = user.getFirstName();
 		this.lastName = user.getLastName();
-		this.title = user.getTitle();
+		this.setTitle(user.getTitle());
 		this.userImgUrl = user.getUserImgUrl();
 		this.avatarUrl = user.getAvatarUrl();
 	}
@@ -80,6 +80,14 @@ public class UserLinkView implements Serializable {
 
 	public void setAvatarUrl(String avatarUrl) {
 		this.avatarUrl = avatarUrl;
+	}
+
+	public String getTitle() {
+		return title;
+	}
+
+	public void setTitle(String title) {
+		this.title = title;
 	}
 
 

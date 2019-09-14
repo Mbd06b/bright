@@ -43,7 +43,8 @@ public class UserManagerImpl implements UserManager {
 			user.setPassword(Password.hash(user.getPassword()));
 		};
 		
-		User userToPersist = new User(user);
+		
+		User userToPersist = convertToModel(user) ;
 		
 		return new UserView(userService.saveUser(userToPersist));
 		
@@ -58,7 +59,7 @@ public class UserManagerImpl implements UserManager {
 		List<UserView> userDtoList = new ArrayList<UserView>(); 
 		
 		for(User user: users) {
-		    userDtoList.add(new UserView(user));
+		    userDtoList.add(convertToView(user));
 		}
 		return userDtoList; 
 	}
@@ -81,7 +82,7 @@ public class UserManagerImpl implements UserManager {
 		User user = userService.findByEmail(email);
 		
 	   if(user != null) {
-		   return new UserView(user); 
+		   return convertToView(user); 
 	   }
 	   else {
 	       return null;

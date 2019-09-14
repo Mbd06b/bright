@@ -41,22 +41,7 @@ public class UserView implements Serializable{
 		
 		@JsonProperty("role")
 		private Role role = Role.NONE;
-
-		// -------COMPOSITION RELATIONSHIPS----------------
-		
-		// https://www.baeldung.com/hibernate-many-to-many
-
-		//Users have a set of ideas that they have contributed to.
-		private List<IdeaLinkView> ideas;
-		
-		public List<IdeaLinkView> getIdeaIds(){
-			return ideas;
-		}
-		
-		public void setIdeaIds(List<IdeaLinkView> ideas) {
-			this.ideas = ideas; 
-		}
-		
+	
 		
 	//-----Constructors--------
 
@@ -183,15 +168,4 @@ public class UserView implements Serializable{
 		public void setAboutMe(String aboutMe) {
 			this.aboutMe = aboutMe;
 		}
-
-		public List<IdeaLinkView> getIdeas() {
-			return ideas;
-		}
-
-		public void setIdeas(List<IdeaLinkView> ideas) {
-			this.ideas = ideas;
-		}
-
-	
-	
 }
