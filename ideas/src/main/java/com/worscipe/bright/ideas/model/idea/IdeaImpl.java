@@ -6,10 +6,17 @@ import java.util.List;
 
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
+import javax.persistence.ElementCollection;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+<<<<<<< HEAD
+=======
+import javax.persistence.JoinColumn;
+import javax.persistence.JoinTable;
+import javax.persistence.ManyToMany;
+>>>>>>> refs/remotes/origin/master
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
 import javax.persistence.Temporal;
@@ -72,6 +79,34 @@ public class IdeaImpl{
 	public List<IdeaAudit> getIdeaLogs(){
 		return this.ideaAudits; 
 	}
+<<<<<<< HEAD
+=======
+	
+	
+	// elections handles up/dn votes, reactions, brackets, and user preferences. 
+	@ElementCollection
+	private Set<Long> electionIds;
+	
+	
+	
+//----- CONSTRUCTORS ----------------
+	
+	
+	public IdeaImpl(){	
+	}
+	
+	
+	/**
+	 * 
+	 * @param title - ideaImpl Title
+	 * @param subtitle - ideaImpl Subtitle
+	 */
+	
+  public IdeaImpl(String title, String subtitle){
+		this.title =  title; 
+		this.subtitle = subtitle; 
+	}
+>>>>>>> refs/remotes/origin/master
   
 	
 //-------- METHODS -------------------
@@ -143,5 +178,19 @@ public class IdeaImpl{
 	public void setCreatedOn(Date createdOn) {
 		this.createdOn = createdOn;
 	}
+<<<<<<< HEAD
 	
+=======
+
+	public Set<Long> getElectionIds() {
+		return electionIds;
+	}
+
+	public void setElectionIds(Set<Long> electionIds) {
+		this.electionIds = electionIds;
+	}
+
+
+
+>>>>>>> refs/remotes/origin/master
 }

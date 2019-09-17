@@ -3,6 +3,10 @@ package com.worscipe.bright.ideas.manager.idea;
 import java.util.List;
 
 import com.worscipe.bright.ideas.model.idea.IdeaImpl;
+<<<<<<< HEAD
+=======
+import com.worscipe.bright.ideas.model.user.User;
+>>>>>>> refs/remotes/origin/master
 import com.worscipe.bright.ideas.modelview.idea.IdeaView;
 import com.worscipe.bright.ideas.modelview.other.ResultPage;
 import com.worscipe.bright.ideas.modelview.user.UserView;

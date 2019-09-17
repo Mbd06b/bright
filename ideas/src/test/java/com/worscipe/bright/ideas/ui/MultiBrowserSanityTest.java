@@ -1,4 +1,4 @@
-package com.boot.brightideas.ui;
+package com.worscipe.bright.ideas.ui;
 
 import java.util.List;
 import java.util.concurrent.TimeUnit;
