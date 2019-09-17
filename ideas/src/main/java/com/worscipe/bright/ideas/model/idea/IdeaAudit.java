@@ -11,14 +11,8 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
-<<<<<<< HEAD
-=======
-import javax.persistence.OneToOne;
->>>>>>> refs/remotes/origin/master
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
-
-import org.springframework.data.domain.Auditable;
 
 @Entity(name="IDEA_AUDIT_TABLE")
 public class IdeaAudit{

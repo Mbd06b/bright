@@ -15,12 +15,7 @@
 log/
 target/
 
-<<<<<<< HEAD
-# Node
+# Node and Angular
 node/
 node_modules/
-=======
-#Node
-node_modules/
-node/
->>>>>>> refs/remotes/origin/master
+bin/
