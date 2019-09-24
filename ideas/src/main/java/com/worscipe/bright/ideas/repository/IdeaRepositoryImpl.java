@@ -13,7 +13,7 @@ import org.apache.logging.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
-import com.worscipe.bright.ideas.model.idea.IdeaImpl;
+import com.worscipe.bright.ideas.model.IdeaImpl;
 
 @Repository
 public class IdeaRepositoryImpl implements IdeaRepositoryCustom {

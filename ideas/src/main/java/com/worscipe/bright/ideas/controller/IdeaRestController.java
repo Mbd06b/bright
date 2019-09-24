@@ -18,9 +18,9 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.google.gson.Gson;
-import com.worscipe.bright.ideas.manager.idea.IdeaManager;
-import com.worscipe.bright.ideas.model.idea.IdeaImpl;
-import com.worscipe.bright.ideas.modelview.idea.IdeaView;
+import com.worscipe.bright.ideas.manager.IdeaManager;
+import com.worscipe.bright.ideas.model.IdeaImpl;
+import com.worscipe.bright.ideas.modelview.IdeaView;
 import com.worscipe.bright.ideas.modelview.other.ResultPage;
 import com.worscipe.bright.ideas.service.UserService;
 

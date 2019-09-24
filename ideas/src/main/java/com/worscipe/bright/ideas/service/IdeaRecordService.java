@@ -1,8 +1,8 @@
 package com.worscipe.bright.ideas.service;
 
-import com.worscipe.bright.ideas.model.idea.IdeaAction;
-import com.worscipe.bright.ideas.model.idea.IdeaAudit;
-import com.worscipe.bright.ideas.model.idea.IdeaImpl;
+import com.worscipe.bright.ideas.model.IdeaAction;
+import com.worscipe.bright.ideas.model.IdeaAudit;
+import com.worscipe.bright.ideas.model.IdeaImpl;
 
 public interface IdeaRecordService {
 

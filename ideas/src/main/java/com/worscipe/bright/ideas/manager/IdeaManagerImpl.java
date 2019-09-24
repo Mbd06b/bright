@@ -1,4 +1,4 @@
-package com.worscipe.bright.ideas.manager.idea;
+package com.worscipe.bright.ideas.manager;
 
 import java.lang.reflect.Type;
 import java.util.ArrayList;
@@ -9,8 +9,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.google.common.reflect.TypeToken;
-import com.worscipe.bright.ideas.model.idea.IdeaImpl;
-import com.worscipe.bright.ideas.modelview.idea.IdeaView;
+import com.worscipe.bright.ideas.model.IdeaImpl;
+import com.worscipe.bright.ideas.modelview.IdeaView;
 import com.worscipe.bright.ideas.modelview.other.ResultPage;
 import com.worscipe.bright.ideas.modelview.user.UserView;
 import com.worscipe.bright.ideas.service.IdeaRecordService;

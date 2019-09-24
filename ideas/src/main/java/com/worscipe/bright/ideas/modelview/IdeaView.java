@@ -1,9 +1,9 @@
-package com.worscipe.bright.ideas.modelview.idea;
+package com.worscipe.bright.ideas.modelview;
 
 import java.io.Serializable;
 
-import com.worscipe.bright.ideas.model.idea.IdeaAction;
-import com.worscipe.bright.ideas.model.idea.IdeaImpl;
+import com.worscipe.bright.ideas.model.IdeaAction;
+import com.worscipe.bright.ideas.model.IdeaImpl;
 
 public class IdeaView implements Serializable{
 	

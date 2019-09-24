@@ -3,8 +3,8 @@ package com.worscipe.bright.ideas.service;
 import java.util.List;
 import java.util.Set;
 
-import com.worscipe.bright.ideas.model.idea.IdeaAction;
-import com.worscipe.bright.ideas.model.idea.IdeaImpl;
+import com.worscipe.bright.ideas.model.IdeaAction;
+import com.worscipe.bright.ideas.model.IdeaImpl;
 
 public interface IdeaService {
 

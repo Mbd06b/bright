@@ -2,7 +2,7 @@ package com.worscipe.bright.ideas.repository;
 
 import java.util.List;
 
-import com.worscipe.bright.ideas.model.idea.IdeaImpl;
+import com.worscipe.bright.ideas.model.IdeaImpl;
 
 public interface IdeaRepositoryCustom {
 	Long getIdeaQueryTotalResultCount(String searchText);

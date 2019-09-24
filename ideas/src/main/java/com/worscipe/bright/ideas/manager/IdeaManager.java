@@ -1,9 +1,9 @@
-package com.worscipe.bright.ideas.manager.idea;
+package com.worscipe.bright.ideas.manager;
 
 import java.util.List;
 
-import com.worscipe.bright.ideas.model.idea.IdeaImpl;
-import com.worscipe.bright.ideas.modelview.idea.IdeaView;
+import com.worscipe.bright.ideas.model.IdeaImpl;
+import com.worscipe.bright.ideas.modelview.IdeaView;
 import com.worscipe.bright.ideas.modelview.other.ResultPage;
 import com.worscipe.bright.ideas.modelview.user.UserView;
 

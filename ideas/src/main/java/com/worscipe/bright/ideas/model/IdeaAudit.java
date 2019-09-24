@@ -1,4 +1,4 @@
-package com.worscipe.bright.ideas.model.idea;
+package com.worscipe.bright.ideas.model;
 
 import java.util.Date;
 
