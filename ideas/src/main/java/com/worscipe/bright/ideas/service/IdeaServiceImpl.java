@@ -1,4 +1,4 @@
-package com.worscipe.bright.ideas.service.idea;
+package com.worscipe.bright.ideas.service;
 
 import java.util.List;
 import java.util.Optional;

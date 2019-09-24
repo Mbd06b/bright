@@ -28,6 +28,7 @@
     
     <modules>
         <module>ideas</module>
+        <module>users</module>
         <module>elections</module>
         <module>client-angular5</module>
     </modules>

@@ -13,9 +13,9 @@ import com.worscipe.bright.ideas.model.idea.IdeaImpl;
 import com.worscipe.bright.ideas.modelview.idea.IdeaView;
 import com.worscipe.bright.ideas.modelview.other.ResultPage;
 import com.worscipe.bright.ideas.modelview.user.UserView;
+import com.worscipe.bright.ideas.service.IdeaRecordService;
+import com.worscipe.bright.ideas.service.IdeaService;
 import com.worscipe.bright.ideas.service.UserService;
-import com.worscipe.bright.ideas.service.idea.IdeaRecordService;
-import com.worscipe.bright.ideas.service.idea.IdeaService;
 
 
 @Service

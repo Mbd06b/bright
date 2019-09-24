@@ -39,10 +39,10 @@ public class IdeaRestController {
 	private static final String DEFAULT_PAGE_SIZE_LIMIT = "20";
 
 	@Autowired
-	IdeaManager ideaManager;
+	private IdeaManager ideaManager;
 
 	@Autowired
-	UserService userService;
+	private UserService userService;
 
 	// ---------Retrieve All Ideas--------------
 	/**

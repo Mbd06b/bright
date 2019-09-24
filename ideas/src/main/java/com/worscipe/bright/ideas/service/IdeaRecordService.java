@@ -1,4 +1,4 @@
-package com.worscipe.bright.ideas.service.idea;
+package com.worscipe.bright.ideas.service;
 
 import com.worscipe.bright.ideas.model.idea.IdeaAction;
 import com.worscipe.bright.ideas.model.idea.IdeaAudit;
