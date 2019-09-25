@@ -12,10 +12,8 @@ import com.google.common.reflect.TypeToken;
 import com.worscipe.bright.ideas.model.IdeaImpl;
 import com.worscipe.bright.ideas.modelview.IdeaView;
 import com.worscipe.bright.ideas.modelview.other.ResultPage;
-import com.worscipe.bright.ideas.modelview.user.UserView;
 import com.worscipe.bright.ideas.service.IdeaRecordService;
 import com.worscipe.bright.ideas.service.IdeaService;
-import com.worscipe.bright.ideas.service.UserService;
 
 
 @Service
@@ -26,9 +24,6 @@ public class IdeaManagerImpl implements IdeaManager {
 	
 	@Autowired
 	private IdeaRecordService ideaRecordService;
-	
-	@Autowired
-	private UserService userService;
 	
 	// utilities
 	private ModelMapper modelMapper = new ModelMapper(); 
@@ -87,7 +82,7 @@ public class IdeaManagerImpl implements IdeaManager {
 	}
 
 	@Override
-	public List<UserView> findIdeaContributors(IdeaImpl ideaImpl){
+	public List<IdeaView> findIdeaContributors(IdeaImpl ideaImpl){
 		//TODO implement contributors
 	return null; 
 	}

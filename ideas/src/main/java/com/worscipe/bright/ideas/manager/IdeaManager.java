@@ -5,7 +5,6 @@ import java.util.List;
 import com.worscipe.bright.ideas.model.IdeaImpl;
 import com.worscipe.bright.ideas.modelview.IdeaView;
 import com.worscipe.bright.ideas.modelview.other.ResultPage;
-import com.worscipe.bright.ideas.modelview.user.UserView;
 
 public interface IdeaManager {
 	
@@ -22,7 +21,7 @@ public interface IdeaManager {
 	
 	List<IdeaView> findAllIdeasByUserId(Long id);
 	
-	List<UserView> findIdeaContributors(IdeaImpl ideaImpl);
+	List<IdeaView> findIdeaContributors(IdeaImpl ideaImpl);
 
 	Boolean deleteById(Long id);
 	

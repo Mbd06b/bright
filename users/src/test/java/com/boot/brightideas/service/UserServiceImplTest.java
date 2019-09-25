@@ -17,9 +17,9 @@ import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.BeforeSuite;
 import org.testng.annotations.Test;
 
-import com.worscipe.bright.ideas.model.user.User;
-import com.worscipe.bright.ideas.repository.UserRepository;
-import com.worscipe.bright.ideas.service.UserServiceImpl;
+import com.worscipe.bright.users.model.User;
+import com.worscipe.bright.users.repository.UserRepository;
+import com.worscipe.bright.users.service.UserServiceImpl;
 
 import net.andreinc.mockneat.MockNeat;
 import net.andreinc.mockneat.types.enums.PassStrengthType;
