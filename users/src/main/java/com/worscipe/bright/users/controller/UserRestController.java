@@ -15,8 +15,8 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.worscipe.bright.users.manager.user.UserManager;
-import com.worscipe.bright.users.modelview.user.UserView;
+import com.worscipe.bright.users.manager.UserManager;
+import com.worscipe.bright.users.modelview.UserView;
 
 //Example   http://websystique.com/springmvc/spring-mvc-4-restful-web-services-crud-example-resttemplate/
 //notes.. working from the design patterns when setting up the DAO and User Service, this tutorial was

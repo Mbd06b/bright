@@ -8,7 +8,7 @@ import javax.transaction.Transactional;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import com.worscipe.bright.users.model.user.User;
+import com.worscipe.bright.users.model.User;
 import com.worscipe.bright.users.repository.UserRepository;
 
 @Service("userService")

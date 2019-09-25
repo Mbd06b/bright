@@ -1,6 +1,8 @@
-package com.worscipe.bright.users.modelview.user;
+package com.worscipe.bright.users.modelview;
 
 import java.io.Serializable;
+
+import com.worscipe.bright.users.model.User;
 
 public class UserLinkView implements Serializable {
 	

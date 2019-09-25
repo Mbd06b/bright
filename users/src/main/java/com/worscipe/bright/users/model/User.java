@@ -1,4 +1,4 @@
-package com.worscipe.bright.users.model.user;
+package com.worscipe.bright.users.model;
 
 import java.util.Date;
 

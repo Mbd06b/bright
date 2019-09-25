@@ -2,7 +2,7 @@ package com.worscipe.bright.users.service;
 
 import java.util.List;
 
-import com.worscipe.bright.users.model.user.User;
+import com.worscipe.bright.users.model.User;
 
 //https://www.journaldev.com/7655/spring-orm-example-jpa-hibernate-transaction
 

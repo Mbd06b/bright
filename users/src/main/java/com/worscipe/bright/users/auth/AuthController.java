@@ -10,8 +10,8 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.worscipe.bright.users.manager.user.UserManager;
-import com.worscipe.bright.users.modelview.user.UserView;
+import com.worscipe.bright.users.manager.UserManager;
+import com.worscipe.bright.users.modelview.UserView;
 
 //This class is providing Angular 5 endpoint
 //JWT token. 

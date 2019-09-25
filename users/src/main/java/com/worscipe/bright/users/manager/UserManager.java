@@ -1,9 +1,9 @@
-package com.worscipe.bright.users.manager.user;
+package com.worscipe.bright.users.manager;
 
 import java.util.List;
 
-import com.worscipe.bright.users.model.user.User;
-import com.worscipe.bright.users.modelview.user.UserView;
+import com.worscipe.bright.users.model.User;
+import com.worscipe.bright.users.modelview.UserView;
 
 public interface UserManager{
 	

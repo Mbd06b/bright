@@ -6,7 +6,7 @@ import javax.transaction.Transactional;
 
 import org.springframework.stereotype.Service;
 
-import com.worscipe.bright.users.modelview.user.UserView;
+import com.worscipe.bright.users.modelview.UserView;
 
 import io.jsonwebtoken.Claims;
 import io.jsonwebtoken.Jws;

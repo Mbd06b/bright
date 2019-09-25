@@ -1,8 +1,10 @@
-package com.worscipe.bright.ideas.modelview.user;
+package com.worscipe.bright.users.modelview;
 
 import java.io.Serializable;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
+import com.worscipe.bright.users.model.Role;
+import com.worscipe.bright.users.model.User;
 
 //TODO from 1/9/2019 code review, research ViewModels
 //This UserView (data transfer object) is used by the application front-end to communicate to the back.

@@ -11,7 +11,7 @@ import org.springframework.data.jpa.repository.config.EnableJpaRepositories;
 
 @SpringBootApplication
 @EnableAutoConfiguration
-@EntityScan(basePackages = { "com.worscipe.bright.ideas.model" })
+@EntityScan(basePackages = { "com.worscipe.bright.users.model" })
 @ComponentScan({  "com.worscipe.bright.users"})
 @EnableJpaRepositories(basePackages = { "com.worscipe.bright.users.repository" })
 public class UsersServiceApplication {

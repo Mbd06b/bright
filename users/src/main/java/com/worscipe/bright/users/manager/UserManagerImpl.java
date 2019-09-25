@@ -1,4 +1,4 @@
-package com.worscipe.bright.users.manager.user;
+package com.worscipe.bright.users.manager;
 
 import java.lang.reflect.Type;
 import java.util.ArrayList;
@@ -11,8 +11,8 @@ import org.springframework.stereotype.Service;
 import com.google.common.reflect.TypeToken;
 import com.worscipe.bright.users.auth.Password;
 import com.worscipe.bright.users.auth.TokenManager;
-import com.worscipe.bright.users.model.user.User;
-import com.worscipe.bright.users.modelview.user.UserView;
+import com.worscipe.bright.users.model.User;
+import com.worscipe.bright.users.modelview.UserView;
 import com.worscipe.bright.users.service.UserService;
 
 

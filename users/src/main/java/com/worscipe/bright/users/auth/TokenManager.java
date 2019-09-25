@@ -1,6 +1,6 @@
 package com.worscipe.bright.users.auth;
 
-import com.worscipe.bright.users.modelview.user.UserView;
+import com.worscipe.bright.users.modelview.UserView;
 
 // creating JWTtokens https://www.baeldung.com/java-json-web-tokens-jjwt
 
