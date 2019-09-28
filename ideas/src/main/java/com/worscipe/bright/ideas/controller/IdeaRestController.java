@@ -39,6 +39,8 @@ public class IdeaRestController {
 
 	@Autowired
 	private IdeaManager ideaManager;
+	
+	
 
 	// ---------Retrieve All Ideas--------------
 	/**
@@ -66,12 +68,12 @@ public class IdeaRestController {
 	 */
 	 // TODO Enhancements for Idea Searches.
 	@GetMapping( value = "/getIdeasByQueryPageAndSize.action")
-	public ResponseEntity<ResultPage<IdeaView>> getMessageKey(
+	public ResponseEntity<ResultPage<IdeaView>> getIdeas(
 		@RequestParam(value="page", defaultValue=DEFAULT_PAGE_INDEX) Integer pageNumber,
 		@RequestParam(value="limit", defaultValue=DEFAULT_PAGE_SIZE_LIMIT) Integer limit,
 		@RequestParam(value="searchQuery", defaultValue="") String searchText // empty query == all properties
 	){
-		logger.debug("Finding message properties with page=" + pageNumber.toString() + ", limit=" + limit.toString() + ", searchQuery=" + searchText);
+		logger.debug("Finding ideas with page=" + pageNumber.toString() + ", limit=" + limit.toString() + ", searchQuery=" + searchText);
 		
 		return new ResponseEntity<ResultPage<IdeaView>>(this.ideaManager.getIdeasPageByQueryPageAndSize(pageNumber, limit, searchText), HttpStatus.OK);
 	}
@@ -90,7 +92,7 @@ public class IdeaRestController {
 		IdeaView idea = ideaManager.findById(id);
 
 		if (idea == null) {
-			System.out.println("IdeaImpl with id: " + id + " not found ");
+			logger.info("IdeaImpl with id: " + id + " not found ");
 			return new ResponseEntity<IdeaView>(HttpStatus.NOT_FOUND);
 		}
 		return new ResponseEntity<IdeaView>(idea, HttpStatus.OK);

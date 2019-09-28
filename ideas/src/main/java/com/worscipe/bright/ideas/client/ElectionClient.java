@@ -7,10 +7,9 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 
 
-@FeignClient(name = "user-service")
-public interface UserClient {
+@FeignClient(name = "election-service")
+public interface ElectionClient {
 
-	@GetMapping("/idea/{ideaId}/contributors")
-	List<Long> findByIdea(@PathVariable("ideaId") Long ideaId);
-	
+	@GetMapping("idea/{ideaId}/elections")
+	List<Long> findElectionsById(@PathVariable("ideaId") Long ideaId);
 }

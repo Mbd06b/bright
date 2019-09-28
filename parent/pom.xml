@@ -27,6 +27,9 @@
 	</properties>
     
     <modules>
+    	<module>proxy-service</module>
+        <module>gateway-service</module>
+        <module>discovery-service</module>
         <module>ideas</module>
         <module>users</module>
         <module>elections</module>
