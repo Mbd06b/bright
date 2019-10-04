@@ -153,6 +153,13 @@
 		    <version>6.14.3</version>
 		    <scope>test</scope>
 		</dependency>
+		
+		<!-- https://mvnrepository.com/artifact/io.springfox/springfox-swagger2 -->
+		<dependency>
+		    <groupId>io.springfox</groupId>
+		    <artifactId>springfox-swagger2</artifactId>
+		    <version>${springfox.version}</version>
+		</dependency>
 						
 		
 	</dependencies>

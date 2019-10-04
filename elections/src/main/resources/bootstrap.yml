@@ -1,6 +1,6 @@
 spring:
   application:
-    name: discovery-service
+    name: election-service
   cloud:
     config:
       uri: http://localhost:8085

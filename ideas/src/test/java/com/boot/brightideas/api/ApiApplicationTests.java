@@ -1,24 +1,24 @@
-package com.boot.brightideas.api;
-
-
-import java.lang.reflect.Method;
-
-import org.junit.runner.RunWith;
-import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.chrome.ChromeDriver;
-import org.springframework.boot.test.context.SpringBootTest;
-import org.springframework.test.context.junit4.SpringRunner;
-import org.testng.annotations.AfterSuite;
-import org.testng.annotations.BeforeMethod;
-import org.testng.annotations.BeforeSuite;
-import org.testng.annotations.Test;
-
-@RunWith(SpringRunner.class)
-@SpringBootTest
-public class ApiApplicationTests {
-	
-	WebDriver driver; 
-	
+//package com.boot.brightideas.api;
+//
+//
+//import java.lang.reflect.Method;
+//
+//import org.junit.runner.RunWith;
+//import org.openqa.selenium.WebDriver;
+//import org.openqa.selenium.chrome.ChromeDriver;
+//import org.springframework.boot.test.context.SpringBootTest;
+//import org.springframework.test.context.junit4.SpringRunner;
+//import org.testng.annotations.AfterSuite;
+//import org.testng.annotations.BeforeMethod;
+//import org.testng.annotations.BeforeSuite;
+//import org.testng.annotations.Test;
+//
+//@RunWith(SpringRunner.class)
+//@SpringBootTest
+//public class ApiApplicationTests {
+//	
+//	WebDriver driver; 
+//	
 	//@Before Tests should initialize TEST-RELATED Objects and dependencies
 	// AND  check TEST-Related resources. 
 	// Not to be confused with sanity tests @Test(groups="sanity") that check for basic SYSTEM functionality
@@ -26,39 +26,39 @@ public class ApiApplicationTests {
 	//tests by default run by Alphabetical order in the class, unless specified @Test(priority = n) starting with "n = -1");
 	
 	
-	@BeforeSuite
-	public void setup() {
+//	@BeforeSuite
+//	public void setup() {
 	
 		// Driver setup depends on having the webdriver in your system path, or property explicitly set as below 
 		// System.setProperty("webdriver.chrome.driver","C:/Users/Your.user.name/webdriver/chromedriver.exe");
-		
-		driver = new ChromeDriver();
-		driver.get("https://google.com");
-		
-	}
-	
-	
-	@AfterSuite
-	public void tearDown() {
-		
-	}
-	
-	
-	@Test(groups="sanity", description = "Setup and verify that environment is running")
-	public void setupDatabase() {
-		System.out.println("Sanity tests that should run first.");
-	}
-	
-	@Test(dependsOnGroups="sanity")
-	public void doOtherStuff() {
-		System.out.println("Doing stuff, after setting up necessary environment");
-	}
-	
-	@Test(priority= TestPriority.HIGH)
-	public void doImportantStuff() {
-		System.out.println("Do important stuff");
-	}
-	
+//		
+//		driver = new ChromeDriver();
+//		driver.get("https://google.com");
+//		
+//	}
+//	
+//	
+//	@AfterSuite
+//	public void tearDown() {
+//		
+//	}
+//	
+//	
+//	@Test(groups="sanity", description = "Setup and verify that environment is running")
+//	public void setupDatabase() {
+//		System.out.println("Sanity tests that should run first.");
+//	}
+//	
+//	@Test(dependsOnGroups="sanity")
+//	public void doOtherStuff() {
+//		System.out.println("Doing stuff, after setting up necessary environment");
+//	}
+//	
+//	@Test(priority= TestPriority.HIGH)
+//	public void doImportantStuff() {
+//		System.out.println("Do important stuff");
+//	}
+//	
 /* ::::::::::::::(UI Tests)  BEFORE Parameterizing the fields of a login form:::::::::::::::::: 
 	
 	@Test
@@ -110,15 +110,15 @@ public class ApiApplicationTests {
 	*/
 	
 	
-	@BeforeMethod
-	public void globalBeforeMethod(Method testMethod) {
-		
-		String description = testMethod.getAnnotation(Test.class).description();
-		
-		System.out.println("Starting test: " + testMethod.getName() + " with description: " + description); 
-		
-	}
-	
+//	@BeforeMethod
+//	public void globalBeforeMethod(Method testMethod) {
+//		
+//		String description = testMethod.getAnnotation(Test.class).description();
+//		
+//		System.out.println("Starting test: " + testMethod.getName() + " with description: " + description); 
+//		
+//	}
+//	
 	
 	
 	
@@ -185,15 +185,15 @@ public class ApiApplicationTests {
 		
 		
 	*/
-	
-	@Test
-	public void contextLoads() {
-		System.out.println("This is Context Load test");
-	}
-	
-	@Test
-	private void successfulAddUserReturnsTrue() {
-		
+//	
+//	@Test
+//	public void contextLoads() {
+//		System.out.println("This is Context Load test");
+//	}
+//	
+//	@Test
+//	private void successfulAddUserReturnsTrue() {
+//		
 	/*  AAA -method example (Arrange, Act, and Assert)
 	 *
 	 *
@@ -257,13 +257,13 @@ public class ApiApplicationTests {
 		
 	*/
    
-	}
-	
-	@Test (description="This does nothing, but theoretically could test that a non Existing User Service returns null")
-	public void getNonExistingUserReturnsNull() {
-		
-	}
-	
+//	}
+//	
+//	@Test (description="This does nothing, but theoretically could test that a non Existing User Service returns null")
+//	public void getNonExistingUserReturnsNull() {
+//		
+//	}
+//	
 	
 	//Positive Testing for exceptions without terminating excecution, add "expectedExceptions", use expectedExceptionsMessageRegExp to use RegExp to hone in on the expected message
 	/*
@@ -338,11 +338,11 @@ public class ApiApplicationTests {
 	
 	*/
 		
-	
-	@Test(description= "This is a worthless test built for learning")
-	private void aTest2() {
-		System.out.println("This is Test 3");
-	}
-
-}
+//	
+//	@Test(description= "This is a worthless test built for learning")
+//	private void aTest2() {
+//		System.out.println("This is Test 3");
+//	}
+//
+//}
 

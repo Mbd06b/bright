@@ -27,12 +27,12 @@
 	</properties>
     
     <modules>
-    	<module>../proxy-service</module>
         <module>../gateway-service</module>
         <module>../discovery-service</module>
+        <module>../proxy-service</module>
         <module>../ideas</module>
         <module>../users</module>
         <module>../elections</module>
-        <module>../client-angular5</module>
+<!--         <module>../client-angular5</module> -->
     </modules>
 </project>
