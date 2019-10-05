@@ -13,8 +13,6 @@
 	<name>elections</name>
 	<description>An Election Service API</description>
 
-
-
 	<dependencies>
 		<dependency>
 			<groupId>org.springframework.boot</groupId>

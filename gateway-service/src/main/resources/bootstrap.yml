@@ -12,18 +12,18 @@ spring:
       - id: user-service
         uri: lb://user-service
         predicates:
-        - Path=/employee/**
+        - Path=/user/**
         filters:
-        - RewritePath=/employee/(?.*), /$\{path}
-      - id: department-service
-        uri: lb://department-service
+        - RewritePath=/user/(?.*), /$\{path}
+      - id: election-service
+        uri: lb://election-service
         predicates:
-        - Path=/department/**
+        - Path=/election/**
         filters:
-        - RewritePath=/department/(?.*), /$\{path}
-      - id: organization-service
-        uri: lb://organization-service
+        - RewritePath=/election/(?.*), /$\{path}
+      - id: idea-service
+        uri: lb://idea-service
         predicates:
-        - Path=/organization/**
+        - Path=/idea/**
         filters:
-        - RewritePath=/organization/(?.*), /$\{path}
+        - RewritePath=/idea/(?.*), /$\{path}
