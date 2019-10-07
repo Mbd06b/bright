@@ -1,4 +1,4 @@
-package com.worscipe.bright.elections.rest.manager;
+package com.worscipe.bright.elections.manager;
 
 import java.util.HashSet;
 import java.util.List;
@@ -13,10 +13,10 @@ import com.worscipe.bright.elections.model.CandidateImpl;
 import com.worscipe.bright.elections.model.Election;
 import com.worscipe.bright.elections.model.rcv.RCVElectionImpl;
 import com.worscipe.bright.elections.model.updown.UpDownVoteElectionService;
-import com.worscipe.bright.elections.rest.view.ElectionView;
-import com.worscipe.bright.elections.rest.view.RestResourceEntity;
-import com.worscipe.bright.elections.rest.view.ResultPage;
 import com.worscipe.bright.elections.service.RCVElectionService;
+import com.worscipe.bright.elections.view.ElectionView;
+import com.worscipe.bright.elections.view.RestResourceEntity;
+import com.worscipe.bright.elections.view.ResultPage;
 
 @Service
 public class ElectionManagerImpl implements ElectionManager {

@@ -1,4 +1,4 @@
-package com.worscipe.bright.elections.rest.view;
+package com.worscipe.bright.elections.view;
 
 import java.io.Serializable;
 import java.util.List;

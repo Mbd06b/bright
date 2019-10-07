@@ -1,10 +1,10 @@
-package com.worscipe.bright.elections.rest.manager;
+package com.worscipe.bright.elections.manager;
 
 import java.util.List;
 
-import com.worscipe.bright.elections.rest.view.ElectionView;
-import com.worscipe.bright.elections.rest.view.RestResourceEntity;
-import com.worscipe.bright.elections.rest.view.ResultPage;
+import com.worscipe.bright.elections.view.ElectionView;
+import com.worscipe.bright.elections.view.RestResourceEntity;
+import com.worscipe.bright.elections.view.ResultPage;
 
 public interface ElectionManager {
 			

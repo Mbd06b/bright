@@ -1,4 +1,4 @@
-package com.worscipe.bright.elections.rest.controller;
+package com.worscipe.bright.elections.controller;
 
 import java.util.List;
 
@@ -18,10 +18,10 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
+import com.worscipe.bright.elections.manager.BallotManager;
 import com.worscipe.bright.elections.model.Ballot;
-import com.worscipe.bright.elections.rest.manager.BallotManager;
-import com.worscipe.bright.elections.rest.view.BallotView;
-import com.worscipe.bright.elections.rest.view.ResultPage;
+import com.worscipe.bright.elections.view.BallotView;
+import com.worscipe.bright.elections.view.ResultPage;
 
 @RestController
 @RequestMapping(value = "/election/{electionId}/ballot",  produces=MediaType.APPLICATION_JSON_UTF8_VALUE)

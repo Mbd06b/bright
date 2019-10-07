@@ -12,12 +12,12 @@ logging:
               
 zuul:
   routes:
-    department:
+    idea:
       path: /idea/**
       serviceId: idea-service
-    employee:
+    user:
       path: /user/**
       serviceId: user-service
-    organization:
+    election:
       path: /election/**
       serviceId: election-service

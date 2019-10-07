@@ -16,20 +16,21 @@ import springfox.documentation.swagger2.annotations.EnableSwagger2;
 @EnableSwagger2
 public class SwaggerConfig implements WebMvcConfigurer {        
 	
-	@Override
-	public void addResourceHandlers(ResourceHandlerRegistry registry) {
-	    registry.addResourceHandler("swagger-ui.html")
-	      .addResourceLocations("classpath:/META-INF/resources/");
-	 
-	    registry.addResourceHandler("/webjars/**")
-	      .addResourceLocations("classpath:/META-INF/resources/webjars/");
-	}
+// TODO Delete 
+//	@Override
+//	public void addResourceHandlers(ResourceHandlerRegistry registry) {
+//	    registry.addResourceHandler("swagger-ui.html")
+//	      .addResourceLocations("classpath:/META-INF/resources/");
+//	 
+//	    registry.addResourceHandler("/webjars/**")
+//	      .addResourceLocations("classpath:/META-INF/resources/webjars/");
+//	}
 	
 	@Bean
     public Docket swaggerApi() {
         return new Docket(DocumentationType.SWAGGER_2)
             .select()
-                .apis(RequestHandlerSelectors.basePackage("pl.piomin.services.employee.controller"))
+                .apis(RequestHandlerSelectors.basePackage("com.worscipe.bright.ideas.controller"))
                 .paths(PathSelectors.any())
             .build()
             .apiInfo(new ApiInfoBuilder().version("1.0").title("Idea API").description("Documentation Idea API v1.0").build());

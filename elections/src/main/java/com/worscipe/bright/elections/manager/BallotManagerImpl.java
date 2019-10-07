@@ -1,4 +1,4 @@
-package com.worscipe.bright.elections.rest.manager;
+package com.worscipe.bright.elections.manager;
 
 import java.util.List;
 
@@ -6,9 +6,9 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.worscipe.bright.elections.model.Ballot;
-import com.worscipe.bright.elections.rest.view.BallotView;
-import com.worscipe.bright.elections.rest.view.ResultPage;
 import com.worscipe.bright.elections.service.BallotService;
+import com.worscipe.bright.elections.view.BallotView;
+import com.worscipe.bright.elections.view.ResultPage;
 
 @Service
 public class BallotManagerImpl implements BallotManager {
