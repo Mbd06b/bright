@@ -7,9 +7,10 @@ The app currently contains:
 1 SpringMVC client, which both consume RESTful APIs.
 
 They are powered by a microservice spring boot network:
-Eureka service discovery, config, and gateway servers,
-and 3 application microservices users, ideas, and elections. 
-and 1 Python/Django service which is a RESTful Api wrapper for the codelucas/Newspaper library https://github.com/codelucas/newspaper. 
+* Eureka service discovery server, a Spring config-server , and a Spring gateway server,
+* 3 application microservices; users, ideas, and elections. 
+* 1 Python/Django service which is a simple single point RESTful Api wrapper for the codelucas/Newspaper project https://github.com/codelucas/newspaper. 
+* API docs are being generated and parsed by Swagger2 and are aggregated and accessed by a proxy-service consisting of a repurposed Netflix Zuul Gateway.
 
 # Objective
 The objective is to learn by building an app with RESTful microservices to support an agile-like development/learning. 
