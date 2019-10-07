@@ -24,7 +24,7 @@ import com.worscipe.bright.elections.view.RestResourceEntity;
 import com.worscipe.bright.elections.view.ResultPage;
 
 @RestController
-@RequestMapping(value = "/election",  produces=MediaType.APPLICATION_JSON_UTF8_VALUE)
+@RequestMapping(value = "/election")
 public class ElectionController {
 	
 	private static final Logger logger = LogManager.getLogger(ElectionController.class); 

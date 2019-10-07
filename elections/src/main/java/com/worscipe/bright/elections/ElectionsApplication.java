@@ -1,9 +1,15 @@
 package com.worscipe.bright.elections;
 
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 import org.springframework.boot.SpringApplication;
+import org.springframework.boot.autoconfigure.EnableAutoConfiguration;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
+import org.springframework.boot.autoconfigure.domain.EntityScan;
 import org.springframework.cloud.client.discovery.EnableDiscoveryClient;
 import org.springframework.context.annotation.Bean;
+import org.springframework.context.annotation.ComponentScan;
+import org.springframework.data.jpa.repository.config.EnableJpaRepositories;
 
 import springfox.documentation.builders.ApiInfoBuilder;
 import springfox.documentation.builders.PathSelectors;
@@ -15,12 +21,17 @@ import springfox.documentation.swagger2.annotations.EnableSwagger2;
 @SpringBootApplication
 @EnableDiscoveryClient
 @EnableSwagger2
+@EnableAutoConfiguration
+@EntityScan(basePackages = { "com.worscipe.bright.elections.model" })
+@ComponentScan({  "com.worscipe.bright.elections"})
+@EnableJpaRepositories(basePackages = { "com.worscipe.bright.elections.repository" })
 public class ElectionsApplication {
+	
+	 private static final Logger LOGGER = LogManager.getLogger(ElectionsApplication.class);
 
 	public static void main(String[] args) {
 		SpringApplication.run(ElectionsApplication.class, args);
 	}
-	
 	
 	@Bean
 	public Docket swaggerPersonApi10() {
@@ -31,5 +42,6 @@ public class ElectionsApplication {
 				.build()
 				.apiInfo(new ApiInfoBuilder().version("1.0").title("Election API").description("Documentation Election API v1.0").build());
 	}
+	
 
 }

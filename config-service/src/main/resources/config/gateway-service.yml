@@ -12,26 +12,26 @@ logging:
               
 spring:
   cloud:
-    gateway:
+     gateway:
       discovery:
         locator:
           enabled: true
       routes:
       - id: user-service
-        uri: lb://employee-service
+        uri: lb://user-service
         predicates:
         - Path=/user/**
         filters:
         - RewritePath=/user/(?<path>.*), /$\{path}
-      - id: idea-service
-        uri: lb://election-service
-        predicates:
-        - Path=/idea/**
-        filters:
-        - RewritePath=/idea/(?<path>.*), /$\{path}
       - id: election-service
         uri: lb://election-service
         predicates:
         - Path=/election/**
         filters:
         - RewritePath=/election/(?<path>.*), /$\{path}
+      - id: idea-service
+        uri: lb://idea-service
+        predicates:
+        - Path=/idea/**
+        filters:
+        - RewritePath=/idea/(?<path>.*), /$\{path}
