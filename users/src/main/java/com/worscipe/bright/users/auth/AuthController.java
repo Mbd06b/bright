@@ -19,18 +19,16 @@ import com.worscipe.bright.users.modelview.UserView;
 
 
 @RestController
-@RequestMapping("/api/auth")
+@RequestMapping("/auth")
 public class AuthController {
-	
 	
 	private static final Logger logger = LogManager.getLogger(AuthController.class);
 
+	@Autowired
+	private UserManager userManager; 
 
 	@Autowired
-	UserManager userManager; 
-
-	@Autowired
-	TokenManager tokenManager;
+	private TokenManager tokenManager;
 	
 	/**
 	 * JWT token credential for application access. 

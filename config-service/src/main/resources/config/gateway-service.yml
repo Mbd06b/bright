@@ -1,21 +1,29 @@
 server:
-  port: 8060
+  port: 8160
 
 eureka:
   client:
     serviceUrl:
-      defaultZone: http://localhost:8061/eureka/
+      defaultZone: http://localhost:8161/eureka/
 
 logging:
   pattern: 
     console: "%d{yyyy-MM-dd HH:mm:ss} ${LOG_LEVEL_PATTERN:-%5p} %m%n"
-              
+
 spring:
   cloud:
      gateway:
       discovery:
         locator:
           enabled: true
+      globalcors:
+        add-to-simple-url-handler-mapping: true
+        corsConfigurations:
+          '[/**]':
+            allowedOrigins: "http://localhost:4200"
+            allowedHeader: "*"
+            allowedMethods:
+            - GET, PUT, POST, DELETE, OPTIONS
       routes:
       - id: user-service
         uri: lb://user-service
