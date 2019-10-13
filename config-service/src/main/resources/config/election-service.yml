@@ -1,13 +1,6 @@
 server:
   port: 8171
   
-management:
-  endpoints:
-    web:
-      cors:
-        allowed-origins: http://localhost:4200
-        allowed-methods: GET, POST, PUT, DELETE
-
 spring:
   datasource:
     driver-class-name: com.mysql.cj.jdbc.Driver

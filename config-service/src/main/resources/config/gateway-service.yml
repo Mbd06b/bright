@@ -13,17 +13,18 @@ logging:
 spring:
   cloud:
      gateway:
+      default-filters:
+        - DedupeResponseHeader=Access-Control-Allow-Origin Access-Control-Allow-Credentials, RETAIN_UNIQUE
+      globalcors:
+          cors-configurations:
+             '[/**]':
+               allowed-origins: "http://localhost:4200"
+               allowed-methods: "*"
+               allowed-headers: "*"
+               allow-credentials: true
       discovery:
         locator:
           enabled: true
-      globalcors:
-        add-to-simple-url-handler-mapping: true
-        corsConfigurations:
-          '[/**]':
-            allowedOrigins: "http://localhost:4200"
-            allowedHeader: "*"
-            allowedMethods:
-            - GET, PUT, POST, DELETE, OPTIONS
       routes:
       - id: user-service
         uri: lb://user-service
@@ -31,6 +32,12 @@ spring:
         - Path=/user/**
         filters:
         - RewritePath=/user/(?<path>.*), /$\{path}
+      - id: auth-service
+        uri: lb://user-service
+        predicates:
+        - Path=/auth/**
+        filters:
+        - RewritePath=/auth/(?<path>.*), /$\{path}
       - id: election-service
         uri: lb://election-service
         predicates:
