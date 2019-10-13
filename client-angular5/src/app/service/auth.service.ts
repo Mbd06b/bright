@@ -13,6 +13,8 @@ import { Observable } from 'rxjs/Observable';
 import { inspect } from 'util';
 import { validateConfig } from '@angular/router/src/config';
 
+const AUTH_URL: string = AppSettings.API_URL + '/user/auth/';
+
 // design pattern refrenced, https://dzone.com/articles/angular-5-material-design-login-application
 @Injectable()
 export class AuthService {
@@ -40,7 +42,7 @@ export class AuthService {
     }
 
     isTokenValid() {
-      return this.http.post<boolean>(AppSettings.API_URL + '/auth/token', this.sessionToken)
+      return this.http.post<boolean>(AUTH_URL + 'token', this.sessionToken)
             .do( response => {
                 // header switch handling
                 console.log(response);
@@ -49,7 +51,7 @@ export class AuthService {
     }
 
     login(user: User) {
-        return this.http.post<User>(AppSettings.API_URL + '/auth/', user)
+        return this.http.post<User>(AUTH_URL, user)
             .do( userData => {
                 // login successful if there's a jwt token in the response
                 if  (userData && userData.token) {
