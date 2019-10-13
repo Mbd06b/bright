@@ -16,12 +16,12 @@ import org.springframework.data.jpa.repository.config.EnableJpaRepositories;
 @EntityScan(basePackages = { "com.worscipe.bright.ideas.model" })
 @ComponentScan({  "com.worscipe.bright.ideas"})
 @EnableJpaRepositories(basePackages = { "com.worscipe.bright.ideas.repository" })
-public class RestProviderApplication {
+public class IdeaServiceApplication {
 	
-	 private static final Logger LOGGER = LogManager.getLogger(RestProviderApplication.class);
+	 private static final Logger LOGGER = LogManager.getLogger(IdeaServiceApplication.class);
 
 	public static void main(String[] args) {
-		SpringApplication.run(RestProviderApplication.class, args);
+		SpringApplication.run(IdeaServiceApplication.class, args);
 	}
 
 }

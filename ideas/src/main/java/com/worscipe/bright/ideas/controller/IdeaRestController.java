@@ -28,8 +28,6 @@ import com.worscipe.bright.ideas.modelview.other.ResultPage;
 //https://stackoverflow.com/questions/50688285/inheritance-and-rest-api-controllers-dealing-with-subclasses
 
 @RestController
-@RequestMapping("/idea")
-@CrossOrigin
 public class IdeaRestController {
 	
 	private static final Logger logger = LogManager.getLogger(IdeaRestController.class);
@@ -86,14 +84,14 @@ public class IdeaRestController {
 	 */
 	@RequestMapping(value = "/{id}", method = RequestMethod.GET, produces = MediaType.APPLICATION_JSON_UTF8_VALUE)
 	public ResponseEntity<IdeaView> getIdea(@PathVariable("id") Long id) {
-		System.out.println("Fetching IdeaImpl with id" + id);
+		logger.debug("Fetching IdeaImpl with id" + id);
 		
 		
 		IdeaView idea = ideaManager.findById(id);
 
 		if (idea == null) {
 			logger.info("IdeaImpl with id: " + id + " not found ");
-			return new ResponseEntity<IdeaView>(HttpStatus.NOT_FOUND);
+			return new ResponseEntity<IdeaView>(HttpStatus.NO_CONTENT);
 		}
 		return new ResponseEntity<IdeaView>(idea, HttpStatus.OK);
 
@@ -111,9 +109,9 @@ public class IdeaRestController {
 
 		logger.info("Creating IdeaImpl: " + idea.getTitle());
 		
-		ideaManager.saveIdea(idea);
+		IdeaView savedIdea = ideaManager.saveIdea(idea);
 
-		return new ResponseEntity<IdeaView>(idea, HttpStatus.CREATED);
+		return new ResponseEntity<IdeaView>(savedIdea, HttpStatus.CREATED);
 
 	}	
 	
@@ -126,10 +124,7 @@ public class IdeaRestController {
 	@RequestMapping(value = "/", method = RequestMethod.PUT, produces = MediaType.APPLICATION_JSON_UTF8_VALUE)
 	public ResponseEntity<IdeaView> updateIdea(@RequestBody IdeaView idea) {
 			
-		Gson gson = new Gson();
-		String json = gson.toJson(idea);
-		
-		System.out.println("ideadto: " + json); 
+		logger.debug("IdeaView to Update: " + idea); 
 		
 		IdeaView updatedIdea = ideaManager.saveIdea(idea);
 		
@@ -137,7 +132,7 @@ public class IdeaRestController {
 			return new ResponseEntity<IdeaView>(updatedIdea, HttpStatus.OK);
 		}
 		else {
-			return new ResponseEntity<IdeaView>(HttpStatus.BAD_REQUEST);	
+			return new ResponseEntity<IdeaView>(HttpStatus.NO_CONTENT);	
 		}
 
 	}
@@ -149,13 +144,13 @@ public class IdeaRestController {
 	 */
 	@RequestMapping(value = "/{id}", method = RequestMethod.DELETE, produces = MediaType.APPLICATION_JSON_UTF8_VALUE)
 	public ResponseEntity<IdeaImpl> deleteIdea(@PathVariable("id") Long id) {
-		System.out.println("Fetching and Deleting IdeaImpl with id: " + id);
+		logger.debug("Fetching and Deleting IdeaImpl with id: " + id);
 
 		if (ideaManager.deleteById(id)) {
 			return new ResponseEntity<IdeaImpl>(HttpStatus.OK);
 		}
 		System.out.println("Unable to delete. IdeaImpl with id " + id);
-		return new ResponseEntity<IdeaImpl>(HttpStatus.BAD_REQUEST);
+		return new ResponseEntity<IdeaImpl>(HttpStatus.INTERNAL_SERVER_ERROR);
 	}
 
 }

@@ -23,7 +23,6 @@ import com.worscipe.bright.users.modelview.UserView;
 //matching my use-case, with slight changes to the RequestMapping and method calls. 
 
 @RestController
-@CrossOrigin
 public class UserRestController {
 	
 	 private static final Logger logger = LogManager.getLogger(UserRestController.class);
