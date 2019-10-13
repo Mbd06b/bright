@@ -25,7 +25,7 @@ import com.mvc.brightideas.restmanager.UserManager;
 public class LoginController {
 
 	@Autowired
-	UserManager userManager;
+	private UserManager userManager;
 
 	@RequestMapping(name = "/", method = RequestMethod.GET)
 	public String showLoginPage(Model model, HttpServletRequest request) {

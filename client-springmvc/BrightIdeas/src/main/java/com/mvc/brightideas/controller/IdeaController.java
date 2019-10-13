@@ -21,10 +21,10 @@ import com.mvc.brightideas.restmanager.UserManager;
 public class IdeaController {
 	
 	@Autowired
-	IdeaManager ideaManager; 
+	private IdeaManager ideaManager; 
 	
 	@Autowired
-	UserManager userManager;
+	private UserManager userManager;
 
 	// ---------Retrieve All Ideas--------------
 	@RequestMapping(value = "/ideas", method = RequestMethod.GET, produces = MediaType.APPLICATION_JSON_UTF8_VALUE)

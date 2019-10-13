@@ -14,7 +14,7 @@ import com.mvc.brightideas.model.Idea;
 @Service
 public class IdeaManager {
 	
-	private static final String ideaApiUrl = "http://localhost:7000/api/idea/"; 
+	private static final String ideaApiUrl = "http://localhost:6160//idea/"; 
 	
 	@Autowired
 	private final RestTemplate restTemplate; 
