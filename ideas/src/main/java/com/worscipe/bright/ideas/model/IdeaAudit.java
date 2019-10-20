@@ -21,10 +21,14 @@ public class IdeaAudit{
 	@GeneratedValue(strategy = GenerationType.AUTO)
     @Column(name="IDEA_AUDIT_ID", updatable = false, nullable = true)
 	private Long id;
-	
+		
 	@ManyToOne
 	@JoinColumn(name="IDEA_ID")
 	private IdeaImpl ideaImpl; 
+	
+	@Enumerated(EnumType.STRING) 
+	@Column(name="ACTION")
+	private IdeaAction ideaAction;
 	
 	// the id of the entity interacting with the idea (either an internal or external microservice)
 	@Column(name="ENTITY_ID") 
@@ -33,16 +37,22 @@ public class IdeaAudit{
 	// entity link is whatever is interacting with the idea (an election, a user comment, ecetera..) 
 	@Column(name="ENTITY_TYPE")
 	private String entityType; 
-	
-	@Enumerated(EnumType.STRING) 
-	@Column(name="ACTION")
-	private IdeaAction ideaAction;
-
 
 	@Column(name="CREATED_ON")
 	@Temporal(TemporalType.TIMESTAMP)
 	private Date createdOn = new Date();
-
+	
+	@Column(name="MODIFIED_ON")
+	@Temporal(TemporalType.TIMESTAMP)
+	private Date modifiedDate = new Date(); 
+	
+	@ManyToOne
+	@JoinColumn(name="IDEA_ID")
+	private IdeaImpl ideaImpl; 
+	
+	@Enumerated(EnumType.STRING) 
+	@Column(name="ACTION")
+	private IdeaAction ideaAction;
 
 	public IdeaAudit() {
 		super(); 

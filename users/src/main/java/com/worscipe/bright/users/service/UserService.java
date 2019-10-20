@@ -20,7 +20,10 @@ public interface UserService {
 	
 	Boolean existsById(Long id);
 		
-	Boolean deleteUserById(Long id); 
+	Boolean deleteUserById(Long id);
+
+	// Idea Contributors
+	List<User> findByIdea(Long ideaId); 
 	
 	
 

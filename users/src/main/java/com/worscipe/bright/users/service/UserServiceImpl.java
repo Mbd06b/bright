@@ -104,4 +104,17 @@ public class UserServiceImpl implements UserService{
 		}
 	}
 
+
+
+	@Override
+	public List<User> findByIdea(Long ideaId) {
+		Optional<List<User>> users = userRepository.findContributorsByIdea(ideaId);
+		
+		if(users.isPresent()) {
+			return users.get();
+		} else {
+			return null; 
+		} 
+	}
+
 }

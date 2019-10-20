@@ -151,9 +151,18 @@ public class UserManagerImpl implements UserManager {
 	public List<User> convertToViews(List<User> users){
 		return modelMapper.map(users, userDtoListType);
 	}
-	
-	
 
-	
+
+	@Override
+	public List<UserView> findContributorsByIdeaId(Long ideaId) {
+		
+		List<User> users = userService.findByIdea(ideaId);
+		List<UserView> userViews = new ArrayList<>();
+		for(User u: users) {
+			userViews.add(convertToView(u));
+		}
+		
+		return userViews; 
+	}
 	
 }

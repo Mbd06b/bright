@@ -31,4 +31,6 @@ public interface UserManager{
 
 	List<User> convertToViews(List<User> users);
 
+	List<UserView> findContributorsByIdeaId(Long ideaId);
+
 }
