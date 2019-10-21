@@ -1,5 +1,6 @@
 package com.worscipe.bright.users.model;
 
+import java.io.Serializable;
 import java.util.Date;
 import java.util.Set;
 
@@ -19,12 +20,15 @@ import javax.persistence.TemporalType;
 //https://thoughts-on-java.org/complete-guide-inheritance-strategies-jpa-hibernate/
 
 @Entity
-@Table(name = "users")
-public class User {
+@Table
+public class User implements Serializable {
 
 
-//Recommended GenerationType value for MySQL backend is IDENTITY  - https://thoughts-on-java.org/5-things-you-need-to-know-when-using-hibernate-with-mysql/ 
+	
+	private static final long serialVersionUID = 4466915115029408551L;
 
+	//Recommended GenerationType value for MySQL backend is IDENTITY  - https://thoughts-on-java.org/5-things-you-need-to-know-when-using-hibernate-with-mysql/ 
+	
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	@Column(name = "id")

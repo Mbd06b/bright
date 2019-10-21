@@ -24,8 +24,16 @@
 	        </dependency>
 	    </dependencies>
 	</dependencyManagement>
-	<!--  jcenter repository for mockneat -->
+
+
 	<repositories>
+		<!-- bright repository for com.worscipe.bright common artifact  -->
+	    <repository>
+	      <id>bright</id>
+	      <url>http://save.worscipe.com/repository/bright/</url>
+	    </repository>
+
+		<!--  jcenter repository for mockneat -->
 	    <repository>
 	        <id>jcenter</id>
 	        <url>https://jcenter.bintray.com/</url>
@@ -34,9 +42,9 @@
 
 	<dependencies>
 		<dependency>
-			<groupId>com.worscipe.bright</groupId>
- 		  	<artifactId>common</artifactId>
-  		    <version>0.0.1-SNAPSHOT</version>
+		  <groupId>com.worscipe.bright</groupId>
+		  <artifactId>common</artifactId>
+		  <version>0.0.1-RELEASE</version>
 		</dependency>
 		<dependency>
 			<groupId>org.springframework.cloud</groupId>

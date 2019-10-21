@@ -2,7 +2,22 @@
   <modelVersion>4.0.0</modelVersion>
   <groupId>com.worscipe.bright</groupId>
   <artifactId>common</artifactId>
-  <version>0.0.1-SNAPSHOT</version>
+  <version>0.0.1-RELEASE</version>
+  
+  <distributionManagement>
+    <repository>
+      <id>bright</id>
+      <name>Releases</name>
+      <url>http://save.worscipe.com/repository/bright</url>
+    </repository>
+    <snapshotRepository>
+      <id>bright</id>
+      <name>Snapshot</name>
+      <url>http://save.worscipe.com/repository/bright</url>
+    </snapshotRepository>
+  </distributionManagement>
+  
+  
   <build>
     <sourceDirectory>src</sourceDirectory>
     <plugins>

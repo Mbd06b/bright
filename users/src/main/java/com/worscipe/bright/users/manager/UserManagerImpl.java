@@ -17,7 +17,7 @@ import com.worscipe.bright.users.service.UserService;
 
 
 
-@Service("userManager")
+@Service
 public class UserManagerImpl implements UserManager {
 	
 	
@@ -37,8 +37,7 @@ public class UserManagerImpl implements UserManager {
 		if(user.getId() == null) {
 			// new user! hash the password
 			user.setPassword(Password.hash(user.getPassword()));
-		};
-		
+		}		
 		
 		User userToPersist = convertToModel(user) ;
 		
