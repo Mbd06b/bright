@@ -37,6 +37,7 @@ public class UserView implements Serializable{
 		
 		private String avatarUrl;
 		
+		
 		@JsonProperty("role")
 		private Role role = Role.NONE;
 	

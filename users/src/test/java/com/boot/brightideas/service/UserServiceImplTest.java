@@ -171,10 +171,10 @@ public class UserServiceImplTest {
 		Mockito.when(mockUserRepository.findById(user.getId()))
 			.thenReturn(optional);
 		
-		User result = userServiceUnderTest.findById(user.getId()); 
+		Optional<User> result = userServiceUnderTest.findById(user.getId()); 
 		
 		Mockito.verify(mockUserRepository, Mockito.atLeastOnce()).findById(user.getId());
-		Assert.assertEquals(result, user, "Users should be the same but are not");
+		Assert.assertEquals(result.get(), user, "Users should be the same but are not");
 	}
 	
 	@Test(priority=7)
@@ -182,11 +182,11 @@ public class UserServiceImplTest {
 		Mockito.when(mockUserRepository.findById(INVALID_ID))
 			.thenReturn(emptyOptional);
 		
-		User result = userServiceUnderTest.findById(INVALID_ID); 
+		Optional<User> result = userServiceUnderTest.findById(INVALID_ID); 
 		
 		// verify that Repo was NOT called,  Mockito.times(0) means no method invocations
 		Mockito.verify(mockUserRepository, Mockito.atLeastOnce()).findById(INVALID_ID);
-		Assert.assertNull(result, "The findById(-1L), shouldn't be returning a value");
+		Assert.assertNull(result.get(), "The findById(-1L), shouldn't be returning a value");
 		
 	}
 	
@@ -196,11 +196,11 @@ public class UserServiceImplTest {
 		Mockito.when(mockUserRepository.findByEmail(user.getEmail()))
 			.thenReturn(optional);
 		
-		User result = userServiceUnderTest.findByEmail(user.getEmail());
+		Optional<User> result = userServiceUnderTest.findByEmail(user.getEmail());
 		
 		Mockito.verify(mockUserRepository).findByEmail(user.getEmail());
 		
-		Assert.assertEquals(result, user, "the findByEmail() method should return the known user we mocked");
+		Assert.assertEquals(result.get(), user, "the findByEmail() method should return the known user we mocked");
 		
 	}
 	
@@ -209,11 +209,11 @@ public class UserServiceImplTest {
 		Mockito.when(mockUserRepository.findByEmail(INVALID_EMAIL))
 			.thenReturn(emptyOptional);
 			
-	    User result = userServiceUnderTest.findByEmail(INVALID_EMAIL);
+	    Optional<User> result = userServiceUnderTest.findByEmail(INVALID_EMAIL);
 	    
 	    Mockito.verify(mockUserRepository, Mockito.atLeastOnce()).findByEmail(INVALID_EMAIL);
 	    
-	    Assert.assertNull(result, "the findbyEmail("+ INVALID_EMAIL +") method should return null, but returns:" + result);
+	    Assert.assertNull(result.get(), "the findbyEmail("+ INVALID_EMAIL +") method should return null, but returns:" + result);
 	}
 	
 	

@@ -1,14 +1,18 @@
 package com.worscipe.bright.users.service;
 
+import java.util.HashSet;
 import java.util.List;
 import java.util.Optional;
+import java.util.Set;
 
 import javax.transaction.Transactional;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Example;
 import org.springframework.stereotype.Service;
 
 import com.worscipe.bright.users.model.User;
+import com.worscipe.bright.users.model.UserRecord;
 import com.worscipe.bright.users.repository.UserRepository;
 
 @Service("userService")
@@ -35,7 +39,6 @@ public class UserServiceImpl implements UserService{
 	 	return userRepository.save(user);
 	}
 	
-	
 	@Override
 	public List<User> findAllUsers(){
 		
@@ -50,37 +53,21 @@ public class UserServiceImpl implements UserService{
 		 return (Boolean)user.isPresent();
 	}
 	
+	
 	@Override
 	public Boolean existsById(Long id) {
 		Optional <User> user = userRepository.findById(id); 
-		 return (Boolean)user.isPresent();
+		 return user.isPresent();
 	}
 
 
 	@Override
-	public User findById(final Long id) {
-		
-			   Optional <User> user = userRepository.findById(id);
-			   
-			   if(user.isPresent()) {
-				   return user.get(); 
-			   }
-			   else {
-			       return null;
-			   }
-		   
+	public Optional<User> findById(final Long id) {
+		return userRepository.findById(id);	   
 	}
 	
-	public User findByEmail(final String email) {
-		
-			Optional <User> user = userRepository.findByEmail(email);
-			
-		   if(user.isPresent()) {
-			   return user.get(); 
-		   } else {
-		       return null;
-		   }
-		   
+	public Optional<User> findByEmail(final String email) {
+		return userRepository.findByEmail(email);
 	}
 	
 	public Boolean deleteUser(User user) {
@@ -108,13 +95,49 @@ public class UserServiceImpl implements UserService{
 
 	@Override
 	public List<User> findByIdea(Long ideaId) {
-		Optional<List<User>> users = userRepository.findContributorsByIdea(ideaId);
+	
+		User u = new User();
+		UserRecord r = new UserRecord(); 
+		r.setEntityId(ideaId);
+		
+		Set<UserRecord> c = new HashSet<UserRecord>();
+		c.add(r);
+		 u.setIdeas(c);
+		 
+		Example<User> example = Example.of(u);
+		Optional<List<User>> users = Optional.of(userRepository.findAll(example));
 		
 		if(users.isPresent()) {
 			return users.get();
 		} else {
 			return null; 
 		} 
+	}
+	
+	@Override
+	public Boolean saveIdea(Long id, Long ideaId) {
+		 Optional<User> user = findById(id); 
+		 if(user.isPresent()) {
+			user.get().getIdeas().add(new UserRecord(ideaId));
+			 saveUser(user.get());
+			 return true; 
+		 } else {
+			return false;
+		 }
+	}
+
+
+	@Override
+	public Boolean deleteIdea(Long id, Long ideaId) {
+		 Optional<User> user = findById(id); 
+		 
+		 if(user.isPresent()) {
+			user.get().getIdeas().removeIf(n -> n.getEntityId() == ideaId);
+			 saveUser(user.get());
+			 return true; 
+		 } else {
+			return false;
+		 }
 	}
 
 }

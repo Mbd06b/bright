@@ -9,8 +9,12 @@ import org.springframework.web.bind.annotation.PathVariable;
 
 @FeignClient(name = "idea-service")
 public interface IdeaClient {
-
+	
+	
 	@GetMapping("/idea/{ideaId}")
 	List<Long> findByIdea(@PathVariable("ideaId") Long ideaId);
+	
+
+	
 	
 }

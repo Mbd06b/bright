@@ -25,12 +25,12 @@ public interface UserManager{
 
 	User convertToModel(UserView userView);
 
-	List<User> convertToModels(List<UserView> userViews);
+	List<User> convertToModel(List<UserView> userViews);
 
 	UserView convertToView(User user);
 
-	List<User> convertToViews(List<User> users);
-
 	List<UserView> findContributorsByIdeaId(Long ideaId);
+
+	List<UserView> convertToView(List<User> users);
 
 }

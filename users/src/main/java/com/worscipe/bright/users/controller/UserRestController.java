@@ -32,11 +32,11 @@ public class UserRestController {
 
 	// --------------Retrieve All Users------------
 
-	@RequestMapping(value = "/users", method = RequestMethod.GET, produces = MediaType.APPLICATION_JSON_UTF8_VALUE)
+	@RequestMapping(value = "/all", method = RequestMethod.GET, produces = MediaType.APPLICATION_JSON_UTF8_VALUE)
 	public ResponseEntity<List<UserView>> listAllUsers() {
 		List<UserView> users = userManager.findAllUsers();
 		if (users.isEmpty()) {
-			return new ResponseEntity<List<UserView>>(HttpStatus.OK);
+			return new ResponseEntity<List<UserView>>(HttpStatus.NOT_FOUND);
 		}
 		for(UserView user : users) {
 			logger.debug(user);
@@ -44,22 +44,7 @@ public class UserRestController {
 		return new ResponseEntity<List<UserView>>(users, HttpStatus.OK);
 	}
 
-	// --------------Find User By Id----------
 
-	@RequestMapping(value = "/{id}", method = RequestMethod.GET, produces = MediaType.APPLICATION_JSON_UTF8_VALUE)
-	public ResponseEntity<UserView> getUser(@PathVariable("id") Long id) {
-		logger.info("Fetching User with id" + id);
-		UserView user = userManager.findById(id);
-
-		if (user == null) {
-			logger.info("Requested user with id: " + id + " not found ");
-			return new ResponseEntity<UserView>(HttpStatus.NO_CONTENT);
-		}
-		
-			logger.debug(user);
-		return new ResponseEntity<UserView>(user, HttpStatus.OK);
-
-	}
 
 	// -------------Find User By Email ----------------
 	@RequestMapping(value = "/email/{email}", method = RequestMethod.GET, produces = MediaType.APPLICATION_JSON_UTF8_VALUE)
@@ -77,33 +62,7 @@ public class UserRestController {
 
 	}
 	
-	// ----------- Check if User Exists (accepts id or email) ----------------
-	@RequestMapping(value= "/exists/{identifier}", method = RequestMethod.GET, produces = MediaType.APPLICATION_JSON_UTF8_VALUE)
-	public ResponseEntity<Boolean> userExists(@PathVariable("identifier") String identifier){
-		
-		Boolean exists = false; 
-		boolean numeric = true; 
-		Long id = 0L; 
-		
-		try {
-			id = Long.parseLong(identifier);
-		} catch (NumberFormatException e) {
-			numeric = false;
-		}
-		
-		if(numeric) {
-			exists = userManager.existsById(id);
-		} else {
-			exists = userManager.existsByEmail(identifier);
-		}		
-		
-		
-		return new ResponseEntity<Boolean>(exists, HttpStatus.OK);
-	}
-	
-
 	// ---------Create a User -------------------
-
 	@RequestMapping(value = "/", method = RequestMethod.POST, produces = MediaType.APPLICATION_JSON_UTF8_VALUE)
 	public ResponseEntity<UserView> createUser(@RequestBody UserView user) {
 		logger.info("Creating User: " + user.getEmail());
@@ -131,21 +90,9 @@ public class UserRestController {
 		}
 
 		logger.info("User with id " + updatedUser.getId() + " not found");
-		return new ResponseEntity<UserView>(HttpStatus.BAD_REQUEST);
+		return new ResponseEntity<UserView>(HttpStatus.INTERNAL_SERVER_ERROR);
 
 	}
 
-	// ---------Delete a User -----------------------------
-
-	@RequestMapping(value = "/{id}", method = RequestMethod.DELETE, produces = MediaType.APPLICATION_JSON_UTF8_VALUE)
-	public ResponseEntity<UserView> deleteUser(@PathVariable("id") Long id) {
-
-		logger.info("Fetching and Deleting User with id: " + id);
-		if (userManager.deleteUserById(id)) {
-			return new ResponseEntity<UserView>(HttpStatus.OK);
-		}
-		logger.info("Unable to delete. User with id " + id);
-		return new ResponseEntity<UserView>(HttpStatus.BAD_REQUEST);
-	}
 
 }

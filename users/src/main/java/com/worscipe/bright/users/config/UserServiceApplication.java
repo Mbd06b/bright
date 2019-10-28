@@ -45,5 +45,4 @@ public class UserServiceApplication {
 				.apiInfo(new ApiInfoBuilder().version("1.0").title("User API").description("Documentation User API v1.0").build());
 	}
 	
-
 }

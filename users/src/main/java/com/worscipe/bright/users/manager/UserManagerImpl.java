@@ -1,14 +1,12 @@
 package com.worscipe.bright.users.manager;
 
-import java.lang.reflect.Type;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Optional;
 
-import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import com.google.common.reflect.TypeToken;
 import com.worscipe.bright.users.auth.Password;
 import com.worscipe.bright.users.auth.TokenManager;
 import com.worscipe.bright.users.model.User;
@@ -26,10 +24,7 @@ public class UserManagerImpl implements UserManager {
 	
 	@Autowired
 	private TokenManager tokenManager;
-	
-	private ModelMapper modelMapper = new ModelMapper(); 
-	private Type userListType = new TypeToken<List<User>>() {}.getType();
-	private Type userDtoListType = new TypeToken<List<UserView>>() {}.getType();
+
 	
 	@Override
 	public UserView saveUser(UserView user) {
@@ -62,10 +57,10 @@ public class UserManagerImpl implements UserManager {
 	@Override
 	public UserView findById(final Long id) {
 	   
-		User user = userService.findById(id);
+		Optional<User> user = userService.findById(id);
 	   
-	   if(user != null) {
-		   return new UserView(user); 
+	   if(user.isPresent()) {
+		   return convertToView(user.get()); 
 	   }
 	   else {
 	       return null;
@@ -73,11 +68,12 @@ public class UserManagerImpl implements UserManager {
 	}
 	
 
+	@Override
 	public UserView findByEmail(final String email) {
-		User user = userService.findByEmail(email);
+		Optional<User> user = userService.findByEmail(email);
 		
-	   if(user != null) {
-		   return convertToView(user); 
+	   if(user.isPresent()) {
+		   return convertToView(user.get()); 
 	   }
 	   else {
 	       return null;
@@ -96,16 +92,9 @@ public class UserManagerImpl implements UserManager {
 		return userService.existsById(id);
 	}
 	
-
 	@Override
 	public Boolean deleteUserById(Long id) {
-		
-		if(userService.deleteUserById(id)) {
-			return true;
-		}
-		else {
-			return false;
-		}
+		return userService.deleteUserById(id); 
 	}
 
 	/** 
@@ -128,27 +117,59 @@ public class UserManagerImpl implements UserManager {
 	
 	@Override
 	public User convertToModel(UserView userView) {
-		return modelMapper.map(userView, User.class);
+		
+		User user = new User();
+		user.setAboutMe(userView.getAboutMe());
+		user.setAvatarUrl(userView.getAvatarUrl());
+		user.setEmail(userView.getEmail());
+		user.setFirstName(userView.getFirstName());
+		user.setId(userView.getId());
+		user.setLastName(userView.getLastName());
+		user.setPassword(userView.getPassword());
+		user.setRole(userView.getRole());
+		user.setTitle(userView.getTitle());
+		user.setUsername(userView.getUsername());
+		
+		return user;
 	}
 	
 	@Override
-	public List<User> convertToModels(List<UserView> userViews) {
+	public List<User> convertToModel(List<UserView> userViews) {
 		
-		List<User> users = modelMapper.map(userViews, userListType);
-						
+		List<User> users = new ArrayList<>();
+		for(UserView u : userViews) {
+			users.add(convertToModel(u)); 
+		}
 		return users;
 	}
 	
 	
 	@Override
 	public UserView convertToView(User user){
-		return modelMapper.map(user, UserView.class);
+		
+		UserView userView = new UserView(); 
+		userView.setAboutMe(user.getAboutMe());
+		userView.setAvatarUrl(user.getAvatarUrl());
+		userView.setEmail(user.getEmail());
+		userView.setFirstName(user.getFirstName());
+		userView.setLastName(user.getLastName());
+		userView.setId(user.getId());
+		userView.setPassword(user.getPassword());
+		userView.setRole(user.getRole());
+		userView.setTitle(user.getTitle());
+		userView.setUsername(user.getUsername());
+		
+		return userView; 
 	}
 	
 	
 	@Override
-	public List<User> convertToViews(List<User> users){
-		return modelMapper.map(users, userDtoListType);
+	public List<UserView> convertToView(List<User> users){
+		List<UserView> userViews = new ArrayList<>(); 
+		for(User u : users) {
+			userViews.add(convertToView(u)); 
+		}
+		return userViews;
 	}
 
 

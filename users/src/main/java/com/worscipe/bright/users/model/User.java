@@ -179,4 +179,20 @@ public class User implements Serializable {
 		return "[User:" + id + " Info] email: " + email + " firstName: " + firstName + " lastName: " + lastName + " role: " + role;
 	}
 
+	public Set<UserRecord> getElections() {
+		return elections;
+	}
+
+	public void setElections(Set<UserRecord> elections) {
+		this.elections = elections;
+	}
+
+	public Set<UserRecord> getIdeas() {
+		return ideas;
+	}
+
+	public void setIdeas(Set<UserRecord> ideas) {
+		this.ideas = ideas;
+	}
+
 }

@@ -39,6 +39,11 @@ public class UserRecord implements Relational<User>{
 	@Temporal(TemporalType.TIMESTAMP)
 	private Date modifiedDate = new Date();
 
+	public UserRecord() {};
+
+	public UserRecord(Long entityId) {
+		this.entityId = entityId;
+	}
 	public Long getId() {
 		return id;
 	}

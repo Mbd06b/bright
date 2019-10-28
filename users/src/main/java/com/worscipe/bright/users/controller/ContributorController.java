@@ -31,5 +31,5 @@ public class ContributorController {
 		return new ResponseEntity<List<UserView>>(foundUsers, HttpStatus.OK);
 	}
 	
-
+	
 }

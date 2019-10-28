@@ -1,6 +1,7 @@
 package com.worscipe.bright.users.service;
 
 import java.util.List;
+import java.util.Optional;
 
 import com.worscipe.bright.users.model.User;
 
@@ -8,9 +9,9 @@ import com.worscipe.bright.users.model.User;
 
 public interface UserService {
 	
-	User findById(Long id);
+	Optional<User> findById(Long id);
 	
-	User findByEmail(String email); 
+	Optional<User> findByEmail(String email); 
 	
 	List<User> findAllUsers(); 
 	
@@ -23,8 +24,10 @@ public interface UserService {
 	Boolean deleteUserById(Long id);
 
 	// Idea Contributors
-	List<User> findByIdea(Long ideaId); 
-	
-	
+	List<User> findByIdea(Long ideaId);
+
+	Boolean saveIdea(Long id, Long ideaId);
+
+	Boolean deleteIdea(Long id, Long ideaId); 
 
 }
