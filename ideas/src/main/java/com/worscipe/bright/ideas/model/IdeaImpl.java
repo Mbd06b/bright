@@ -24,8 +24,7 @@ import javax.persistence.TemporalType;
 
 
 @Entity
-@Table(name="IDEA_TABLE")
-public class IdeaImpl{
+public class IdeaImpl implements Idea{
 
 
 	@Id
@@ -50,7 +49,11 @@ public class IdeaImpl{
 	
 	@Column(name="CREATED_ON")
 	@Temporal(TemporalType.TIMESTAMP)
-	public Date createdOn = new Date();
+	public Date createdDate = new Date();
+	
+	@Column(name="MODIFIED")
+	@Temporal(TemporalType.TIMESTAMP)
+	public Date modifiedDate = new Date(); 
     
 	
 //-------COMPOSITION RELATIONSHIPS----------------
@@ -63,25 +66,35 @@ public class IdeaImpl{
 	
 	//One ideaImpl has many records. 
 	@OneToMany(cascade = CascadeType.ALL, mappedBy="id", orphanRemoval = true) 
-	private List<IdeaAudit> ideaAudits = new ArrayList<IdeaAudit>(); 
+	private List<IdeaRecord> users = new ArrayList<IdeaRecord>(); 
 	
-	public void setIdeaLogs(List<IdeaAudit> ideaAudits){
-		this.ideaAudits = ideaAudits;
-	}
+	//One ideaImpl has many records. 
+	@OneToMany(cascade = CascadeType.ALL, mappedBy="id", orphanRemoval = true) 
+	private List<IdeaRecord> elections = new ArrayList<IdeaRecord>(); 
 	
-	public List<IdeaAudit> getIdeaLogs(){
-		return this.ideaAudits; 
+	public List<IdeaRecord> getUsers() {
+		return users;
 	}
 
+	public void setUsers(List<IdeaRecord> users) {
+		this.users = users;
+	}
+
+	public List<IdeaRecord> getElections() {
+		return elections;
+	}
+
+	public void setElections(List<IdeaRecord> elections) {
+		this.elections = elections;
+	}
 	
-  
 	
 //-------- METHODS -------------------
-	public Long getIdeaId() {
+	public Long getId() {
 		return id;
 	}
 
-	public void setIdeaId(Long id) {
+	public void setId(Long id) {
 		this.id = id;
 	}
 
@@ -109,14 +122,6 @@ public class IdeaImpl{
 		this.story = story; 
 	}
 
-	public List<IdeaAudit> getIdeaRecords() {
-		return ideaAudits;
-	}
-
-	public void setIdeaRecords(List<IdeaAudit> ideaAudits) {
-		this.ideaAudits = ideaAudits;
-	}
-
 	@Override
 	public String toString() {
 		return "IdeaImpl["+ id + "]: " + title; 
@@ -138,12 +143,20 @@ public class IdeaImpl{
 		this.thumbnailImgUrl = thumbnailImgUrl;
 	}
 
-	public Date getCreatedOn() {
-		return createdOn;
+	public Date getCreatedDate() {
+		return createdDate;
 	}
 
-	public void setCreatedOn(Date createdOn) {
-		this.createdOn = createdOn;
+	public void setCreatedDate(Date createdDate) {
+		this.createdDate = createdDate;
+	}
+
+	public Date getModifiedDate() {
+		return modifiedDate;
+	}
+
+	public void setModifiedDate(Date modifiedDate) {
+		this.modifiedDate = modifiedDate;
 	}
 
 }

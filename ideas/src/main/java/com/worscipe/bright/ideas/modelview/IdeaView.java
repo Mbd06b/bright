@@ -63,7 +63,7 @@ public class IdeaView implements Serializable{
 	}
 	
 	public IdeaView(IdeaImpl ideaImpl) {
-		 this.id = ideaImpl.getIdeaId(); 
+		 this.id = ideaImpl.getId(); 
 		 this.title = ideaImpl.getTitle(); 
 		 this.subtitle = ideaImpl.getSubtitle();
 		 this.story = ideaImpl.getStory(); 	   
@@ -136,7 +136,7 @@ public class IdeaView implements Serializable{
 	}
 
 	public void copyFromModel(IdeaImpl impl) {
-		 this.id = impl.getIdeaId(); 
+		 this.id = impl.getId(); 
 		 this.title = impl.getTitle(); 
 		 this.subtitle = impl.getSubtitle();
 		 this.story = impl.getStory(); 	   

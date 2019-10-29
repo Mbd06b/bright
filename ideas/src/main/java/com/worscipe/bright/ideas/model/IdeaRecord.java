@@ -14,8 +14,10 @@ import javax.persistence.ManyToOne;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
 
-@Entity(name="IDEA_AUDIT_TABLE")
-public class IdeaAudit{
+import com.worscipe.bright.common.Relational;
+
+@Entity
+public class IdeaRecord implements Relational<IdeaImpl>{
 	
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
@@ -25,18 +27,10 @@ public class IdeaAudit{
 	@ManyToOne
 	@JoinColumn(name="IDEA_ID")
 	private IdeaImpl ideaImpl; 
-	
-	@Enumerated(EnumType.STRING) 
-	@Column(name="ACTION")
-	private IdeaAction ideaAction;
-	
+		
 	// the id of the entity interacting with the idea (either an internal or external microservice)
 	@Column(name="ENTITY_ID") 
 	private Long entityId; 
-	
-	// entity link is whatever is interacting with the idea (an election, a user comment, ecetera..) 
-	@Column(name="ENTITY_TYPE")
-	private String entityType; 
 
 	@Column(name="CREATED_ON")
 	@Temporal(TemporalType.TIMESTAMP)
@@ -46,22 +40,16 @@ public class IdeaAudit{
 	@Temporal(TemporalType.TIMESTAMP)
 	private Date modifiedDate = new Date(); 
 	
-	@ManyToOne
-	@JoinColumn(name="IDEA_ID")
-	private IdeaImpl ideaImpl; 
-	
 	@Enumerated(EnumType.STRING) 
 	@Column(name="ACTION")
 	private IdeaAction ideaAction;
 
-	public IdeaAudit() {
+	public IdeaRecord() {
 		super(); 
 	} 
 	
-	public IdeaAudit(Long entityId, String entityType, IdeaAction action) {
+	public IdeaRecord(Long entityId, IdeaAction action) {
 		this.entityId = entityId;
-		this.entityType = entityType;
-		this.ideaAction = action; 
 	}
 	
 	public Long getId() {
@@ -96,20 +84,34 @@ public class IdeaAudit{
 		return ideaAction;
 	}
 	
+	@Override
 	public void setEntityId(Long entityId) {
 		this.entityId = entityId;
 	}
 	
+	@Override
 	public Long getEntityId() {
 	    return this.entityId;
 	}
-	
-	public void setEntityType(String entityType) {
-		this.entityType = entityType;
+
+	@Override
+	public IdeaImpl getOwningEntity() {
+		return ideaImpl;
 	}
-	
-	public String getEntityType() {
-		return entityType;
+
+	@Override
+	public void setOwningEntity(IdeaImpl ideaImpl) {
+		this.ideaImpl = ideaImpl;
+		
 	}
-	
+
+	@Override
+	public Date getModifiedDate() {
+		return modifiedDate;
+	}
+
+	@Override
+	public void setModifiedDate(Date modifiedDate) {
+		this.modifiedDate = modifiedDate; 
+	}	
 }

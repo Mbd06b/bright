@@ -17,7 +17,7 @@ import com.worscipe.bright.users.modelview.UserView;
 @RestController
 public class ContributorController {
 	
-	private static final Logger LOGGER = LogManager.getLogger(ContributorController.class);
+	private static final Logger logger = LogManager.getLogger(ContributorController.class);
 
 	
 	@Autowired
@@ -26,7 +26,7 @@ public class ContributorController {
 	
 	@GetMapping("/idea/{ideaId}")
 	public ResponseEntity<List<UserView>> findContributorsByIdeaId(@PathVariable("ideaId") Long ideaId) {
-		LOGGER.info("User(Contributor) find: ideaId={}", ideaId);
+		logger.info("User(Contributor) find: ideaId={}", ideaId);
 		List<UserView> foundUsers = userManager.findContributorsByIdeaId(ideaId);
 		return new ResponseEntity<List<UserView>>(foundUsers, HttpStatus.OK);
 	}
