@@ -26,6 +26,13 @@
 		<encoding>UTF-8</encoding>
 	</properties>
 	
+	<repositories>
+		<repository>
+	      <id>bright</id>
+	      <url>http://save.worscipe.com/repository/bright/</url>
+	    </repository>
+	</repositories>
+	
 	
     
     <modules>
