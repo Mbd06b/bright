@@ -6,7 +6,9 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
@@ -64,24 +66,25 @@ public class UserProfileController {
 	//---------Save idea to user-------------------------------
 	//   POST  mapping user/{id}/idea/{ideaId}
 					
-		@RequestMapping(value= "/idea/{ideaId}", method = RequestMethod.PUT)
+		@PutMapping(value= "/idea/{ideaId}")
 		public ResponseEntity<?> saveIdea(@PathVariable("id") Long id, @PathVariable("ideaId") Long ideaId){
 			
 			if(userService.saveIdea(id, ideaId)) {
 				return new ResponseEntity<>(HttpStatus.OK);
 			}
-			
 			return new ResponseEntity<>(HttpStatus.INTERNAL_SERVER_ERROR);
 		}
 		
-		@RequestMapping(value= "/idea/{ideaId}", method = RequestMethod.DELETE)
+		@DeleteMapping(value= "/idea/{ideaId}")
 		public ResponseEntity<?> deleteIdea(@PathVariable("id") Long id, @PathVariable("ideaId") Long ideaId){
 			if(userService.deleteIdea(id, ideaId)) {
 				return new ResponseEntity<>(HttpStatus.OK);
 			}
 			return new ResponseEntity<>(HttpStatus.INTERNAL_SERVER_ERROR); 
 		}
-	
+
+		
+		
 	
 
 }
