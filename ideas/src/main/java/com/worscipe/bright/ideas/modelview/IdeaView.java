@@ -56,32 +56,6 @@ public class IdeaView implements Serializable{
 	}
 
 	
-//----- CONSTRUCTORS ----------------
-	
-	
-	public IdeaView(){	
-	}
-	
-	public IdeaView(IdeaImpl ideaImpl) {
-		 this.id = ideaImpl.getId(); 
-		 this.title = ideaImpl.getTitle(); 
-		 this.subtitle = ideaImpl.getSubtitle();
-		 this.story = ideaImpl.getStory(); 	   
-	}
-	
-	
-	/**
-	 * 
-	 * @param title - ideaImpl Title
-	 * @param subtitle - ideaImpl Subtitle
-	 */
-	
-  public IdeaView(String title, String subtitle){
-		this.title =  title; 
-		this.subtitle = subtitle; 
-	}
-
-	
 //-------- METHODS -------------------
 	public Long getId() {
 		return id;
@@ -134,13 +108,4 @@ public class IdeaView implements Serializable{
 	public String toString() {
 		return "Get Class: " + this.getClass() + " IdeaImpl: " + title + " id: " + id + " Subtitle: " + subtitle; 
 	}
-
-	public void copyFromModel(IdeaImpl impl) {
-		 this.id = impl.getId(); 
-		 this.title = impl.getTitle(); 
-		 this.subtitle = impl.getSubtitle();
-		 this.story = impl.getStory(); 	   
-	}
-
-
 }

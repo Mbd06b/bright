@@ -1,5 +1,6 @@
 package com.worscipe.bright.ideas.service;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 import java.util.Set;
@@ -7,10 +8,13 @@ import java.util.Set;
 import javax.transaction.Transactional;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Example;
 import org.springframework.stereotype.Service;
 
 import com.worscipe.bright.ideas.model.IdeaAction;
 import com.worscipe.bright.ideas.model.IdeaImpl;
+import com.worscipe.bright.ideas.model.IdeaRecord;
+import com.worscipe.bright.ideas.modelview.IdeaView;
 import com.worscipe.bright.ideas.repository.IdeaRepository;
 
 @Service("ideaService")
@@ -33,10 +37,7 @@ public class IdeaServiceImpl implements IdeaService {
 
 	@Override
 	public List<IdeaImpl> findAllIdeas() {
-		
-		List<IdeaImpl> ideaImpls = ideaRepository.findAll(); 
-	
-		return ideaImpls; 
+		return ideaRepository.findAll(); 
 	}
 	
 	@Override
@@ -52,31 +53,8 @@ public class IdeaServiceImpl implements IdeaService {
 	@Override
 	public Integer getIdeaQueryTotalResultPagesCount(String searchText, Integer limit) {
 		return this.ideaRepository.getIdeaQueryTotalResultPagesCount(searchText, limit);
-	}
-
+	}	
 	
-	@Override
-	public Set<Long> findIdeaContributors(Long id){
-		// TODO implement findIdeaContributors()
-		return null;
-	}
-	
-	@Override
-	public Set<Long> findIdeaContributors(IdeaImpl ideaImpl){
-		// TODO implement findIdeaContributors()
-		return null;
-	}
-	
-	
-	
-	@Override
-	public List<IdeaImpl> findAllIdeasByUserId(Long id){
-		
-	// TODO Fix this Query to return something useful.  Research: JPARepository.findAllById(Iterable<Long>) method. 		
-		List<IdeaImpl> ideaImpls = ideaRepository.findAll();
-		
-		return ideaImpls;
-	}
 	
 	/**
 	 * saveIdea() also handles updates
@@ -84,7 +62,6 @@ public class IdeaServiceImpl implements IdeaService {
 	 */
 	@Override
 	public IdeaImpl save(IdeaImpl ideaImpl) {
-		//IdeaAudit "logging" service requested from IdeaManager;
 		return ideaRepository.save(ideaImpl); 
 	}
 	
@@ -115,6 +92,31 @@ public class IdeaServiceImpl implements IdeaService {
 		}
 	}
 
+	@Override
+	public Optional<List<IdeaImpl>> findByUser(Long userId) {
+		IdeaImpl idea = new IdeaImpl();
+		IdeaRecord record = new IdeaRecord(); 
+		record.setEntityId(userId);
+		
+		List<IdeaRecord> c = new ArrayList<>();
+		c.add(record);
+		 idea.setUsers(c);
+		 
+		Example<IdeaImpl> example = Example.of(idea);
+		
+		return Optional.of(ideaRepository.findAll(example));
+	}
 
+	@Override
+	public Set<Long> findIdeaContributors(IdeaImpl id) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public Set<Long> findIdeaContributors(Long id) {
+		// TODO Auto-generated method stub
+		return null;
+	}
 	
 }

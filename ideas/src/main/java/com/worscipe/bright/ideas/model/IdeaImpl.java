@@ -66,11 +66,11 @@ public class IdeaImpl implements Idea{
 	
 	//One ideaImpl has many records. 
 	@OneToMany(cascade = CascadeType.ALL, mappedBy="id", orphanRemoval = true) 
-	private List<IdeaRecord> users = new ArrayList<IdeaRecord>(); 
+	private List<IdeaRecord> users = new ArrayList<>(); 
 	
 	//One ideaImpl has many records. 
 	@OneToMany(cascade = CascadeType.ALL, mappedBy="id", orphanRemoval = true) 
-	private List<IdeaRecord> elections = new ArrayList<IdeaRecord>(); 
+	private List<IdeaRecord> elections = new ArrayList<>(); 
 	
 	public List<IdeaRecord> getUsers() {
 		return users;
