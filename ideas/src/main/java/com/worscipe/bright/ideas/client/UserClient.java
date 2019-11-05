@@ -17,5 +17,7 @@ public interface UserClient {
 	@PostMapping("/idea/{ideaId}/contributors")
 	Boolean updateContributor(@PathVariable("ideaId") Long ideaId);
 	
+	@PostMapping("/idea/{ideaId}")
+	Boolean updateUserRecord(@PathVariable("ideaId") Long ideaId, Long userId);
 	
 }

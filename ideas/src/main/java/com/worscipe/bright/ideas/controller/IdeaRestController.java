@@ -18,6 +18,7 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
+import com.worscipe.bright.ideas.client.UserClient;
 import com.worscipe.bright.ideas.manager.IdeaManager;
 import com.worscipe.bright.ideas.model.IdeaImpl;
 import com.worscipe.bright.ideas.modelview.IdeaView;
@@ -38,6 +39,8 @@ public class IdeaRestController {
 	@Autowired
 	private IdeaManager ideaManager;
 	
+	@Autowired
+	private UserClient userClient;
 	
 
 	// ---------Retrieve All Ideas--------------
@@ -121,7 +124,8 @@ public class IdeaRestController {
 		logger.info("Creating IdeaImpl: " + idea.getTitle());
 		
 		IdeaView savedIdea = ideaManager.saveIdea(idea);
-
+		
+	    userClient.updateUserRecord(savedIdea.getId(), idea.getActingEntityId());
 		return new ResponseEntity<>(savedIdea, HttpStatus.CREATED);
 
 	}	
@@ -140,6 +144,7 @@ public class IdeaRestController {
 		IdeaView updatedIdea = ideaManager.saveIdea(idea);
 		
 		if (updatedIdea != null) {
+		    userClient.updateUserRecord(updatedIdea.getId(), idea.getActingEntityId());
 			return new ResponseEntity<>(updatedIdea, HttpStatus.OK);
 		}
 		else {
