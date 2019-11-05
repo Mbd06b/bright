@@ -7,6 +7,7 @@ public interface TokenManager {
 
 	public String generateFakeToken(String email);
 
+	public String generateToken(String key, Role role); 
 	
 	public Boolean isValidToken(String token);
 

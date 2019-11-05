@@ -42,7 +42,7 @@ public class TokenManagerImpl implements TokenManager {
 		return "FakeToken" + email;
 	}
 
-	
+	@Override
 	public String generateToken(String key, Role role) {
 
 		// TODO generate a valid JWT Token for clients to use

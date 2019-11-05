@@ -1,7 +1,10 @@
 package com.worscipe.bright.gateway.auth;
 
+import java.util.Map;
+
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
+import org.aspectj.weaver.NewConstructorTypeMunger;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -39,6 +42,12 @@ public class AuthController {
 	@PostMapping(value = "/")
 			public ResponseEntity<AuthResponse> login(@RequestBody AuthRequest requestToValidate){
 		
+		Map<Boolean, Role> userResponse = userClient.loginUser(requestToValidate); 
+		
+		if(userResponse.containsKey(true)) {
+			AuthResponse authenticatedResponse = new AuthResponse(tokenManager.generateToken(requestToValidate.getKey(), userResponse.get(true))); 
+			return new ResponseEntity<>(authenticatedResponse, HttpStatus.OK);
+		}
 		
 		// TODO
 //		UserView existingUser = userClient.findByEmail(userToValidate.getEmail());
@@ -61,7 +70,7 @@ public class AuthController {
 //			return new ResponseEntity<UserView>(userToValidate, HttpStatus.OK);
 //		}
 		
-		return new ResponseEntity<>(null); 
+		return new ResponseEntity<>(new AuthResponse("false"), HttpStatus.UNAUTHORIZED); 
 		
 	}
 	
