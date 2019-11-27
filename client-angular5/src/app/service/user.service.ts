@@ -26,6 +26,7 @@ import { User } from '../model/user';
 export class UserService {
 
   private usersApi = AppSettings.API_URL + '/user/';
+  private ideasApi = AppSettings.API_URL + '/idea/';
 
 
   getUsers(): Observable<User[]> {

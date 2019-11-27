@@ -37,6 +37,12 @@ export class IdeaService {
       .catch(this.handleError<any>('getIdea[' + id + ']'));
   }
 
+  getIdeasByUserId(userId: number): Observable<Idea[]> {
+    return this.httpClient.get(this.ideasApi + 'user/' + userId)
+      .do(data => console.log('getIdea[' + userId + ']: ' + inspect(data)))
+      .catch(this.handleError<any>('getIdea[' + userId + ']'));
+  }
+
   postIdea(idea: Idea): Observable<Idea> {
        idea.actingUserId = this.authService.sessionUser.id;
        idea.action = IdeaAction.Create;

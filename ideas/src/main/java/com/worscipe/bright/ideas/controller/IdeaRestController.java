@@ -1,7 +1,6 @@
 package com.worscipe.bright.ideas.controller;
 
 import java.util.List;
-import java.util.Optional;
 
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
@@ -23,6 +22,7 @@ import com.worscipe.bright.ideas.manager.IdeaManager;
 import com.worscipe.bright.ideas.model.IdeaImpl;
 import com.worscipe.bright.ideas.modelview.IdeaView;
 import com.worscipe.bright.ideas.modelview.other.ResultPage;
+import com.worscipe.bright.ideas.service.IdeaRecordService;
 
 //How to handle an Abstract endpoint in a RESTful controller
 //Use a factory pattern in the service layer to handle the object
@@ -38,6 +38,9 @@ public class IdeaRestController {
 
 	@Autowired
 	private IdeaManager ideaManager;
+	
+	@Autowired
+	private IdeaRecordService ideaRecordService; 
 	
 	@Autowired
 	private UserClient userClient;
@@ -105,9 +108,9 @@ public class IdeaRestController {
 	@GetMapping( value = "/user/{userId}", produces = MediaType.APPLICATION_JSON_UTF8_VALUE)
 	public ResponseEntity<List<IdeaView>> getIdeasByUser(@PathVariable Long userId){
 		logger.info("Find ideas by User: userId={}", userId);
-		Optional<List<IdeaView>> foundIdeas = ideaManager.findIdeasByUser(userId);
-		if(foundIdeas.isPresent()) {
-			return new ResponseEntity<>(foundIdeas.get(), HttpStatus.OK);
+		List<IdeaView> foundIdeas = ideaManager.findIdeasByUser(userId);
+		if(!foundIdeas.isEmpty()) {
+			return new ResponseEntity<>(foundIdeas, HttpStatus.OK);
 		}
 		return new ResponseEntity<>(HttpStatus.NO_CONTENT);
 	}
@@ -125,9 +128,14 @@ public class IdeaRestController {
 		
 		IdeaView savedIdea = ideaManager.saveIdea(idea);
 		
-	    userClient.updateUserRecord(savedIdea.getId(), idea.getActingEntityId());
-		return new ResponseEntity<>(savedIdea, HttpStatus.CREATED);
-
+	    if(userClient.updateUserRecord(savedIdea.getId(), idea.getActingEntityId())){
+	    	return new ResponseEntity<>(savedIdea, HttpStatus.CREATED);
+	    } else {
+	    	//rollback transaction
+	    	logger.error("userClient.updateUserRecord FAILED, transaction rolled-back");
+	    	ideaManager.deleteById(savedIdea.getId());
+			return new ResponseEntity<>(savedIdea, HttpStatus.INTERNAL_SERVER_ERROR);
+	    }
 	}	
 	
 	// -----Update an IdeaImpl ---------
@@ -162,10 +170,10 @@ public class IdeaRestController {
 	public ResponseEntity<IdeaImpl> deleteIdea(@PathVariable("id") Long id) {
 		logger.info("Fetching and Deleting IdeaImpl with id: ", id);
 
-		if (ideaManager.deleteById(id)) {
+		if(ideaManager.deleteById(id)) {
 			return new ResponseEntity<>(HttpStatus.OK);
-		}
-		System.out.println("Unable to delete. IdeaImpl with id " + id);
+		} 
+		logger.error("Unable to delete. IdeaImpl with id " + id);
 		return new ResponseEntity<>(HttpStatus.INTERNAL_SERVER_ERROR);
 	}
 

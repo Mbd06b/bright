@@ -47,7 +47,7 @@ public class IdeaRecord implements Relational<IdeaImpl>{
 	public IdeaRecord() {
 		super(); 
 	} 
-	
+		
 	public IdeaRecord(Long entityId, IdeaAction action) {
 		this.entityId = entityId;
 	}

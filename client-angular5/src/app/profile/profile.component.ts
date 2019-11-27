@@ -3,6 +3,7 @@ import { map } from 'rxjs/operators';
 import { ActivatedRoute } from '@angular/router';
 
 import { UserService } from '../service/user.service';
+import { IdeaService } from '../service/idea.service';
 import { User } from '../model/user';
 import { Breakpoints, BreakpointState, BreakpointObserver } from '@angular/cdk/layout';
 import { IdeaLinkView } from '../model/idealinkview';
@@ -66,6 +67,7 @@ export class ProfileComponent implements OnInit {
   constructor(
     private route: ActivatedRoute,
     private userService: UserService,
+    private ideaService: IdeaService,
     private breakpointObserver: BreakpointObserver
   ) { }
 
@@ -79,7 +81,12 @@ export class ProfileComponent implements OnInit {
         this.user = data;
     });
 
-    this.ideaTiles = this.user.ideas;
+    this.ideaService.getIdeasByUserId(this.id).subscribe(
+      (data) => {
+        this.user.ideas = data;
+      });
+
+    //this.ideaTiles = this.user.ideas;
   }
 
 }

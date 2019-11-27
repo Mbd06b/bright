@@ -65,15 +65,19 @@ public class IdeaImpl implements Idea{
     //What exactly can/should be done (task generation / owner reassignment) with the orphaned contributions in BrightIdeas is TBD. 
 	
 	//One ideaImpl has many records. 
-	@OneToMany(cascade = CascadeType.ALL, mappedBy="id", orphanRemoval = true) 
+	@OneToMany
 	private List<IdeaRecord> users = new ArrayList<>(); 
 	
 	//One ideaImpl has many records. 
-	@OneToMany(cascade = CascadeType.ALL, mappedBy="id", orphanRemoval = true) 
+	@OneToMany 
 	private List<IdeaRecord> elections = new ArrayList<>(); 
 	
 	public List<IdeaRecord> getUsers() {
 		return users;
+	}
+	
+	public void addUser(IdeaRecord ideaRecord) {
+		this.users.add(ideaRecord);
 	}
 
 	public void setUsers(List<IdeaRecord> users) {
@@ -82,6 +86,10 @@ public class IdeaImpl implements Idea{
 
 	public List<IdeaRecord> getElections() {
 		return elections;
+	}
+	
+	public void addElection(IdeaRecord ideaRecord) {
+		this.elections.add(ideaRecord);
 	}
 
 	public void setElections(List<IdeaRecord> elections) {

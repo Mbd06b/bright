@@ -5,7 +5,7 @@ import org.springframework.stereotype.Repository;
 
 import com.worscipe.bright.users.model.UserRecord;
 
-@Repository
+@Repository 
 public interface UserRecordRepository extends JpaRepository <UserRecord, Long> {
 	
 }

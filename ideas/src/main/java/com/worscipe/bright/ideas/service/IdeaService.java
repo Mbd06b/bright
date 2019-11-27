@@ -27,5 +27,5 @@ public interface IdeaService {
 	Long getIdeaQueryTotalResultCount(String searchText);
 	Integer getIdeaQueryTotalResultPagesCount(String searchText, Integer limit);
 
-	Optional<List<IdeaImpl>> findByUser(Long userId);
+	List<IdeaImpl> findByUser(Long userId);
 }

@@ -11,6 +11,7 @@ import com.worscipe.bright.users.auth.Password;
 import com.worscipe.bright.users.auth.TokenManager;
 import com.worscipe.bright.users.model.User;
 import com.worscipe.bright.users.modelview.UserView;
+import com.worscipe.bright.users.service.RecordService;
 import com.worscipe.bright.users.service.UserService;
 
 
@@ -43,44 +44,19 @@ public class UserManagerImpl implements UserManager {
 
 	@Override
 	public List<UserView> findAllUsers(){
-		
-		List<User> users = userService.findAllUsers(); 
-		
-		List<UserView> userDtoList = new ArrayList<UserView>(); 
-		
-		for(User user: users) {
-		    userDtoList.add(convertToView(user));
-		}
-		return userDtoList; 
+		return convertToView(userService.findAllUsers()); 
 	}
 
 	@Override
 	public UserView findById(final Long id) {
-	   
-		Optional<User> user = userService.findById(id);
-	   
-	   if(user.isPresent()) {
-		   return convertToView(user.get()); 
-	   }
-	   else {
-	       return null;
-	   }
+		return convertToView(userService.findById(id));
 	}
 	
 
 	@Override
 	public UserView findByEmail(final String email) {
-		Optional<User> user = userService.findByEmail(email);
-		
-	   if(user.isPresent()) {
-		   return convertToView(user.get()); 
-	   }
-	   else {
-	       return null;
-	   }
+		return convertToView(userService.findByEmail(email));
 	}
-
-
 
 	@Override
 	public Boolean existsByEmail(String email) {
@@ -175,14 +151,8 @@ public class UserManagerImpl implements UserManager {
 
 	@Override
 	public List<UserView> findContributorsByIdeaId(Long ideaId) {
-		
 		List<User> users = userService.findByIdea(ideaId);
-		List<UserView> userViews = new ArrayList<>();
-		for(User u: users) {
-			userViews.add(convertToView(u));
-		}
-		
-		return userViews; 
+		return convertToView(users); 
 	}
 	
 }

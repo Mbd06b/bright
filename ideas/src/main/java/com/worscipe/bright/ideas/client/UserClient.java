@@ -11,13 +11,16 @@ import org.springframework.web.bind.annotation.PostMapping;
 @FeignClient(name = "user-service")
 public interface UserClient {
 
-	@GetMapping("/idea/{ideaId}/contributors")
+	// remember the context here is in the idea service
+	// mappings are all prefixed with "idea/" (Ex: ${gatewayURL}/idea/{ideaId}/users  is findByIdea
+	
+	@GetMapping("{ideaId}/users")
 	List<Long> findByIdea(@PathVariable("ideaId") Long ideaId);
 	
-	@PostMapping("/idea/{ideaId}/contributors")
+	@PostMapping("{ideaId}/user")
 	Boolean updateContributor(@PathVariable("ideaId") Long ideaId);
 	
-	@PostMapping("/idea/{ideaId}")
+	@PostMapping("/{ideaId}/user/{userId}")
 	Boolean updateUserRecord(@PathVariable("ideaId") Long ideaId, Long userId);
 	
 }

@@ -28,7 +28,13 @@ public class ContributorController {
 	public ResponseEntity<List<UserView>> findContributorsByIdeaId(@PathVariable("ideaId") Long ideaId) {
 		logger.info("User(Contributor) find: ideaId={}", ideaId);
 		List<UserView> foundUsers = userManager.findContributorsByIdeaId(ideaId);
-		return new ResponseEntity<List<UserView>>(foundUsers, HttpStatus.OK);
+		
+		if( foundUsers.isEmpty()) {
+			return new ResponseEntity<List<UserView>>(HttpStatus.NO_CONTENT); 
+		} else {
+			
+			return new ResponseEntity<List<UserView>>(foundUsers, HttpStatus.OK);
+		}
 	}
 	
 	

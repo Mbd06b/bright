@@ -1,5 +1,6 @@
 import { Role } from './role.enum';
 import { IdeaLinkView } from './idealinkview';
+import { Idea } from '../../../bin/src/app/model/idea';
 
 export interface UserInterface {
   id: number;
@@ -15,6 +16,8 @@ export interface UserInterface {
   token: string;
   role: string;
 
-  ideas: IdeaLinkView[];
+  ideas: Idea[];
+  ideaLinks: IdeaLinkView[];
+
 
 }

@@ -14,7 +14,4 @@ public interface IdeaClient {
 	@GetMapping("/idea/{ideaId}")
 	List<Long> findByIdea(@PathVariable("ideaId") Long ideaId);
 	
-
-	
-	
 }

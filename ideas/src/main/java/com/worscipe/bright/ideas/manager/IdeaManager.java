@@ -24,7 +24,7 @@ public interface IdeaManager {
 	ResultPage<IdeaView> getIdeasPageByQueryPageAndSize(Integer pageNumber, Integer limit, String searchText);
 	IdeaView saveIdea(IdeaView ideaView);
 	
-	Optional<List<IdeaView>> findIdeasByUser(Long userId);
+	List<IdeaView> findIdeasByUser(Long userId);
 	
 	
 }

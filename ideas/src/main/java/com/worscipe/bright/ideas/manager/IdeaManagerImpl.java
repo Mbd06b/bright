@@ -1,16 +1,14 @@
 package com.worscipe.bright.ideas.manager;
 
-import java.lang.reflect.Type;
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Optional;
 
-import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import com.google.common.reflect.TypeToken;
+import com.worscipe.bright.ideas.client.UserClient;
 import com.worscipe.bright.ideas.model.IdeaImpl;
+import com.worscipe.bright.ideas.model.IdeaRecord;
 import com.worscipe.bright.ideas.modelview.IdeaView;
 import com.worscipe.bright.ideas.modelview.other.ResultPage;
 import com.worscipe.bright.ideas.service.IdeaRecordService;
@@ -68,10 +66,10 @@ public class IdeaManagerImpl implements IdeaManager {
 	public IdeaView saveIdea(IdeaView ideaView) {
 		
 		IdeaImpl ideaToPersist = convertToImpl(ideaView); 
+		IdeaRecord record = ideaRecordService.save(new IdeaRecord(ideaView.getActingEntityId(), ideaView.getAction()));
+		ideaToPersist.addUser(record);
 		IdeaImpl persistedIdea = ideaService.save(ideaToPersist);
-		
-		ideaRecordService.logAction(ideaView.getActingEntityId(), ideaView.getActingEntityType(), persistedIdea, ideaView.getAction()); 
-		
+				
 		IdeaView ideaDtoToReturn = convertToView(persistedIdea); 
 		
 		return  ideaDtoToReturn; 
@@ -126,14 +124,8 @@ public class IdeaManagerImpl implements IdeaManager {
 	}
 
 	@Override
-	public Optional<List<IdeaView>> findIdeasByUser(Long userId) {
-		Optional<List<IdeaImpl>> ideaImpls = ideaService.findByUser(userId);
-		
-		if (ideaImpls.isPresent()) {
-			return Optional.of(convertToView(ideaImpls.get()));
-		}
-		
-		return Optional.empty();
+	public List<IdeaView> findIdeasByUser(Long userId) {
+		return convertToView(ideaService.findByUser(userId));
 	}
 
 }

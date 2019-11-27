@@ -186,6 +186,10 @@ public class User implements Serializable {
 	public void setElections(Set<UserRecord> elections) {
 		this.elections = elections;
 	}
+	
+	public void addElection(UserRecord election) {
+		this.elections.add(election); 
+	}
 
 	public Set<UserRecord> getIdeas() {
 		return ideas;
@@ -193,6 +197,10 @@ public class User implements Serializable {
 
 	public void setIdeas(Set<UserRecord> ideas) {
 		this.ideas = ideas;
+	}
+	
+	public void addIdea(UserRecord idea) {
+		this.ideas.add(idea); 
 	}
 
 }

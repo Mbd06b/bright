@@ -6,18 +6,22 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.worscipe.bright.ideas.model.IdeaAction;
-import com.worscipe.bright.ideas.model.IdeaRecord;
 import com.worscipe.bright.ideas.model.IdeaImpl;
-import com.worscipe.bright.ideas.repository.IdeaAuditRepository;
+import com.worscipe.bright.ideas.model.IdeaRecord;
+import com.worscipe.bright.ideas.repository.IdeaRecordRepository;
 
 @Service("ideaRecordService")
 @Transactional
 public class IdeaRecordServiceImpl implements IdeaRecordService{
 
 	@Autowired
-	private IdeaAuditRepository ideaAuditRepository; 
+	private IdeaRecordRepository ideaRecordRepository; 
 	
-	@Autowired IdeaService ideaService;
+	@Override
+	public IdeaRecord save(IdeaRecord ideaRecord) {
+		return ideaRecordRepository.save(ideaRecord);
+	}
+	
 	
 	@Override
 	public IdeaRecord logAction(Long entityId, String entityType, IdeaImpl ideaImpl, IdeaAction action) {
@@ -28,7 +32,7 @@ public class IdeaRecordServiceImpl implements IdeaRecordService{
 					log.setIdeaAction(action);
 	    
 		// save and return the persisted log
-		return ideaAuditRepository.save(log);	
+		return ideaRecordRepository.save(log);	
 	}
 
 }

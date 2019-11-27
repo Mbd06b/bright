@@ -6,6 +6,6 @@ import com.worscipe.bright.ideas.model.IdeaImpl;
 
 public interface IdeaRecordService {
 
-	IdeaRecord logAction(Long entityId, String entityType, IdeaImpl ideaImpl, IdeaAction action);
-	
+	public IdeaRecord logAction(Long entityId, String entityType, IdeaImpl ideaImpl, IdeaAction action);
+	public IdeaRecord save(IdeaRecord ideaRecord); 
 }

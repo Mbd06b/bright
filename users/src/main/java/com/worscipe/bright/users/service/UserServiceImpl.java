@@ -1,11 +1,10 @@
 package com.worscipe.bright.users.service;
 
+import java.util.ArrayList;
 import java.util.HashSet;
 import java.util.List;
 import java.util.Optional;
 import java.util.Set;
-
-import javax.transaction.Transactional;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Example;
@@ -15,8 +14,7 @@ import com.worscipe.bright.users.model.User;
 import com.worscipe.bright.users.model.UserRecord;
 import com.worscipe.bright.users.repository.UserRepository;
 
-@Service("userService")
-@Transactional
+@Service
 public class UserServiceImpl implements UserService{
 
 
@@ -62,12 +60,22 @@ public class UserServiceImpl implements UserService{
 
 
 	@Override
-	public Optional<User> findById(final Long id) {
-		return userRepository.findById(id);	   
+	public User findById(final Long id) {
+		Optional<User> user	= userRepository.findById(id);
+		if(user.isPresent()) {
+			return user.get();
+		} else {
+			return new User(); 
+		}
 	}
 	
-	public Optional<User> findByEmail(final String email) {
-		return userRepository.findByEmail(email);
+	public User findByEmail(final String email) {
+		Optional<User> user = userRepository.findByEmail(email);
+		if(user.isPresent()) {
+			return user.get();
+		} else {
+			return new User(); 
+		}
 	}
 	
 	public Boolean deleteUser(User user) {
@@ -92,7 +100,6 @@ public class UserServiceImpl implements UserService{
 	}
 
 
-
 	@Override
 	public List<User> findByIdea(Long ideaId) {
 	
@@ -110,15 +117,15 @@ public class UserServiceImpl implements UserService{
 		if(users.isPresent()) {
 			return users.get();
 		} else {
-			return null; 
+			return new ArrayList<>(); 
 		} 
 	}
 	
 	@Override
 	public Boolean saveIdea(Long id, Long ideaId) {
-		 Optional<User> user = findById(id); 
+		 Optional<User> user = userRepository.findById(id); 
 		 if(user.isPresent()) {
-			user.get().getIdeas().add(new UserRecord(ideaId));
+			user.get().addIdea(new UserRecord(ideaId));
 			 saveUser(user.get());
 			 return true; 
 		 } else {
@@ -129,10 +136,9 @@ public class UserServiceImpl implements UserService{
 
 	@Override
 	public Boolean deleteIdea(Long id, Long ideaId) {
-		 Optional<User> user = findById(id); 
-		 
+		 Optional<User> user = userRepository.findById(id); 
 		 if(user.isPresent()) {
-			user.get().getIdeas().removeIf(n -> n.getEntityId() == ideaId);
+			user.get().getIdeas().removeIf(n -> ideaId.equals(n.getEntityId()));
 			 saveUser(user.get());
 			 return true; 
 		 } else {

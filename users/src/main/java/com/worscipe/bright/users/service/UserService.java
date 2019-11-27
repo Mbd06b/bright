@@ -9,9 +9,9 @@ import com.worscipe.bright.users.model.User;
 
 public interface UserService {
 	
-	Optional<User> findById(Long id);
+	User findById(Long id);
 	
-	Optional<User> findByEmail(String email); 
+	User findByEmail(String email); 
 	
 	List<User> findAllUsers(); 
 	
