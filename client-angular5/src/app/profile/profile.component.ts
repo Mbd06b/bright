@@ -7,6 +7,7 @@ import { IdeaService } from '../service/idea.service';
 import { User } from '../model/user';
 import { Breakpoints, BreakpointState, BreakpointObserver } from '@angular/cdk/layout';
 import { IdeaLinkView } from '../model/idealinkview';
+import { Idea } from '../model/idea';
 
 @Component({
   selector: 'bi-profile',
@@ -19,9 +20,6 @@ export class ProfileComponent implements OnInit {
   private subscribe: any;
   user: User;
   ideaTiles: IdeaLinkView [];
-
-
-
 
 
    /** Based on the screen size, switch from standard to one column per row */
