@@ -1,4 +1,4 @@
-import { UserLinkView } from "./userlinkview";
+import { UserLinkView } from './userlinkview';
 
 export interface IdeaInterface {
   id: number;
@@ -7,7 +7,7 @@ export interface IdeaInterface {
   story: string;
   upVotes: number;
   downVotes: number;
-  actingUserId: number;
+  actingEntityId: number;
 
   action: string;
 

@@ -18,6 +18,9 @@ public interface RecordService {
 	List<UserRecord> getUserIdeas(Long id);
 
 	List<UserRecord> getUserElections(Long id);
+
+	boolean purgeIdea(Long ideaId);
 	
+	boolean purgeElection(Long electionId);	
 
 }

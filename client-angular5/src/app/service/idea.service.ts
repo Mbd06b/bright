@@ -44,7 +44,7 @@ export class IdeaService {
   }
 
   postIdea(idea: Idea): Observable<Idea> {
-       idea.actingUserId = this.authService.sessionUser.id;
+       idea.actingEntityId = this.authService.sessionUser.id;
        idea.action = IdeaAction.Create;
     return this.httpClient.post(this.ideasApi, idea)
       .do(data => console.log('postIdea: ' + inspect(data)))
@@ -65,10 +65,10 @@ export class IdeaService {
      }
 
     // leave the actingUserId alone if it has been explictly defined.
-     if ( (idea.actingUserId !== undefined) || (idea.actingUserId !== null) ) {
+     if ( (idea.actingEntityId !== undefined) || (idea.actingEntityId !== null) ) {
        // do nothing
      } else {
-      idea.actingUserId = this.authService.sessionUser.id;
+      idea.actingEntityId = this.authService.sessionUser.id;
      }
 
      if ( 4 > 6) {
