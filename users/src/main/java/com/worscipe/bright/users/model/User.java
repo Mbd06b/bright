@@ -1,206 +1,56 @@
 package com.worscipe.bright.users.model;
 
-import java.io.Serializable;
 import java.util.Date;
 import java.util.Set;
 
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.EnumType;
-import javax.persistence.Enumerated;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
-import javax.persistence.OneToMany;
-import javax.persistence.Table;
-import javax.persistence.Temporal;
-import javax.persistence.TemporalType;
-
-//Hibernate Annotation Table_Per_Class Strategy Reference
-//https://thoughts-on-java.org/complete-guide-inheritance-strategies-jpa-hibernate/
-
-@Entity
-@Table
-public class User implements Serializable {
-
-
+public interface User {
 	
-	private static final long serialVersionUID = 4466915115029408551L;
-
-	//Recommended GenerationType value for MySQL backend is IDENTITY  - https://thoughts-on-java.org/5-things-you-need-to-know-when-using-hibernate-with-mysql/ 
+	Long getId();
+	void setId(Long id);
 	
-	@Id
-	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	@Column(name = "id")
-	private Long id;
-
-	// used as login
-	@Column(name = "email", unique = true)                                 
-	private String email;
-
-	@Column(name = "username")
-	private String username; 
+	String getEmail();
+	void setEmail(String email);
 	
-	@Column(name = "password")
-	private String password;
-
-	@Column(name = "first_name")
-	private String firstName;
-
-	@Column(name = "last_name")
-	private String lastName;
+	String getUsername();
+	void setUsername(String username);
 	
-	public String getTitle() {
-		return title;
-	}
-
-	public void setTitle(String title) {
-		this.title = title;
-	}
-
-	public String getAboutMe() {
-		return aboutMe;
-	}
-
-	public void setAboutMe(String aboutMe) {
-		this.aboutMe = aboutMe;
-	}
-	@Column(name = "title")
-	private String title;
+	String getFirstName();
+	void setFirstName(String firstName);
 	
-	@Column(name = "about_me")
-	private String aboutMe;
+	String getLastName();
+	void setLastName(String lastName);
 	
-	@Column(name = "user_img_url")
-	private String userImgUrl;
+	String getTitle();
+	void setTitle(String title);
 	
-	@Column(name = "avatar_url")
-	private String avatarUrl;
+	Role getRole();
+	void setRole(Role role);
 	
-	@Enumerated(EnumType.STRING)
-	@Column(name = "role")
-	private Role role = Role.NONE; 
+	String getPassword();
+	void setPassword(String password); 
 	
-	@Column(name="created_on")
-	@Temporal(TemporalType.TIMESTAMP)
-	private Date createdOn = new Date();
+	String getAboutMe();
+	void setAboutMe(String aboutMe);
 	
-	@OneToMany
-	private Set<UserRecord> elections; 
+	String getUserImgUrl();
+	void setUserImgUrl(String userImgUrl);
 	
-	@OneToMany
-	private Set<UserRecord> ideas; 
+	String getAvatarUrl();
+	void setAvatarUrl(String avatarUrl);
 	
-//----Methods--------------		
-
-	public String getUsername() {
-		return username;
-	}
-
-	public void setUsername(String username) {
-		this.username = username;
-	}
+	Date getCreatedOn();
+	void setCreatedOn(Date createdOn); 
 	
-	public Long getId() {
-		return id;
-	}
-
-	public void setId(Long userId) {
-		this.id = userId;
-	}
-
-	public String getEmail() {
-		return email;
-	}
-
-	public void setEmail(String email) {
-		this.email = email;
-	}
-
-	public String getPassword() {
-		return password;
-	}
-
-	public void setPassword(String password) {
-		this.password = password;
-	}
-
-	public String getFirstName() {
-		return firstName;
-	}
-
-	public void setFirstName(String firstName) {
-		this.firstName = firstName;
-	}
-
-	public String getLastName() {
-		return lastName;
-	}
-
-	public void setLastName(String lastName) {
-		this.lastName = lastName;
-	}
-
-	public Role getRole() {
-		return role;
-	}
-
-	public void setRole(Role role) {
-		this.role = role;
-	}
+	Date getModifiedOn();
+	void setModifiedOn(Date modifiedOn);
 	
-	public String getUserImgUrl() {
-		return userImgUrl;
-	}
-
-	public void setUserImgUrl(String userImgUrl) {
-		this.userImgUrl = userImgUrl;
-	}
+	Set<UserRecord> getElections();
+	void setElections(Set<UserRecord> elections);
 	
-	public String getAvatarUrl() {
-		return avatarUrl;
-	}
+	Set<UserRecord> getIdeas();
+	void setIdeas(Set<UserRecord> ideas);
 	
-	public void setAvatarUrl(String avatarUrl) {
-		this.avatarUrl = avatarUrl;
-	}
-
-	public Date getCreatedOn() {
-		return createdOn;
-	}
-
-	public void setCreatedOn(Date createdOn) {
-		this.createdOn = createdOn;
-	}
+	void addElection(UserRecord election);
+	void addIdea(UserRecord idea); 
 	
-	
-	@Override
-	public String toString() {
-		return "[User:" + id + " Info] email: " + email + " firstName: " + firstName + " lastName: " + lastName + " role: " + role;
-	}
-
-	public Set<UserRecord> getElections() {
-		return elections;
-	}
-
-	public void setElections(Set<UserRecord> elections) {
-		this.elections = elections;
-	}
-	
-	public void addElection(UserRecord election) {
-		this.elections.add(election); 
-	}
-
-	public Set<UserRecord> getIdeas() {
-		return ideas;
-	}
-
-	public void setIdeas(Set<UserRecord> ideas) {
-		this.ideas = ideas;
-	}
-	
-	public void addIdea(UserRecord idea) {
-		this.ideas.add(idea); 
-	}
-
 }

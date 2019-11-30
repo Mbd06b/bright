@@ -45,7 +45,6 @@ public class TokenManagerImpl implements TokenManager {
 	@Override
 	public String generateToken(String key, Role role) {
 
-		// TODO generate a valid JWT Token for clients to use
 		// TODO assign token with user role permissions
 		Date now = new Date();
         Date exp = new Date(System.currentTimeMillis() + (60000*60)); // 1 hour

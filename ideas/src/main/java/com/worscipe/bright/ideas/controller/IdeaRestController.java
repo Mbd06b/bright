@@ -40,9 +40,6 @@ public class IdeaRestController {
 	private IdeaManager ideaManager;
 	
 	@Autowired
-	private IdeaRecordService ideaRecordService; 
-	
-	@Autowired
 	private UserClient userClient;
 	
 
@@ -128,7 +125,7 @@ public class IdeaRestController {
 		
 		IdeaView savedIdea = ideaManager.saveIdea(idea);
 		
-	    if(userClient.updateUserRecord(savedIdea.getId(), idea.getActingEntityId())){
+	    if(userClient.updateUserRecord(idea.getActingEntityId(), savedIdea.getId())){
 	    	return new ResponseEntity<>(savedIdea, HttpStatus.CREATED);
 	    } else {
 	    	//rollback transaction
@@ -152,8 +149,12 @@ public class IdeaRestController {
 		IdeaView updatedIdea = ideaManager.saveIdea(idea);
 		
 		if (updatedIdea != null) {
-		    userClient.updateUserRecord(updatedIdea.getId(), idea.getActingEntityId());
-			return new ResponseEntity<>(updatedIdea, HttpStatus.OK);
+			if(userClient.updateUserRecord(idea.getActingEntityId(), updatedIdea.getId())) {
+				return new ResponseEntity<>(updatedIdea, HttpStatus.OK);
+			}else {
+				logger.error("User Failed to Update");
+				return new ResponseEntity<>(HttpStatus.INTERNAL_SERVER_ERROR);
+			}
 		}
 		else {
 			return new ResponseEntity<>(HttpStatus.NO_CONTENT);	

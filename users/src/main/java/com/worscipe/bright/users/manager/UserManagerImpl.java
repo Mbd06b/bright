@@ -9,7 +9,7 @@ import org.springframework.stereotype.Service;
 
 import com.worscipe.bright.users.auth.Password;
 import com.worscipe.bright.users.auth.TokenManager;
-import com.worscipe.bright.users.model.User;
+import com.worscipe.bright.users.model.UserImpl;
 import com.worscipe.bright.users.modelview.UserView;
 import com.worscipe.bright.users.service.RecordService;
 import com.worscipe.bright.users.service.UserService;
@@ -35,7 +35,7 @@ public class UserManagerImpl implements UserManager {
 			user.setPassword(Password.hash(user.getPassword()));
 		}		
 		
-		User userToPersist = convertToModel(user) ;
+		UserImpl userToPersist = convertToModel(user) ;
 		
 		return new UserView(userService.saveUser(userToPersist));
 		
@@ -92,57 +92,57 @@ public class UserManagerImpl implements UserManager {
 	
 	
 	@Override
-	public User convertToModel(UserView userView) {
+	public UserImpl convertToModel(UserView userView) {
 		
-		User user = new User();
-		user.setAboutMe(userView.getAboutMe());
-		user.setAvatarUrl(userView.getAvatarUrl());
-		user.setEmail(userView.getEmail());
-		user.setFirstName(userView.getFirstName());
-		user.setId(userView.getId());
-		user.setLastName(userView.getLastName());
-		user.setPassword(userView.getPassword());
-		user.setRole(userView.getRole());
-		user.setTitle(userView.getTitle());
-		user.setUsername(userView.getUsername());
+		UserImpl userImpl = new UserImpl();
+		userImpl.setAboutMe(userView.getAboutMe());
+		userImpl.setAvatarUrl(userView.getAvatarUrl());
+		userImpl.setEmail(userView.getEmail());
+		userImpl.setFirstName(userView.getFirstName());
+		userImpl.setId(userView.getId());
+		userImpl.setLastName(userView.getLastName());
+		userImpl.setPassword(userView.getPassword());
+		userImpl.setRole(userView.getRole());
+		userImpl.setTitle(userView.getTitle());
+		userImpl.setUsername(userView.getUsername());
 		
-		return user;
+		return userImpl;
 	}
 	
 	@Override
-	public List<User> convertToModel(List<UserView> userViews) {
+	public List<UserImpl> convertToModel(List<UserView> userViews) {
 		
-		List<User> users = new ArrayList<>();
+		List<UserImpl> userImpls = new ArrayList<>();
 		for(UserView u : userViews) {
-			users.add(convertToModel(u)); 
+			userImpls.add(convertToModel(u)); 
 		}
-		return users;
+		return userImpls;
 	}
 	
 	
 	@Override
-	public UserView convertToView(User user){
+	public UserView convertToView(UserImpl userImpl){
 		
 		UserView userView = new UserView(); 
-		userView.setAboutMe(user.getAboutMe());
-		userView.setAvatarUrl(user.getAvatarUrl());
-		userView.setEmail(user.getEmail());
-		userView.setFirstName(user.getFirstName());
-		userView.setLastName(user.getLastName());
-		userView.setId(user.getId());
-		userView.setPassword(user.getPassword());
-		userView.setRole(user.getRole());
-		userView.setTitle(user.getTitle());
-		userView.setUsername(user.getUsername());
+		userView.setAboutMe(userImpl.getAboutMe());
+		userView.setAvatarUrl(userImpl.getAvatarUrl());
+		userView.setEmail(userImpl.getEmail());
+		userView.setFirstName(userImpl.getFirstName());
+		userView.setLastName(userImpl.getLastName());
+		userView.setId(userImpl.getId());
+		userView.setPassword(userImpl.getPassword());
+		userView.setRole(userImpl.getRole());
+		userView.setTitle(userImpl.getTitle());
+		userView.setUsername(userImpl.getUsername());
 		
 		return userView; 
 	}
 	
 	
 	@Override
-	public List<UserView> convertToView(List<User> users){
+	public List<UserView> convertToView(List<UserImpl> userImpls){
 		List<UserView> userViews = new ArrayList<>(); 
-		for(User u : users) {
+		for(UserImpl u : userImpls) {
 			userViews.add(convertToView(u)); 
 		}
 		return userViews;
@@ -151,8 +151,8 @@ public class UserManagerImpl implements UserManager {
 
 	@Override
 	public List<UserView> findContributorsByIdeaId(Long ideaId) {
-		List<User> users = userService.findByIdea(ideaId);
-		return convertToView(users); 
+		List<UserImpl> userImpls = userService.findByIdea(ideaId);
+		return convertToView(userImpls); 
 	}
 	
 }

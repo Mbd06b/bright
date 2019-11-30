@@ -7,12 +7,15 @@ import org.apache.logging.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.worscipe.bright.users.manager.UserManager;
 import com.worscipe.bright.users.modelview.UserView;
+import com.worscipe.bright.users.service.RecordService;
+import com.worscipe.bright.users.service.UserService;
 
 @RestController
 public class ContributorController {
@@ -23,6 +26,8 @@ public class ContributorController {
 	@Autowired
 	private UserManager userManager;
 	
+	@Autowired
+	private RecordService recordService; 
 	
 	@GetMapping("/idea/{ideaId}")
 	public ResponseEntity<List<UserView>> findContributorsByIdeaId(@PathVariable("ideaId") Long ideaId) {
@@ -36,6 +41,23 @@ public class ContributorController {
 			return new ResponseEntity<List<UserView>>(foundUsers, HttpStatus.OK);
 		}
 	}
+	
+	@DeleteMapping("/purge/idea/{ideaId}")
+	public ResponseEntity<Boolean> purgeIdeaRecords(@PathVariable("ideaId") Long ideaId){
+		logger.info("Purging idea ID: {ideaId} from all users");
+		
+		if(RecordService.purgeIdea(ideaId)) {
+			return new ResponseEntity<>(true, HttpStatus.OK);
+		} else {
+			return new ResponseEntity<>(false, HttpStatus.OK);
+		}
+		
+		
+	}
+	
+	
+	
+	
 	
 	
 }

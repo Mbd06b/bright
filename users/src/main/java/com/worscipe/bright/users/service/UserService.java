@@ -3,19 +3,19 @@ package com.worscipe.bright.users.service;
 import java.util.List;
 import java.util.Optional;
 
-import com.worscipe.bright.users.model.User;
+import com.worscipe.bright.users.model.UserImpl;
 
 //https://www.journaldev.com/7655/spring-orm-example-jpa-hibernate-transaction
 
 public interface UserService {
 	
-	User findById(Long id);
+	UserImpl findById(Long id);
 	
-	User findByEmail(String email); 
+	UserImpl findByEmail(String email); 
 	
-	List<User> findAllUsers(); 
+	List<UserImpl> findAllUsers(); 
 	
-	User saveUser(User user); 
+	UserImpl saveUser(UserImpl userImpl); 
 	
 	Boolean existsByEmail(String email); 
 	
@@ -24,10 +24,10 @@ public interface UserService {
 	Boolean deleteUserById(Long id);
 
 	// Idea Contributors
-	List<User> findByIdea(Long ideaId);
+	List<UserImpl> findByIdea(Long ideaId);
 
 	Boolean saveIdea(Long id, Long ideaId);
 
-	Boolean deleteIdea(Long id, Long ideaId); 
+	Boolean deleteIdea(Long id, Long ideaId);
 
 }

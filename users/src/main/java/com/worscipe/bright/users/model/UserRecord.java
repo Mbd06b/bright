@@ -1,5 +1,6 @@
 package com.worscipe.bright.users.model;
 
+import java.io.Serializable;
 import java.util.Date;
 
 import javax.persistence.Column;
@@ -7,25 +8,31 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.JoinColumn;
-import javax.persistence.ManyToOne;
+import javax.persistence.Table;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
 
 import com.worscipe.bright.common.Relational;
 
 @Entity
-public class UserRecord implements Relational<User>{
+@Table( name = "USER_RECORD")
+public class UserRecord implements Relational<UserImpl>, Serializable{
 
-	
+	private static final long serialVersionUID = -4968053881888933127L;
+
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
     @Column(name="USER_RECORD_ID", updatable = false, nullable = true)
 	private Long id;
-		
-	@ManyToOne
-	@JoinColumn(name="USER_ID")
-	private User user; 
+
+//  Default is uni-directional mapping. By adding the below @ManyToOne annotation
+//	we would be creating a bi-directional mapping, allowing access to the owning entity through the record 
+//  like so, userRecord.getUser(); 
+//  This often adds unnecessary complexity when persisting objects with these relationships 
+//  requiring both objects to refer to eachother as they are saved.
+//	@ManyToOne
+//	@JoinColumn(name="USER_ID")
+//	private User user; 
 		
 	// the id of the entity interacting with the user (either an internal or external microservice)
 	@Column(name="ENTITY_ID") 
@@ -50,14 +57,6 @@ public class UserRecord implements Relational<User>{
 
 	public void setId(Long id) {
 		this.id = id;
-	}
-
-	public User getUser() {
-		return user;
-	}
-	
-	public void setUser(User user) {
-		this.user = user;
 	}
 
 	@Override
@@ -91,14 +90,15 @@ public class UserRecord implements Relational<User>{
 	}
 
 	@Override
-	public User getOwningEntity() {
-		return user; 
+	public UserImpl getOwningEntity() {
+		// TODO Auto-generated method stub
+		return null;
 	}
 
 	@Override
-	public void setOwningEntity(User user) {
-		this.user = user; 
+	public void setOwningEntity(UserImpl userImpl) {
+		// TODO Auto-generated method stub
 		
-	} 
+	}
 		
 }

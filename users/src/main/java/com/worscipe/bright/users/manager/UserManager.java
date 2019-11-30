@@ -2,7 +2,7 @@ package com.worscipe.bright.users.manager;
 
 import java.util.List;
 
-import com.worscipe.bright.users.model.User;
+import com.worscipe.bright.users.model.UserImpl;
 import com.worscipe.bright.users.modelview.UserView;
 
 public interface UserManager{
@@ -23,14 +23,14 @@ public interface UserManager{
 
 	Boolean existsById(Long id);
 
-	User convertToModel(UserView userView);
+	UserImpl convertToModel(UserView userView);
 
-	List<User> convertToModel(List<UserView> userViews);
+	List<UserImpl> convertToModel(List<UserView> userViews);
 
-	UserView convertToView(User user);
+	UserView convertToView(UserImpl userImpl);
 
 	List<UserView> findContributorsByIdeaId(Long ideaId);
 
-	List<UserView> convertToView(List<User> users);
+	List<UserView> convertToView(List<UserImpl> userImpls);
 
 }

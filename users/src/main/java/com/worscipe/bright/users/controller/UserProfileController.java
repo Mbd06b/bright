@@ -1,5 +1,7 @@
 package com.worscipe.bright.users.controller;
 
+import java.util.List;
+
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -7,16 +9,19 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.DeleteMapping;
+import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RestController;
 
-import com.worscipe.bright.users.client.IdeaClient;
 import com.worscipe.bright.users.manager.UserManager;
+import com.worscipe.bright.users.model.UserRecord;
 import com.worscipe.bright.users.modelview.UserView;
 import com.worscipe.bright.users.service.UserService;
 
+@RestController
 @RequestMapping(value = "/{id}")
 public class UserProfileController {
 	
@@ -28,15 +33,9 @@ public class UserProfileController {
 	@Autowired
 	private UserService userService; 
 	
-	@Autowired
-	private IdeaClient ideaClient; 
-	
-	
 	// --------------Get User By Id----------
-
-	@RequestMapping(value = "/", method = RequestMethod.GET, produces = MediaType.APPLICATION_JSON_UTF8_VALUE)
+	@GetMapping(value = {"", "/"}, produces = MediaType.APPLICATION_JSON_UTF8_VALUE)
 	public ResponseEntity<UserView> getUser(@PathVariable("id") Long id) {
-		logger.info("Fetching User with id" + id);
 		UserView user = userManager.findById(id);
 
 		if (user == null) {
@@ -51,7 +50,7 @@ public class UserProfileController {
 	
 	// ---------Delete a User -----------------------------
 
-		@RequestMapping(value = "/", method = RequestMethod.DELETE, produces = MediaType.APPLICATION_JSON_UTF8_VALUE)
+		@DeleteMapping(value = {"", "/"}, produces = MediaType.APPLICATION_JSON_UTF8_VALUE)
 		public ResponseEntity<UserView> deleteUser(@PathVariable("id") Long id) {
 
 			logger.info("Fetching and Deleting User with id: " + id);
@@ -63,24 +62,46 @@ public class UserProfileController {
 		}
 
 	
-	//---------Save idea to user-------------------------------
-	//   POST  mapping user/{id}/idea/{ideaId}
+//--------- idea to user-------------------------------
+	//    mapping user/{id}/idea/{ideaId}
+		
+		@GetMapping(value=" /idea/")
+		public ResponseEntity<List<UserRecord>> getUserIdeasRef(@PathVariable("id") Long id){
+			// TODO
+			return null;
+		}
+		
+		
+		@GetMapping(value=" /idea/{ideaId} ")
+		public ResponseEntity<UserRecord>getUserIdeaRef(@PathVariable("id") Long id, @PathVariable("ideaId") Long ideaId){
+			// TODO
+			return null; 
+		}
 					
-		@PutMapping(value= "/idea/{ideaId}")
-		public ResponseEntity<?> saveIdea(@PathVariable("id") Long id, @PathVariable("ideaId") Long ideaId){
+		@PostMapping(value= "/idea/{ideaId}")
+		public ResponseEntity<Boolean> saveIdea(@PathVariable("id") Long id, @PathVariable("ideaId") Long ideaId){
 			
 			if(userService.saveIdea(id, ideaId)) {
-				return new ResponseEntity<>(HttpStatus.OK);
+				return new ResponseEntity<>(true, HttpStatus.OK);
 			}
-			return new ResponseEntity<>(HttpStatus.INTERNAL_SERVER_ERROR);
+			return new ResponseEntity<>(false, HttpStatus.INTERNAL_SERVER_ERROR);
+		}
+		
+		@PutMapping(value= "/idea/{ideaId}")
+		public ResponseEntity<Boolean> updateIdea(@PathVariable("id") Long id, @PathVariable("ideaId") Long ideaId){
+			
+			if(userService.saveIdea(id, ideaId)) {
+				return new ResponseEntity<>(true, HttpStatus.OK);
+			}
+			return new ResponseEntity<>(false, HttpStatus.INTERNAL_SERVER_ERROR);
 		}
 		
 		@DeleteMapping(value= "/idea/{ideaId}")
-		public ResponseEntity<?> deleteIdea(@PathVariable("id") Long id, @PathVariable("ideaId") Long ideaId){
+		public ResponseEntity<Boolean> deleteIdea(@PathVariable("id") Long id, @PathVariable("ideaId") Long ideaId){
 			if(userService.deleteIdea(id, ideaId)) {
-				return new ResponseEntity<>(HttpStatus.OK);
+				return new ResponseEntity<>(true, HttpStatus.OK);
 			}
-			return new ResponseEntity<>(HttpStatus.INTERNAL_SERVER_ERROR); 
+			return new ResponseEntity<>(false, HttpStatus.INTERNAL_SERVER_ERROR); 
 		}
 
 		

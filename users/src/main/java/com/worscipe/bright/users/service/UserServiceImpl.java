@@ -10,7 +10,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Example;
 import org.springframework.stereotype.Service;
 
-import com.worscipe.bright.users.model.User;
+import com.worscipe.bright.users.model.UserImpl;
 import com.worscipe.bright.users.model.UserRecord;
 import com.worscipe.bright.users.repository.UserRepository;
 
@@ -33,54 +33,54 @@ public class UserServiceImpl implements UserService{
 	 */
 	
 	@Override
-	public User saveUser(User user) {
-	 	return userRepository.save(user);
+	public UserImpl saveUser(UserImpl userImpl) {
+	 	return userRepository.save(userImpl);
 	}
 	
 	@Override
-	public List<User> findAllUsers(){
+	public List<UserImpl> findAllUsers(){
 		
-		List<User> users = userRepository.findAll(); 
+		List<UserImpl> userImpls = userRepository.findAll(); 
 		
-		return users; 
+		return userImpls; 
 	}
 	
 	@Override
 	public Boolean existsByEmail(String email) {
-		 Optional <User> user = userRepository.findByEmail(email); 
-		 return (Boolean)user.isPresent();
+		 Optional <UserImpl> userImpl = userRepository.findByEmail(email); 
+		 return (Boolean)userImpl.isPresent();
 	}
 	
 	
 	@Override
 	public Boolean existsById(Long id) {
-		Optional <User> user = userRepository.findById(id); 
-		 return user.isPresent();
+		Optional <UserImpl> userImpl = userRepository.findById(id); 
+		 return userImpl.isPresent();
 	}
 
 
 	@Override
-	public User findById(final Long id) {
-		Optional<User> user	= userRepository.findById(id);
-		if(user.isPresent()) {
-			return user.get();
+	public UserImpl findById(final Long id) {
+		Optional<UserImpl> userImpl	= userRepository.findById(id);
+		if(userImpl.isPresent()) {
+			return userImpl.get();
 		} else {
-			return new User(); 
+			return new UserImpl(); 
 		}
 	}
 	
-	public User findByEmail(final String email) {
-		Optional<User> user = userRepository.findByEmail(email);
-		if(user.isPresent()) {
-			return user.get();
+	public UserImpl findByEmail(final String email) {
+		Optional<UserImpl> userImpl = userRepository.findByEmail(email);
+		if(userImpl.isPresent()) {
+			return userImpl.get();
 		} else {
-			return new User(); 
+			return new UserImpl(); 
 		}
 	}
 	
-	public Boolean deleteUser(User user) {
-		if(existsById(user.getId())){
-			userRepository.delete(user);
+	public Boolean deleteUser(UserImpl userImpl) {
+		if(existsById(userImpl.getId())){
+			userRepository.delete(userImpl);
 			return true;
 		} else {
 			return false;
@@ -101,9 +101,9 @@ public class UserServiceImpl implements UserService{
 
 
 	@Override
-	public List<User> findByIdea(Long ideaId) {
+	public List<UserImpl> findByIdea(Long ideaId) {
 	
-		User u = new User();
+		UserImpl u = new UserImpl();
 		UserRecord r = new UserRecord(); 
 		r.setEntityId(ideaId);
 		
@@ -111,11 +111,11 @@ public class UserServiceImpl implements UserService{
 		c.add(r);
 		 u.setIdeas(c);
 		 
-		Example<User> example = Example.of(u);
-		Optional<List<User>> users = Optional.of(userRepository.findAll(example));
+		Example<UserImpl> example = Example.of(u);
+		Optional<List<UserImpl>> userImpls = Optional.of(userRepository.findAll(example));
 		
-		if(users.isPresent()) {
-			return users.get();
+		if(userImpls.isPresent()) {
+			return userImpls.get();
 		} else {
 			return new ArrayList<>(); 
 		} 
@@ -123,10 +123,10 @@ public class UserServiceImpl implements UserService{
 	
 	@Override
 	public Boolean saveIdea(Long id, Long ideaId) {
-		 Optional<User> user = userRepository.findById(id); 
-		 if(user.isPresent()) {
-			user.get().addIdea(new UserRecord(ideaId));
-			 saveUser(user.get());
+		 Optional<UserImpl> userImpl = userRepository.findById(id); 
+		 if(userImpl.isPresent()) {
+			userImpl.get().addIdea(new UserRecord(ideaId));
+			 saveUser(userImpl.get());
 			 return true; 
 		 } else {
 			return false;
@@ -136,10 +136,10 @@ public class UserServiceImpl implements UserService{
 
 	@Override
 	public Boolean deleteIdea(Long id, Long ideaId) {
-		 Optional<User> user = userRepository.findById(id); 
-		 if(user.isPresent()) {
-			user.get().getIdeas().removeIf(n -> ideaId.equals(n.getEntityId()));
-			 saveUser(user.get());
+		 Optional<UserImpl> userImpl = userRepository.findById(id); 
+		 if(userImpl.isPresent()) {
+			userImpl.get().getIdeas().removeIf(n -> ideaId.equals(n.getEntityId()));
+			 saveUser(userImpl.get());
 			 return true; 
 		 } else {
 			return false;

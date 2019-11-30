@@ -7,7 +7,7 @@ import java.util.stream.Collectors;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import com.worscipe.bright.users.model.User;
+import com.worscipe.bright.users.model.UserImpl;
 import com.worscipe.bright.users.model.UserRecord;
 import com.worscipe.bright.users.repository.UserRecordRepository;
 
@@ -23,14 +23,14 @@ public class RecordServiceImpl implements RecordService {
 	
 	@Override
 	public List<UserRecord> getUserIdeas(Long id) {
-		User user = userService.findById(id);
-		return user.getIdeas().stream().collect(Collectors.toList()); 
+		UserImpl userImpl = userService.findById(id);
+		return userImpl.getIdeas().stream().collect(Collectors.toList()); 
 	}
 	
 	@Override
 	public List<UserRecord> getUserElections(Long id){
-		User user = userService.findById(id);
-		return user.getElections().stream().collect(Collectors.toList()); 
+		UserImpl userImpl = userService.findById(id);
+		return userImpl.getElections().stream().collect(Collectors.toList()); 
 	}
 	
 	
@@ -57,6 +57,18 @@ public class RecordServiceImpl implements RecordService {
 	
 	public void delete(UserRecord userRecord) {
 		userRecordRepository.delete(userRecord); 
+	}
+
+	@Override
+	public boolean purgeIdea(Long ideaId) {
+		// TODO delete all User Records (purge) from USER_IDEAS that have an entityId = ideaId
+		return false;
+	}
+
+	@Override
+	public boolean purgeElection(Long electionId) {
+		// TODO delete all UserRecords (purge) from USER_ELECTIONS that have an entityId = electionId
+		return false;
 	}
 	
 	
