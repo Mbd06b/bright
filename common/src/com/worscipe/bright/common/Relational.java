@@ -2,13 +2,10 @@ package com.worscipe.bright.common;
 
 import java.util.Date;
 
-public interface Relational<T> {
+public interface Relational {
 	
 	public Long getId();
 	public void setId(Long id);
-
-	public T getOwningEntity();
-	public void setOwningEntity(T user);
 
 	public Long getEntityId();
 	public void setEntityId(Long entityId);
