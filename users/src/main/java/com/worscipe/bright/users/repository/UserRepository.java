@@ -12,7 +12,7 @@ import com.worscipe.bright.users.model.UserImpl;
 public interface UserRepository extends JpaRepository<UserImpl, Long>, UserRepositoryCustom {
 	
 	//This is an HQL query
-	@Query(value = "select u from User u where email = ?1")
+	@Query(value = "select u from UserImpl u where email = ?1")
 	public Optional<UserImpl> findByEmail(final String email);
 
 	
