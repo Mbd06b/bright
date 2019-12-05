@@ -16,7 +16,7 @@ import com.worscipe.bright.common.Relational;
 
 @Entity
 @Table( name = "USER_RECORD")
-public class UserRecord implements Relational<UserImpl>, Serializable{
+public class UserRecord implements Relational, Serializable{
 
 	private static final long serialVersionUID = -4968053881888933127L;
 
@@ -87,18 +87,6 @@ public class UserRecord implements Relational<UserImpl>, Serializable{
 	@Override
 	public void setModifiedDate(Date modifiedDate) {
 		this.modifiedDate = modifiedDate;
-	}
-
-	@Override
-	public UserImpl getOwningEntity() {
-		// TODO Auto-generated method stub
-		return null;
-	}
-
-	@Override
-	public void setOwningEntity(UserImpl userImpl) {
-		// TODO Auto-generated method stub
-		
 	}
 		
 }

@@ -3,7 +3,6 @@ package com.worscipe.bright.ideas.modelview;
 import java.io.Serializable;
 
 import com.worscipe.bright.ideas.model.IdeaAction;
-import com.worscipe.bright.ideas.model.IdeaImpl;
 
 public class IdeaView implements Serializable{
 	

@@ -15,13 +15,11 @@ import org.springframework.web.bind.annotation.RestController;
 import com.worscipe.bright.users.manager.UserManager;
 import com.worscipe.bright.users.modelview.UserView;
 import com.worscipe.bright.users.service.RecordService;
-import com.worscipe.bright.users.service.UserService;
 
 @RestController
 public class ContributorController {
 	
 	private static final Logger logger = LogManager.getLogger(ContributorController.class);
-
 	
 	@Autowired
 	private UserManager userManager;
@@ -46,7 +44,7 @@ public class ContributorController {
 	public ResponseEntity<Boolean> purgeIdeaRecords(@PathVariable("ideaId") Long ideaId){
 		logger.info("Purging idea ID: {ideaId} from all users");
 		
-		if(RecordService.purgeIdea(ideaId)) {
+		if(recordService.purgeIdea(ideaId)) {
 			return new ResponseEntity<>(true, HttpStatus.OK);
 		} else {
 			return new ResponseEntity<>(false, HttpStatus.OK);

@@ -6,7 +6,6 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import com.worscipe.bright.ideas.client.UserClient;
 import com.worscipe.bright.ideas.model.IdeaImpl;
 import com.worscipe.bright.ideas.model.IdeaRecord;
 import com.worscipe.bright.ideas.modelview.IdeaView;

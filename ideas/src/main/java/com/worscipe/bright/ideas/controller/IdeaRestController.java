@@ -22,7 +22,6 @@ import com.worscipe.bright.ideas.manager.IdeaManager;
 import com.worscipe.bright.ideas.model.IdeaImpl;
 import com.worscipe.bright.ideas.modelview.IdeaView;
 import com.worscipe.bright.ideas.modelview.other.ResultPage;
-import com.worscipe.bright.ideas.service.IdeaRecordService;
 
 //How to handle an Abstract endpoint in a RESTful controller
 //Use a factory pattern in the service layer to handle the object

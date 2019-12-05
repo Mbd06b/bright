@@ -2,7 +2,6 @@ package com.worscipe.bright.users.manager;
 
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -11,7 +10,6 @@ import com.worscipe.bright.users.auth.Password;
 import com.worscipe.bright.users.auth.TokenManager;
 import com.worscipe.bright.users.model.UserImpl;
 import com.worscipe.bright.users.modelview.UserView;
-import com.worscipe.bright.users.service.RecordService;
 import com.worscipe.bright.users.service.UserService;
 
 

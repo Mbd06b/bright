@@ -1,7 +1,6 @@
 package com.worscipe.bright.ideas.manager;
 
 import java.util.List;
-import java.util.Optional;
 
 import com.worscipe.bright.ideas.model.IdeaImpl;
 import com.worscipe.bright.ideas.modelview.IdeaView;

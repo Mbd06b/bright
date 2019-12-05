@@ -1,7 +1,6 @@
 package com.worscipe.bright.users.service;
 
 import java.util.List;
-import java.util.Optional;
 
 import com.worscipe.bright.users.model.UserRecord;
 

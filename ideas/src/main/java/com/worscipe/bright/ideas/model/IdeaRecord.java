@@ -9,24 +9,18 @@ import javax.persistence.Enumerated;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.JoinColumn;
-import javax.persistence.ManyToOne;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
 
 import com.worscipe.bright.common.Relational;
 
 @Entity
-public class IdeaRecord implements Relational<IdeaImpl>{
+public class IdeaRecord implements Relational {
 	
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
     @Column(name="IDEA_AUDIT_ID", updatable = false, nullable = true)
 	private Long id;
-		
-	@ManyToOne
-	@JoinColumn(name="IDEA_ID")
-	private IdeaImpl ideaImpl; 
 		
 	// the id of the entity interacting with the idea (either an internal or external microservice)
 	@Column(name="ENTITY_ID") 
@@ -68,14 +62,6 @@ public class IdeaRecord implements Relational<IdeaImpl>{
 		this.createdOn = createdOn;
 	}
 	
-	public void setIdea(IdeaImpl ideaImpl) {
-		this.ideaImpl = ideaImpl;
-	}
-	
-	public IdeaImpl getIdea() {
-		return this.ideaImpl;
-	}
-
 	public void setIdeaAction(IdeaAction ideaAction) {
 		this.ideaAction = ideaAction;
 	}
@@ -92,17 +78,6 @@ public class IdeaRecord implements Relational<IdeaImpl>{
 	@Override
 	public Long getEntityId() {
 	    return this.entityId;
-	}
-
-	@Override
-	public IdeaImpl getOwningEntity() {
-		return ideaImpl;
-	}
-
-	@Override
-	public void setOwningEntity(IdeaImpl ideaImpl) {
-		this.ideaImpl = ideaImpl;
-		
 	}
 
 	@Override

@@ -2,10 +2,9 @@ package com.worscipe.bright.ideas.service;
 
 import com.worscipe.bright.ideas.model.IdeaAction;
 import com.worscipe.bright.ideas.model.IdeaRecord;
-import com.worscipe.bright.ideas.model.IdeaImpl;
 
 public interface IdeaRecordService {
 
-	public IdeaRecord logAction(Long entityId, String entityType, IdeaImpl ideaImpl, IdeaAction action);
+	public IdeaRecord logAction(Long entityId, String entityType, IdeaAction action);
 	public IdeaRecord save(IdeaRecord ideaRecord); 
 }
