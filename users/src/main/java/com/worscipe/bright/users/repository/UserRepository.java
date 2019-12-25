@@ -6,13 +6,14 @@ import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.stereotype.Repository;
 
-import com.worscipe.bright.users.model.User;
+import com.worscipe.bright.users.model.UserImpl;
 
 @Repository
-public interface UserRepository extends JpaRepository<User, Long> {
+public interface UserRepository extends JpaRepository<UserImpl, Long>, UserRepositoryCustom {
 	
 	//This is an HQL query
-	@Query(value = "select u from User u where email = ?1")
-	public Optional<User> findByEmail(final String email); 
+	@Query(value = "select u from UserImpl u where email = ?1")
+	public Optional<UserImpl> findByEmail(final String email);
+
 	
 }

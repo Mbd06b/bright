@@ -20,14 +20,11 @@ public interface IdeaService {
 	void logAction(IdeaAction action);
 
 	Boolean deleteById(Long id);
-
-	List<IdeaImpl> findAllIdeasByUserId(Long id);
-
 	Boolean existsById(Long id);
 
 	List<IdeaImpl> findIdeasByQueryPageAndSize(String searchText, Integer pageNumber, Integer limit);
-
 	Long getIdeaQueryTotalResultCount(String searchText);
-
 	Integer getIdeaQueryTotalResultPagesCount(String searchText, Integer limit);
+
+	List<IdeaImpl> findByUser(Long userId);
 }

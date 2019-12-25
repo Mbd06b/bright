@@ -3,7 +3,6 @@ package com.worscipe.bright.ideas.modelview;
 import java.io.Serializable;
 
 import com.worscipe.bright.ideas.model.IdeaAction;
-import com.worscipe.bright.ideas.model.IdeaImpl;
 
 public class IdeaView implements Serializable{
 	
@@ -53,32 +52,6 @@ public class IdeaView implements Serializable{
 	
 	public void setEntityType(String actingEntityType) {
 		 this.actingEntityType = actingEntityType;
-	}
-
-	
-//----- CONSTRUCTORS ----------------
-	
-	
-	public IdeaView(){	
-	}
-	
-	public IdeaView(IdeaImpl ideaImpl) {
-		 this.id = ideaImpl.getIdeaId(); 
-		 this.title = ideaImpl.getTitle(); 
-		 this.subtitle = ideaImpl.getSubtitle();
-		 this.story = ideaImpl.getStory(); 	   
-	}
-	
-	
-	/**
-	 * 
-	 * @param title - ideaImpl Title
-	 * @param subtitle - ideaImpl Subtitle
-	 */
-	
-  public IdeaView(String title, String subtitle){
-		this.title =  title; 
-		this.subtitle = subtitle; 
 	}
 
 	
@@ -134,13 +107,4 @@ public class IdeaView implements Serializable{
 	public String toString() {
 		return "Get Class: " + this.getClass() + " IdeaImpl: " + title + " id: " + id + " Subtitle: " + subtitle; 
 	}
-
-	public void copyFromModel(IdeaImpl impl) {
-		 this.id = impl.getIdeaId(); 
-		 this.title = impl.getTitle(); 
-		 this.subtitle = impl.getSubtitle();
-		 this.story = impl.getStory(); 	   
-	}
-
-
 }

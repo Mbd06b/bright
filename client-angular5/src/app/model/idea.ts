@@ -10,7 +10,7 @@ export class Idea implements IdeaInterface {
   upVotes: number;
   downVotes: number;
 
-  actingUserId: number;
+  actingEntityId: number;
   action: string;
   users: UserLinkView[];
 }

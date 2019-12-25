@@ -37,6 +37,11 @@
 
 	<dependencies>
 		<dependency>
+		  <groupId>com.worscipe.bright</groupId>
+		  <artifactId>common</artifactId>
+		  <version>0.0.1-RELEASE</version>
+		</dependency>
+		<dependency>
 			<groupId>org.springframework.cloud</groupId>
 			<artifactId>spring-cloud-starter-netflix-eureka-client</artifactId>
 		</dependency>

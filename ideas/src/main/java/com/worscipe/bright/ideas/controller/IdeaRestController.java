@@ -8,16 +8,16 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.CrossOrigin;
+import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.google.gson.Gson;
+import com.worscipe.bright.ideas.client.UserClient;
 import com.worscipe.bright.ideas.manager.IdeaManager;
 import com.worscipe.bright.ideas.model.IdeaImpl;
 import com.worscipe.bright.ideas.modelview.IdeaView;
@@ -38,6 +38,8 @@ public class IdeaRestController {
 	@Autowired
 	private IdeaManager ideaManager;
 	
+	@Autowired
+	private UserClient userClient;
 	
 
 	// ---------Retrieve All Ideas--------------
@@ -49,11 +51,11 @@ public class IdeaRestController {
 	@GetMapping( value = "/ideas", produces = MediaType.APPLICATION_JSON_UTF8_VALUE)
 	public ResponseEntity<List<IdeaView>> listAllIdeas() {
 
-		List<IdeaView> ideas = ideaManager.findAllIdeas();
+		List<IdeaView> ideas = ideaManager.getIdeas();
 		if (ideas.isEmpty()) {
-			return new ResponseEntity<List<IdeaView>>(HttpStatus.NO_CONTENT);
+			return new ResponseEntity<>(HttpStatus.NO_CONTENT);
 		}
-		return new ResponseEntity<List<IdeaView>>(ideas, HttpStatus.OK);
+		return new ResponseEntity<>(ideas, HttpStatus.OK);
 	}
 	
 	/**
@@ -82,7 +84,7 @@ public class IdeaRestController {
 	 * @param id
 	 * @return
 	 */
-	@RequestMapping(value = "/{id}", method = RequestMethod.GET, produces = MediaType.APPLICATION_JSON_UTF8_VALUE)
+	@GetMapping(value = "/{id}", produces = MediaType.APPLICATION_JSON_UTF8_VALUE)
 	public ResponseEntity<IdeaView> getIdea(@PathVariable("id") Long id) {
 		logger.debug("Fetching IdeaImpl with id" + id);
 		
@@ -91,28 +93,45 @@ public class IdeaRestController {
 
 		if (idea == null) {
 			logger.info("IdeaImpl with id: " + id + " not found ");
-			return new ResponseEntity<IdeaView>(HttpStatus.NO_CONTENT);
+			return new ResponseEntity<>(HttpStatus.NO_CONTENT);
 		}
-		return new ResponseEntity<IdeaView>(idea, HttpStatus.OK);
+		return new ResponseEntity<>(idea, HttpStatus.OK);
 
 	}
 
-	// TODO Retrieve ideasByIdeaContributor() (value = "/IdeaImpl/{Ideaid} .. GET
+	//  Retrieve ideasByIdeasByUser() (value = "/idea/user/{userId}/ .. GET
+	
+	@GetMapping( value = "/user/{userId}", produces = MediaType.APPLICATION_JSON_UTF8_VALUE)
+	public ResponseEntity<List<IdeaView>> getIdeasByUser(@PathVariable Long userId){
+		logger.info("Find ideas by User: userId={}", userId);
+		List<IdeaView> foundIdeas = ideaManager.findIdeasByUser(userId);
+		if(!foundIdeas.isEmpty()) {
+			return new ResponseEntity<>(foundIdeas, HttpStatus.OK);
+		}
+		return new ResponseEntity<>(HttpStatus.NO_CONTENT);
+	}
+	
 
 	// --------Create an IdeaImpl-------
 	/**
 	 * @param ideaImpl
 	 * @return
 	 */
-	@RequestMapping(value = "/", method = RequestMethod.POST, produces = MediaType.APPLICATION_JSON_UTF8_VALUE)
+	@PostMapping(value = "/", produces = MediaType.APPLICATION_JSON_UTF8_VALUE)
 	public ResponseEntity<IdeaView> createIdea(@RequestBody IdeaView idea) {
 
 		logger.info("Creating IdeaImpl: " + idea.getTitle());
 		
 		IdeaView savedIdea = ideaManager.saveIdea(idea);
-
-		return new ResponseEntity<IdeaView>(savedIdea, HttpStatus.CREATED);
-
+		
+	    if(userClient.updateUserRecord(idea.getActingEntityId(), savedIdea.getId())){
+	    	return new ResponseEntity<>(savedIdea, HttpStatus.CREATED);
+	    } else {
+	    	//rollback transaction
+	    	logger.error("userClient.updateUserRecord FAILED, transaction rolled-back");
+	    	ideaManager.deleteById(savedIdea.getId());
+			return new ResponseEntity<>(savedIdea, HttpStatus.INTERNAL_SERVER_ERROR);
+	    }
 	}	
 	
 	// -----Update an IdeaImpl ---------
@@ -121,7 +140,7 @@ public class IdeaRestController {
 	 * @param ideaImpl
 	 * @return
 	 */
-	@RequestMapping(value = "/", method = RequestMethod.PUT, produces = MediaType.APPLICATION_JSON_UTF8_VALUE)
+	@PutMapping(value = "/", produces = MediaType.APPLICATION_JSON_UTF8_VALUE)
 	public ResponseEntity<IdeaView> updateIdea(@RequestBody IdeaView idea) {
 			
 		logger.debug("IdeaView to Update: " + idea); 
@@ -129,10 +148,15 @@ public class IdeaRestController {
 		IdeaView updatedIdea = ideaManager.saveIdea(idea);
 		
 		if (updatedIdea != null) {
-			return new ResponseEntity<IdeaView>(updatedIdea, HttpStatus.OK);
+			if(userClient.updateUserRecord(idea.getActingEntityId(), updatedIdea.getId())) {
+				return new ResponseEntity<>(updatedIdea, HttpStatus.OK);
+			}else {
+				logger.error("User Failed to Update");
+				return new ResponseEntity<>(HttpStatus.INTERNAL_SERVER_ERROR);
+			}
 		}
 		else {
-			return new ResponseEntity<IdeaView>(HttpStatus.NO_CONTENT);	
+			return new ResponseEntity<>(HttpStatus.NO_CONTENT);	
 		}
 
 	}
@@ -142,15 +166,15 @@ public class IdeaRestController {
 	 * @param id
 	 * @return
 	 */
-	@RequestMapping(value = "/{id}", method = RequestMethod.DELETE, produces = MediaType.APPLICATION_JSON_UTF8_VALUE)
+	@DeleteMapping(value = "/{id}", produces = MediaType.APPLICATION_JSON_UTF8_VALUE)
 	public ResponseEntity<IdeaImpl> deleteIdea(@PathVariable("id") Long id) {
-		logger.debug("Fetching and Deleting IdeaImpl with id: " + id);
+		logger.info("Fetching and Deleting IdeaImpl with id: ", id);
 
-		if (ideaManager.deleteById(id)) {
-			return new ResponseEntity<IdeaImpl>(HttpStatus.OK);
-		}
-		System.out.println("Unable to delete. IdeaImpl with id " + id);
-		return new ResponseEntity<IdeaImpl>(HttpStatus.INTERNAL_SERVER_ERROR);
+		if(ideaManager.deleteById(id)) {
+			return new ResponseEntity<>(HttpStatus.OK);
+		} 
+		logger.error("Unable to delete. IdeaImpl with id " + id);
+		return new ResponseEntity<>(HttpStatus.INTERNAL_SERVER_ERROR);
 	}
 
 }

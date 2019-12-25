@@ -4,7 +4,7 @@ import java.io.Serializable;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.worscipe.bright.users.model.Role;
-import com.worscipe.bright.users.model.User;
+import com.worscipe.bright.users.model.UserImpl;
 
 //TODO from 1/9/2019 code review, research ViewModels
 //This UserView (data transfer object) is used by the application front-end to communicate to the back.
@@ -37,6 +37,7 @@ public class UserView implements Serializable{
 		
 		private String avatarUrl;
 		
+		
 		@JsonProperty("role")
 		private Role role = Role.NONE;
 	
@@ -47,18 +48,18 @@ public class UserView implements Serializable{
 		}
 
 		
-		public UserView(User user) {
-			this.id = user.getId(); 
-			this.email = user.getEmail(); 
-			this.username = user.getUsername();
-			this.password = user.getPassword(); 
-			this.firstName = user.getFirstName();
-			this.lastName = user.getLastName();
-			this.title = user.getTitle();
-			this.aboutMe = user.getAboutMe(); 
-			this.userImgUrl =user.getUserImgUrl();
-			this.avatarUrl = user.getAvatarUrl(); 
-			this.role = user.getRole();
+		public UserView(UserImpl userImpl) {
+			this.id = userImpl.getId(); 
+			this.email = userImpl.getEmail(); 
+			this.username = userImpl.getUsername();
+			this.password = userImpl.getPassword(); 
+			this.firstName = userImpl.getFirstName();
+			this.lastName = userImpl.getLastName();
+			this.title = userImpl.getTitle();
+			this.aboutMe = userImpl.getAboutMe(); 
+			this.userImgUrl =userImpl.getUserImgUrl();
+			this.avatarUrl = userImpl.getAvatarUrl(); 
+			this.role = userImpl.getRole();
 		}
 				
 

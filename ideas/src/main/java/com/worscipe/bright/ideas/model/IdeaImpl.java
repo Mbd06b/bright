@@ -4,7 +4,6 @@ import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
-import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -24,8 +23,8 @@ import javax.persistence.TemporalType;
 
 
 @Entity
-@Table(name="IDEA_TABLE")
-public class IdeaImpl{
+@Table (name = "idea")
+public class IdeaImpl implements Idea{
 
 
 	@Id
@@ -50,7 +49,11 @@ public class IdeaImpl{
 	
 	@Column(name="CREATED_ON")
 	@Temporal(TemporalType.TIMESTAMP)
-	public Date createdOn = new Date();
+	public Date createdDate = new Date();
+	
+	@Column(name="MODIFIED")
+	@Temporal(TemporalType.TIMESTAMP)
+	public Date modifiedDate = new Date(); 
     
 	
 //-------COMPOSITION RELATIONSHIPS----------------
@@ -62,26 +65,44 @@ public class IdeaImpl{
     //What exactly can/should be done (task generation / owner reassignment) with the orphaned contributions in BrightIdeas is TBD. 
 	
 	//One ideaImpl has many records. 
-	@OneToMany(cascade = CascadeType.ALL, mappedBy="id", orphanRemoval = true) 
-	private List<IdeaAudit> ideaAudits = new ArrayList<IdeaAudit>(); 
+	@OneToMany
+	private List<IdeaRecord> users = new ArrayList<>(); 
 	
-	public void setIdeaLogs(List<IdeaAudit> ideaAudits){
-		this.ideaAudits = ideaAudits;
+	//One ideaImpl has many records. 
+	@OneToMany 
+	private List<IdeaRecord> elections = new ArrayList<>(); 
+	
+	public List<IdeaRecord> getUsers() {
+		return users;
 	}
 	
-	public List<IdeaAudit> getIdeaLogs(){
-		return this.ideaAudits; 
+	public void addUser(IdeaRecord ideaRecord) {
+		this.users.add(ideaRecord);
 	}
 
+	public void setUsers(List<IdeaRecord> users) {
+		this.users = users;
+	}
+
+	public List<IdeaRecord> getElections() {
+		return elections;
+	}
 	
-  
+	public void addElection(IdeaRecord ideaRecord) {
+		this.elections.add(ideaRecord);
+	}
+
+	public void setElections(List<IdeaRecord> elections) {
+		this.elections = elections;
+	}
+	
 	
 //-------- METHODS -------------------
-	public Long getIdeaId() {
+	public Long getId() {
 		return id;
 	}
 
-	public void setIdeaId(Long id) {
+	public void setId(Long id) {
 		this.id = id;
 	}
 
@@ -109,14 +130,6 @@ public class IdeaImpl{
 		this.story = story; 
 	}
 
-	public List<IdeaAudit> getIdeaRecords() {
-		return ideaAudits;
-	}
-
-	public void setIdeaRecords(List<IdeaAudit> ideaAudits) {
-		this.ideaAudits = ideaAudits;
-	}
-
 	@Override
 	public String toString() {
 		return "IdeaImpl["+ id + "]: " + title; 
@@ -138,12 +151,20 @@ public class IdeaImpl{
 		this.thumbnailImgUrl = thumbnailImgUrl;
 	}
 
-	public Date getCreatedOn() {
-		return createdOn;
+	public Date getCreatedDate() {
+		return createdDate;
 	}
 
-	public void setCreatedOn(Date createdOn) {
-		this.createdOn = createdOn;
+	public void setCreatedDate(Date createdDate) {
+		this.createdDate = createdDate;
+	}
+
+	public Date getModifiedDate() {
+		return modifiedDate;
+	}
+
+	public void setModifiedDate(Date modifiedDate) {
+		this.modifiedDate = modifiedDate;
 	}
 
 }

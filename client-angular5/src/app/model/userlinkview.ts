@@ -6,5 +6,5 @@ export class UserLinkView {
   lastName: string;
   userImgUrl: string;
   avatarUrl: string;
-  role: string; 
+  role: string;
 }

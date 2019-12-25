@@ -1,6 +1,7 @@
 import { UserInterface } from './user.interface';
 import { Role } from './role.enum';
 import { IdeaLinkView } from './idealinkview';
+import { Idea } from '../../../bin/src/app/model/idea';
 
 export class User implements UserInterface {
 
@@ -19,7 +20,8 @@ export class User implements UserInterface {
   token: string;
   role: string;
 
-  ideas: IdeaLinkView[];
+  ideaLinks: IdeaLinkView[];
+  ideas: Idea[];
 
   constructor() {}
 

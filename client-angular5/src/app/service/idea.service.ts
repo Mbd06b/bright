@@ -37,8 +37,14 @@ export class IdeaService {
       .catch(this.handleError<any>('getIdea[' + id + ']'));
   }
 
+  getIdeasByUserId(userId: number): Observable<Idea[]> {
+    return this.httpClient.get(this.ideasApi + 'user/' + userId)
+      .do(data => console.log('getIdea[' + userId + ']: ' + inspect(data)))
+      .catch(this.handleError<any>('getIdea[' + userId + ']'));
+  }
+
   postIdea(idea: Idea): Observable<Idea> {
-       idea.actingUserId = this.authService.sessionUser.id;
+       idea.actingEntityId = this.authService.sessionUser.id;
        idea.action = IdeaAction.Create;
     return this.httpClient.post(this.ideasApi, idea)
       .do(data => console.log('postIdea: ' + inspect(data)))
@@ -59,10 +65,10 @@ export class IdeaService {
      }
 
     // leave the actingUserId alone if it has been explictly defined.
-     if ( (idea.actingUserId !== undefined) || (idea.actingUserId !== null) ) {
+     if ( (idea.actingEntityId !== undefined) || (idea.actingEntityId !== null) ) {
        // do nothing
      } else {
-      idea.actingUserId = this.authService.sessionUser.id;
+      idea.actingEntityId = this.authService.sessionUser.id;
      }
 
      if ( 4 > 6) {

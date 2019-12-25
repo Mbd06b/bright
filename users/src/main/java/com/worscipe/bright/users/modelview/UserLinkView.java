@@ -2,7 +2,7 @@ package com.worscipe.bright.users.modelview;
 
 import java.io.Serializable;
 
-import com.worscipe.bright.users.model.User;
+import com.worscipe.bright.users.model.UserImpl;
 
 public class UserLinkView implements Serializable {
 	
@@ -24,14 +24,14 @@ public class UserLinkView implements Serializable {
 	
 	UserLinkView(){}
 	
-	public UserLinkView(User user){
-		this.id = user.getId();
-		this.email = user.getEmail();
-		this.firstName = user.getFirstName();
-		this.lastName = user.getLastName();
-		this.setTitle(user.getTitle());
-		this.userImgUrl = user.getUserImgUrl();
-		this.avatarUrl = user.getAvatarUrl();
+	public UserLinkView(UserImpl userImpl){
+		this.id = userImpl.getId();
+		this.email = userImpl.getEmail();
+		this.firstName = userImpl.getFirstName();
+		this.lastName = userImpl.getLastName();
+		this.setTitle(userImpl.getTitle());
+		this.userImgUrl = userImpl.getUserImgUrl();
+		this.avatarUrl = userImpl.getAvatarUrl();
 	}
 	
 	public Long getId() {

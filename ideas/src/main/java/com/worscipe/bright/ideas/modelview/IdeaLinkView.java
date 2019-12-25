@@ -21,7 +21,7 @@ public class IdeaLinkView implements Serializable {
 		public IdeaLinkView(){}
 		
 		public IdeaLinkView(IdeaImpl ideaImpl){
-			this.id = ideaImpl.getIdeaId();
+			this.id = ideaImpl.getId();
 			this.title = ideaImpl.getTitle();
 			this.subtitle = ideaImpl.getSubtitle();
 			this.story =ideaImpl.getStory();

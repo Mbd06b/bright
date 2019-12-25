@@ -17,7 +17,7 @@ import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.BeforeSuite;
 import org.testng.annotations.Test;
 
-import com.worscipe.bright.users.model.User;
+import com.worscipe.bright.users.model.UserImpl;
 import com.worscipe.bright.users.repository.UserRepository;
 import com.worscipe.bright.users.service.UserServiceImpl;
 
@@ -36,22 +36,22 @@ public class UserServiceImplTest {
 	@Mock
 	private UserRepository mockUserRepository;
 	
-	private List<User> users;
-	private User user; 
-	private Optional<User> optional; 
-	private Optional<User> emptyOptional;
+	private List<UserImpl> userImpls;
+	private UserImpl userImpl; 
+	private Optional<UserImpl> optional; 
+	private Optional<UserImpl> emptyOptional;
 	
 	private Long INVALID_ID = -1L;
 	private String INVALID_EMAIL = "null@email.invalid";
 	
 	private MockNeat mockNeat; 
 	
-	private List<User> initMockUsers(Integer number) {
+	private List<UserImpl> initMockUsers(Integer number) {
 		 
 		 	mockNeat = MockNeat.threadLocal();
 		 	
 			// we setup the data to be returned
-			List<User> mockUsers = mockNeat.reflect(User.class)
+			List<UserImpl> mockUsers = mockNeat.reflect(UserImpl.class)
 					 // We need predictable id values, see for(long i ... loop below) .field("id", mockNeat.longSeq())
 						.field("email", mockNeat.emails())
 						.field("password", mockNeat.passwords().types(PassStrengthType.WEAK, PassStrengthType.MEDIUM))
@@ -86,9 +86,9 @@ public class UserServiceImplTest {
 	@BeforeMethod
 	private void initMockData() {
 		/** Internally uses the ThreadLocalRandom implementation */
-		users = initMockUsers(2); 
-		user = users.get(0);
-		optional = Optional.of(user);
+		userImpls = initMockUsers(2); 
+		userImpl = userImpls.get(0);
+		optional = Optional.of(userImpl);
 	}
 	
 	
@@ -97,29 +97,29 @@ public class UserServiceImplTest {
 		
 	       // with the methed stubbed by the mock repository, so we know that we will get a result when we attempt to use the findAll() method. 
 		Mockito.when(mockUserRepository.findAll())
-			   .thenReturn(users);
+			   .thenReturn(userImpls);
 		
 		// Excecution
-		List<User> result = userServiceUnderTest.findAllUsers();
+		List<UserImpl> result = userServiceUnderTest.findAllUsers();
 		
 		// Verification
 			// pass in the mock Reference and then state the method we want to be verified. 
 		Mockito.verify(mockUserRepository).findAll();
 			// verify the data
-		Assert.assertEquals(result, users, "List<User> returned from service DID NOT equal List<User> mocked");
+		Assert.assertEquals(result, userImpls, "List<User> returned from service DID NOT equal List<User> mocked");
 	}
 	
 	@Test(priority=2)
 	public void shouldExistById() {
 		
-		Mockito.when(mockUserRepository.findById(user.getId()))
+		Mockito.when(mockUserRepository.findById(userImpl.getId()))
 				.thenReturn(optional);
 		
-		Boolean result = userServiceUnderTest.existsById(user.getId());
+		Boolean result = userServiceUnderTest.existsById(userImpl.getId());
 		
-		Mockito.verify(mockUserRepository).findById(user.getId());
+		Mockito.verify(mockUserRepository).findById(userImpl.getId());
 		
-		Assert.assertTrue(result, "existsById(uid) should have returned True, because known user with id:["+user.getId()+"] mocked") ; 	
+		Assert.assertTrue(result, "existsById(uid) should have returned True, because known user with id:["+userImpl.getId()+"] mocked") ; 	
 	}
 	
 	@Test(priority=3)
@@ -138,15 +138,15 @@ public class UserServiceImplTest {
 	
 	@Test(priority=4)
 	public void shouldExistByEmail() {
-		Mockito.when(mockUserRepository.findByEmail(user.getEmail()))
+		Mockito.when(mockUserRepository.findByEmail(userImpl.getEmail()))
 				.thenReturn(optional);
 		
-		Boolean result = userServiceUnderTest.existsByEmail(user.getEmail());
+		Boolean result = userServiceUnderTest.existsByEmail(userImpl.getEmail());
 		
-		Mockito.verify(mockUserRepository).findByEmail(user.getEmail());
+		Mockito.verify(mockUserRepository).findByEmail(userImpl.getEmail());
 		
 		
-		Assert.assertTrue(result, "existByEmail("+user.getEmail()+") of a known user is returning false (implying user wasn't found)");
+		Assert.assertTrue(result, "existByEmail("+userImpl.getEmail()+") of a known user is returning false (implying user wasn't found)");
 		
 	}
 	
@@ -168,13 +168,13 @@ public class UserServiceImplTest {
 	
 	@Test(priority=6)
 	public void shouldGetUserById() {
-		Mockito.when(mockUserRepository.findById(user.getId()))
+		Mockito.when(mockUserRepository.findById(userImpl.getId()))
 			.thenReturn(optional);
 		
-		User result = userServiceUnderTest.findById(user.getId()); 
+		UserImpl result = userServiceUnderTest.findById(userImpl.getId()); 
 		
-		Mockito.verify(mockUserRepository, Mockito.atLeastOnce()).findById(user.getId());
-		Assert.assertEquals(result, user, "Users should be the same but are not");
+		Mockito.verify(mockUserRepository, Mockito.atLeastOnce()).findById(userImpl.getId());
+		Assert.assertEquals(result, userImpl, "Users should be the same but are not");
 	}
 	
 	@Test(priority=7)
@@ -182,7 +182,7 @@ public class UserServiceImplTest {
 		Mockito.when(mockUserRepository.findById(INVALID_ID))
 			.thenReturn(emptyOptional);
 		
-		User result = userServiceUnderTest.findById(INVALID_ID); 
+		UserImpl result = userServiceUnderTest.findById(INVALID_ID); 
 		
 		// verify that Repo was NOT called,  Mockito.times(0) means no method invocations
 		Mockito.verify(mockUserRepository, Mockito.atLeastOnce()).findById(INVALID_ID);
@@ -193,14 +193,14 @@ public class UserServiceImplTest {
 	
 	@Test(priority=8)
 	public void shouldGetUserByEmail() {
-		Mockito.when(mockUserRepository.findByEmail(user.getEmail()))
+		Mockito.when(mockUserRepository.findByEmail(userImpl.getEmail()))
 			.thenReturn(optional);
 		
-		User result = userServiceUnderTest.findByEmail(user.getEmail());
+		UserImpl result = userServiceUnderTest.findByEmail(userImpl.getEmail());
 		
-		Mockito.verify(mockUserRepository).findByEmail(user.getEmail());
+		Mockito.verify(mockUserRepository).findByEmail(userImpl.getEmail());
 		
-		Assert.assertEquals(result, user, "the findByEmail() method should return the known user we mocked");
+		Assert.assertEquals(result, userImpl, "the findByEmail() method should return the known user we mocked");
 		
 	}
 	
@@ -209,7 +209,7 @@ public class UserServiceImplTest {
 		Mockito.when(mockUserRepository.findByEmail(INVALID_EMAIL))
 			.thenReturn(emptyOptional);
 			
-	    User result = userServiceUnderTest.findByEmail(INVALID_EMAIL);
+	    UserImpl result = userServiceUnderTest.findByEmail(INVALID_EMAIL);
 	    
 	    Mockito.verify(mockUserRepository, Mockito.atLeastOnce()).findByEmail(INVALID_EMAIL);
 	    
@@ -220,12 +220,12 @@ public class UserServiceImplTest {
 	@Test(priority=10)
 	public void shouldSaveUser() {
 		 
-		User newUser = initMockUsers(1).get(0); 
+		UserImpl newUser = initMockUsers(1).get(0); 
 		
 		Mockito.when(mockUserRepository.save(newUser))
 			.thenReturn(newUser);
 		
-		User result = userServiceUnderTest.saveUser(newUser); 
+		UserImpl result = userServiceUnderTest.saveUser(newUser); 
 		
 		Mockito.verify(mockUserRepository).save(newUser);
 		
@@ -238,10 +238,10 @@ public class UserServiceImplTest {
 	@Test(priority=11)
 	public void shouldUpdateUser() {
 		
-		User userToUpdate = users.get(0); 
+		UserImpl userToUpdate = userImpls.get(0); 
 		Long userToUpdateId = userToUpdate.getId();
 		
-		User userUpdate = initMockUsers(1).get(0);
+		UserImpl userUpdate = initMockUsers(1).get(0);
 		
 		//just to be sure
 		userUpdate.setId(userToUpdateId);
@@ -250,7 +250,7 @@ public class UserServiceImplTest {
 			.thenReturn(userUpdate);
 		
 
-		User result = userServiceUnderTest.saveUser(userUpdate);
+		UserImpl result = userServiceUnderTest.saveUser(userUpdate);
 		
 		Mockito.verify(mockUserRepository).save(userUpdate);
 		
@@ -261,7 +261,7 @@ public class UserServiceImplTest {
 	@Test(priority=12)
 	public void shouldDeleteUserById() {
 		
-		Long userToDeleteId = users.get(0).getId();
+		Long userToDeleteId = userImpls.get(0).getId();
 		
 		Answer<Boolean> answer = new Answer<Boolean>() {
 			public Boolean answer(InvocationOnMock invocation) {
@@ -269,7 +269,7 @@ public class UserServiceImplTest {
 		     	}
 		};
 		
-		Mockito.when(mockUserRepository.findById(user.getId())).thenReturn(optional);
+		Mockito.when(mockUserRepository.findById(userImpl.getId())).thenReturn(optional);
 		Mockito.doAnswer(answer).when(mockUserRepository).deleteById(userToDeleteId);
 		
 		Boolean result = userServiceUnderTest.deleteUserById(userToDeleteId); 
@@ -309,22 +309,22 @@ public class UserServiceImplTest {
 		     	}
 		};
 		
-		Mockito.when(mockUserRepository.findById(user.getId())).thenReturn(optional);
-		Mockito.doAnswer(answer).when(mockUserRepository).delete(user);
+		Mockito.when(mockUserRepository.findById(userImpl.getId())).thenReturn(optional);
+		Mockito.doAnswer(answer).when(mockUserRepository).delete(userImpl);
 		
 		
-		Boolean result = userServiceUnderTest.deleteUser(user);
+		Boolean result = userServiceUnderTest.deleteUser(userImpl);
 	
 	
-		Mockito.verify(mockUserRepository, Mockito.atLeastOnce()).delete(user);
+		Mockito.verify(mockUserRepository, Mockito.atLeastOnce()).delete(userImpl);
 	
-		Assert.assertTrue(result, "Failed to delete: " + user);
+		Assert.assertTrue(result, "Failed to delete: " + userImpl);
 	}
 	
 	@Test(priority=15)
 	public void shouldNotDeleteUser() {
 		
-		User invalidUser = initMockUsers(2).get(0); 
+		UserImpl invalidUser = initMockUsers(2).get(0); 
 		
 		Answer<Boolean> answer = new Answer<Boolean>() {
 			public Boolean answer(InvocationOnMock invocation) {
