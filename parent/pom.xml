@@ -44,6 +44,6 @@
         <module>../ideas</module>
         <module>../elections</module>
 <!--         <module>../client-angular5</module> -->
-    <module>bright-common</module>
+        <module>../common</module>
   </modules>
 </project>
