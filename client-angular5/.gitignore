@@ -6,6 +6,9 @@
 /tmp
 /out-tsc
 
+/bin/
+bin/
+
 # dependencies
 /node_modules
 
