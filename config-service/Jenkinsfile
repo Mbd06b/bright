@@ -1,1 +1,29 @@
-//See https://github.com/piomin/sample-spring-microservices-new/blob/master/config-service/Jenkinsfile
+node{
+    
+   checkout scm
+    
+    stage 'compile'{
+    
+    //TODO move parent to some global jenkins library
+        dir('parent') {
+            // some block
+            sh 'mvn compile'
+        }
+        
+        dir('config-service') {
+            sh 'mvn clean install'
+        }
+        
+    }
+    
+        stage ('image'){
+             dir ('config-service') {
+               //withDockerRegistry(credentialsId: 'nexus-admin', url: 'http://save.worscipe.com:8080') {}
+                 docker.withRegistry(credentialsId: 'nexus-admin', url: 'https://save.worscipe.com:8080') {
+                   def app = docker.build "bright/config-service"
+                   app.push()                
+                 }
+             }
+        }
+    
+}
