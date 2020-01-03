@@ -2,7 +2,7 @@ node{
     
    checkout scm
     
-    stage 'compile'{
+    stage ('compile') {
     
     //TODO move parent to some global jenkins library
         dir('parent') {
