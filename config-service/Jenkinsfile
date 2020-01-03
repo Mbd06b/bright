@@ -16,10 +16,9 @@ node{
         
     }
     
-        stage ('image'){
+         stage ('image'){
              dir ('config-service') {
-               //withDockerRegistry(credentialsId: 'nexus-admin', url: 'http://save.worscipe.com:8080') {}
-                 docker.withRegistry(credentialsId: 'nexus-admin', url: 'https://save.worscipe.com:8080') {
+                 docker.withRegistry('https://save.worscipe.com:8080', 'nexus-admin') {
                    def app = docker.build "bright/config-service"
                    app.push()                
                  }
