@@ -43,6 +43,7 @@
         <module>../users</module>
         <module>../ideas</module>
         <module>../elections</module>
-        <!--         <module>../client-angular5</module> -->
+        <module>../common</module>
+        <!--  <module>../client-angular5</module> -->
   </modules>
 </project>
