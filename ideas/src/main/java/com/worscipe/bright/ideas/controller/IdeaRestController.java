@@ -2,6 +2,12 @@ package com.worscipe.bright.ideas.controller;
 
 import java.util.List;
 
+import com.worscipe.bright.ideas.client.UserClient;
+import com.worscipe.bright.ideas.manager.IdeaManager;
+import com.worscipe.bright.ideas.model.IdeaImpl;
+import com.worscipe.bright.ideas.modelview.IdeaView;
+import com.worscipe.bright.ideas.modelview.other.ResultPage;
+
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -17,11 +23,6 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.worscipe.bright.ideas.client.UserClient;
-import com.worscipe.bright.ideas.manager.IdeaManager;
-import com.worscipe.bright.ideas.model.IdeaImpl;
-import com.worscipe.bright.ideas.modelview.IdeaView;
-import com.worscipe.bright.ideas.modelview.other.ResultPage;
 
 //How to handle an Abstract endpoint in a RESTful controller
 //Use a factory pattern in the service layer to handle the object
