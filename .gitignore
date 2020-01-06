@@ -3,6 +3,10 @@
 .project
 .settings/
 
+# Che
+.theia-workspace
+.theia
+
 # Intellij
 .idea/
 *.iml
