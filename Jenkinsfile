@@ -2,9 +2,7 @@ node{
     
    checkout scm
     
-    stage ('compile') {
-    
-    //TODO move parent to some global jenkins library
+    stage 'compile'
         dir('parent') {
             // some block
             sh 'mvn compile'
@@ -14,15 +12,48 @@ node{
             sh 'mvn clean install'
         }
         
-    }
+        dir('discovery-service') {
+            sh 'mvn compile'
+        }
+        
+        dir('gateway-service') {
+            sh 'mvn compile'
+        }
+        
+        dir('users') {
+            sh 'mvn compile'
+        }
+        
+        dir('ideas') {
+        // some block
+           sh 'mvn compile'
+        }
     
-         stage ('image'){
+        
+            
+        stage ( 'install' ) {
+                     
+         //  dir('config-service') {
+         //       sh 'mvn clean install'
+         //   }       
+             
+             dir ( 'parent') {
+    	          withMaven (){ // () uses global Jenkins defaults
+    	            sh "mvn clean install"   
+    	          }    
+             }
+             
+        }
+
+    
+    
+        stage ('image'){
              dir ('config-service') {
+               //withDockerRegistry(credentialsId: 'nexus-admin', url: 'http://save.worscipe.com:8080') {}
                  docker.withRegistry('https://save.worscipe.com:8080', 'nexus-admin') {
                    def app = docker.build "bright/config-service"
                    app.push()                
                  }
              }
         }
-    
 }
