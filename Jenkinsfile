@@ -3,8 +3,11 @@ node{
    checkout scm
     
     // list all env variables available in pipeline
+    echo ":::List all env globals:::"
     echo sh(script: 'env|sort', returnStdout: true)
     
+    echo ":::List all currentBuild globals:::"
+    echo sh(script: 'currentBuild|sort', returnStdout: true)
     
     stage 'compile'
         dir('parent') {
