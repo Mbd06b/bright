@@ -2,7 +2,8 @@ node{
     
    checkout scm
     
-    echo  currentBuild.getbuildCauses()
+    // list all env variables available in pipeline
+    echo sh(script: 'env|sort', returnStdout: true)
     
     
     stage 'compile'
