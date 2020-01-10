@@ -2,6 +2,9 @@ node{
     
    checkout scm
     
+    echo "${currentBuild.buildCauses}"
+    
+    
     stage 'compile'
         dir('parent') {
             // some block
