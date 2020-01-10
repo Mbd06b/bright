@@ -2,7 +2,7 @@ node{
     
    checkout scm
     
-    echo "${currentBuild.getBuildCauses}"
+    echo  currentBuild.getbuildCauses()
     
     
     stage 'compile'
