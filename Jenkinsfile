@@ -6,8 +6,7 @@ node{
     echo ":::List all env globals:::"
     echo sh(script: 'env|sort', returnStdout: true)
     
-    echo ":::List all currentBuild globals:::"
-    echo sh(script: 'currentBuild|sort', returnStdout: true)
+    echo scm.getUserRemoteConfigs()[0].getUrl();
     
     stage 'compile'
         dir('parent') {
