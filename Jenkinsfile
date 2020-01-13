@@ -30,7 +30,7 @@ node{
   // sh("git push github development:development")
   //	}
 	
-   withCredentials([[$class: 'UsernamePasswordMultiBinding', credentialsId: 'mbd06b@gmail.com priv key', usernameVariable: 'GIT_USERNAME', passwordVariable: 'GIT_PASSWORD']]) {
+   withCredentials([[ credentialsId: 'mbd06b@gmail.com priv key', usernameVariable: 'GIT_USERNAME', passwordVariable: 'GIT_PASSWORD']]) {
     sh("git tag -a some_tag -m 'Jenkins'")
     sh('git push git://${GIT_USERNAME}:${GIT_PASSWORD}@github.com:Mbd06b/bright.git')
   }
