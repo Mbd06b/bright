@@ -30,10 +30,20 @@ node{
   // sh("git push github development:development")
   //	}
 	
-   withCredentials([usernamePassword(credentialsId: 'mbd06b@gmail.com priv key', usernameVariable: 'GIT_USERNAME', passwordVariable: 'GIT_PASSWORD')]) {
-    sh("git tag -a some_tag -m 'Jenkins'")
-    sh('git push git://${GIT_USERNAME}:${GIT_PASSWORD}@github.com:Mbd06b/bright.git')
-  }
+//   withCredentials([usernamePassword(credentialsId: 'mbd06b@gmail.com priv key', usernameVariable: 'GIT_USERNAME', passwordVariable: 'GIT_PASSWORD')]) {
+//    sh("git tag -a some_tag -m 'Jenkins'")
+//    sh('git push git://${GIT_USERNAME}:${GIT_PASSWORD}@github.com:Mbd06b/bright.git')
+//  }
+  
+      sshagent(['mbd06b@gmail.com priv key']) {
+        sh('''
+            #!/usr/bin/env bash
+            set +x
+            # If no host key verification is needed, use the option `-oStrictHostKeyChecking=no`
+            export GIT_SSH_COMMAND="ssh -oStrictHostKeyChecking=no"
+            git push github HEAD:\$TARGET_BRANCH
+        ''')
+    }
     
     // list all env variables available in pipeline
     echo ":::List all env globals:::"
