@@ -1,6 +1,16 @@
 node{
     
-   checkout scm
+   checkout([
+   		$class: 'GitSCM',
+   		branches: [[name: '**']],
+   		doGenerateSubmoduleConfigurations: false,
+   		extensions: [],
+   		submoduleCfg: [],
+   		userRemoteConfigs: [
+   			[credentialsId: 'gitlab-3', name: 'origin', url: 'https://gitlab.worscipe.com/Mbd06b/bright.git'],
+   			[credentialsId: 'mbd06b@gmail.com priv key', name: 'github', url: 'git@github.com:Mbd06b/bright.git']
+   		  ]
+   		])
     
     stage('sync'){
         
