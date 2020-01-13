@@ -23,7 +23,7 @@ node{
     stage('sync'){
     
     // syncs the PreBuildMerge that occured in scm checkout step with the remote repository
-    sh "git checkout ${branch}"
+    sh "git checkout development"
     sh "git push"
     
     // list all env variables available in pipeline
