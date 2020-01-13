@@ -21,7 +21,10 @@ node{
         ])
     
     stage('sync'){
-        
+    
+    // syncs the PreBuildMerge that occured in scm checkout step with the remote repository
+    sh "git push"
+    
     // list all env variables available in pipeline
     echo ":::List all env globals:::"
     echo sh(script: 'env|sort', returnStdout: true)
@@ -34,6 +37,7 @@ node{
     
     echo "::: git remote -v :::" 
     sh "git remote -v" 
+     
     }
     
     stage 'compile'
