@@ -12,7 +12,7 @@ node{
     echo scm.getUserRemoteConfigs()[0].getUrl();
     
     echo ":::scm.getUserRemoteConfigs();:::" 
-    echo scm.getUserRemoteConfigs();
+    echo scm.getUserRemoteConfigs().toString();
     
     echo "::: git remote -v :::" 
     sh "git remote -v" 
