@@ -27,7 +27,7 @@ node{
     sh "git pull" 
     
     withCredentials([sshUserPrivateKey(credentialsId: 'mbd06b@gmail.com priv key', keyFileVariable: 'SSH_KEY')]) {
-   sh("git push origin development:development")
+   sh("git push github development:development")
 	}
     
     // list all env variables available in pipeline
