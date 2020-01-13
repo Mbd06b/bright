@@ -28,6 +28,8 @@ sh 'git config --global push.default simple'
     // syncs the PreBuildMerge that occured in scm checkout step with the remote repository
     sh "git checkout development"
     sh "git pull" 
+    
+    sh "ssh -vT git@github.com"
     sh "git push github development:development"
     
     
