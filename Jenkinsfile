@@ -41,6 +41,8 @@ node{
             set +x
             # If no host key verification is needed, use the option `-oStrictHostKeyChecking=no`
             export GIT_SSH_COMMAND="ssh -oStrictHostKeyChecking=no"
+            
+            git pull github
             git push github development:development
         ''')
     }
