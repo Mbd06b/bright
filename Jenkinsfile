@@ -1,22 +1,22 @@
 node{
     
    checkout([
-   		$class: 'GitSCM',
-   		branches: [[name: '**']],
-   		doGenerateSubmoduleConfigurations: false,
-   		submoduleCfg: [],
-   		userRemoteConfigs: [
-   			[credentialsId: 'gitlab-3', name: 'origin', url: 'https://gitlab.worscipe.com/Mbd06b/bright.git'],
-   			[credentialsId: 'mbd06b@gmail.com priv key', name: 'github', url: 'git@github.com:Mbd06b/bright.git']
-   		  ]
-   		],
-   		extensions: [
-			[ $class: 'PreBuildMerge',
-	            options: [
-	                fastForwardMode: 'FF',
-	                mergeRemote: 'github',
-	                mergeTarget: 'development'
-	            ]
+	   		$class: 'GitSCM',
+	   		branches: [[name: '**']],
+	   		doGenerateSubmoduleConfigurations: false,
+	   		submoduleCfg: [],
+	   		userRemoteConfigs: [
+	   			[credentialsId: 'gitlab-3', name: 'origin', url: 'https://gitlab.worscipe.com/Mbd06b/bright.git'],
+	   			[credentialsId: 'mbd06b@gmail.com priv key', name: 'github', url: 'git@github.com:Mbd06b/bright.git']
+	   		],
+	   		extensions: [
+				[ $class: 'PreBuildMerge',
+		            options: [
+		                fastForwardMode: 'FF',
+		                mergeRemote: 'github',
+		                mergeTarget: 'development'
+		            ]
+		        ]
 	        ]
         ])
     
