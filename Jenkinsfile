@@ -1,8 +1,5 @@
 node{
 
-sh 'git config --global credential.helper cache'
-sh 'git config --global push.default simple'
-    
    checkout([
 	   		$class: 'GitSCM',
 	   		branches: [[name: '**']],
@@ -10,7 +7,7 @@ sh 'git config --global push.default simple'
 	   		submoduleCfg: [],
 	   		userRemoteConfigs: [
 	   			[credentialsId: 'gitlab-3', name: 'origin', url: 'https://gitlab.worscipe.com/Mbd06b/bright.git'],
-	   			[credentialsId: 'mbd06b@gmail.com priv key', name: 'github', url: 'git@github.com:Mbd06b/bright.git']
+	   			[credentialsId: 'github-credentials', name: 'github', url: 'https://github.com/Mbd06b/bright.git']
 	   		],
 	   		extensions: [
 				[ $class: 'PreBuildMerge',
@@ -29,10 +26,10 @@ sh 'git config --global push.default simple'
     sh "git checkout development"
     sh "git pull" 
     
-    sh "ssh -vT git@github.com"
-    sh "git push github development:development"
-    
-    
+    withCredentials([usernamePassword(credentialsId: 'github-credentials', passwordVariable: 'GIT_PASSWORD', usernameVariable: 'GIT_USERNAME')]) {
+    sh("git push github development:development")
+	}
+  
     
     // list all env variables available in pipeline
     echo ":::List all env globals:::"
