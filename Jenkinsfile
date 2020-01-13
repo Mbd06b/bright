@@ -1,4 +1,7 @@
 node{
+
+sh 'git config --global credential.helper cache'
+sh 'git config --global push.default simple'
     
    checkout([
 	   		$class: 'GitSCM',
@@ -25,10 +28,7 @@ node{
     // syncs the PreBuildMerge that occured in scm checkout step with the remote repository
     sh "git checkout development"
     sh "git pull" 
-    
-    sshagent(['mbd06b@gmail.com priv key']) {
-	    sh('git push github development:development') 
-	}
+    sh "git push github development:development"
     
     
     
