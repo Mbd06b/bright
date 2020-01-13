@@ -24,7 +24,7 @@ node{
     
     // syncs the PreBuildMerge that occured in scm checkout step with the remote repository
   //  sh "git checkout development"
-    sh "git pull" 
+  //  sh "git pull" 
     //something unique
   //  withCredentials([sshUserPrivateKey(credentialsId: 'mbd06b@gmail.com priv key')]) {
   // sh("git push github development:development")
