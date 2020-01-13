@@ -26,9 +26,11 @@ node{
     sh "git checkout development"
     sh "git pull" 
     
-    withCredentials([sshUserPrivateKey(credentialsId: 'mbd06b@gmail.com priv key', keyFileVariable: 'SSH_KEY')]) {
-   sh("git push github development:development")
+    sshagent(['mbd06b@gmail.com priv key']) {
+	    sh('git push github development:development') 
 	}
+    
+    
     
     // list all env variables available in pipeline
     echo ":::List all env globals:::"
