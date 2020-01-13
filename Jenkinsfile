@@ -1,5 +1,5 @@
 node{
-
+    
    checkout([
 	   		$class: 'GitSCM',
 	   		branches: [[name: '**']],
@@ -7,7 +7,7 @@ node{
 	   		submoduleCfg: [],
 	   		userRemoteConfigs: [
 	   			[credentialsId: 'gitlab-3', name: 'origin', url: 'https://gitlab.worscipe.com/Mbd06b/bright.git'],
-	   			[credentialsId: 'github-credentials', name: 'github', url: 'https://github.com/Mbd06b/bright.git']
+	   			[credentialsId: 'mbd06b@gmail.com priv key', name: 'github', url: 'git@github.com:Mbd06b/bright.git']
 	   		],
 	   		extensions: [
 				[ $class: 'PreBuildMerge',
@@ -26,10 +26,9 @@ node{
     sh "git checkout development"
     sh "git pull" 
     
-    withCredentials([usernamePassword(credentialsId: 'github-credentials', passwordVariable: 'GIT_PASSWORD', usernameVariable: 'GIT_USERNAME')]) {
-    sh("git push github development:development")
+    withCredentials([sshUserPrivateKey(credentialsId: 'mbd06b@gmail.com priv key')]) {
+   sh("git push github development:development")
 	}
-  
     
     // list all env variables available in pipeline
     echo ":::List all env globals:::"
