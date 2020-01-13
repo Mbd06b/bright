@@ -2,15 +2,19 @@ node{
     
    checkout scm
     
- 
-    
     stage('sync'){
         
     // list all env variables available in pipeline
     echo ":::List all env globals:::"
     echo sh(script: 'env|sort', returnStdout: true)
     
+    echo ":::scm.getUserRemoteConfigs()[0].getUrl(); :::" 
     echo scm.getUserRemoteConfigs()[0].getUrl();
+    
+    echo ":::scm.getUserRemoteConfigs()[1].getUrl(); :::" 
+    echo scm.getUserRemoteConfigs()[1].getUrl();
+    
+    echo "::: git remote -v :::" 
     sh "git remote -v" 
     }
     
