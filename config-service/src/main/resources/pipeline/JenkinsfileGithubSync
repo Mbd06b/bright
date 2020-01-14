@@ -39,7 +39,7 @@ pipeline{
 				    echo ":::List all env globals:::"
 				    echo sh(script: 'env|sort', returnStdout: true)
 				    
-				    sh "git remote rm origin1"
+				    sh "git remote rm orgin"
 				    
 				    echo ":::scm.getUserRemoteConfigs()[0].getUrl(); :::" 
 				    echo scm.getUserRemoteConfigs()[0].getUrl();
