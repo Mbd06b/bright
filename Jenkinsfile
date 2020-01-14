@@ -20,51 +20,7 @@ node{
 	        ]
         ])
     
-    stage('sync'){
-    
-    // syncs the PreBuildMerge that occured in scm checkout step with the remote repository
-  //  sh "git checkout development"
-  //  sh "git pull" 
-    //something unique
-  //  withCredentials([sshUserPrivateKey(credentialsId: 'mbd06b@gmail.com priv key')]) {
-  // sh("git push github development:development")
-  //	}
-	
-//   withCredentials([usernamePassword(credentialsId: 'mbd06b@gmail.com priv key', usernameVariable: 'GIT_USERNAME', passwordVariable: 'GIT_PASSWORD')]) {
-//    sh("git tag -a some_tag -m 'Jenkins'")
-//    sh('git push git://${GIT_USERNAME}:${GIT_PASSWORD}@github.com:Mbd06b/bright.git')
-//  }
-  
-      sshagent(['mbd06b@gmail.com priv key']) {
-        sh('''
-            #!/usr/bin/env bash
-            set +x
-            # If no host key verification is needed, use the option `-oStrictHostKeyChecking=no`
-            export GIT_SSH_COMMAND="ssh -oStrictHostKeyChecking=no"
-            
-            git checkout development
-            git pull
-            git push github development:development
-        ''')
-    }
-    
-    build 'Hello Multibranch'
-    
-    // list all env variables available in pipeline
-    echo ":::List all env globals:::"
-    echo sh(script: 'env|sort', returnStdout: true)
-    
-    echo ":::scm.getUserRemoteConfigs()[0].getUrl(); :::" 
-    echo scm.getUserRemoteConfigs()[0].getUrl();
-    
-    echo ":::scm.getUserRemoteConfigs();:::" 
-    echo scm.getUserRemoteConfigs().toString();
-    
-    echo "::: git remote -v :::" 
-    sh "git remote -v" 
      
-    }
-    
     stage 'compile'
         dir('parent') {
             // some block
