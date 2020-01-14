@@ -37,7 +37,7 @@ node{
     }
         
   }
-
-     build job: 'Hello Multibranch', propagate: true, wait: true
-     
+    stage('build'){
+          build job: 'Hello Multibranch', propagate: true, wait: true   
+    }     
 }
