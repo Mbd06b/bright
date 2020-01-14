@@ -37,6 +37,6 @@ node{
     }
         
   }
-  
-      build 'Hello Multibranch'
+   
+     // build 'Hello Multibranch'
 }
