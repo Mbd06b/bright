@@ -37,11 +37,11 @@ node{
     }
         
   }
-   
-    
-	post{
-	    success{
-	        build job: 'Hello Multibranch', propogate: true, quietPeriod: 10
-	    }
-	} 
+
 }
+
+post{
+    success{
+        build job: 'Hello Multibranch', propogate: true, quietPeriod: 10
+    }
+} 
