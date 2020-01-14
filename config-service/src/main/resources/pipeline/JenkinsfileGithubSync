@@ -41,9 +41,9 @@ pipeline{
 				            # If no host key verification is needed, use the option `-oStrictHostKeyChecking=no`
 				            export GIT_SSH_COMMAND="ssh -oStrictHostKeyChecking=no"
 				            
-				            git checkout development github/development
+				            git checkout development github:development
 				            git pull
-				            git push development origin/development
+				            git push development origin:development
 				        ''')
 			  		}
 	           }
@@ -55,7 +55,7 @@ pipeline{
     
     post{
 	    success{
-	        build job: 'Hello Multibranch/development', propagate: false, wait: false
+	        build job: 'Hello Multibranch/development', propagate: false, quietPeriod: 5, wait: false
 	    }
     } 
 
