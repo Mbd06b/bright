@@ -56,7 +56,7 @@ pipeline{
 				            export GIT_SSH_COMMAND="ssh -oStrictHostKeyChecking=no"
 				            
 				            
-				            git push
+				            git push origin HEAD:development
 				        ''')
 			  		}
 	           }
