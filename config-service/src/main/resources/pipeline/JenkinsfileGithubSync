@@ -11,7 +11,7 @@ pipeline{
 			   		doGenerateSubmoduleConfigurations: false,
 			   		submoduleCfg: [],
 			   		userRemoteConfigs: [
-			   			[credentialsId: 'mbd06b@gmail.com priv key', name: 'origin', url: 'https://gitlab.worscipe.com/Mbd06b/bright.git'],
+			   			[credentialsId: 'mbd06b@gmail.com priv key', name: 'origin', url: 'git@gitlab.worscipe.com:Mbd06b/bright.git'],
 			   			[credentialsId: 'mbd06b@gmail.com priv key', name: 'github', url: 'git@github.com:Mbd06b/bright.git']
 			   		],
 			   		extensions: [
