@@ -37,7 +37,11 @@ node{
     }
         
   }
-    stage('build'){
-          build job: 'Hello Multibranch', propagate: true, wait: true   
-    }     
+   
+    
+	post{
+	    success{
+	        build job: 'Hello Multibranch', propogate: true, quietPeriod: 10
+	    }
+	} 
 }
