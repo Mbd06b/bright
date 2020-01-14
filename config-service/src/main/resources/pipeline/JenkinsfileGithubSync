@@ -13,16 +13,7 @@ pipeline{
 			   		userRemoteConfigs: [
 			   			[credentialsId: 'mbd06b@gmail.com priv key', name: 'github', url: 'git@github.com:Mbd06b/bright.git'],
 			   			[credentialsId: 'mbd06b@gmail.com priv key', name: 'origin', url: 'git@gitlab.worscipe.com:Mbd06b/bright.git']
-			   		],
-			   		extensions: [
-						[ $class: 'PreBuildMerge',
-				            options: [
-				                fastForwardMode: 'FF',
-				                mergeRemote: 'origin',
-				                mergeTarget: 'development'
-				            ]
-				        ]
-			        ]
+			   		]
 		        ]
                 
             }
