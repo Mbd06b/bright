@@ -57,8 +57,6 @@ pipeline{
 				            
 				            git checkout development
 				            git pull
-				            git fetch github development
-				            git rebase -i github/development
 				            git push origin development
 				        ''')
 			  		}
