@@ -34,6 +34,20 @@ pipeline{
          stage('sync'){  
            steps{
 	           script{
+	           
+	           		// list all env variables available in pipeline for verbose output
+				    echo ":::List all env globals:::"
+				    echo sh(script: 'env|sort', returnStdout: true)
+				    
+				    echo ":::scm.getUserRemoteConfigs()[0].getUrl(); :::" 
+				    echo scm.getUserRemoteConfigs()[0].getUrl();
+				    
+				    echo ":::scm.getUserRemoteConfigs();:::" 
+				    echo scm.getUserRemoteConfigs().toString();
+				    
+				    echo "::: git remote -v :::" 
+				    sh "git remote -v" 
+	           	
 		           	 sshagent(['mbd06b@gmail.com priv key']) {
 				        sh('''
 				            #!/usr/bin/env bash
