@@ -34,7 +34,7 @@ pipeline{
          stage('sync'){  
            steps{
 	           script{
-		           	 sshagent(['mbd06b@gmail.com priv key']) {
+		           	 sshagent(['gitlab-3']) {
 				        sh('''
 				            #!/usr/bin/env bash
 				            set +x
