@@ -1,7 +1,7 @@
 pipeline{
     agent any
     
-    stages{
+    stages {
         stage('checkout'){
         
         	checkout([
@@ -41,17 +41,12 @@ pipeline{
 	    }
 	        
 	  }
-
+		
+		post{
+		    success{
+		        build job: 'Hello Multibranch', propagate: true, quietPeriod: 10
+		    }
+		} 
     }
-
-
-	
-
-
-	post{
-	    success{
-	        build job: 'Hello Multibranch', propagate: true, quietPeriod: 10
-	    }
-	} 
 
 }
