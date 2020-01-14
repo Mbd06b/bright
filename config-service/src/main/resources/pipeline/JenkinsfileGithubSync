@@ -18,7 +18,7 @@ pipeline{
 						[ $class: 'PreBuildMerge',
 				            options: [
 				                fastForwardMode: 'FF',
-				                mergeRemote: 'github',
+				                mergeRemote: 'origin',
 				                mergeTarget: 'development'
 				            ]
 				        ]
@@ -54,9 +54,9 @@ pipeline{
     }
     
     post{
-		    success{
-		        build job: 'Hello Multibranch/development', propagate: false, wait: false
-		    }
-		} 
+	    success{
+	        build job: 'Hello Multibranch/development', propagate: false, wait: false
+	    }
+    } 
 
 }
