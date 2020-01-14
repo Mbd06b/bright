@@ -1,11 +1,10 @@
 pipeline{
+    agent any
     
-
-	
-	
-	node{
-	    
-	   checkout([
+    stages{
+        stage('checkout'){
+        
+        	checkout([
 		   		$class: 'GitSCM',
 		   		branches: [[name: '**']],
 		   		doGenerateSubmoduleConfigurations: false,
@@ -24,10 +23,10 @@ pipeline{
 			        ]
 		        ]
 	        ])
-	    
-	    stage('sync'){
-	
-	  
+            
+        }
+        
+         stage('sync'){  
 	      sshagent(['mbd06b@gmail.com priv key']) {
 	        sh('''
 	            #!/usr/bin/env bash
@@ -42,12 +41,16 @@ pipeline{
 	    }
 	        
 	  }
+
+    }
+
+
 	
-	}
+
 
 	post{
 	    success{
-	        build job: 'Hello Multibranch', propogate: true, quietPeriod: 10
+	        build job: 'Hello Multibranch', propagate: true, quietPeriod: 10
 	    }
 	} 
 
