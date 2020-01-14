@@ -37,6 +37,7 @@ node{
     }
         
   }
-   
-     build 'Hello Multibranch'
+
+     build job: 'Hello Multibranch', propagate: true, wait: true
+     
 }
