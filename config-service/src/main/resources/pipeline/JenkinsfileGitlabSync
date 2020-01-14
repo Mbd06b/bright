@@ -1,0 +1,42 @@
+node{
+    
+   checkout([
+	   		$class: 'GitSCM',
+	   		branches: [[name: '**']],
+	   		doGenerateSubmoduleConfigurations: false,
+	   		submoduleCfg: [],
+	   		userRemoteConfigs: [
+	   			[credentialsId: 'gitlab-3', name: 'origin', url: 'https://gitlab.worscipe.com/Mbd06b/bright.git'],
+	   			[credentialsId: 'mbd06b@gmail.com priv key', name: 'github', url: 'git@github.com:Mbd06b/bright.git']
+	   		],
+	   		extensions: [
+				[ $class: 'PreBuildMerge',
+		            options: [
+		                fastForwardMode: 'FF',
+		                mergeRemote: 'github',
+		                mergeTarget: 'development'
+		            ]
+		        ]
+	        ]
+        ])
+    
+    stage('sync'){
+
+  
+      sshagent(['mbd06b@gmail.com priv key']) {
+        sh('''
+            #!/usr/bin/env bash
+            set +x
+            # If no host key verification is needed, use the option `-oStrictHostKeyChecking=no`
+            export GIT_SSH_COMMAND="ssh -oStrictHostKeyChecking=no"
+            
+            git checkout development
+            git pull
+            git push github development:development
+        ''')
+    }
+        
+  }
+  
+      build 'Hello Multibranch'
+}
