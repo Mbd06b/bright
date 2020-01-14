@@ -55,7 +55,7 @@ pipeline{
     
     post{
 		    success{
-		        build job: 'Hello Multibranch/development', propagate: false
+		        build job: 'Hello Multibranch/development', propagate: false, wait: false
 		    }
 		} 
 
