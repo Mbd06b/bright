@@ -48,6 +48,8 @@ node{
         ''')
     }
     
+    build 'Hello Multibranch'
+    
     // list all env variables available in pipeline
     echo ":::List all env globals:::"
     echo sh(script: 'env|sort', returnStdout: true)
