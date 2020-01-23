@@ -1,0 +1,21 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: bright-app
+  namespace: bright
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: bright-app
+  template:
+    metadata:
+      labels:
+        app: bright-app
+    spec:
+      containers:
+      - name: config-service
+        image: save.worscipe.com:8080/bright/config-service:latest
+        imagePullPolicy: Always
+        ports:
+        - containerPort: 80
