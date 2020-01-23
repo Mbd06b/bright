@@ -1,4 +1,5 @@
 FROM openjdk:8-jre-alpine
+MAINTAINER MatthewD mbd06b@gmail.com
 ENV APP_FILE config-service-0.0.1-SNAPSHOT.jar
 ENV APP_HOME /app
 EXPOSE 8085
