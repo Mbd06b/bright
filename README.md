@@ -13,6 +13,11 @@ The apps are powered by a microservice spring boot network:
 * API docs are being generated and parsed by Swagger2 and are aggregated and accessed by a proxy-service consisting of a repurposed Netflix Zuul Gateway.
 
 # SecDevOps
+
+Security
+All supporting infrastructure is geared to be served with validated SSL connections
+JWT Token Authentication/Authorization and BCrypt password hashing for client connections
+
 2 Ubuntu 18 LTS Servers
 * Gitlab repository https://gitlab.worscipe.com/Mbd06b/bright
 * Nexus, Maven Repository and Docker Registry https://save.worscipe.com
@@ -26,3 +31,9 @@ The apps are powered by a microservice spring boot network:
 The objective is to enhance learning by building an app with RESTful microservices. 
 The app architechture will be able feed any form of client app (Web and Mobile) and should be scalable with container infrastructure.
 A focus on microserivces should enable an exploration of different technologies and SecDevOps challenges that might be deployable at any scale. 
+
+# Roadmap
+[checkbox:unchecked] Create an HA mysql cluster and S3 storage implementation with Kubernetes
+[checkbox:unchecked] Migrate Jenkins(omnibus) to JenkinsX on K8s infrastructure.
+[checkbox:unchecked] Implement JWT authorization for athorizing every request within the microservice cluster.
+[checkbox:unchecked] Deploy 1.0 on Kubernetes, using a fully automated CI/CD pipeline
