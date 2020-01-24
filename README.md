@@ -33,7 +33,7 @@ The app architechture will be able feed any form of client app (Web and Mobile) 
 A focus on microserivces should enable an exploration of different technologies and SecDevOps challenges that might be deployable at any scale. 
 
 # Roadmap
-[checkbox:unchecked] Create an HA mysql cluster and S3 storage implementation with Kubernetes
-[checkbox:unchecked] Migrate Jenkins(omnibus) to JenkinsX on K8s infrastructure.
-[checkbox:unchecked] Implement JWT authorization for athorizing every request within the microservice cluster.
-[checkbox:unchecked] Deploy 1.0 on Kubernetes, using a fully automated CI/CD pipeline
+# [checkbox:unchecked] Create an HA mysql cluster and S3 storage implementation with Kubernetes
+# [checkbox:unchecked] Migrate Jenkins(omnibus) to JenkinsX on K8s infrastructure.
+# [checkbox:unchecked] Implement JWT authorization for athorizing every request within the microservice cluster.
+# [checkbox:unchecked] Deploy 1.0 on Kubernetes, using a fully automated CI/CD pipeline
