@@ -14,14 +14,15 @@ The apps are powered by a microservice spring boot network:
 
 # SecDevOps
 2 Ubuntu 18 LTS Servers
-Gitlab repository https://gitlab.worscipe.com/Mbd06b/bright
-Nexus, Maven Repository and Docker Registry https://save.worscipe.com
-Jenkins for CI/CD pipelines https://ci.worscipe.com
-Taiga, project management platform https://taiga.worscipe.com/project/mbd06b-bright/timeline
-Kubernetes Cluster(microk8s), https://kube.worscipe.com (Graphana, Prometheus, and Eclipse Che)
+* Gitlab repository https://gitlab.worscipe.com/Mbd06b/bright
+* Nexus, Maven Repository and Docker Registry https://save.worscipe.com
+* Jenkins for CI/CD pipelines https://ci.worscipe.com
+* Taiga, project management platform https://taiga.worscipe.com/project/mbd06b-bright/timeline
+* Eclipse Che, IDE for exploring cloud native development https://che-che.code.worscipe.com/dashboard/
+* Kubernetes Cluster(microk8s), https://kube.worscipe.com (Graphana, Prometheus, and Eclipse Che)
 
 
 # Objective
-The objective is to learn by building an app with RESTful microservices to support an agile-like development/learning. 
+The objective is to enhance learning by building an app with RESTful microservices. 
 The app architechture will be able feed any form of client app (Web and Mobile) and should be scalable with container infrastructure.
-A focus on microserivces should enable an exploration of different technologies and DevOps challenges that might be encountered at any scale. 
+A focus on microserivces should enable an exploration of different technologies and SecDevOps challenges that might be deployable at any scale. 
