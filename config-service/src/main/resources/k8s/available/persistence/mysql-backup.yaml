@@ -1,0 +1,20 @@
+apiVersion: mysql.oracle.com/v1alpha1
+kind: Backup
+metadata:
+  name: mysql-backup
+spec:
+  executor:
+    mysqldump:
+      databases:
+        - name: test
+        - name: test2
+        - name: test3
+  storageProvider:
+    s3:
+      endpoint: your.s3.endpoint
+      region:   us-west-1
+      bucket:   your-bucket
+      credentialsSecret:
+        name: s3-credentials
+  clusterRef:
+    name: your-cluster-name

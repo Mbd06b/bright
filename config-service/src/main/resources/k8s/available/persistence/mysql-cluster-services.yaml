@@ -1,0 +1,33 @@
+apiVersion: v1
+kind: Service
+metadata:
+  labels:
+    v1alpha1.mysql.oracle.com/cluster: your-cluster-name
+  name: your-cluster-name-rw
+spec:
+  clusterIP: None
+  ports:
+  - port: 3306
+    protocol: TCP
+    targetPort: 3306
+  selector:
+    v1alpha1.mysql.oracle.com/cluster: your-cluster-name
+    v1alpha1.mysql.oracle.com/role: primary
+  type: ClusterIP
+---
+apiVersion: v1
+kind: Service
+metadata:
+  labels:
+    v1alpha1.mysql.oracle.com/cluster: your-cluster-name
+  name: your-cluster-name-ro
+spec:
+  clusterIP: None
+  ports:
+  - port: 3306
+    protocol: TCP
+    targetPort: 3306
+  selector:
+    v1alpha1.mysql.oracle.com/cluster: your-cluster-name
+    v1alpha1.mysql.oracle.com/role: secondary
+  type: ClusterIP
