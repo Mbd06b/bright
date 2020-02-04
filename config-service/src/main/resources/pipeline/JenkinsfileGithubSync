@@ -62,7 +62,7 @@ pipeline{
 				            #git pull origin development
 				            
 				            echo "push origin --all" 
-				            git push origin --all
+				            git push origin HEAD --all
 				        ''')
 			  		}
 	           }
