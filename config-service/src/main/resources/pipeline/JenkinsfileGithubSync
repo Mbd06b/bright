@@ -61,8 +61,8 @@ pipeline{
 				            #echo "git pull origin development"
 				            #git pull origin development
 				            
-				            echo "push origin --all" 
-				            git push -f origin --all
+				            echo "push git@gitlab.worscipe.com:Mbd06b/bright.git" 
+				            git push git@gitlab.worscipe.com:Mbd06b/bright.git --all
 				        ''')
 			  		}
 	           }
