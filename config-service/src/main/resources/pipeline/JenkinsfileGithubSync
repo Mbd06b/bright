@@ -55,8 +55,8 @@ pipeline{
 				            echo "git pull origin development"
 				            git pull origin development
 				            
-				            #echo "git checkout development"
-				            #git checkout development
+				            echo "git checkout development"
+				            git checkout development
 				            
 				            echo "push -u origin development:development" 
 				            git push -u origin development:development
