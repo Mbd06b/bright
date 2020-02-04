@@ -55,8 +55,8 @@ pipeline{
 			                #echo "git merge --all"
 			                #git merge --all
 				            
-				            echo "git pull github --all"
-				            git pull github --all
+				            echo "git pull github"
+				            git pull github
 				            
 				            #echo "git pull origin development"
 				            #git pull origin development
