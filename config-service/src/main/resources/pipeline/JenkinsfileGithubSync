@@ -45,14 +45,11 @@ pipeline{
 				            set +x
 				            # If no host key verification is needed, use the option `-oStrictHostKeyChecking=no`
 				            export GIT_SSH_COMMAND="ssh -oStrictHostKeyChecking=no"
-				            
-				            #DEBUG          
-				            git branch -d -r orgin/dependabot/maven/client-springmvc/BrightIdeas/jackson.version-2.10.1
-				            git branch -d -r orgin/development
-				            git branch -d -r orgin/feature-common-ioc
-				            git branch -d -r orgin/master
-				            git branch -d -r orgin/microservices_remove_angular_auth_artifacts
-				            
+				         		
+				         		
+				         	echo "git checkout development"
+				            git checkout development
+				            		            
 				            echo "::: GIT DEBUG :::"
 				  			echo "git remote -v"
 				  			git remote -v
@@ -63,12 +60,11 @@ pipeline{
 				  			echo "git status"
 				  			git status
 				  			echo "::: END GIT DEBUG :::" 
+				  				  
 				  				            
 				            echo "git fetch github development:development"
 				            git fetch github development
 				            
-				            echo "git checkout development"
-				            git checkout development
 				            
 				            echo "git pull"
 				            git pull
