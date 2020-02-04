@@ -52,8 +52,8 @@ pipeline{
 				            echo "pull github devolopment"
 				            git pull github development
 				            
-				            echo "push origin development:development" 
-				            git push origin development:development
+				            echo "push -u origin development:development" 
+				            git push -u origin development:development
 				        ''')
 			  		}
 	           }
