@@ -47,7 +47,10 @@ pipeline{
 				            export GIT_SSH_COMMAND="ssh -oStrictHostKeyChecking=no"
 				           
 				            echo "git fetch github development:development"
-				            git fetch github development:development
+				            git fetch github development
+				            
+				            echo "git merge github development"
+				            git merge github development
 				            
 				            echo "git checkout development"
 				            git checkout development
