@@ -10,8 +10,8 @@ import java.util.Set;
 
 import javax.transaction.Transactional;
 
-import org.apache.logging.log4j.LogManager;
-import org.apache.logging.log4j.Logger;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -27,7 +27,7 @@ import com.worscipe.bright.election.repository.rcv.RCVElectionRepository;
 @Transactional
 public class RCVElectionServiceImpl implements RCVElectionService{
 		
-	private static final Logger logger = LogManager.getLogger(RCVElectionServiceImpl.class);
+	private static final Logger logger = LoggerFactory.getLogger(RCVElectionServiceImpl.class);
 
 	
 	@Autowired

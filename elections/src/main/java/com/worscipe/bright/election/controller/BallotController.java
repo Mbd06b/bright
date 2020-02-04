@@ -2,8 +2,8 @@ package com.worscipe.bright.election.controller;
 
 import java.util.List;
 
-import org.apache.logging.log4j.LogManager;
-import org.apache.logging.log4j.Logger;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
@@ -27,7 +27,7 @@ import com.worscipe.bright.election.view.ResultPage;
 @RequestMapping(value = "/election/{electionId}/ballot",  produces=MediaType.APPLICATION_JSON_UTF8_VALUE)
 public class BallotController {
 	
-	private static final Logger logger = LogManager.getLogger(BallotController.class); 
+	private static final Logger logger = LoggerFactory.getLogger(BallotController.class); 
 	
 	private static final String DEFAULT_PAGE_INDEX = "1";
 	private static final String DEFAULT_PAGE_SIZE_LIMIT = "20"; 
