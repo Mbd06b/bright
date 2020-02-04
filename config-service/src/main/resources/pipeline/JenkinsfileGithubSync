@@ -50,10 +50,10 @@ pipeline{
 				            git fetch github development:development && git checkout development
 				            
 				            echo "pull github devolopment"
-				            git pull github development
+				            git pull 
 				            
 				            echo "push -u origin development:development" 
-				            git push -u origin development:development
+				            git push origin development:development
 				        ''')
 			  		}
 	           }
