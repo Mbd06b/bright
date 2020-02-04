@@ -49,6 +49,9 @@ pipeline{
 				            echo "git fetch github"
 			                git fetch github 
 			                
+			                echo "git checkout development"
+				            git checkout development
+			               
 			                echo "git merge --all"
 			                git merge --all
 				            
@@ -57,9 +60,6 @@ pipeline{
 				            
 				            #echo "git pull origin development"
 				            #git pull origin development
-				            
-				            #echo "git checkout development"
-				            #git checkout development
 				            
 				            echo "push origin --all" 
 				            git push origin --all
