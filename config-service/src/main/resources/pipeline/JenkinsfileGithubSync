@@ -52,6 +52,9 @@ pipeline{
 				            echo "git pull github development"
 				            git pull github development
 				            
+				            echo "git pull origin development"
+				            git pull origin development
+				            
 				            #echo "git checkout development"
 				            #git checkout development
 				            
