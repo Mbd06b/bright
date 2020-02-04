@@ -52,11 +52,11 @@ pipeline{
 				            echo "git pull github development"
 				            git pull github development
 				            
-				            echo "git checkout development"
-				            git checkout development
+				            #echo "git checkout development"
+				            #git checkout development
 				            
 				            echo "push -u origin development:development" 
-				            git push origin development:development
+				            git push -u origin development:development
 				        ''')
 			  		}
 	           }
