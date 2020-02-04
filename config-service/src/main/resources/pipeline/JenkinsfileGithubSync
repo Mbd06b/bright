@@ -48,6 +48,9 @@ pipeline{
 				           
 				            echo "git fetch github"
 			                git fetch github 
+			                
+			                echo "git merge --all"
+			                git merge --all
 				            
 				            #echo "git pull github development"
 				            #git pull github development
