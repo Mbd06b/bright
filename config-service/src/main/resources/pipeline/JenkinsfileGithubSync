@@ -48,7 +48,7 @@ pipeline{
 				           
 				            
 				            git fetch github development:development && git checkout development
-				            git pull
+				            git pull github development
 				            git push origin development:development
 				        ''')
 			  		}
