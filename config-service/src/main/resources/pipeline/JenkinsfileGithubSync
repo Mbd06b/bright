@@ -49,11 +49,11 @@ pipeline{
 				            #echo "git fetch github development:development"
 			                #git fetch github development:development
 				            
-				           #echo "git checkout development"
-				           #git checkout development
-				            
 				            echo "git pull github development"
 				            git pull github development
+				            
+				            echo "git checkout development"
+				            git checkout development
 				            
 				            echo "push -u origin development:development" 
 				            git push origin development:development
