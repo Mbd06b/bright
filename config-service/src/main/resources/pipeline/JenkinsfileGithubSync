@@ -46,9 +46,13 @@ pipeline{
 				            # If no host key verification is needed, use the option `-oStrictHostKeyChecking=no`
 				            export GIT_SSH_COMMAND="ssh -oStrictHostKeyChecking=no"
 				           
-				            
+				            echo "fetch github development:development && git checkout development"
 				            git fetch github development:development && git checkout development
+				            
+				            echo "pull github devolopment"
 				            git pull github development
+				            
+				            echo "push origin development:development" 
 				            git push origin development:development
 				        ''')
 			  		}
