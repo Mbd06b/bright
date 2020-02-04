@@ -47,7 +47,12 @@ pipeline{
 				            export GIT_SSH_COMMAND="ssh -oStrictHostKeyChecking=no"
 				            
 				            #DEBUG          
-				            git remote prune origin1
+				            git branch -d -r origin1/dependabot/maven/client-springmvc/BrightIdeas/jackson.version-2.10.1
+				            git branch -d -r origin1/development
+				            git branch -d -r origin1/feature-common-ioc
+				            git branch -d -r origin1/master
+				            git branch -d -r origin1/microservices_remove_angular_auth_artifacts
+				            
 				            echo "::: GIT DEBUG :::"
 				  			echo "git remote -v"
 				  			git remote -v
