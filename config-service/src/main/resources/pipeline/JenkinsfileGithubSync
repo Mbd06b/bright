@@ -45,32 +45,33 @@ pipeline{
 				            set +x
 				            # If no host key verification is needed, use the option `-oStrictHostKeyChecking=no`
 				            export GIT_SSH_COMMAND="ssh -oStrictHostKeyChecking=no"
-				         		
-				         		
-				         	echo "git checkout development"
-				            git checkout development
-				            		            
-				            echo "::: GIT DEBUG :::"
-				  			echo "git remote -v"
-				  			git remote -v
-				  			
-				  			echo "git branch -a"
-				  			git branch -a
-				  			
-				  			echo "git status"
-				  			git status
-				  			echo "::: END GIT DEBUG :::" 
-				  				  
-				  				            
+				  				  	            
 				            echo "git fetch github development:development"
 				            git fetch github development
 				            
+				            echo "git checkout development"
+				            git checkout development
 				            
 				            echo "git pull"
 				            git pull
 				            
+				            
+				            echo "::: GIT DEBUG :::"
+					  			echo "git remote -v"
+					  			git remote -v
+					  			
+					  			echo "git branch -a"
+					  			git branch -a
+					  			
+					  			echo "git status"
+					  			git status
+				  			echo "::: END GIT DEBUG :::" 
+				            
+				            
 				            echo "git push origin development:development" 
 				            git push origin development:development
+				            
+				            
 
 				        ''')
 			  		}
