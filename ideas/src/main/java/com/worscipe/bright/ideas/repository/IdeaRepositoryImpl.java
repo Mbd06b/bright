@@ -8,8 +8,8 @@ import javax.persistence.criteria.CriteriaBuilder;
 import javax.persistence.criteria.CriteriaQuery;
 import javax.persistence.criteria.Root;
 
-import org.apache.logging.log4j.LogManager;
-import org.apache.logging.log4j.Logger;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
@@ -18,7 +18,7 @@ import com.worscipe.bright.ideas.model.IdeaImpl;
 @Repository
 public class IdeaRepositoryImpl implements IdeaRepositoryCustom {
 	
-	private static final Logger logger = LogManager.getLogger(IdeaRepositoryImpl.class); 
+	private static final Logger logger = LoggerFactory.getLogger(IdeaRepositoryImpl.class); 
 	
 	private static final String IDEA_TITLE = "title";
 	private static final String IDEA_SUBTITLE = "subtitle";
