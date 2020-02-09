@@ -2,8 +2,8 @@ package com.worscipe.bright.users.controller;
 
 import java.util.List;
 
-import org.apache.logging.log4j.LogManager;
-import org.apache.logging.log4j.Logger;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
@@ -24,7 +24,7 @@ import com.worscipe.bright.users.modelview.UserView;
 @RestController
 public class UserRestController {
 	
-	 private static final Logger logger = LogManager.getLogger(UserRestController.class);
+	 private static final Logger logger = LoggerFactory.getLogger(UserRestController.class);
 
 
 	@Autowired
@@ -37,9 +37,6 @@ public class UserRestController {
 		List<UserView> users = userManager.findAllUsers();
 		if (users.isEmpty()) {
 			return new ResponseEntity<List<UserView>>(HttpStatus.NOT_FOUND);
-		}
-		for(UserView user : users) {
-			logger.debug(user);
 		}
 		return new ResponseEntity<List<UserView>>(users, HttpStatus.OK);
 	}

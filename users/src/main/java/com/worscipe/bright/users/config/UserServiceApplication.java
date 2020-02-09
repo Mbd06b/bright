@@ -1,7 +1,7 @@
 package com.worscipe.bright.users.config;
 
-import org.apache.logging.log4j.LogManager;
-import org.apache.logging.log4j.Logger;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.EnableAutoConfiguration;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
@@ -29,7 +29,7 @@ import springfox.documentation.swagger2.annotations.EnableSwagger2;
 @EnableJpaRepositories(basePackages = { "com.worscipe.bright.users.repository" })
 public class UserServiceApplication {
 	
-	 private static final Logger LOGGER = LogManager.getLogger(UserServiceApplication.class);
+	 private static final Logger LOGGER = LoggerFactory.getLogger(UserServiceApplication.class);
 
 	public static void main(String[] args) {
 		SpringApplication.run(UserServiceApplication.class, args);
