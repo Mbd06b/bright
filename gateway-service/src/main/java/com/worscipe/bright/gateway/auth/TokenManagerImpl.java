@@ -2,8 +2,8 @@ package com.worscipe.bright.gateway.auth;
 
 import java.util.Date;
 
-import org.apache.logging.log4j.LogManager;
-import org.apache.logging.log4j.Logger;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Service;
 
 import io.jsonwebtoken.Claims;
@@ -31,11 +31,11 @@ import io.jsonwebtoken.impl.TextCodec;
 @Service
 public class TokenManagerImpl implements TokenManager {
 	
-	private static final Logger logger = LogManager.getLogger(TokenManagerImpl.class);
+	private static final Logger logger = LoggerFactory.getLogger(TokenManagerImpl.class);
 
 	
-	private final static String API_KEY = "xfANpSwJI6yllxK6NFE7eZahCNVPUJmg";
-	private final static SignatureAlgorithm signatureAlgorithm = SignatureAlgorithm.HS256;
+	private static final String API_KEY = "xfANpSwJI6yllxK6NFE7eZahCNVPUJmg";
+	private static final SignatureAlgorithm signatureAlgorithm = SignatureAlgorithm.HS256;
 
 	public String generateFakeToken(String email) {
 	    
@@ -76,7 +76,7 @@ public class TokenManagerImpl implements TokenManager {
 			Claims claims = claim.getBody();			
 		   	logger.debug("Expiration: " + claims.getExpiration());
 		    logger.debug("Now: " + now);
-		    logger.debug(claims.getExpiration().compareTo(now));
+		    logger.debug(String.valueOf(claims.getExpiration().compareTo(now)));
 		    
 		    if (claims.getExpiration().compareTo(now) >= 0 ) {
 		    	logger.debug("token expiration is after or equal to the current date");
@@ -105,7 +105,7 @@ public class TokenManagerImpl implements TokenManager {
 		} catch (SignatureException e) {
 			
 			logger.debug("SignatureException!");
-			logger.debug(e);
+			logger.debug(e.getMessage());
 			return null;
 		}
 	    
