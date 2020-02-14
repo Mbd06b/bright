@@ -32,12 +32,6 @@ spring:
         - Path=/user/**
         filters:
         - RewritePath=/user/(?<path>.*), /$\{path}
-      - id: auth-service
-        uri: lb://user-service
-        predicates:
-        - Path=/auth/**
-        filters:
-        - RewritePath=/auth/(?<path>.*), /$\{path}
       - id: election-service
         uri: lb://election-service
         predicates:
