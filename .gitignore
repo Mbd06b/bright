@@ -18,6 +18,10 @@
 # Maven
 log/
 target/
+.mvn/
+
+#Spring
+.sts4-cache/
 
 # Node and Angular
 node/
