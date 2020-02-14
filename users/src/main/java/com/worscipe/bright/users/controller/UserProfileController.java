@@ -39,11 +39,11 @@ public class UserProfileController {
 		UserView user = userManager.findById(id);
 
 		if (user == null) {
-			logger.info("Requested user with id: " + id + " not found ");
+			logger.info("Requested user with id: {} not found ", String.valueOf(id));
 			return new ResponseEntity<UserView>(HttpStatus.NO_CONTENT);
 		}
 		
-			logger.debug(user);
+			logger.debug("Getting User with id:{}", String.valueOf(id));
 		return new ResponseEntity<UserView>(user, HttpStatus.OK);
 
 	}

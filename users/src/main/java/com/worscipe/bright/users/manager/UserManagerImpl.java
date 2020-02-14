@@ -7,7 +7,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.worscipe.bright.users.auth.Password;
-import com.worscipe.bright.users.auth.TokenManager;
 import com.worscipe.bright.users.model.UserImpl;
 import com.worscipe.bright.users.modelview.UserView;
 import com.worscipe.bright.users.service.UserService;
@@ -21,8 +20,8 @@ public class UserManagerImpl implements UserManager {
 	@Autowired
 	private UserService userService; 
 	
-	@Autowired
-	private TokenManager tokenManager;
+//	@Autowired
+//	private TokenManager tokenManager;
 
 	
 	@Override
@@ -80,14 +79,14 @@ public class UserManagerImpl implements UserManager {
 	 * 
 	 */
 	
-	@Override
-	public UserView authorizeUser(UserView user) {
-		 
-		String token = tokenManager.generateToken(user);
-		 user.setToken(token); 
-		 return user;
-	}
-	
+//	@Override
+//	public UserView authorizeUser(UserView user) {
+//		 
+//		String token = tokenManager.generateToken(user);
+//		 user.setToken(token); 
+//		 return user;
+//	}
+//	
 	
 	@Override
 	public UserImpl convertToModel(UserView userView) {

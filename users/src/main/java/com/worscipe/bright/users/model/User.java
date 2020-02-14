@@ -3,6 +3,8 @@ package com.worscipe.bright.users.model;
 import java.util.Date;
 import java.util.Set;
 
+import com.worscipe.bright.common.auth.Role;
+
 public interface User {
 	
 	Long getId();

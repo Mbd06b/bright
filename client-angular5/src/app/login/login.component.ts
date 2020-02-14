@@ -6,6 +6,7 @@ import { first } from 'rxjs/operators';
 import { AuthService } from '../service/auth.service';
 import { AlertService } from '../service/alert.service';
 import { User } from '../model/user';
+import { AuthRequest } from '../model/authRequest';
 
 
 // designed pattern referenced, https://dzone.com/articles/angular-5-material-design-login-application
@@ -48,16 +49,17 @@ export class LoginComponent implements OnInit {
     get f() { return this.loginForm.controls; }
 
     onSubmit() {
+        let authRequest : AuthRequest = new AuthRequest;
         this.submitted = true;
-        this.user.email = this.f.email.value;
-        this.user.password = this.f.password.value;
+        authRequest.key = this.f.email.value;
+        authRequest.password = this.f.password.value;
         // stop here if form is invalid
         if (this.loginForm.invalid) {
             return;
         }
 
         this.loading = true;
-        this.authService.login(this.user)
+        this.authService.login(authRequest)
             .pipe(first())
             .subscribe(
                 data => {

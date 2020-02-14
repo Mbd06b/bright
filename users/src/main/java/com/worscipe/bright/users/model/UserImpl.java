@@ -17,6 +17,8 @@ import javax.persistence.Table;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
 
+import com.worscipe.bright.common.auth.Role;
+
 //Hibernate Annotation Table_Per_Class Strategy Reference
 //https://thoughts-on-java.org/complete-guide-inheritance-strategies-jpa-hibernate/
 

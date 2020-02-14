@@ -19,7 +19,7 @@ public interface UserManager{
 		
 	Boolean deleteUserById(Long id); 
 	
-	UserView authorizeUser(UserView user);
+    //UserView authorizeUser(UserView user);
 
 	Boolean existsById(Long id);
 

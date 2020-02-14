@@ -8,6 +8,7 @@ import { AlertService } from '../service/alert.service';
 import { User } from '../model/user';
 import { UserService } from '../service/user.service';
 import { a } from '@angular/core/src/render3';
+import { AuthRequest } from '../model/authRequest';
 
 
 // designed pattern referenced, https://dzone.com/articles/angular-5-material-design-login-application
@@ -69,7 +70,9 @@ export class RegisterComponent implements OnInit {
         if (this.registrationForm.invalid) {
             return;
         }
-
+        let authRequest: AuthRequest = new AuthRequest;
+        authRequest.key = this.user.email;
+        authRequest.password = this.user.password;
 
         this.loading = true;
 
@@ -82,9 +85,8 @@ export class RegisterComponent implements OnInit {
             .subscribe((data: User) => {
               this.user.id = data.id;
               console.log('postUser completes for new User[' + this.user.id + ']');
-
                 // login user and redirect to profile page
-                this.authService.login(this.user)
+                this.authService.login(authRequest)
                 .pipe(first())
                 .subscribe(
                     data => {

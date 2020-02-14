@@ -2,12 +2,12 @@ package com.worscipe.bright.gateway.auth;
 
 import java.util.Map;
 
-import org.aspectj.weaver.NewConstructorTypeMunger;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -38,16 +38,15 @@ public class AuthController {
 	 * 		
 	 * @return ResponseEntity body with either a vaild jwt token string or rejection message.
 	 */
-	
+	@CrossOrigin(origins = "http://localhost:4200")
 	@PostMapping(value = "/")
-			public ResponseEntity<AuthResponse> login(@RequestBody AuthRequest requestToValidate){
-		
-		Map<Boolean, Role> userResponse = userClient.loginUser(requestToValidate); 
-		
-		if(userResponse.containsKey(true)) {
-			AuthResponse authenticatedResponse = new AuthResponse(tokenManager.generateToken(requestToValidate.getKey(), userResponse.get(true))); 
-			return new ResponseEntity<>(authenticatedResponse, HttpStatus.OK);
-		}
+	public ResponseEntity<AuthResponse> login(@RequestBody AuthRequest requestToValidate){
+	logger.debug("Gateway login() endpoint"); 
+	Map<Boolean, Role> userResponse = userClient.loginUser(requestToValidate); 	
+	if(userResponse.containsKey(true)) {
+		AuthResponse authenticatedResponse = new AuthResponse(tokenManager.generateToken(requestToValidate.getKey(), userResponse.get(true))); 
+		return new ResponseEntity<>(authenticatedResponse, HttpStatus.OK);
+	}
 		
 		// TODO
 //		UserView existingUser = userClient.findByEmail(userToValidate.getEmail());
@@ -76,7 +75,7 @@ public class AuthController {
 	
 	@PostMapping(value = "/token")
 	public ResponseEntity<Boolean> isTokenValid(@RequestBody String token){
-		
+		logger.debug("Gateway isTokenValid() endponit");
 	   Boolean isValid = tokenManager.isValidToken(token); 
 	   logger.debug("isValid:{}",  isValid);
 	   return new ResponseEntity<Boolean>(isValid, HttpStatus.OK);

@@ -1,19 +1,15 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Router } from '@angular/router';
-import { map } from 'rxjs/operators';
 
-import * as jwt_decode from 'jwt-decode';
 
 import { AppSettings } from '../app.settings';
+import { AuthRequest } from '../model/authRequest';
+import { AuthResponse } from '../model/authResponse';
 import { User } from '../model/user';
-import { routerNgProbeToken } from '@angular/router/src/router_module';
-import { AnimationStyleMetadata } from '@angular/animations';
-import { Observable } from 'rxjs/Observable';
-import { inspect } from 'util';
-import { validateConfig } from '@angular/router/src/config';
+import { UserService } from './user.service';
 
-const AUTH_URL: string = AppSettings.API_URL + '/user/auth/';
+const AUTH_URL: string = AppSettings.API_URL + '/auth/';
 
 // design pattern refrenced, https://dzone.com/articles/angular-5-material-design-login-application
 @Injectable()
@@ -25,7 +21,8 @@ export class AuthService {
 
   constructor(
     private router: Router,
-    private http: HttpClient
+    private http: HttpClient,
+    private userService: UserService
     ) { }
 
     get token(): string {
@@ -50,21 +47,24 @@ export class AuthService {
             });
     }
 
-    login(user: User) {
-        return this.http.post<User>(AUTH_URL, user)
-            .do( userData => {
-                // login successful if there's a jwt token in the response
-                if  (userData && userData.token) {
-                    // store user jwt token in local storage to keep user logged in between page refreshes
-                    // token subject == database generated user id
-                    localStorage.setItem(this.TOKEN_KEY, userData.token);
-                    this.sessionToken = userData.token;
-                    this.sessionUser = userData;
-                    // object inspection for Testing Purposes
-                }
-                return userData;
-            });
-        }
+    login(authRequest: AuthRequest) {
+        return this.http.post<AuthResponse>(AUTH_URL, authRequest)
+        .do( loginResponse => {
+            // login successful if there's a jwt token in the response
+            if  (loginResponse.jwt) {
+
+                // store user jwt token in local storage to keep user logged in between page refreshes
+                // token subject == database generated user id
+                localStorage.setItem(this.TOKEN_KEY, loginResponse.jwt);
+                this.sessionToken = loginResponse.jwt;
+                this.userService.getUserByEmail(authRequest.key).subscribe( (data) => {
+                   this.sessionUser = data;
+                });
+            }
+            return this.sessionUser;
+        });
+    }
+
 
     logout() {
         // remove user and token from session
