@@ -139,7 +139,12 @@
 		    <artifactId>springfox-swagger2</artifactId>
 		    <version>${springfox.version}</version>
 		</dependency>
-						
+		
+		<dependency>
+		    <groupId>io.minio</groupId>
+		    <artifactId>minio</artifactId>
+		    <version>6.0.8</version>
+		</dependency>								
 		
 	</dependencies>
 
