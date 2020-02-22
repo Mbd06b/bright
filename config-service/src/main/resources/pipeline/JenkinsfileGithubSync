@@ -68,8 +68,8 @@ pipeline{
 				  			echo "::: END GIT DEBUG :::" 
 				            
 				            
-				            echo "git push --force origin development:development" 
-				            git push --force origin development:development
+				            echo "git push origin --force" 
+				            git push origin --force
 				            
 				            
 
