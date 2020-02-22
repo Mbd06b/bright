@@ -27,6 +27,11 @@ node{
             sh 'mvn compile'
         }
         
+        dir('common') {
+            sh 'mvn clean install deploy'
+        }
+        
+        
         dir('config-service') {
             sh 'mvn clean install'
         }
