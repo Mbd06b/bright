@@ -6,7 +6,7 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import com.worscipe.bright.users.auth.Password;
+import com.worscipe.bright.common.auth.Password;
 import com.worscipe.bright.users.model.UserImpl;
 import com.worscipe.bright.users.modelview.UserView;
 import com.worscipe.bright.users.service.UserService;
