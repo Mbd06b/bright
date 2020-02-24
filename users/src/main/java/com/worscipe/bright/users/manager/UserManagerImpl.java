@@ -19,11 +19,7 @@ public class UserManagerImpl implements UserManager {
 	
 	@Autowired
 	private UserService userService; 
-	
-//	@Autowired
-//	private TokenManager tokenManager;
-
-	
+		
 	@Override
 	public UserView saveUser(UserView user) {
 		
@@ -70,24 +66,7 @@ public class UserManagerImpl implements UserManager {
 		return userService.deleteUserById(id); 
 	}
 
-	/** 
-	 * This method returns a vaild JWT token for the user passed in.  
-	 * @author matthew.b.dowell
-	 * @param UserView of user to validate;
-	 * @return String a jwt token
-	 * 
-	 * 
-	 */
-	
-//	@Override
-//	public UserView authorizeUser(UserView user) {
-//		 
-//		String token = tokenManager.generateToken(user);
-//		 user.setToken(token); 
-//		 return user;
-//	}
-//	
-	
+
 	@Override
 	public UserImpl convertToModel(UserView userView) {
 		
