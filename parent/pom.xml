@@ -25,6 +25,19 @@
 	    </repository>
 	</repositories>
 	
+	 <distributionManagement>
+	    <repository>
+	      <id>bright</id>
+	      <name>Releases</name>
+	      <url>http://save.worscipe.com/repository/bright</url>
+	    </repository>
+	    <snapshotRepository>
+	      <id>bright</id>
+	      <name>Snapshot</name>
+	      <url>http://save.worscipe.com/repository/bright</url>
+	    </snapshotRepository>
+	  </distributionManagement>
+	
     
     <modules>
         <module>../common</module>
@@ -36,5 +49,6 @@
         <module>../ideas</module>
         <module>../elections</module>
         <module>../client-angular5</module>
-  </modules>
+    </modules>
+    
 </project>
