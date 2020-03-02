@@ -17,21 +17,8 @@
 		<springfox.version>2.9.2</springfox.version>
 		<maven.compiler.target>${java.version}</maven.compiler.target>
 		<maven.compiler.source>${java.version}</maven.compiler.source>
-		<spring.cloud.version>Greenwich.SR3</spring.cloud.version>
 		<encoding>UTF-8</encoding>
-	</properties>
-    
-    <dependencyManagement>
-		<dependencies>
-			<dependency>
-				<groupId>org.springframework.cloud</groupId>
-				<artifactId>spring-cloud-dependencies</artifactId>
-				<version>${spring.cloud.version}</version>
-				<type>pom</type>
-				<scope>import</scope>
-			</dependency>
-		</dependencies>
-	</dependencyManagement>    
+	</properties>  
     
 	<dependencies>
 		<dependency>

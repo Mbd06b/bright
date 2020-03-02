@@ -16,7 +16,8 @@
 		<relativePath/>
 	</parent>
 	
-	<!--Mvn Best Practice: Do NOT put properties here for modules to inherit -->
+	<!--Mvn Best Practice: Do NOT put properties here for modules to inherit 
+	    Maven best practices REF: https://www.javacodegeeks.com/2012/06/maven-best-practices.html-->
 	
 	<repositories>
 		<repository>
@@ -38,6 +39,22 @@
 	    </snapshotRepository>
 	  </distributionManagement>
 	
+	   <dependencyManagement>
+	   	 <dependencies>
+	     	<dependency>
+				<groupId>org.springframework.cloud</groupId>
+				<artifactId>spring-cloud-dependencies</artifactId>
+				<version>Greenwich.SR3</version>
+				<type>pom</type>
+				<scope>import</scope>
+			</dependency>
+			<dependency>
+			  <groupId>com.worscipe.bright</groupId>
+			  <artifactId>common</artifactId>
+			  <version>0.0.1-RELEASE</version>
+			</dependency>
+		 </dependencies>
+	  </dependencyManagement>
     
     <modules>
         <module>../common</module>
@@ -50,5 +67,6 @@
         <module>../elections</module>
         <module>../client-angular5</module>
     </modules>
+    
     
 </project>
