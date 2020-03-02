@@ -16,15 +16,7 @@
 		<relativePath/>
 	</parent>
 	
-	<properties>
-		<spring.boot.version>2.1.5.RELEASE</spring.boot.version>
-		<java.version>1.8</java.version>
-		<springfox.version>2.9.2</springfox.version>
-		<maven.compiler.target>${java.version}</maven.compiler.target>
-		<maven.compiler.source>${java.version}</maven.compiler.source>
-		<spring.cloud.version>Greenwich.SR3</spring.cloud.version>
-		<encoding>UTF-8</encoding>
-	</properties>
+	<!--Mvn Best Practice: Do NOT put properties here for modules to inherit -->
 	
 	<repositories>
 		<repository>
@@ -33,9 +25,9 @@
 	    </repository>
 	</repositories>
 	
-	
     
     <modules>
+        <module>../common</module>
     	<module>../config-service</module>
         <module>../discovery-service</module>
         <module>../proxy-service</module>
@@ -43,7 +35,6 @@
         <module>../users</module>
         <module>../ideas</module>
         <module>../elections</module>
-        <module>../common</module>
-        <!-- <module>../client-angular5</module> -->
+        <module>../client-angular5</module>
   </modules>
 </project>

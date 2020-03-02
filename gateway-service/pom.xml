@@ -8,6 +8,19 @@
 		<relativePath>../parent</relativePath>
 	</parent>
 	<artifactId>gateway-service</artifactId>
+	<packaging>jar</packaging>
+	<name>gateway</name>
+	<description>Gateway Service</description>
+	
+	<properties>
+		<spring.boot.version>2.1.5.RELEASE</spring.boot.version>
+		<java.version>1.8</java.version>
+		<springfox.version>2.9.2</springfox.version>
+		<maven.compiler.target>${java.version}</maven.compiler.target>
+		<maven.compiler.source>${java.version}</maven.compiler.source>
+		<spring.cloud.version>Greenwich.SR3</spring.cloud.version>
+		<encoding>UTF-8</encoding>
+	</properties>
 	
 	<dependencyManagement>
 		<dependencies>
