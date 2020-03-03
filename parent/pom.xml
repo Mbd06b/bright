@@ -28,12 +28,12 @@
 	
 	 <distributionManagement>
 	    <repository>
-	      <id>bright</id>
+	      <id>bright-release</id>
 	      <name>Releases</name>
 	      <url>http://save.worscipe.com/repository/bright</url>
 	    </repository>
 	    <snapshotRepository>
-	      <id>bright</id>
+	      <id>bright-snapshot</id>
 	      <name>Snapshot</name>
 	      <url>http://save.worscipe.com/repository/bright</url>
 	    </snapshotRepository>

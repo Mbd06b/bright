@@ -9,6 +9,7 @@
 		<relativePath>../parent</relativePath>
 	</parent>
 	<artifactId>client-angular5</artifactId>
+	<version>0.0.1-SNAPSHOT</version>
 	<name>client-angular5</name>
 	<description>An Angular 5 Client for the Bright App</description>
 	

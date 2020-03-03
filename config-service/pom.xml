@@ -7,6 +7,7 @@
 		<relativePath>../parent</relativePath>
 	</parent>
 	<artifactId>config-service</artifactId>
+	<version>0.0.1-SNAPSHOT</version>
 	<packaging>jar</packaging>
     <name>config-service</name>
     <description>A config server providing configuration to services</description>

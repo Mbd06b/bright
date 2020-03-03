@@ -9,6 +9,7 @@
 		<relativePath>../parent</relativePath>
 	</parent>
 	<artifactId>users</artifactId>
+	<version>0.0.1-SNAPSHOT</version>
 	<packaging>jar</packaging>
 	<name>users</name>
 	<description>User Service API</description>
@@ -118,6 +119,7 @@
 			<groupId>net.andreinc.mockneat</groupId>
 			<artifactId>mockneat</artifactId>
 			<version>0.3.4</version>
+			<scope>test</scope>
 		</dependency>
 		
 		<!-- https://mvnrepository.com/artifact/org.testng/testng -->
