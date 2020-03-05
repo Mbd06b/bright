@@ -30,12 +30,12 @@
 	    <repository>
 	      <id>bright-release</id>
 	      <name>Releases</name>
-	      <url>http://save.worscipe.com/repository/bright</url>
+	      <url>http://save.worscipe.com/repository/bright-release/</url>
 	    </repository>
 	    <snapshotRepository>
 	      <id>bright-snapshot</id>
 	      <name>Snapshot</name>
-	      <url>http://save.worscipe.com/repository/bright</url>
+	      <url>http://save.worscipe.com/repository/bright-snapshot/</url>
 	    </snapshotRepository>
 	  </distributionManagement>
 	
@@ -65,7 +65,7 @@
         <module>../users</module>
         <module>../ideas</module>
         <module>../elections</module>
-        <module>../client-angular5</module>
+<!--         <module>../client-angular5</module> -->
     </modules>
     
     
