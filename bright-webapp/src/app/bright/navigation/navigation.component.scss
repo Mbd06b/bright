@@ -1,0 +1,22 @@
+.sidenav-container {
+  height: 100%;
+}
+
+.sidenav {
+  width: 200px;
+}
+
+.mat-toolbar.mat-primary {
+  position: sticky;
+  top: 0;
+}
+
+.icon {
+  padding: 0 1.2em;
+}
+
+.fill-remaining-space {
+  /* This fills the remaining space, by using flexbox.
+     Every toolbar row uses a flexbox row layout. */
+  flex: 1 1 auto;
+}
