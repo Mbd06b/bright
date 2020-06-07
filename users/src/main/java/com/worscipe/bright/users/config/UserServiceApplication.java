@@ -21,7 +21,7 @@ import springfox.documentation.swagger2.annotations.EnableSwagger2;
 
 @SpringBootApplication
 @EnableDiscoveryClient
-@EnableFeignClients
+@EnableFeignClients(basePackages =  {"com.worscipe.bright.users.client"})
 @EnableSwagger2
 @EnableAutoConfiguration
 @EntityScan(basePackages = { "com.worscipe.bright.users.model" })

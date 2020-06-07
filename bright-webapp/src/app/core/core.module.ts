@@ -7,6 +7,7 @@ import { UserService } from './service/user.service';
 import { IdeaService } from './service/idea.service';
 import { AlertService } from './service/alert.service';
 import { SharedModule } from '../shared/shared.module';
+import { CookieService } from 'ngx-cookie-service';
 
 @NgModule({
   declarations: [],
@@ -17,7 +18,7 @@ import { SharedModule } from '../shared/shared.module';
     HttpClientModule,
   ],
   providers: [
-    AuthenticationService, UserService, IdeaService, AlertService,
+    AuthenticationService, UserService, IdeaService, AlertService, CookieService,
     {
       provide: HTTP_INTERCEPTORS,
       useClass: AuthInterceptor,

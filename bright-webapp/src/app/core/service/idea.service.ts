@@ -47,7 +47,7 @@ ideasApi = AppConstants.API_URL + '/idea/';
   }
 
   postIdea(idea: Idea): Observable<Idea> {
-       idea.actingEntityId = this.authService.sessionUser.id;
+       idea.actingEntityId = this.authService.currentUser.id;
        idea.action = IdeaAction.Create;
        return this.httpClient.post(this.ideasApi, idea).pipe(
       tap(data => this.logger.debug('postIdea: ' + inspect(data))),
@@ -71,7 +71,7 @@ ideasApi = AppConstants.API_URL + '/idea/';
     if ( (idea.actingEntityId !== undefined) || (idea.actingEntityId !== null) ) {
        // do nothing
      } else {
-      idea.actingEntityId = this.authService.sessionUser.id;
+      idea.actingEntityId = this.authService.currentUser.id;
      }
 
     return this.httpClient.put(this.ideasApi, idea).pipe(

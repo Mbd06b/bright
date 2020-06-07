@@ -1,16 +1,32 @@
 import { NgModule } from '@angular/core';
+import { CommonModule } from '@angular/common';
 
 import { UserRoutingModule } from './user-routing.module';
 import { UserComponent } from './user.component';
-import { UserListComponent } from './user-list/user-list.component';
-import { SharedModule } from '../shared/shared.module';
+import { MatCardModule } from '@angular/material/card';
+import { MatMenuModule } from '@angular/material/menu';
+import { MatIconModule } from '@angular/material/icon';
+import { MatListModule } from '@angular/material/list';
+import { MatButtonModule } from '@angular/material/button';
+import { MatToolbarModule } from '@angular/material/toolbar';
+import {MatButtonToggleModule} from '@angular/material/button-toggle';
+import { MatGridListModule } from '@angular/material/grid-list';
+
 
 
 @NgModule({
-  declarations: [UserComponent, UserListComponent],
+  declarations: [UserComponent],
   imports: [
-    SharedModule,
-    UserRoutingModule
+    CommonModule,
+    UserRoutingModule,
+    MatCardModule,
+    MatGridListModule,
+    MatMenuModule,
+    MatIconModule,
+    MatListModule,
+    MatButtonModule,
+    MatToolbarModule,
+    MatButtonToggleModule
   ]
 })
 export class UserModule { }

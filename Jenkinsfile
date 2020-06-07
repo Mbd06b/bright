@@ -1,3 +1,20 @@
+// TODO: Read Example http://engineering.teacherspayteachers.com/2017/05/16/unifying-deployments-for-microservices-via-jenkins.html
+// TODO: Read https://wilsonmar.github.io/jenkins2-pipeline/
+// TODO: Reference, https://github.com/jfrog/project-examples/tree/master/jenkins-examples/pipeline-examples/declarative-examples
+
+
+def springBootMvnBuild(directory){
+	node{
+		dir(directory) {
+	            sh 'mvn clean install'
+	    }
+    }
+}
+   
+
+
+stage 'checkout'
+
 node{
     
    checkout([
@@ -19,13 +36,18 @@ node{
 		        ]
 	        ]
         ])
+} 
     
-     
-    stage 'compile'
+//   
+stage 'compile'
+
+		bootPipeline('parent')
+		
         dir('parent') {
             // some block
             sh 'mvn compile'
         }
+        
         
         dir('common') {
             sh 'mvn clean install deploy'
@@ -81,7 +103,6 @@ node{
              }
         }
         
-        
         stage ('deploy'){
         	// TODO https://github.com/jenkinsci/kubernetes-cd-plugin
         	kubernetesDeploy(kubeconfigId: 'kubeconfig-credentials-id',               // REQUIRED
@@ -95,8 +116,10 @@ node{
                         [credentialsId: '<credentials-id-for-docker-hub>'],
                         [credentialsId: '<credentials-id-for-other-private-registry>', url: '<registry-url>'],
                  ]
-			){  }
+			){ 
+			echo "kubernetesDeploy" 
 			}
+		}
 
             
           

@@ -8,6 +8,8 @@ import { UserService } from './user.service';
 import { tap } from 'rxjs/operators';
 import { AppConstants } from '../app-constants';
 import { NGXLogger } from 'ngx-logger';
+import { Observable } from 'rxjs';
+import { CookieService } from 'ngx-cookie-service';
 
 
 const AUTH_URL: string = AppConstants.API_URL + '/auth/';
@@ -17,8 +19,8 @@ const AUTH_URL: string = AppConstants.API_URL + '/auth/';
   providedIn: 'root'
 })
 export class AuthenticationService {
-
-  TOKEN_KEY = 'token';
+  private cookieValue: string;
+  private TOKEN_KEY = 'token';
   sessionToken: string;
   sessionUser: User;
 
@@ -26,6 +28,7 @@ export class AuthenticationService {
     private logger: NGXLogger,
     private router: Router,
     private http: HttpClient,
+    private cookieService: CookieService,
     private userService: UserService
     ) { }
 
@@ -34,59 +37,74 @@ export class AuthenticationService {
     }
 
     get isAuthenticated(): boolean {
+      if ( (this.sessionToken === null) || (this.sessionToken === undefined) ) {
+        const localToken = localStorage.getItem(this.TOKEN_KEY);
+        this.sessionToken = localToken;
+      }
 
-
-      if (!!this.sessionToken || this.isTokenValid) {
-
-            return true;
-          } else {
-            return false;
-          }
-
+      if ( (this.sessionToken === null)
+            || (this.sessionToken === undefined)
+            || (this.sessionUser === null)
+            || (this.sessionUser === undefined)
+          ) {
+        return false;
+      } else {
+        return true;
+      }
     }
 
     isTokenValid() {
-      let storedToken = localStorage.getItem(this.TOKEN_KEY);
-      return this.http.post<boolean>(AUTH_URL + 'token', storedToken).pipe(
-            tap( response => {
-                // header switch handling
-                this.logger.debug(response);
-                return response.valueOf;
-            }));
+      const localToken = localStorage.getItem(this.TOKEN_KEY);
+      if ( (localToken === null) || (localToken === undefined) ) {
+        this.logger.debug('localToken not set');
+        return false;
+      } else {
+        return this.http.post<boolean>(AUTH_URL + 'token', localToken).pipe(
+          tap( response => {
+              // header switch handling
+              this.logger.debug(response);
+
+              if ( response.valueOf ) {
+                this.sessionToken = localToken;
+              }
+              return response.valueOf;
+          }));
+      }
+
     }
 
     login(authRequest: AuthRequest) {
         return this.http.post<AuthResponse>(AUTH_URL, authRequest).pipe(
         tap( loginResponse => {
             // login successful if there's a jwt token in the response
-            if  (loginResponse.jwt) {
+            if (loginResponse.jwt) {
 
                 // store user jwt token in local storage to keep user logged in between page refreshes
                 // token subject == database generated user id
                 localStorage.setItem(this.TOKEN_KEY, loginResponse.jwt);
+                sessionStorage.setItem(this.TOKEN_KEY, loginResponse.jwt);
                 this.sessionToken = loginResponse.jwt;
-                this.userService.getUserByEmail(authRequest.key).subscribe( (data) => {
-                   this.sessionUser = data;
+                this.userService.getUserByToken(loginResponse.jwt).subscribe(user => {
+                  this.sessionUser = user;
+                  sessionStorage.setItem('user', JSON.stringify(user));
+
                 });
             }
             return this.sessionUser;
         }));
     }
 
-
     logout() {
         // remove user and token from session
-        this.sessionToken = '';
+        this.sessionToken = null;
+        localStorage.removeItem(this.TOKEN_KEY);
+        sessionStorage.removeItem('user');
+        sessionStorage.removeItem(this.TOKEN_KEY);
         this.sessionUser = null;
-        this.router.navigate(['landing']);
+        this.router.navigate(['/login']);
     }
 
     get currentUser(): User {
-
-      if (this.isAuthenticated) {
-        return this.sessionUser;
-      }
-      this.logout();
-      return null;
-      }
-}
+      return JSON.parse(sessionStorage.getItem('user'));
+    }
+};

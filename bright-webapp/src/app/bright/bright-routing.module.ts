@@ -1,23 +1,18 @@
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
 import { BrightComponent } from './bright.component';
-import { UsersComponent } from '../users/users.component';
-import { UserProfileComponent } from '../user/user-profile/user-profile.component';
-import { IdeaComponent } from '../idea/idea.component';
-import { AdminDashboardComponent } from '../admin-dashboard/admin-dashboard.component';
-import { IdeasComponent } from '../ideas/ideas.component';
 
 const routes: Routes = [
   { path: '', component: BrightComponent,
       children: [
        // { path: 'users', outlet: 'bright',  component: UsersComponent },
-        { path: 'ideas', component: IdeasComponent },
+        { path: 'ideas', loadChildren: () => import('../ideas/ideas.module').then(m => m.IdeasModule) },
         { path: 'admin', loadChildren: () => import('../admin-dashboard/admin-dashboard.module').then(m => m.AdminDashboardModule) },
+        { path: 'people', loadChildren: () => import ('../users/users.module').then(m => m.UsersModule) },
+        { path: 'people/:id', loadChildren: () => import ('../user/user.module').then(m => m.UserModule) },
+        { path: 'ideas/:id', loadChildren: () => import('../ideas/ideas.module').then(m => m.IdeasModule) }
       ]
-  },
-  { path: 'people', component: UsersComponent},
-  { path: 'people/:id', component: UserProfileComponent},
-  { path: 'ideas/:id', component: IdeaComponent }
+  }
 ];
 
 @NgModule({

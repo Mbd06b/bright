@@ -27,7 +27,14 @@
 		 
 		
 		
-		<script type="text/javascript" src="${baseUrl}/resources/project.js" ></script>
+
+		
+	<jsp:invoke fragment="head" />
+	</head>
+	<body data-ng-app="BrightIdeas"> 
+		<jsp:doBody />
+		
+				<script type="text/javascript" src="${baseUrl}/resources/project.js" ></script>
 		
 		<!--  Angular JS App Resources -->
 		<script type="text/javascript" src="${baseUrl}/resources/aJSApp/brightIdeas.module.js"></script>
@@ -38,10 +45,5 @@
 		<script type="text/javascript" src="${baseUrl}/resources/aJSApp/users/users.dataservice.js"></script>
 		<script type="text/javascript" src="${baseUrl}/resources/aJSApp/ideas/ideas.controller.js"></script>
 		<script type="text/javascript" src="${baseUrl}/resources/aJSApp/users/users.controller.js"></script>	
-		
-	<jsp:invoke fragment="head" />
-	</head>
-	<body data-ng-app="BrightIdeas"> 
-		<jsp:doBody />
 	</body>
 </html>

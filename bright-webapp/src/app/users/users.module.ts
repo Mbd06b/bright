@@ -7,7 +7,6 @@ import { UsersGridComponent } from './users-grid/users-grid.component';
 import { UsersListComponent } from './users-list/users-list.component';
 import { UsersCardComponent } from './users-card/users-card.component';
 import { SharedModule } from '../shared/shared.module';
-import { UserListComponent } from '../user/user-list/user-list.component';
 import { UserAddDialogueComponent } from './user-add-dialogue/user-add-dialogue.component';
 import { FormsModule } from '@angular/forms';
 import { MatCardModule } from '@angular/material/card';
@@ -23,15 +22,28 @@ import { MatButtonModule } from '@angular/material/button';
 import { MatMenuModule } from '@angular/material/menu';
 import { MatIconModule } from '@angular/material/icon';
 import { UserEditDialogueComponent } from './user-edit-dialogue/user-edit-dialogue.component';
+import { UsersNavigationComponent } from './users-navigation/users-navigation.component';
+import { MatSidenavModule } from '@angular/material/sidenav';
+import { MatListModule } from '@angular/material/list';
 
 
 @NgModule({
-  declarations: [UsersComponent, UsersGridComponent, UsersListComponent, UsersCardComponent, UserAddDialogueComponent, UserEditDialogueComponent],
+  declarations: [
+    UsersComponent,
+    UsersGridComponent,
+    UsersListComponent,
+    UsersCardComponent,
+    UserAddDialogueComponent,
+    UserEditDialogueComponent,
+    UsersNavigationComponent
+  ],
   imports: [
     SharedModule,
     UsersRoutingModule,
     FormsModule,
     MatCardModule,
+    MatListModule,
+    MatSidenavModule,
     MatTabsModule,
     MatFormFieldModule,
     MatPaginatorModule,

@@ -1,6 +1,7 @@
 package com.worscipe.bright.gateway.auth;
 
 import java.util.Date;
+import java.util.Map;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -37,24 +38,24 @@ public class TokenManagerImpl implements TokenManager {
 	private static final String API_KEY = "xfANpSwJI6yllxK6NFE7eZahCNVPUJmg";
 	private static final SignatureAlgorithm signatureAlgorithm = SignatureAlgorithm.HS256;
 
-	public String generateFakeToken(String email) {
-	    
-		return "FakeToken" + email;
-	}
-
 	@Override
-	public String generateToken(String key, Role role) {
+	public String generateToken(Map<String,String> claims) {
 
 		// TODO assign token with user role permissions
 		Date now = new Date();
         Date exp = new Date(System.currentTimeMillis() + (60000*60)); // 1 hour
         
         try {
-		return Jwts.builder().setIssuer("BrightIdeas")
-				.setSubject(key)
-				.claim("role", role)
-				.setIssuedAt(now)
+		// OpenId Specifications  https://openid.net/specs/openid-connect-core-1_0.html
+        	return Jwts.builder()
+        	    //OpenId Required
+				.setIssuer("https://worscipe.com") 
+				.setSubject(claims.get("uid")) 
+				.setAudience(null)
 				.setExpiration(exp)
+				.setIssuedAt(now)
+				//optional: 
+				.claim("role", claims.get("role"))
 				.signWith(signatureAlgorithm, TextCodec.BASE64.decode(API_KEY))
 				.compact();
 		
@@ -93,17 +94,21 @@ public class TokenManagerImpl implements TokenManager {
 			
 	}
 	
+	public String decodeSubject(String token) {
+		Jws<Claims> claims = decodeJwts(token);
+		return claims.getBody().get("sub").toString();
+	}
+
+	
 	private Jws<Claims> decodeJwts(String jwt) {
 		//this will throw an error if it is not a signed JWS (as expected)
 		   //This line will throw an exception if it is not a signed JWS (as expected)
 		try {
-			Jws<Claims> claims = Jwts.parser()         
+			return Jwts.parser()         
 				       .setSigningKey(TextCodec.BASE64.decode(API_KEY))
 				       .parseClaimsJws(jwt);
-			return claims;
-			
+		
 		} catch (SignatureException e) {
-			
 			logger.debug("SignatureException!");
 			logger.debug(e.getMessage());
 			return null;

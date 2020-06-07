@@ -1,14 +1,15 @@
 package com.worscipe.bright.gateway.auth;
 
+import java.util.Map;
 
 // creating JWTtokens https://www.baeldung.com/java-json-web-tokens-jjwt
 
 public interface TokenManager {
 
-	public String generateFakeToken(String email);
-
-	public String generateToken(String key, Role role); 
+	 String generateToken(Map<String,String> claims); 
 	
-	public Boolean isValidToken(String token);
+	 Boolean isValidToken(String token);
+	
+	 String decodeSubject(String token);
 
 }

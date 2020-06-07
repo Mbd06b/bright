@@ -19,6 +19,7 @@ import org.springframework.web.bind.annotation.RestController;
 
 
 @RestController
+@CrossOrigin(origins = "http://localhost:4200")
 @RequestMapping("/auth")
 public class AuthController {
 	
@@ -38,44 +39,30 @@ public class AuthController {
 	 * 		
 	 * @return ResponseEntity body with either a vaild jwt token string or rejection message.
 	 */
-	@CrossOrigin(origins = "http://localhost:4200")
 	@PostMapping(value = "/")
 	public ResponseEntity<AuthResponse> login(@RequestBody AuthRequest requestToValidate){
 	logger.debug("Gateway login() endpoint"); 
-	Map<Boolean, Role> userResponse = userClient.loginUser(requestToValidate); 	
-	if(userResponse.containsKey(true)) {
-		AuthResponse authenticatedResponse = new AuthResponse(tokenManager.generateToken(requestToValidate.getKey(), userResponse.get(true))); 
-		return new ResponseEntity<>(authenticatedResponse, HttpStatus.OK);
-	}
-		
-		// TODO
-//		UserView existingUser = userClient.findByEmail(userToValidate.getEmail());
-//		
-//		if (existingUser == null) {
-//			String message = ("User: " + userToValidate.getEmail() + " not found ");
-//			logger.debug(message);
-//			return new ResponseEntity<UserView>(userToValidate, HttpStatus.OK);
-//		}
-//		else if (Password.check(userToValidate.getPassword(), existingUser.getPassword())) {
-//			 
-//			 //passwords do match (success!).
-//			 //authorized by attaching JWT token to userDTO for return to client
-//			 UserView validUser = userClient.authorizeUser(existingUser);
-//			 
-//			return new ResponseEntity<UserView>(validUser, HttpStatus.OK);
-//		}
-//		else {
-//			logger.debug("Passwords do not match");
-//			return new ResponseEntity<UserView>(userToValidate, HttpStatus.OK);
-//		}
-		
+	Map<String, String> userClaims = userClient.loginUser(requestToValidate); 	
+		if(Boolean.valueOf(userClaims.get("isAuthorized"))) {
+			AuthResponse authenticatedResponse = new AuthResponse(tokenManager.generateToken(userClaims)); 
+			return new ResponseEntity<>(authenticatedResponse, HttpStatus.OK);
+		}
+
 		return new ResponseEntity<>(new AuthResponse("false"), HttpStatus.UNAUTHORIZED); 
-		
+	}
+	
+	@PostMapping(value = "/token/subject")
+	public ResponseEntity<?> getTokenSubject(@RequestBody String token) {
+		if ( tokenManager.isValidToken(token) ) {
+			String uid = tokenManager.decodeSubject(token);
+			return new ResponseEntity<>(uid , HttpStatus.OK);
+		}
+		return new ResponseEntity<>("unauthorized", HttpStatus.OK);
 	}
 	
 	@PostMapping(value = "/token")
 	public ResponseEntity<Boolean> isTokenValid(@RequestBody String token){
-		logger.debug("Gateway isTokenValid() endponit");
+		logger.debug("Gateway isTokenValid() endpoint");
 	   Boolean isValid = tokenManager.isValidToken(token); 
 	   logger.debug("isValid:{}",  isValid);
 	   return new ResponseEntity<Boolean>(isValid, HttpStatus.OK);

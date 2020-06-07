@@ -1,11 +1,5 @@
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
-import { UsersComponent } from './users/users.component';
-import { IdeasComponent } from './ideas/ideas.component';
-import { UserProfileComponent } from './user/user-profile/user-profile.component';
-import { IdeaComponent } from './idea/idea.component';
-import { AdminDashboardComponent } from './admin-dashboard/admin-dashboard.component';
-import { NavigationComponent } from './bright/navigation/navigation.component';
 
 
 const routes: Routes = [

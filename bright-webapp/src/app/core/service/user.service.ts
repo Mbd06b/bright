@@ -24,7 +24,6 @@ import { NGXLogger } from 'ngx-logger';
 export class UserService {
 
   private usersApi = AppConstants.API_URL + '/user/';
-  private ideasApi = AppConstants.API_URL + '/idea/';
 
   constructor(
     private logger: NGXLogger,
@@ -35,6 +34,12 @@ export class UserService {
     return this.httpClient.get(this.usersApi + 'all').pipe(
       tap(() => this.logger.debug('getUsers: ')),
       catchError(this.handleError<any>('getUsers')), );
+  }
+
+  getUserByToken(token: string): Observable<User> {
+    return this.httpClient.post(this.usersApi + '/login/token', token).pipe(
+      tap(data => this.logger.debug('getUser[]:')),
+      catchError(this.handleError<any>('getUserByToken()')), );
   }
 
   getUserById(id: number): Observable<User> {

@@ -3,6 +3,7 @@ package com.worscipe.bright.common.auth;
 public class Subject {
 	
 	private Long id;
+	private String firstName;
 	private Role role;
 	
 	public Long getId() {
@@ -10,6 +11,12 @@ public class Subject {
 	}
 	public void setId(Long id) {
 		this.id = id;
+	}
+	public String getFirstName() {
+		return firstName;
+	}
+	public void setFirstName(String firstName) {
+		this.firstName = firstName;
 	}
 	public Role getRole() {
 		return role;

@@ -8,10 +8,11 @@ import { UsersListComponent } from '../users/users-list/users-list.component';
 const routes: Routes = [
   { path: '', component: AdminDashboardComponent,
         children: [
-          {path: 'ideas', component: IdeasListComponent },
-          {path: 'users', component: UsersListComponent }
+          { path: 'ideas', component: IdeasListComponent },
+          { path: 'users', component: UsersListComponent }
         ]
-   }
+   },
+   { path: '', component: UsersListComponent }
 ];
 
 @NgModule({

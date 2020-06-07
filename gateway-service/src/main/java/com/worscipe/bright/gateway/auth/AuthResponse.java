@@ -12,4 +12,5 @@ public class AuthResponse {
 		return jwt;
 	}
 
+
 }

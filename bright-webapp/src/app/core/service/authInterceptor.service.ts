@@ -25,7 +25,6 @@ export class AuthInterceptorService implements HttpInterceptor {
      headers: request.headers.set('Authorization', 'token' + authService.token)
    });
    if (authService.isTokenValid() ) {
-     this.logger.debug('token is valid');
      return next.handle(authRequest);
    }
    return next.handle(authRequest);

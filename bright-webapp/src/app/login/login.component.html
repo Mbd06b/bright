@@ -1,4 +1,4 @@
-<mat-card class="example-card" *ngIf="!!isAuthenticated">
+<mat-card class="example-card" *ngIf="!isAuthenticated">
   <mat-card-header>
     <mat-card-title>Login</mat-card-title>
   </mat-card-header>
@@ -46,11 +46,12 @@
   </mat-card-content>
 
 </mat-card>
-<mat-card  *ngIf="!isAuthenticated">
+<mat-card  *ngIf="isAuthenticated">
   <mat-card-content>
-      <mat-card-title>Logout</mat-card-title>
+      <mat-card-title></mat-card-title>
       <mat-card-content>
         <mat-card-actions>
+          <a href='#' [routerLink]="['/bright']">enter</a>
           <div class="form-group">
             <button mat-raised-button (click)="logout()" class="btn btn-primary">Logout</button>
           </div>

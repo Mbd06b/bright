@@ -5,6 +5,9 @@ import { NgModule } from '@angular/core';
 const routes: Routes = [
   {
     path: '', component: RegisterComponent,
+      children: [
+        {path: '/:id', }
+      ]
   },
 ];
 
