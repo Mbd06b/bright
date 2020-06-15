@@ -1,0 +1,23 @@
+<div class="profile-banner-header" style="background-image: url({{headerImgSrc}});">
+  <div class="container">
+    <div fxLayout="row" fxLayout.xs="column" fxFlexFill class="">
+      <div class="">
+        <div fxFLex="20" class="user-profile"><img src="{{profileImgSrc}}" /></div>
+        <div fxFlex="60" class="user-intro" >
+          <h2 class="user-name" >{{user.firstName}} {{user.lastName}}</h2>
+          <h3 class="user-title" >{{user.title}}</h3>
+          <div class="user-objective">
+            <p>
+              TODO add user.objectiveStatement; As a User, I want to have an objective statement, so profile visitors can at a glance, know what I want to accomplish, and how I spend my time.
+              </p>
+          </div>
+        </div>
+    </div>
+      <div fxFlex="20" class="user-banner-actions" >
+        <button mat-button>stats</button>
+        <button mat-button>Edit Profile</button>
+      </div>
+    </div>
+  </div>
+</div>
+

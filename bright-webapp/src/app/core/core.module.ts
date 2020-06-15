@@ -12,7 +12,7 @@ import { CookieService } from 'ngx-cookie-service';
 @NgModule({
   declarations: [],
   imports: [
-    SharedModule,
+    SharedModule
   ],
   exports: [
     HttpClientModule,

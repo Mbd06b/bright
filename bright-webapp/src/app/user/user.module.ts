@@ -11,11 +11,17 @@ import { MatButtonModule } from '@angular/material/button';
 import { MatToolbarModule } from '@angular/material/toolbar';
 import {MatButtonToggleModule} from '@angular/material/button-toggle';
 import { MatGridListModule } from '@angular/material/grid-list';
+import { UserBannerComponent } from './user-banner/user-banner.component';
+import { UserActivityComponent } from './user-activity/user-activity.component';
+import { UserDetailComponent } from './user-detail/user-detail.component';
+import { MatTabsModule } from '@angular/material/tabs';
+import { MatProgressBarModule } from '@angular/material/progress-bar';
+import { MatRippleModule } from '@angular/material/core';
 
 
 
 @NgModule({
-  declarations: [UserComponent],
+  declarations: [UserComponent, UserBannerComponent, UserActivityComponent, UserDetailComponent],
   imports: [
     CommonModule,
     UserRoutingModule,
@@ -26,7 +32,10 @@ import { MatGridListModule } from '@angular/material/grid-list';
     MatListModule,
     MatButtonModule,
     MatToolbarModule,
-    MatButtonToggleModule
+    MatButtonToggleModule,
+    MatTabsModule,
+    MatProgressBarModule,
+    MatRippleModule
   ]
 })
 export class UserModule { }

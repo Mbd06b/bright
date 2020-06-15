@@ -1,61 +1,75 @@
-<mat-toolbar color="primary" class="top-toolbar">
-  <button
-    type="button"
-    mat-icon-button
-    (click)="leftSideNav.toggle()"
-    *ngIf="isHandset$ | async">
-    <mat-icon aria-label="Side nav toggle icon">menu</mat-icon>
-  </button>
-  <h1>Bright</h1>
-  <span class="fill-remaining-space"></span>
-  <button mat-button title="home" routerLink="./">
-    <mat-icon aria-hidden="false" aria-label="Home">home</mat-icon>
-  </button>
-  <button mat-button title="ideas" routerLink="ideas">
-    <mat-icon aria-hidden="false" aria-label="Ideas" >emoji_objects</mat-icon>
-  </button>
-  <button mat-button title="poll">
-    <mat-icon aria-hidden="false" aria-label="Elections" >poll</mat-icon>
-  </button>
-  <button mat-button title="people" routerLink="people">
-    <mat-icon aria-hidden="false" aria-label="People" >group</mat-icon>
-  </button>
-  <button mat-button routerLink="/landing" title="landing">
-    <mat-icon aria-hidden="false" aria-label="Landing">arrow_upward</mat-icon>
-  </button>
-  <span class="fill-remaining-space"></span>
-  <mat-form-field class="search-bar">
-    <mat-label>Search Brightideas</mat-label>
-    <input matInput type="search">
-  </mat-form-field>
-  <button mat-button class="notifications" ><mat-icon>notifications_none</mat-icon></button>
-  <button mat-button *ngIf="isAuthenticated" class="user-context" routerLink="/login" ><mat-icon class="icon">account_circle</mat-icon>Login</button>
-  <button mat-button *ngIf="!isAuthenticated" class="user-context" [matMenuTriggerFor]="userContext" ><mat-icon class="icon">account_circle</mat-icon>{{currentUser.firstName}}</button>
 
-    <mat-menu #userContext="matMenu">
-      <button mat-menu-item [routerLink]="['people/', currentUser.id ]" >Profile</button>
-      <button mat-menu-item (click)="logout()" >Logout</button>
-    </mat-menu>
-</mat-toolbar>
+<div *ngIf="!isAuthenticated">
 
-<mat-sidenav-container class="sidenav-container">
-  <mat-sidenav
-    #leftSideNav
-    class="sidenav"
-    fixedInViewport="(isHandset$ | async) ? 'true' : 'false'"
-    fixedTopGap="56"
-    [attr.role]="(isHandset$ | async) ? 'dialog' : 'navigation'"
-    [mode]="(isHandset$ | async) ? 'over' : 'side'"
-    [opened]="!(isHandset$ | async)">
-    <mat-nav-list>
-        <router-outlet name="leftNav"></router-outlet>
-        <mat-divider></mat-divider>
-        <a mat-list-item href="" routerLink="admin">
-          <mat-icon>settings</mat-icon><span class="menu-label">Admin</span>
-        </a>
-    </mat-nav-list>
-  </mat-sidenav>
-  <mat-sidenav-content class="main-nav-content">
-      <router-outlet></router-outlet>
-  </mat-sidenav-content>
-</mat-sidenav-container>
+  <mat-toolbar color="primary" class="top-toolbar">
+    <h1>Bright</h1>
+      <span class="fill-remaining-space"></span>
+    <button mat-button class="user-context" routerLink="/login" ><mat-icon class="icon">account_circle</mat-icon>Login</button>
+  </mat-toolbar>
+
+  <router-outlet></router-outlet>
+
+</div>
+
+<div *ngIf="isAuthenticated" >
+  <mat-toolbar color="primary" class="top-toolbar">
+    <button
+      type="button"
+      mat-icon-button
+      (click)="leftSideNav.toggle()"
+      *ngIf="isHandset$ | async">
+      <mat-icon aria-label="Side nav toggle icon">menu</mat-icon>
+    </button>
+    <h1>Bright</h1>
+      <span class="fill-remaining-space"></span>
+      <button mat-button title="home" routerLinkActive="active" routerLink="./">
+        <mat-icon aria-hidden="false" aria-label="Home">home</mat-icon>
+      </button>
+      <button mat-button title="ideas" routerLinkActive="active" routerLink="ideas">
+        <mat-icon aria-hidden="false" aria-label="Ideas" >emoji_objects</mat-icon>
+      </button>
+      <button mat-button title="poll">
+        <mat-icon aria-hidden="false" aria-label="Elections" >poll</mat-icon>
+      </button>
+      <button mat-button title="people" routerLinkActive="active" routerLink="people">
+        <mat-icon aria-hidden="false" aria-label="People" >group</mat-icon>
+      </button>
+      <button mat-button routerLinkActive="active" routerLink="/landing" title="landing">
+        <mat-icon aria-hidden="false" aria-label="Landing">arrow_upward</mat-icon>
+      </button>
+      <span class="fill-remaining-space"></span>
+      <mat-form-field class="search-bar">
+        <mat-label>Search Brightideas</mat-label>
+        <input matInput type="search">
+      </mat-form-field>
+    <button mat-button class="notifications" ><mat-icon>notifications_none</mat-icon></button>
+    <button mat-button *ngIf="isAuthenticated" class="user-context" [matMenuTriggerFor]="userContext" ><mat-icon class="icon">account_circle</mat-icon>{{currentUser.firstName}}</button>
+
+      <mat-menu #userContext="matMenu">
+        <button mat-menu-item [routerLink]="['people/', currentUser.id ]" >Profile</button>
+        <button mat-menu-item (click)="logout()" >Logout</button>
+      </mat-menu>
+  </mat-toolbar>
+
+  <mat-sidenav-container class="sidenav-container">
+    <mat-sidenav
+      #leftSideNav
+      class="sidenav"
+      fixedInViewport="(isHandset$ | async) ? 'true' : 'false'"
+      fixedTopGap="56"
+      [attr.role]="(isHandset$ | async) ? 'dialog' : 'navigation'"
+      [mode]="(isHandset$ | async) ? 'over' : 'side'"
+      [opened]="!(isHandset$ | async)">
+      <mat-nav-list>
+          <router-outlet name="leftNav"></router-outlet>
+          <mat-divider></mat-divider>
+          <a mat-list-item href="" routerLink="admin">
+            <mat-icon>settings</mat-icon><span class="menu-label">Admin</span>
+          </a>
+      </mat-nav-list>
+    </mat-sidenav>
+    <mat-sidenav-content class="main-nav-content">
+        <router-outlet></router-outlet>
+    </mat-sidenav-content>
+  </mat-sidenav-container>
+</div>

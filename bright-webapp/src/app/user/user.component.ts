@@ -1,11 +1,14 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewChild } from '@angular/core';
 import { User } from '../core/model/user';
 import { IdeaLinkView } from '../core/model/idealinkview';
 import { Breakpoints, BreakpointObserver } from '@angular/cdk/layout';
 import { map } from 'rxjs/operators';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { UserService } from '../core/service/user.service';
 import { IdeaService } from '../core/service/idea.service';
+import { UserBannerComponent } from './user-banner/user-banner.component';
+import { UserActivityComponent } from './user-activity/user-activity.component';
+import { UserDetailComponent } from './user-detail/user-detail.component';
 
 @Component({
   selector: 'app-user',
@@ -14,75 +17,53 @@ import { IdeaService } from '../core/service/idea.service';
 })
 export class UserComponent implements OnInit {
 
+  @ViewChild(UserBannerComponent) banner;
 
   id: number;
-  private subscribe: any;
   user: User;
-  ideaTiles: IdeaLinkView [];
-
-
-   /** Based on the screen size, switch from standard to one column per row */
-   cards = this.breakpointObserver.observe(Breakpoints.Handset).pipe(
-    map(({ matches }) => {
-
-      if (matches) {
-        return [
-          { title: 'Card 1', cols: 1, rows: 1 },
-          { title: 'Card 2', cols: 1, rows: 1 },
-          { title: 'Card 3', cols: 1, rows: 1 },
-          { title: 'Card 4', cols: 1, rows: 1 }
-        ];
-      } else {
-        return [
-          { title: 'Card 1', cols: 2, rows: 1 },
-          { title: 'Card 2', cols: 1, rows: 1 },
-          { title: 'Card 3', cols: 1, rows: 2 },
-          { title: 'Card 4', cols: 1, rows: 1 }
-        ];
-      }
-    })
-  );
-
-  tiles = [
-    {text: 'One', cols: 2, rows: 1, color: 'lightblue'},
-    {text: 'Two', cols: 1, rows: 2, color: 'lightgreen'},
-    {text: 'Three', cols: 1, rows: 1, color: 'lightpink'},
-    {text: 'Four', cols: 2, rows: 1, color: '#DDBDF1'},
-  ];
-
-  folders = [
-    { name: 'Photos', updated: new Date('1/1/16'), },
-    { name: 'Recipes', updated: new Date('1/17/16'), },
-    { name: 'Work', updated: new Date('1/28/16'), }
-  ];
-
-  notes = [
-    { name: 'Vacation Itinerary', updated: new Date('2/20/16'),},
-    { name: 'Kitchen Remodel', updated: new Date('1/18/16'), }
-  ];
+  navLinks: any[];
+  activeLinkIndex = 0;
 
   constructor(
     private route: ActivatedRoute,
+    private router: Router,
     private userService: UserService,
     private ideaService: IdeaService,
     private breakpointObserver: BreakpointObserver
-  ) { }
+  ) {
+    this.user = route.snapshot.data.user;
+    this.id = this.user.id;
+    this.navLinks = [
+      {
+        label: 'Activity',
+        path: './',
+        index: 0,
+      },
+      {
+        label: 'About',
+        path: 'about',
+        index: 1,
+      },
+    ];
+   }
 
-  ngOnInit() {
-    this.subscribe = this.route.params.subscribe(params => {
-      this.id = +params['id'];
+  ngOnInit(): void {
+    this.route.data.subscribe( data => {
+      const resolvedUser: User = data.user;
+      this.onUserRetrieved(resolvedUser);
     });
-
-    this.userService.getUserById(this.id).subscribe(
-      (data) => {
-        this.user = data;
+    this.router.events.subscribe((res) => {
+      this.activeLinkIndex = this.navLinks.indexOf(
+        this.navLinks.find((tab) => tab.link === '.' + this.router.url)
+      );
     });
-
-    this.ideaService.getIdeasByUserId(this.id).subscribe(
-      (data) => {
-        this.user.ideas = data;
-      });
-
-    //this.ideaTiles = this.user.ideas;
   }
+
+  onUserRetrieved(user: User): void {
+    this.user = user;
+  }
+
+
+
+
 }

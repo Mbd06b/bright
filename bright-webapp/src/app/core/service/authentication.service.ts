@@ -44,8 +44,8 @@ export class AuthenticationService {
 
       if ( (this.sessionToken === null)
             || (this.sessionToken === undefined)
-            || (this.sessionUser === null)
-            || (this.sessionUser === undefined)
+            || (this.currentUser === null)
+            || (this.currentUser === undefined)
           ) {
         return false;
       } else {
@@ -101,7 +101,7 @@ export class AuthenticationService {
         sessionStorage.removeItem('user');
         sessionStorage.removeItem(this.TOKEN_KEY);
         this.sessionUser = null;
-        this.router.navigate(['/login']);
+        this.router.navigate(['']);
     }
 
     get currentUser(): User {

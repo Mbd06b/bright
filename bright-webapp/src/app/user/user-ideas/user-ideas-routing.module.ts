@@ -4,7 +4,7 @@ import { UserIdeasComponent } from './user-ideas.component';
 
 
 const routes: Routes = [
-  { path: '', component: UserIdeasComponent}
+  { path: '', component: UserIdeasComponent},
 ];
 
 @NgModule({

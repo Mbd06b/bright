@@ -13,8 +13,10 @@
         <!-- ID Column -->
         <ng-container matColumnDef="id">
           <mat-header-cell *matHeaderCellDef mat-sort-header> ID </mat-header-cell>
-          <mat-cell *matCellDef="let row">{{row.id}}
-          <a fxFlexFill [routerLink]="'/home/people/'+row.id" class="mat-row-link"></a>
+          <mat-cell *matCellDef="let row">
+          <a fxFlexFill [routerLink]="['/bright/people/'+row.id]" class="mat-row-link">
+            {{row.id}}
+          </a>
           </mat-cell>
         </ng-container>
 
