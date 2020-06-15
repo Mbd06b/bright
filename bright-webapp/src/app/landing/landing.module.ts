@@ -8,6 +8,7 @@ import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatInputModule } from '@angular/material/input';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { LandingRoutingModule } from './landing-routing.module';
+import { LetterScrollComponent } from './letter-scroll/letter-scroll.component';
 
 @NgModule({
   imports: [
@@ -20,7 +21,7 @@ import { LandingRoutingModule } from './landing-routing.module';
     MatTabsModule,
     FormsModule,
   ],
-  declarations: [LandingComponent],
+  declarations: [LandingComponent, LetterScrollComponent],
   exports: [],
 })
 export class LandingModule {}

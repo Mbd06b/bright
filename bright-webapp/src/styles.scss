@@ -1,4 +1,4 @@
-@import '~bootstrap/dist/css/bootstrap.css';
+@import url('https://fonts.googleapis.com/css2?family=Work+Sans&display=swap');
 
 // Custom Theming for Angular Material
 // For more information: https://material.angular.io/guide/theming
@@ -32,4 +32,5 @@ $bright-webapp-theme: mat-light-theme($bright-webapp-primary, $bright-webapp-acc
 /* You can add global styles to this file, and also import other style files */
 
 html, body { height: 100%; }
-body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
+body { margin: 0; font-family: "Work Sans", sans-serif; }
+

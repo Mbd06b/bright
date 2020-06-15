@@ -1,0 +1,9 @@
+<div class="tagline-text h3">
+  <p>What will we&nbsp;
+    <span *ngFor="let entry of ideaActions">
+      <span class="word-scroll {{ entry.color }} " [ngStyle]="{ 'opacity': entry.opacity }" >
+        <span *ngFor="let letter of entry.letters" class="letter {{letter.state}}">{{letter.value}}</span>
+      </span>
+    </span>
+  </p>
+</div>
