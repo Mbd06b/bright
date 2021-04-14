@@ -46,7 +46,7 @@ projects:
       sparseCheckoutDir: /proxy-service
 components:
   - id: redhat/java/latest
-    memoryLimit: 1280MiB
+    memoryLimit: 1280Mi
     type: chePlugin
   - mountSources: true
     endpoints:
