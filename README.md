@@ -20,7 +20,6 @@ JWT Token Authentication/Authorization and BCrypt password hashing for client co
 
 2 Ubuntu 18 LTS Servers
 * Gitlab repository https://gitlab.worscipe.com/Mbd06b/bright
-* Nexus, Maven Repository and Docker Registry https://save.worscipe.com
 * Jenkins for CI/CD pipelines https://ci.worscipe.com
 * Taiga, project management platform https://taiga.worscipe.com/project/mbd06b-bright/timeline
 * Eclipse Che, IDE for exploring cloud native development https://che-che.code.worscipe.com/dashboard/
