@@ -21,24 +21,12 @@
 	
 	<repositories>
 		<repository>
-	      <id>bright</id>
-	      <url>http://save.worscipe.com/repository/bright/</url>
-	    </repository>
+	     <id>github</id>
+	     <name>GitHub Mbd06b Apache Maven Packages</name>
+	     <url>https://maven.pkg.github.com/Mbd06b/bright</url>
+	   </repository>
 	</repositories>
-	
-	 <distributionManagement>
-	    <repository>
-	      <id>bright-release</id>
-	      <name>Releases</name>
-	      <url>https://save.worscipe.com/repository/bright-release/</url>
-	    </repository>
-	    <snapshotRepository>
-	      <id>bright-snapshot</id>
-	      <name>Snapshot</name>
-	      <url>https://save.worscipe.com/repository/bright-snapshot/</url>
-	    </snapshotRepository>
-	  </distributionManagement>
-	
+
 	   <dependencyManagement>
 	   	 <dependencies>
 	     	<dependency>
@@ -51,7 +39,7 @@
 			<dependency>
 			  <groupId>com.worscipe.bright</groupId>
 			  <artifactId>common</artifactId>
-			  <version>0.0.1-RELEASE</version>
+			  <version>0.0.1-SNAPSHOT</version>
 			</dependency>
 		 </dependencies>
 	  </dependencyManagement>

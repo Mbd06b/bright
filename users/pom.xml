@@ -16,7 +16,7 @@
 	
 	<properties>
 		<spring.boot.version>2.1.5.RELEASE</spring.boot.version>
-		<java.version>1.8</java.version>
+		<java.version>11</java.version>
 		<springfox.version>2.9.2</springfox.version>
 		<maven.compiler.target>${java.version}</maven.compiler.target>
 		<maven.compiler.source>${java.version}</maven.compiler.source>
@@ -140,7 +140,7 @@
 		<dependency>
 		    <groupId>io.minio</groupId>
 		    <artifactId>minio</artifactId>
-		    <version>6.0.8</version>
+		    <version>7.0.2</version>
 		</dependency>								
 		
 	</dependencies>
