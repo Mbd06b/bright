@@ -12,6 +12,7 @@
 	<!-- Mvn Best Practice: Avoid putting properties here for modules to inherit -->
     <!--  Maven best practices REF: https://www.javacodegeeks.com/2012/06/maven-best-practices.html -->
 	<properties>
+		<!--  boot and cloud dependencies are tighly coupled  -->
 		<spring.boot.version>2.5.4</spring.boot.version>
 		<spring-cloud.version>2020.0.3</spring-cloud.version>
 		<bright.common.version>0.0.1-SNAPSHOT</bright.common.version>
@@ -50,6 +51,7 @@
         <module>users</module>
         <module>ideas</module>
         <module>elections</module>
+        <module>newspaper-api</module>
         <module>bright-webapp</module>
     </modules>
     
