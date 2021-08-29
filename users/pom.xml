@@ -33,7 +33,7 @@
             <dependency>
 	           	<groupId>org.springframework.cloud</groupId>
 				<artifactId>spring-cloud-dependencies</artifactId>
-				<version>${spring.cloud.version}</version>
+				<version>${spring-cloud.version}</version>
 				<type>pom</type>
 				<scope>import</scope>
             </dependency>
@@ -52,6 +52,7 @@
 		<dependency>
 		  <groupId>com.worscipe.bright</groupId>
 		  <artifactId>common</artifactId>
+		  <version>${bright.common.version}</version>
 		</dependency>
 		<dependency>
 			<groupId>org.springframework.cloud</groupId>
@@ -159,7 +160,6 @@
 		    <artifactId>minio</artifactId>
 		    <version>7.0.2</version>
 		</dependency>								
-		
 	</dependencies>
 
 	<build>

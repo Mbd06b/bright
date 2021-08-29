@@ -9,11 +9,12 @@
     <description>An app for sourcing the brightest ideas</description>
     
 	
-	<!--Mvn Best Practice: Avoid putting properties here for modules to inherit -->
+	<!-- Mvn Best Practice: Avoid putting properties here for modules to inherit -->
     <!--  Maven best practices REF: https://www.javacodegeeks.com/2012/06/maven-best-practices.html -->
 	<properties>
-		<spring.boot.version>2.1.5.RELEASE</spring.boot.version>
-		<spring.cloud.version>>Greenwich.SR3</spring.cloud.version>
+		<spring.boot.version>2.5.4</spring.boot.version>
+		<spring-cloud.version>2020.0.3</spring-cloud.version>
+		<bright.common.version>0.0.1-SNAPSHOT</bright.common.version>
 	</properties>
 	
 	<repositories>
@@ -23,6 +24,19 @@
 	     <url>https://maven.pkg.github.com/Mbd06b/bright</url>
 	   </repository>
 	</repositories>
+	
+	  <distributionManagement>
+	    <repository>
+	      <id>github</id>
+	      <name>Releases</name>
+	      <url>https://maven.pkg.github.com/Mbd06b/bright</url>
+	    </repository>
+	    <snapshotRepository>
+	      <id>github</id>
+	      <name>Snapshot</name>
+	      <url>https://maven.pkg.github.com/Mbd06b/bright</url>
+	    </snapshotRepository>
+  </distributionManagement>
 	
 	    <!--  https://dzone.com/articles/building-a-web-app-using-spring-boot-angular-6-and -->
 
@@ -36,7 +50,7 @@
         <module>users</module>
         <module>ideas</module>
         <module>elections</module>
-<!--         <module>../client-angular5</module> -->
+        <module>bright-webapp</module>
     </modules>
     
     
