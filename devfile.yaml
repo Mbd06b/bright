@@ -1,7 +1,7 @@
 metadata:
   name: bright-ideas
 projects:
-  - name: parent
+  - name: bright
     source:
       location: 'https://github.com/Mbd06b/bright.git'
       type: git
