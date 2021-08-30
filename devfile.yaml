@@ -3,45 +3,45 @@ metadata:
 projects:
   - name: parent
     source:
-      location: 'https://gitlab.worscipe.com/Mbd06b/bright.git'
+      location: 'https://github.com/Mbd06b/bright.git'
       type: git
       sparseCheckoutDir: /parent/
     clonePath: projects
   - name: config-service
     source:
-      location: 'https://gitlab.worscipe.com/Mbd06b/bright.git'
+      location: 'https://github.com/Mbd06b/bright.git'
       type: git
       sparseCheckoutDir: /config-service/
     clonePath: ''
   - name: gateway-service
     source:
-      location: 'https://gitlab.worscipe.com/Mbd06b/bright.git'
+      location: 'https://github.com/Mbd06b/bright.git'
       type: git
       sparseCheckoutDir: /gateway-service/
     clonePath: projects
   - name: discovery-service
     source:
-      location: 'https://gitlab.worscipe.com/Mbd06b/bright.git'
+      location: 'https://github.com/Mbd06b/bright.git'
       type: git
       sparseCheckoutDir: /discovery-service*
   - name: users
     source:
-      location: 'https://gitlab.worscipe.com/Mbd06b/bright.git'
+      location: 'https://github.com/Mbd06b/bright.git'
       type: git
       sparseCheckoutDir: /users/
   - name: ideas
     source:
-      location: 'https://gitlab.worscipe.com/Mbd06b/bright.git'
+      location: 'https://github.com/Mbd06b/bright.git'
       type: git
       sparseCheckoutDir: /ideas/
   - name: elections
     source:
-      location: 'https://gitlab.worscipe.com/Mbd06b/bright.git'
+      location: 'https://github.com/Mbd06b/bright.git'
       type: git
       sparseCheckoutDir: /elections/
   - name: proxy-service
     source:
-      location: 'https://gitlab.worscipe.com/Mbd06b/bright.git'
+      location: 'https://github.com/Mbd06b/bright.git'
       type: git
       sparseCheckoutDir: /proxy-service
 components:
@@ -58,7 +58,7 @@ components:
       - name: m2
         containerPath: /home/user/.m2
     alias: tools
-    image: 'quay.io/eclipse/che-java8-maven:7.6.0'
+    image: 'quay.io/eclipse/che-java11-maven:7.28.2'
     env:
       - value: ''
         name: MAVEN_CONFIG
