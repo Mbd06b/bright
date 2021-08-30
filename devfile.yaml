@@ -5,45 +5,6 @@ projects:
     source:
       location: 'https://github.com/Mbd06b/bright.git'
       type: git
-      sparseCheckoutDir: /parent/
-    clonePath: projects
-  - name: config-service
-    source:
-      location: 'https://github.com/Mbd06b/bright.git'
-      type: git
-      sparseCheckoutDir: /config-service/
-    clonePath: ''
-  - name: gateway-service
-    source:
-      location: 'https://github.com/Mbd06b/bright.git'
-      type: git
-      sparseCheckoutDir: /gateway-service/
-    clonePath: projects
-  - name: discovery-service
-    source:
-      location: 'https://github.com/Mbd06b/bright.git'
-      type: git
-      sparseCheckoutDir: /discovery-service*
-  - name: users
-    source:
-      location: 'https://github.com/Mbd06b/bright.git'
-      type: git
-      sparseCheckoutDir: /users/
-  - name: ideas
-    source:
-      location: 'https://github.com/Mbd06b/bright.git'
-      type: git
-      sparseCheckoutDir: /ideas/
-  - name: elections
-    source:
-      location: 'https://github.com/Mbd06b/bright.git'
-      type: git
-      sparseCheckoutDir: /elections/
-  - name: proxy-service
-    source:
-      location: 'https://github.com/Mbd06b/bright.git'
-      type: git
-      sparseCheckoutDir: /proxy-service
 components:
   - id: redhat/java/latest
     memoryLimit: 1280Mi

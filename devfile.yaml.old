@@ -1,0 +1,163 @@
+metadata:
+  name: bright-ideas
+projects:
+  - name: parent
+    source:
+      location: 'https://github.com/Mbd06b/bright.git'
+      type: git
+      sparseCheckoutDir: /parent/
+    clonePath: projects
+  - name: config-service
+    source:
+      location: 'https://github.com/Mbd06b/bright.git'
+      type: git
+      sparseCheckoutDir: /config-service/
+    clonePath: ''
+  - name: gateway-service
+    source:
+      location: 'https://github.com/Mbd06b/bright.git'
+      type: git
+      sparseCheckoutDir: /gateway-service/
+    clonePath: projects
+  - name: discovery-service
+    source:
+      location: 'https://github.com/Mbd06b/bright.git'
+      type: git
+      sparseCheckoutDir: /discovery-service*
+  - name: users
+    source:
+      location: 'https://github.com/Mbd06b/bright.git'
+      type: git
+      sparseCheckoutDir: /users/
+  - name: ideas
+    source:
+      location: 'https://github.com/Mbd06b/bright.git'
+      type: git
+      sparseCheckoutDir: /ideas/
+  - name: elections
+    source:
+      location: 'https://github.com/Mbd06b/bright.git'
+      type: git
+      sparseCheckoutDir: /elections/
+  - name: proxy-service
+    source:
+      location: 'https://github.com/Mbd06b/bright.git'
+      type: git
+      sparseCheckoutDir: /proxy-service
+components:
+  - id: redhat/java/latest
+    memoryLimit: 1280Mi
+    type: chePlugin
+  - mountSources: true
+    endpoints:
+      - name: 8080/tcp
+        port: 8080
+    memoryLimit: 700Mi
+    type: dockerimage
+    volumes:
+      - name: m2
+        containerPath: /home/user/.m2
+    alias: tools
+    image: 'quay.io/eclipse/che-java11-maven:7.28.2'
+    env:
+      - value: ''
+        name: MAVEN_CONFIG
+      - value: >-
+          -XX:MaxRAMPercentage=50.0 -XX:+UseParallelGC -XX:MinHeapFreeRatio=10
+          -XX:MaxHeapFreeRatio=20 -XX:GCTimeRatio=4
+          -XX:AdaptiveSizePolicyWeight=90 -Dsun.zip.disableMemoryMapping=true
+          -Xms20m -Djava.security.egd=file:/dev/./urandom -Duser.home=/home/user
+        name: JAVA_OPTS
+      - value: $(JAVA_OPTS)
+        name: MAVEN_OPTS
+  - mountSources: true
+    endpoints:
+      - name: dbserver
+        attributes:
+          discoverable: 'true'
+          public: 'false'
+        port: 3306
+    memoryLimit: 400Mi
+    type: dockerimage
+    alias: mysql
+    image: docker.io/centos/mysql-57-centos7
+    env:
+      - value: localSQLUser
+        name: MYSQL_USER
+      - value: password
+        name: MYSQL_PASSWORD
+      - value: brightdbusers
+        name: MYSQL_DATABASE
+      - value: '$(echo ${0})\\$'
+        name: PS1
+apiVersion: 1.0.0
+commands:
+  - name: maven build config service
+    actions:
+      - workdir: '${CHE_PROJECTS_ROOT}/config-service'
+        type: exec
+        command: mvn clean install
+        component: tools
+  - name: maven build discovery service
+    actions:
+      - workdir: '${CHE_PROJECTS_ROOT}/discovery-service'
+        type: exec
+        command: mvn clean install
+        component: tools
+  - name: maven build gateway service
+    actions:
+      - workdir: '${CHE_PROJECTS_ROOT}/gateway-service'
+        type: exec
+        command: mvn clean install
+        component: tools
+  - name: maven build user service
+    actions:
+      - workdir: '${CHE_PROJECTS_ROOT}/users'
+        type: exec
+        command: mvn clean install
+        component: tools
+  - name: run config-service
+    actions:
+      - workdir: '${CHE_PROJECTS_ROOT}/config-service'
+        type: exec
+        command: >
+          java -jar \ -Xdebug
+          -Xrunjdwp:transport=dt_socket,server=y,suspend=n,address=5005 \
+          target/*.jar
+        component: tools
+  - name: run discovery-service
+    actions:
+      - workdir: '${CHE_PROJECTS_ROOT}/discovery-service'
+        type: exec
+        command: >
+          java -jar \ -Xdebug
+          -Xrunjdwp:transport=dt_socket,server=y,suspend=n,address=5005 \
+          target/*.jar
+        component: tools
+  - name: run gateway-service
+    actions:
+      - workdir: '${CHE_PROJECTS_ROOT}/gateway-service'
+        type: exec
+        command: >
+          java -jar \  -Xdebug
+          -Xrunjdwp:transport=dt_socket,server=y,suspend=n,address=5005 \
+          target/*.jar
+        component: tools
+  - name: run users-service
+    actions:
+      - workdir: '${CHE_PROJECTS_ROOT}/users'
+        type: exec
+        command: >
+          SPRING_DATASOURCE_URL=jdbc:mysql://dbserver/brightdbusers \
+
+          SPRING_DATASOURCE_USERNAME=localSQLUser \
+
+          SPRING_DATASOURCE_PASSWORD=password \
+
+          java -jar -Dspring.profiles.active=mysql \
+
+          -Xdebug -Xrunjdwp:transport=dt_socket,server=y,suspend=n,address=5005
+          \
+
+          target/*.jar
+        component: tools
