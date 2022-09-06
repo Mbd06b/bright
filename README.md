@@ -6,7 +6,7 @@ The Bright App, an app for sourcing the brightest of ideas.
 =====================
 This (Bright) ultimately is just a training exercise, and is in no way a product. However the concept of Bright is indicative of the kind of application that instrisically motivates me as a developer/person. If you're here reading this and are interested in pro-social collaborative technology.  Check out the following: 
 
-* Foundations of Humane Technology https://www.humanetech.com/course - This self-paced online course prepares product teams to create technology that treats attention and intention as sacred, protects well-being, and builds our collective capacity to address humanity’s most urgent challenges.  
+* Foundations of Humane Technology https://www.humanetech.com/course - This self-paced online course prepares product teams to create technology that treats attention and intention as sacred, protects well-being, and builds our collective capacity to address humanity’s most urgent challenges.  This course put into words what I understood but hadn't as well described. Start here. 
 
 * Loomio https://github.com/loomio/loomio - decision-making tool for collaborative organizations, this is conceptually the closest thing so far to what I had in mind for the Bright App, creating rich meaningful feedbock for social technology. Try it out.
 * Kolibri https://github.com/learningequality/kolibri - Kolibri Learning Platform: the offline app for universal education. IMO accessible and meaningful mastery/learning is a core component of any maximally informed society, Kolibri seems to have a mission to do that. 
@@ -14,7 +14,9 @@ This (Bright) ultimately is just a training exercise, and is in no way a product
 * Pol.is - https://github.com/compdemocracy/polis -  Polis is an AI powered sentiment gathering platform. More organic than surveys and less effort than focus groups, Polis meets the basic human need to be understood, at scale.
 * Holochain - https://github.com/holochain - Scalable framework for P2P distributed apps. For all those projects you wish you could take from centralized web servers but you know can't scale on blockchain.
 * (honorable mention) Taiga - https://github.com/kaleidos-ventures/taiga-docker/ - Taiga: The free and open-source project management tool
-For cross-functional agile teams to work effectively https://www.taiga.io
+For cross-functional agile teams to work effectively. Storytelling is another core component any maximally informed system, Structuring stories in such a way that people can align to accomplish something complex is essential. Which is why I have taiga on this list.  https://www.taiga.io
+* (honrable mention) Cucumber - https://github.com/cucumber - https://cucumber.io  - Collaboration tooling based on employing Behavior-Driven Development (BDD). Storytelling is another core component any maximally informed system, Structuring stories in such a way that people can align to accomplish something complex is essential. Which is why I have cucumber on this list, the functional lanugage Gerkin for describing User Stories lowers the bar for non-developer stakeholders to contribute meaningfully to the stories that transform technology. 
+
 
 I am always on the lookout for accessible applications/resources that endevor to embody what I see as the potential for technology to support human thriving, and colloboration at scale. The either the individual success or the convergence of the above constellation of apps are on the shortlist of who I would like to see scaled. 
 
