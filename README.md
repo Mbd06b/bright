@@ -1,5 +1,22 @@
+
 # Bright
 The Bright App, an app for sourcing the brightest of ideas. 
+
+⚠️  Hey you, yeah you. 
+=====================
+This (Bright) ultimately is just a training exercise, and is in no way a product. However the concept of Bright is indicative of the kind of application that instrisically motivates me as a developer/person. If you're here reading this and are interested in pro-social collaborative technology.  Check out the following: 
+
+* Foundations of Humane Technology https://www.humanetech.com/course - This self-paced online course prepares product teams to create technology that treats attention and intention as sacred, protects well-being, and builds our collective capacity to address humanity’s most urgent challenges.  
+
+* Loomio https://github.com/loomio/loomio - decision-making tool for collaborative organizations, this is conceptually the closest thing so far to what I had in mind for the Bright App. Try it out.
+* Kolibri https://github.com/learningequality/kolibri - Kolibri Learning Platform: the offline app for universal education. Based from Khan Academy Lite
+* Hylo - https://github.com/Hylozoic - A Social coordination app, idealistically being developed for a thriving planet.
+* Pol.is - https://github.com/compdemocracy/polis -  Polis is an AI powered sentiment gathering platform. More organic than surveys and less effort than focus groups, Polis meets the basic human need to be understood, at scale.
+* (honorable mention) Taiga - https://github.com/kaleidos-ventures/taiga-docker/ - Taiga: The free and open-source project management tool
+For cross-functional agile teams to work effectively https://www.taiga.io
+
+I am always on the lookout for applications/resources that embody what I see as the potential for technology to support human thriving. The above are on the shortlist of who I'm paying attention to currently to succeeed. 
+
 
 # Technologies
 The app currently contains:
