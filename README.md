@@ -8,9 +8,9 @@ This (Bright) ultimately is just a training exercise, and is in no way a product
 
 * Foundations of Humane Technology https://www.humanetech.com/course - This self-paced online course prepares product teams to create technology that treats attention and intention as sacred, protects well-being, and builds our collective capacity to address humanity’s most urgent challenges.  
 
-* Loomio https://github.com/loomio/loomio - decision-making tool for collaborative organizations, this is conceptually the closest thing so far to what I had in mind for the Bright App. Try it out.
-* Kolibri https://github.com/learningequality/kolibri - Kolibri Learning Platform: the offline app for universal education. Based from Khan Academy Lite
-* Hylo - https://github.com/Hylozoic - A Social coordination app, idealistically being developed for a thriving planet.
+* Loomio https://github.com/loomio/loomio - decision-making tool for collaborative organizations, this is conceptually the closest thing so far to what I had in mind for the Bright App, creating rich meaningful feedbock for social technology. Try it out.
+* Kolibri https://github.com/learningequality/kolibri - Kolibri Learning Platform: the offline app for universal education. IMO accessible and meaningful mastery/learning is a core component of any maximally informed society, Kolibri seems to have a mission to do that. 
+* Hylo - https://github.com/Hylozoic - A Social coordination app, being developed for a thriving planet. While social seems to be a pain-point in technology, I'm hopeful the developers at Hylo can build something meaningful which could transcend our social morass.  
 * Pol.is - https://github.com/compdemocracy/polis -  Polis is an AI powered sentiment gathering platform. More organic than surveys and less effort than focus groups, Polis meets the basic human need to be understood, at scale.
 * Holochain - https://github.com/holochain - Scalable framework for P2P distributed apps. For all those projects you wish you could take from centralized web servers but you know can't scale on blockchain.
 * (honorable mention) Taiga - https://github.com/kaleidos-ventures/taiga-docker/ - Taiga: The free and open-source project management tool
