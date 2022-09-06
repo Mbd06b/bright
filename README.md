@@ -12,10 +12,11 @@ This (Bright) ultimately is just a training exercise, and is in no way a product
 * Kolibri https://github.com/learningequality/kolibri - Kolibri Learning Platform: the offline app for universal education. Based from Khan Academy Lite
 * Hylo - https://github.com/Hylozoic - A Social coordination app, idealistically being developed for a thriving planet.
 * Pol.is - https://github.com/compdemocracy/polis -  Polis is an AI powered sentiment gathering platform. More organic than surveys and less effort than focus groups, Polis meets the basic human need to be understood, at scale.
+* Holochain - https://github.com/holochain - Scalable framework for P2P distributed apps. For all those projects you wish you could take from centralized web servers but you know can't scale on blockchain.
 * (honorable mention) Taiga - https://github.com/kaleidos-ventures/taiga-docker/ - Taiga: The free and open-source project management tool
 For cross-functional agile teams to work effectively https://www.taiga.io
 
-I am always on the lookout for applications/resources that embody what I see as the potential for technology to support human thriving. The above are on the shortlist of who I'm paying attention to currently to succeeed. 
+I am always on the lookout for accessible applications/resources that endevor to embody what I see as the potential for technology to support human thriving, and colloboration at scale. The above are on the shortlist of who I'm paying attention to currently to succeeed. 
 
 
 # Technologies
