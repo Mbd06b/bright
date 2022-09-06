@@ -16,7 +16,7 @@ This (Bright) ultimately is just a training exercise, and is in no way a product
 * (honorable mention) Taiga - https://github.com/kaleidos-ventures/taiga-docker/ - Taiga: The free and open-source project management tool
 For cross-functional agile teams to work effectively https://www.taiga.io
 
-I am always on the lookout for accessible applications/resources that endevor to embody what I see as the potential for technology to support human thriving, and colloboration at scale. The above are on the shortlist of who I'm paying attention to currently to succeeed. 
+I am always on the lookout for accessible applications/resources that endevor to embody what I see as the potential for technology to support human thriving, and colloboration at scale. The either the individual success or the convergence of the above constellation of apps are on the shortlist of who I would like to see scaled. 
 
 
 # Technologies
