@@ -16,7 +16,7 @@
 		<hibernate.version>5.4.24.Final</hibernate.version>
 		<servlet.port>8080</servlet.port>
 		<spring.version>5.2.21.RELEASE</spring.version>
-		<jackson.version>2.12.6.1</jackson.version>
+		<jackson.version>2.12.7.1</jackson.version>
 		<cglib.version>2.2.2</cglib.version>
 		<maven.compiler.target>${java.version}</maven.compiler.target>
 		<maven.compiler.source>${java.version}</maven.compiler.source>
